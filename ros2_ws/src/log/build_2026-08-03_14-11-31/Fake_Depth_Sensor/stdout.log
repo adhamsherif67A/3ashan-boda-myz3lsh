@@ -1,0 +1,24 @@
+running egg_info
+writing ../build/Fake_Depth_Sensor/Fake_Depth_Sensor.egg-info/PKG-INFO
+writing dependency_links to ../build/Fake_Depth_Sensor/Fake_Depth_Sensor.egg-info/dependency_links.txt
+writing entry points to ../build/Fake_Depth_Sensor/Fake_Depth_Sensor.egg-info/entry_points.txt
+writing requirements to ../build/Fake_Depth_Sensor/Fake_Depth_Sensor.egg-info/requires.txt
+writing top-level names to ../build/Fake_Depth_Sensor/Fake_Depth_Sensor.egg-info/top_level.txt
+reading manifest file '../build/Fake_Depth_Sensor/Fake_Depth_Sensor.egg-info/SOURCES.txt'
+writing manifest file '../build/Fake_Depth_Sensor/Fake_Depth_Sensor.egg-info/SOURCES.txt'
+running build
+running build_py
+copying Fake_Depth_Sensor/sensor_pub.py -> /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/ros2_ws/src/build/Fake_Depth_Sensor/build/lib/Fake_Depth_Sensor
+running install
+running install_lib
+copying /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/ros2_ws/src/build/Fake_Depth_Sensor/build/lib/Fake_Depth_Sensor/sensor_pub.py -> /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/ros2_ws/src/install/Fake_Depth_Sensor/lib/python3.10/site-packages/Fake_Depth_Sensor
+byte-compiling /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/ros2_ws/src/install/Fake_Depth_Sensor/lib/python3.10/site-packages/Fake_Depth_Sensor/sensor_pub.py to sensor_pub.cpython-310.pyc
+running install_data
+copying package.xml -> /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/ros2_ws/src/install/Fake_Depth_Sensor/share/Fake_Depth_Sensor
+running install_egg_info
+removing '/home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/ros2_ws/src/install/Fake_Depth_Sensor/lib/python3.10/site-packages/Fake_Depth_Sensor-0.0.0-py3.10.egg-info' (and everything under it)
+Copying ../build/Fake_Depth_Sensor/Fake_Depth_Sensor.egg-info to /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/ros2_ws/src/install/Fake_Depth_Sensor/lib/python3.10/site-packages/Fake_Depth_Sensor-0.0.0-py3.10.egg-info
+running install_scripts
+Installing sensor_pub script to /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/ros2_ws/src/install/Fake_Depth_Sensor/lib/Fake_Depth_Sensor
+Installing sensor_sub script to /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/ros2_ws/src/install/Fake_Depth_Sensor/lib/Fake_Depth_Sensor
+writing list of installed files to '/home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/ros2_ws/src/build/Fake_Depth_Sensor/install.log'

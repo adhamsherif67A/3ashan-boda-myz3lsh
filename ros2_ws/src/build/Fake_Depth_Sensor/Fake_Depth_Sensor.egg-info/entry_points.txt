@@ -1,0 +1,4 @@
+[console_scripts]
+sensor_pub = Fake_Depth_Sensor.sensor_pub:main
+sensor_sub = Fake_Depth_Sensor.sensor_sub:main
+

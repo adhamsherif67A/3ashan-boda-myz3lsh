@@ -1,0 +1,258 @@
+{
+	"configurations" : 
+	[
+		{
+			"directories" : 
+			[
+				{
+					"build" : ".",
+					"childIndexes" : 
+					[
+						1,
+						2
+					],
+					"hasInstallRule" : true,
+					"jsonFile" : "directory-.-bf3754808b515f25394b.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.12"
+					},
+					"projectIndex" : 0,
+					"source" : ".",
+					"targetIndexes" : 
+					[
+						0,
+						1,
+						2,
+						3,
+						5,
+						6,
+						7,
+						8,
+						9,
+						10,
+						11,
+						12,
+						13,
+						14,
+						15,
+						17,
+						18
+					]
+				},
+				{
+					"build" : "fake_depth_interfaces__py",
+					"jsonFile" : "directory-fake_depth_interfaces__py-433214b4be0653ed773b.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.12"
+					},
+					"parentIndex" : 0,
+					"projectIndex" : 0,
+					"source" : "/home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/ros2_ws/src/build/fake_depth_interfaces/fake_depth_interfaces__py",
+					"targetIndexes" : 
+					[
+						4
+					]
+				},
+				{
+					"build" : "fake_depth_interfaces__rs",
+					"jsonFile" : "directory-fake_depth_interfaces__rs-b4936db1dc97bb6b5f32.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.12"
+					},
+					"parentIndex" : 0,
+					"projectIndex" : 0,
+					"source" : "/home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/ros2_ws/src/build/fake_depth_interfaces/fake_depth_interfaces__rs",
+					"targetIndexes" : 
+					[
+						16
+					]
+				}
+			],
+			"name" : "",
+			"projects" : 
+			[
+				{
+					"directoryIndexes" : 
+					[
+						0,
+						1,
+						2
+					],
+					"name" : "fake_depth_interfaces",
+					"targetIndexes" : 
+					[
+						0,
+						1,
+						2,
+						3,
+						4,
+						5,
+						6,
+						7,
+						8,
+						9,
+						10,
+						11,
+						12,
+						13,
+						14,
+						15,
+						16,
+						17,
+						18
+					]
+				}
+			],
+			"targets" : 
+			[
+				{
+					"directoryIndex" : 0,
+					"id" : "ament_cmake_python_build_fake_depth_interfaces_egg::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-ament_cmake_python_build_fake_depth_interfaces_egg-72edada3947fb886b505.json",
+					"name" : "ament_cmake_python_build_fake_depth_interfaces_egg",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "ament_cmake_python_copy_fake_depth_interfaces::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-ament_cmake_python_copy_fake_depth_interfaces-aa6febfefe00ea87c8fc.json",
+					"name" : "ament_cmake_python_copy_fake_depth_interfaces",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "fake_depth_interfaces::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-fake_depth_interfaces-31e86386d5df3e2ae363.json",
+					"name" : "fake_depth_interfaces",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "fake_depth_interfaces__cpp::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-fake_depth_interfaces__cpp-c6b449f6fab1287f7cef.json",
+					"name" : "fake_depth_interfaces__cpp",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 1,
+					"id" : "fake_depth_interfaces__py::@ac6d927053672112936b",
+					"jsonFile" : "target-fake_depth_interfaces__py-44daa06d70aeca3e5d04.json",
+					"name" : "fake_depth_interfaces__py",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "fake_depth_interfaces__rosidl_generator_c::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-fake_depth_interfaces__rosidl_generator_c-b40ef4ae681fef4e38fc.json",
+					"name" : "fake_depth_interfaces__rosidl_generator_c",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "fake_depth_interfaces__rosidl_generator_py::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-fake_depth_interfaces__rosidl_generator_py-d8c1a54d309c19bcae78.json",
+					"name" : "fake_depth_interfaces__rosidl_generator_py",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "fake_depth_interfaces__rosidl_typesupport_c::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-fake_depth_interfaces__rosidl_typesupport_c-52c5600775be2680326e.json",
+					"name" : "fake_depth_interfaces__rosidl_typesupport_c",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "fake_depth_interfaces__rosidl_typesupport_c__pyext::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-fake_depth_interfaces__rosidl_typesupport_c__pyext-fd58db75c4a4ddf34693.json",
+					"name" : "fake_depth_interfaces__rosidl_typesupport_c__pyext",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "fake_depth_interfaces__rosidl_typesupport_cpp::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-fake_depth_interfaces__rosidl_typesupport_cpp-25821c7366501a03241b.json",
+					"name" : "fake_depth_interfaces__rosidl_typesupport_cpp",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "fake_depth_interfaces__rosidl_typesupport_fastrtps_c::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-fake_depth_interfaces__rosidl_typesupport_fastrtps_c-873ebb170af045e3e4f0.json",
+					"name" : "fake_depth_interfaces__rosidl_typesupport_fastrtps_c",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "fake_depth_interfaces__rosidl_typesupport_fastrtps_c__pyext::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-fake_depth_interfaces__rosidl_typesupport_fastrtps_c__pyext-67eae1f376831ee74541.json",
+					"name" : "fake_depth_interfaces__rosidl_typesupport_fastrtps_c__pyext",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "fake_depth_interfaces__rosidl_typesupport_fastrtps_cpp::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-fake_depth_interfaces__rosidl_typesupport_fastrtps_cpp-8ea11a068a0ee8bb7783.json",
+					"name" : "fake_depth_interfaces__rosidl_typesupport_fastrtps_cpp",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "fake_depth_interfaces__rosidl_typesupport_introspection_c::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-fake_depth_interfaces__rosidl_typesupport_introspection_c-2c81315fddd4632a96bf.json",
+					"name" : "fake_depth_interfaces__rosidl_typesupport_introspection_c",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "fake_depth_interfaces__rosidl_typesupport_introspection_c__pyext::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-fake_depth_interfaces__rosidl_typesupport_introspection_c__pyext-eb20990a4c7c890db4eb.json",
+					"name" : "fake_depth_interfaces__rosidl_typesupport_introspection_c__pyext",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "fake_depth_interfaces__rosidl_typesupport_introspection_cpp::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-fake_depth_interfaces__rosidl_typesupport_introspection_cpp-9b8f19236f76a19f7b31.json",
+					"name" : "fake_depth_interfaces__rosidl_typesupport_introspection_cpp",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 2,
+					"id" : "fake_depth_interfaces__rs::@b22f98963cdd6b7dcce4",
+					"jsonFile" : "target-fake_depth_interfaces__rs-188dc5b50a736d8ab3ea.json",
+					"name" : "fake_depth_interfaces__rs",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "fake_depth_interfaces_uninstall::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-fake_depth_interfaces_uninstall-1f3ea69d132c267742bf.json",
+					"name" : "fake_depth_interfaces_uninstall",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "uninstall::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-uninstall-cc37ee5116365bf10833.json",
+					"name" : "uninstall",
+					"projectIndex" : 0
+				}
+			]
+		}
+	],
+	"kind" : "codemodel",
+	"paths" : 
+	{
+		"build" : "/home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/ros2_ws/src/build/fake_depth_interfaces",
+		"source" : "/home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/ros2_ws/src/fake_depth_interfaces"
+	},
+	"version" : 
+	{
+		"major" : 2,
+		"minor" : 3
+	}
+}

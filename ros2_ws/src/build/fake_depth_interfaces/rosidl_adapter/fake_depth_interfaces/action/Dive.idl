@@ -1,0 +1,24 @@
+// generated from rosidl_adapter/resource/action.idl.em
+// with input from fake_depth_interfaces/action/Dive.action
+// generated code does not contain a copyright notice
+
+
+module fake_depth_interfaces {
+  module action {
+    @verbatim (language="comment", text=
+      "Goal (الهدف: العمق اللي عاوزين نوصله)")
+    struct Dive_Goal {
+      float target_depth;
+    };
+    @verbatim (language="comment", text=
+      "Result (النتيجة النهائية)")
+    struct Dive_Result {
+      boolean success;
+    };
+    @verbatim (language="comment", text=
+      "Feedback (التحديث المباشر للعمق الحالي)")
+    struct Dive_Feedback {
+      float current_depth;
+    };
+  };
+};

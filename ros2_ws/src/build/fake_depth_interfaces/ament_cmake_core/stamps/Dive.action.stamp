@@ -1,0 +1,8 @@
+# Goal (الهدف: العمق اللي عاوزين نوصله)
+float32 target_depth
+---
+# Result (النتيجة النهائية)
+bool success
+---
+# Feedback (التحديث المباشر للعمق الحالي)
+float32 current_depth
