@@ -1,0 +1,24 @@
+[0.280s] Invoking command in '/home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/ros2_ws/src/mock_sensor_pkg': PYTHONPATH=/home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/ros2_ws/build/mock_sensor_pkg/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/ros2_ws/install/mock_sensor_pkg/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py egg_info --egg-base ../../build/mock_sensor_pkg build --build-base /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/ros2_ws/build/mock_sensor_pkg/build install --record /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/ros2_ws/build/mock_sensor_pkg/install.log --install-scripts $base/lib/mock_sensor_pkg --single-version-externally-managed install_data
+[0.389s] running egg_info
+[0.389s] writing ../../build/mock_sensor_pkg/mock_sensor_pkg.egg-info/PKG-INFO
+[0.389s] writing dependency_links to ../../build/mock_sensor_pkg/mock_sensor_pkg.egg-info/dependency_links.txt
+[0.390s] writing entry points to ../../build/mock_sensor_pkg/mock_sensor_pkg.egg-info/entry_points.txt
+[0.390s] writing requirements to ../../build/mock_sensor_pkg/mock_sensor_pkg.egg-info/requires.txt
+[0.390s] writing top-level names to ../../build/mock_sensor_pkg/mock_sensor_pkg.egg-info/top_level.txt
+[0.390s] reading manifest file '../../build/mock_sensor_pkg/mock_sensor_pkg.egg-info/SOURCES.txt'
+[0.391s] writing manifest file '../../build/mock_sensor_pkg/mock_sensor_pkg.egg-info/SOURCES.txt'
+[0.391s] running build
+[0.391s] running build_py
+[0.391s] copying mock_sensor_pkg/mock_broadcaster.py -> /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/ros2_ws/build/mock_sensor_pkg/build/lib/mock_sensor_pkg
+[0.391s] running install
+[0.391s] running install_lib
+[0.391s] copying /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/ros2_ws/build/mock_sensor_pkg/build/lib/mock_sensor_pkg/mock_broadcaster.py -> /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/ros2_ws/install/mock_sensor_pkg/lib/python3.10/site-packages/mock_sensor_pkg
+[0.392s] byte-compiling /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/ros2_ws/install/mock_sensor_pkg/lib/python3.10/site-packages/mock_sensor_pkg/mock_broadcaster.py to mock_broadcaster.cpython-310.pyc
+[0.392s] running install_data
+[0.392s] running install_egg_info
+[0.393s] removing '/home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/ros2_ws/install/mock_sensor_pkg/lib/python3.10/site-packages/mock_sensor_pkg-0.0.0-py3.10.egg-info' (and everything under it)
+[0.393s] Copying ../../build/mock_sensor_pkg/mock_sensor_pkg.egg-info to /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/ros2_ws/install/mock_sensor_pkg/lib/python3.10/site-packages/mock_sensor_pkg-0.0.0-py3.10.egg-info
+[0.393s] running install_scripts
+[0.403s] Installing broadcaster_node script to /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/ros2_ws/install/mock_sensor_pkg/lib/mock_sensor_pkg
+[0.403s] writing list of installed files to '/home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/ros2_ws/build/mock_sensor_pkg/install.log'
+[0.416s] Invoked command in '/home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/ros2_ws/src/mock_sensor_pkg' returned '0': PYTHONPATH=/home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/ros2_ws/build/mock_sensor_pkg/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/ros2_ws/install/mock_sensor_pkg/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py egg_info --egg-base ../../build/mock_sensor_pkg build --build-base /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/ros2_ws/build/mock_sensor_pkg/build install --record /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/ros2_ws/build/mock_sensor_pkg/install.log --install-scripts $base/lib/mock_sensor_pkg --single-version-externally-managed install_data
