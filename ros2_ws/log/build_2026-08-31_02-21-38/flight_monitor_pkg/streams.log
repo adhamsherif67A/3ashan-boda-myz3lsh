@@ -1,0 +1,33 @@
+[0.293s] Invoking command in '/home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/ros2_ws/src/flight_monitor_pkg': PYTHONPATH=/home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/ros2_ws/build/flight_monitor_pkg/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/ros2_ws/install/flight_monitor_pkg/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py egg_info --egg-base ../../build/flight_monitor_pkg build --build-base /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/ros2_ws/build/flight_monitor_pkg/build install --record /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/ros2_ws/build/flight_monitor_pkg/install.log --install-scripts $base/lib/flight_monitor_pkg --single-version-externally-managed install_data
+[0.407s] running egg_info
+[0.413s] creating ../../build/flight_monitor_pkg/flight_monitor_pkg.egg-info
+[0.413s] writing ../../build/flight_monitor_pkg/flight_monitor_pkg.egg-info/PKG-INFO
+[0.414s] writing dependency_links to ../../build/flight_monitor_pkg/flight_monitor_pkg.egg-info/dependency_links.txt
+[0.414s] writing entry points to ../../build/flight_monitor_pkg/flight_monitor_pkg.egg-info/entry_points.txt
+[0.414s] writing requirements to ../../build/flight_monitor_pkg/flight_monitor_pkg.egg-info/requires.txt
+[0.414s] writing top-level names to ../../build/flight_monitor_pkg/flight_monitor_pkg.egg-info/top_level.txt
+[0.414s] writing manifest file '../../build/flight_monitor_pkg/flight_monitor_pkg.egg-info/SOURCES.txt'
+[0.428s] reading manifest file '../../build/flight_monitor_pkg/flight_monitor_pkg.egg-info/SOURCES.txt'
+[0.428s] writing manifest file '../../build/flight_monitor_pkg/flight_monitor_pkg.egg-info/SOURCES.txt'
+[0.428s] running build
+[0.428s] running build_py
+[0.428s] creating /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/ros2_ws/build/flight_monitor_pkg/build/lib/flight_monitor_pkg
+[0.429s] copying flight_monitor_pkg/state_monitor_node.py -> /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/ros2_ws/build/flight_monitor_pkg/build/lib/flight_monitor_pkg
+[0.429s] copying flight_monitor_pkg/__init__.py -> /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/ros2_ws/build/flight_monitor_pkg/build/lib/flight_monitor_pkg
+[0.429s] running install
+[0.431s] running install_lib
+[0.437s] creating /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/ros2_ws/install/flight_monitor_pkg/lib/python3.10/site-packages/flight_monitor_pkg
+[0.437s] copying /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/ros2_ws/build/flight_monitor_pkg/build/lib/flight_monitor_pkg/state_monitor_node.py -> /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/ros2_ws/install/flight_monitor_pkg/lib/python3.10/site-packages/flight_monitor_pkg
+[0.437s] copying /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/ros2_ws/build/flight_monitor_pkg/build/lib/flight_monitor_pkg/__init__.py -> /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/ros2_ws/install/flight_monitor_pkg/lib/python3.10/site-packages/flight_monitor_pkg
+[0.438s] byte-compiling /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/ros2_ws/install/flight_monitor_pkg/lib/python3.10/site-packages/flight_monitor_pkg/state_monitor_node.py to state_monitor_node.cpython-310.pyc
+[0.438s] byte-compiling /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/ros2_ws/install/flight_monitor_pkg/lib/python3.10/site-packages/flight_monitor_pkg/__init__.py to __init__.cpython-310.pyc
+[0.438s] running install_data
+[0.438s] creating /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/ros2_ws/install/flight_monitor_pkg/share/ament_index/resource_index/packages
+[0.438s] copying resource/flight_monitor_pkg -> /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/ros2_ws/install/flight_monitor_pkg/share/ament_index/resource_index/packages
+[0.438s] copying package.xml -> /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/ros2_ws/install/flight_monitor_pkg/share/flight_monitor_pkg
+[0.438s] running install_egg_info
+[0.445s] Copying ../../build/flight_monitor_pkg/flight_monitor_pkg.egg-info to /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/ros2_ws/install/flight_monitor_pkg/lib/python3.10/site-packages/flight_monitor_pkg-0.0.0-py3.10.egg-info
+[0.446s] running install_scripts
+[0.460s] Installing state_monitor_node script to /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/ros2_ws/install/flight_monitor_pkg/lib/flight_monitor_pkg
+[0.460s] writing list of installed files to '/home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/ros2_ws/build/flight_monitor_pkg/install.log'
+[0.472s] Invoked command in '/home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/ros2_ws/src/flight_monitor_pkg' returned '0': PYTHONPATH=/home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/ros2_ws/build/flight_monitor_pkg/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/ros2_ws/install/flight_monitor_pkg/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py egg_info --egg-base ../../build/flight_monitor_pkg build --build-base /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/ros2_ws/build/flight_monitor_pkg/build install --record /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/ros2_ws/build/flight_monitor_pkg/install.log --install-scripts $base/lib/flight_monitor_pkg --single-version-externally-managed install_data

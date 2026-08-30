@@ -1,0 +1,2 @@
+[console_scripts]
+state_monitor_node = flight_monitor_pkg.state_monitor_node:main
