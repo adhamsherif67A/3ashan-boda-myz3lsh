@@ -1,0 +1,37 @@
+[0.542s] Invoking command in '/home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/wrapper/src/zed_mock_vis': PYTHONPATH=/home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/wrapper/src/build/zed_mock_vis/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/wrapper/src/install/zed_mock_vis/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py egg_info --egg-base ../build/zed_mock_vis build --build-base /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/wrapper/src/build/zed_mock_vis/build install --record /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/wrapper/src/build/zed_mock_vis/install.log --install-scripts $base/lib/zed_mock_vis --single-version-externally-managed install_data
+[0.629s] /home/ibrahim/.local/lib/python3.10/site-packages/setuptools/_distutils/dist.py:318: UserWarning: Unknown distribution option: 'tests_require'
+[0.629s]   warnings.warn(msg)
+[0.675s] running egg_info
+[0.683s] creating ../build/zed_mock_vis/zed_mock_vis.egg-info
+[0.683s] writing ../build/zed_mock_vis/zed_mock_vis.egg-info/PKG-INFO
+[0.683s] writing dependency_links to ../build/zed_mock_vis/zed_mock_vis.egg-info/dependency_links.txt
+[0.683s] writing entry points to ../build/zed_mock_vis/zed_mock_vis.egg-info/entry_points.txt
+[0.683s] writing requirements to ../build/zed_mock_vis/zed_mock_vis.egg-info/requires.txt
+[0.683s] writing top-level names to ../build/zed_mock_vis/zed_mock_vis.egg-info/top_level.txt
+[0.683s] writing manifest file '../build/zed_mock_vis/zed_mock_vis.egg-info/SOURCES.txt'
+[0.699s] reading manifest file '../build/zed_mock_vis/zed_mock_vis.egg-info/SOURCES.txt'
+[0.700s] writing manifest file '../build/zed_mock_vis/zed_mock_vis.egg-info/SOURCES.txt'
+[0.700s] running build
+[0.700s] running build_py
+[0.700s] creating /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/wrapper/src/build/zed_mock_vis/build/lib/zed_mock_vis
+[0.700s] copying zed_mock_vis/__init__.py -> /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/wrapper/src/build/zed_mock_vis/build/lib/zed_mock_vis
+[0.700s] copying zed_mock_vis/mock_publisher.py -> /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/wrapper/src/build/zed_mock_vis/build/lib/zed_mock_vis
+[0.700s] running install
+[0.702s] running install_lib
+[0.710s] creating /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/wrapper/src/install/zed_mock_vis/lib/python3.10/site-packages/zed_mock_vis
+[0.710s] copying /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/wrapper/src/build/zed_mock_vis/build/lib/zed_mock_vis/__init__.py -> /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/wrapper/src/install/zed_mock_vis/lib/python3.10/site-packages/zed_mock_vis
+[0.710s] copying /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/wrapper/src/build/zed_mock_vis/build/lib/zed_mock_vis/mock_publisher.py -> /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/wrapper/src/install/zed_mock_vis/lib/python3.10/site-packages/zed_mock_vis
+[0.710s] byte-compiling /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/wrapper/src/install/zed_mock_vis/lib/python3.10/site-packages/zed_mock_vis/__init__.py to __init__.cpython-310.pyc
+[0.711s] byte-compiling /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/wrapper/src/install/zed_mock_vis/lib/python3.10/site-packages/zed_mock_vis/mock_publisher.py to mock_publisher.cpython-310.pyc
+[0.711s] running install_data
+[0.711s] creating /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/wrapper/src/install/zed_mock_vis/share/ament_index/resource_index/packages
+[0.711s] copying resource/zed_mock_vis -> /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/wrapper/src/install/zed_mock_vis/share/ament_index/resource_index/packages
+[0.711s] copying package.xml -> /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/wrapper/src/install/zed_mock_vis/share/zed_mock_vis
+[0.711s] creating /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/wrapper/src/install/zed_mock_vis/share/zed_mock_vis/launch
+[0.711s] copying launch/visualize.launch.py -> /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/wrapper/src/install/zed_mock_vis/share/zed_mock_vis/launch
+[0.712s] running install_egg_info
+[0.720s] Copying ../build/zed_mock_vis/zed_mock_vis.egg-info to /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/wrapper/src/install/zed_mock_vis/lib/python3.10/site-packages/zed_mock_vis-0.0.1-py3.10.egg-info
+[0.720s] running install_scripts
+[0.737s] Installing mock_publisher script to /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/wrapper/src/install/zed_mock_vis/lib/zed_mock_vis
+[0.737s] writing list of installed files to '/home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/wrapper/src/build/zed_mock_vis/install.log'
+[0.751s] Invoked command in '/home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/wrapper/src/zed_mock_vis' returned '0': PYTHONPATH=/home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/wrapper/src/build/zed_mock_vis/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/wrapper/src/install/zed_mock_vis/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py egg_info --egg-base ../build/zed_mock_vis build --build-base /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/wrapper/src/build/zed_mock_vis/build install --record /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/wrapper/src/build/zed_mock_vis/install.log --install-scripts $base/lib/zed_mock_vis --single-version-externally-managed install_data

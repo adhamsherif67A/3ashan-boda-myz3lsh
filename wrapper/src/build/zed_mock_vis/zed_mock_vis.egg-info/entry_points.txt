@@ -1,0 +1,2 @@
+[console_scripts]
+mock_publisher = zed_mock_vis.mock_publisher:main

@@ -1,0 +1,13 @@
+Metadata-Version: 2.4
+Name: zed_mock_vis
+Version: 0.0.1
+Summary: Mock ZED Camera Node with TF2 and PointCloud2 visualization
+Maintainer: Ibrahim
+Maintainer-email: user@todo.todo
+License: Apache-2.0
+Requires-Dist: setuptools
+Dynamic: license
+Dynamic: maintainer
+Dynamic: maintainer-email
+Dynamic: requires-dist
+Dynamic: summary

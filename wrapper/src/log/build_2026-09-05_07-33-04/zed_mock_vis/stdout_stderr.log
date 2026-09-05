@@ -1,0 +1,35 @@
+/home/ibrahim/.local/lib/python3.10/site-packages/setuptools/_distutils/dist.py:318: UserWarning: Unknown distribution option: 'tests_require'
+  warnings.warn(msg)
+running egg_info
+creating ../build/zed_mock_vis/zed_mock_vis.egg-info
+writing ../build/zed_mock_vis/zed_mock_vis.egg-info/PKG-INFO
+writing dependency_links to ../build/zed_mock_vis/zed_mock_vis.egg-info/dependency_links.txt
+writing entry points to ../build/zed_mock_vis/zed_mock_vis.egg-info/entry_points.txt
+writing requirements to ../build/zed_mock_vis/zed_mock_vis.egg-info/requires.txt
+writing top-level names to ../build/zed_mock_vis/zed_mock_vis.egg-info/top_level.txt
+writing manifest file '../build/zed_mock_vis/zed_mock_vis.egg-info/SOURCES.txt'
+reading manifest file '../build/zed_mock_vis/zed_mock_vis.egg-info/SOURCES.txt'
+writing manifest file '../build/zed_mock_vis/zed_mock_vis.egg-info/SOURCES.txt'
+running build
+running build_py
+creating /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/wrapper/src/build/zed_mock_vis/build/lib/zed_mock_vis
+copying zed_mock_vis/__init__.py -> /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/wrapper/src/build/zed_mock_vis/build/lib/zed_mock_vis
+copying zed_mock_vis/mock_publisher.py -> /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/wrapper/src/build/zed_mock_vis/build/lib/zed_mock_vis
+running install
+running install_lib
+creating /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/wrapper/src/install/zed_mock_vis/lib/python3.10/site-packages/zed_mock_vis
+copying /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/wrapper/src/build/zed_mock_vis/build/lib/zed_mock_vis/__init__.py -> /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/wrapper/src/install/zed_mock_vis/lib/python3.10/site-packages/zed_mock_vis
+copying /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/wrapper/src/build/zed_mock_vis/build/lib/zed_mock_vis/mock_publisher.py -> /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/wrapper/src/install/zed_mock_vis/lib/python3.10/site-packages/zed_mock_vis
+byte-compiling /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/wrapper/src/install/zed_mock_vis/lib/python3.10/site-packages/zed_mock_vis/__init__.py to __init__.cpython-310.pyc
+byte-compiling /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/wrapper/src/install/zed_mock_vis/lib/python3.10/site-packages/zed_mock_vis/mock_publisher.py to mock_publisher.cpython-310.pyc
+running install_data
+creating /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/wrapper/src/install/zed_mock_vis/share/ament_index/resource_index/packages
+copying resource/zed_mock_vis -> /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/wrapper/src/install/zed_mock_vis/share/ament_index/resource_index/packages
+copying package.xml -> /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/wrapper/src/install/zed_mock_vis/share/zed_mock_vis
+creating /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/wrapper/src/install/zed_mock_vis/share/zed_mock_vis/launch
+copying launch/visualize.launch.py -> /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/wrapper/src/install/zed_mock_vis/share/zed_mock_vis/launch
+running install_egg_info
+Copying ../build/zed_mock_vis/zed_mock_vis.egg-info to /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/wrapper/src/install/zed_mock_vis/lib/python3.10/site-packages/zed_mock_vis-0.0.1-py3.10.egg-info
+running install_scripts
+Installing mock_publisher script to /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/wrapper/src/install/zed_mock_vis/lib/zed_mock_vis
+writing list of installed files to '/home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/wrapper/src/build/zed_mock_vis/install.log'
