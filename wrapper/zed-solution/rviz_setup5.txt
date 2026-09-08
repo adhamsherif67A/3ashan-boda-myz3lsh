@@ -1,0 +1,15 @@
+طريقة وضعهم جوه RViz2:
+
+اضغط على Camera في القائمة الشمال، وضع في خانة Image Topic:
+
+/zed/zed_node/left/image_rect_color
+
+اضغط على زرار Add تحت واختار Image، وضع في خانة Topic:
+
+/zed/zed_node/left/image_rect_color
+
+اضغط على زرار Add تحت واختار PointCloud2، وضع في خانة Topic:
+
+/zed/zed_node/point_cloud/cloud_registered
+
+(وغيّر قيمة Size (m) لـ 0.03 لتظهر النقاط بوضوح)

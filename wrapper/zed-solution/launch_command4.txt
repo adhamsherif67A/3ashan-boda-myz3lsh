@@ -1,0 +1,1 @@
+ros2 launch zed_robot_integration view_mono_zed.launch.py camera_model:=zed2i use_zed_localization:=true
