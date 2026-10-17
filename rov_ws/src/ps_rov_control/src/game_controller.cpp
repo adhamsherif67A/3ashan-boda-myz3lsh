@@ -21,19 +21,19 @@ double clamp(double value, double low, double high) {
 class ROVControllerNode : public rclcpp::Node {
 public:
     ROVControllerNode() : Node("rov_controller_node") {
-        // Declaring parameters for button and axis mapping (Easy to tune via Launch file)
-        this->declare_parameter<int>("btn_triangle", 0);
+        // --- إعدادات الزراير ---
+        this->declare_parameter<int>("btn_triangle", 3);
         this->declare_parameter<int>("btn_circle", 1);
-        this->declare_parameter<int>("btn_x", 2);
-        this->declare_parameter<int>("btn_square", 3);
-        this->declare_parameter<int>("btn_start", 9);
+        this->declare_parameter<int>("btn_x", 0);
+        this->declare_parameter<int>("btn_square", 2);
+        this->declare_parameter<int>("btn_start", 6);
 
+        // --- إعدادات الأنالوج ---
         this->declare_parameter<int>("axis_sway", 0);
         this->declare_parameter<int>("axis_surge", 1);
-        this->declare_parameter<int>("axis_heave", 4); // Defaulted to 4 (Common Right Stick Y)
-        this->declare_parameter<int>("axis_yaw", 3);
+        this->declare_parameter<int>("axis_heave", 3);
+        this->declare_parameter<int>("axis_yaw", 2);
 
-        // Fetch Parameters
         btn_triangle_ = this->get_parameter("btn_triangle").as_int();
         btn_circle_   = this->get_parameter("btn_circle").as_int();
         btn_x_        = this->get_parameter("btn_x").as_int();
@@ -45,25 +45,26 @@ public:
         axis_heave_ = this->get_parameter("axis_heave").as_int();
         axis_yaw_   = this->get_parameter("axis_yaw").as_int();
 
-        // ROS 2 Subscriptions & Publishers
+        // --- QoS متوافق مع MAVROS ---
+        auto mavros_qos = rclcpp::SystemDefaultsQoS();
+        auto sensor_qos = rclcpp::SensorDataQoS();
+
         joy_sub_ = this->create_subscription<sensor_msgs::msg::Joy>(
-            "/joy", 10, std::bind(&ROVControllerNode::joy_callback, this, std::placeholders::_1));
+            "/joy", sensor_qos, std::bind(&ROVControllerNode::joy_callback, this, std::placeholders::_1));
 
         state_sub_ = this->create_subscription<mavros_msgs::msg::State>(
-            "/mavros/state", 10, std::bind(&ROVControllerNode::state_callback, this, std::placeholders::_1));
+            "/mavros/state", mavros_qos, std::bind(&ROVControllerNode::state_callback, this, std::placeholders::_1));
 
         manual_pub_ = this->create_publisher<mavros_msgs::msg::ManualControl>(
-            "/mavros/manual_control/send", 10);
+            "/mavros/manual_control/send", mavros_qos);
 
-        // Service Clients
         arm_client_  = this->create_client<mavros_msgs::srv::CommandBool>("/mavros/cmd/arming");
         mode_client_ = this->create_client<mavros_msgs::srv::SetMode>("/mavros/set_mode");
 
-        // Timer: Continuous control publishing at 20 Hz (50 ms)
         timer_ = this->create_wall_timer(
             50ms, std::bind(&ROVControllerNode::publish_control, this));
 
-        RCLCPP_INFO(this->get_logger(), "ROV Controller Node (C++) initialized [20Hz Loop]...");
+        RCLCPP_INFO(this->get_logger(), "ROV Controller Initialized (Corrected Mapping: Axes 0,1,2,3 - Buttons 0,1,2,3,9)");
     }
 
 private:
@@ -73,17 +74,9 @@ private:
     }
 
     void joy_callback(const sensor_msgs::msg::Joy::SharedPtr msg) {
-        // 1. Safe Button Handling
-        size_t num_buttons = msg->buttons.size();
-        size_t max_btn_req = static_cast<size_t>(
-            std::max({btn_start_, btn_triangle_, btn_circle_, btn_x_, btn_square_}));
+        handle_arming(msg->buttons);
+        handle_flight_modes(msg->buttons);
 
-        if (num_buttons > max_btn_req) {
-            handle_arming(msg->buttons);
-            handle_flight_modes(msg->buttons);
-        }
-
-        // 2. Safe Axis Handling
         size_t num_axes = msg->axes.size();
         if (static_cast<size_t>(axis_surge_) < num_axes) target_surge_ = msg->axes[axis_surge_];
         if (static_cast<size_t>(axis_sway_) < num_axes)  target_sway_  = msg->axes[axis_sway_];
@@ -95,63 +88,79 @@ private:
         auto msg = mavros_msgs::msg::ManualControl();
         msg.header.stamp = this->get_clock()->now();
 
-        // MAVROS manual_control/send expects (-1000.0 to 1000.0)
-        msg.x = static_cast<float>(clamp(-target_surge_ * 1000.0, -1000.0, 1000.0)); // Surge
-        msg.y = static_cast<float>(clamp(target_sway_ * 1000.0, -1000.0, 1000.0));   // Sway
-        msg.z = static_cast<float>(clamp(target_heave_ * 1000.0, -1000.0, 1000.0));  // Heave
-        msg.r = static_cast<float>(clamp(target_yaw_ * 1000.0, -1000.0, 1000.0));    // Yaw
+        auto deadzone = [](double val) { return (std::abs(val) < 0.05) ? 0.0 : val; };
 
-        msg.buttons = 0; // Bitmask
+        double surge = deadzone(target_surge_);
+        double sway  = deadzone(target_sway_);
+        double heave = deadzone(target_heave_);
+        double yaw   = deadzone(target_yaw_);
 
+        // تحويل الحركة لنطاق ArduSub (-1000 لـ +1000)
+        msg.x = static_cast<float>(clamp(surge * 1000.0, -1000.0, 1000.0));
+        msg.y = static_cast<float>(clamp(-sway * 1000.0, -1000.0, 1000.0));
+        msg.r = static_cast<float>(clamp(-yaw * 1000.0, -1000.0, 1000.0));
+
+        // الـ Heave لازم يكون 500 في المنتصف عشان الـ Arm يشتغل وميديش خطأ
+        msg.z = static_cast<float>(clamp(500.0 + (heave * 500.0), 0.0, 1000.0));
+
+        msg.buttons = 0;
         manual_pub_->publish(msg);
     }
 
     void handle_arming(const std::vector<int32_t> &buttons) {
-        int current_start = buttons[btn_start_];
+        if (buttons.size() > static_cast<size_t>(btn_start_)) {
+            int current_start = buttons[btn_start_];
+            if (current_start == 1 && prev_start_btn_ == 0) {
+                RCLCPP_INFO(this->get_logger(), "Start Button (Index 9) Pressed! Requesting Arm/Disarm...");
+                
+                auto req = std::make_shared<mavros_msgs::srv::CommandBool::Request>();
+                req->value = !is_armed_;
 
-        // Edge Detection
-        if (current_start == 1 && prev_start_btn_ == 0) {
-            auto req = std::make_shared<mavros_msgs::srv::CommandBool::Request>();
-            req->value = !is_armed_;
-
-            if (arm_client_->wait_for_service(1s)) {
-                arm_client_->async_send_request(
-                    req, std::bind(&ROVControllerNode::arm_response_callback, this, std::placeholders::_1));
-            } else {
-                RCLCPP_WARN(this->get_logger(), "Arming service (/mavros/cmd/arming) unavailable!");
+                if (arm_client_->wait_for_service(1s)) {
+                    arm_client_->async_send_request(
+                        req, std::bind(&ROVControllerNode::arm_response_callback, this, std::placeholders::_1));
+                } else {
+                    RCLCPP_WARN(this->get_logger(), "Arming service unavailable!");
+                }
             }
+            prev_start_btn_ = current_start;
         }
-        prev_start_btn_ = current_start;
     }
 
     void arm_response_callback(rclcpp::Client<mavros_msgs::srv::CommandBool>::SharedFuture future) {
         try {
             auto response = future.get();
             if (response->success) {
-                RCLCPP_INFO(this->get_logger(), "Arming/Disarming command executed successfully.");
+                RCLCPP_INFO(this->get_logger(), "Arming/Disarming command accepted!");
             } else {
-                RCLCPP_ERROR(this->get_logger(), "Arming request was rejected!");
+                RCLCPP_ERROR(this->get_logger(), "Arming request rejected by ArduSub! (Check if Throttle is at 500)");
             }
         } catch (const std::exception &e) {
-            RCLCPP_ERROR(this->get_logger(), "Arming service call failed: %s", e.what());
+            RCLCPP_ERROR(this->get_logger(), "Arming call failed: %s", e.what());
         }
     }
 
     void handle_flight_modes(const std::vector<int32_t> &buttons) {
-        if (buttons[btn_triangle_] == 1 && prev_triangle_btn_ == 0) {
+        auto check_btn = [&](int idx) { return (buttons.size() > static_cast<size_t>(idx)) && (buttons[idx] == 1); };
+
+        if (check_btn(btn_triangle_) && prev_triangle_btn_ == 0) {
+            RCLCPP_INFO(this->get_logger(), "Triangle (Index 0) Pressed -> ALT_HOLD");
             set_mode("ALT_HOLD");
-        } else if (buttons[btn_circle_] == 1 && prev_circle_btn_ == 0) {
+        } else if (check_btn(btn_circle_) && prev_circle_btn_ == 0) {
+            RCLCPP_INFO(this->get_logger(), "Circle (Index 1) Pressed -> GUIDED");
             set_mode("GUIDED");
-        } else if (buttons[btn_x_] == 1 && prev_x_btn_ == 0) {
+        } else if (check_btn(btn_x_) && prev_x_btn_ == 0) {
+            RCLCPP_INFO(this->get_logger(), "X (Index 2) Pressed -> MANUAL");
             set_mode("MANUAL");
-        } else if (buttons[btn_square_] == 1 && prev_square_btn_ == 0) {
+        } else if (check_btn(btn_square_) && prev_square_btn_ == 0) {
+            RCLCPP_INFO(this->get_logger(), "Square (Index 3) Pressed -> STABILIZE");
             set_mode("STABILIZE");
         }
 
-        prev_triangle_btn_ = buttons[btn_triangle_];
-        prev_circle_btn_   = buttons[btn_circle_];
-        prev_x_btn_        = buttons[btn_x_];
-        prev_square_btn_   = buttons[btn_square_];
+        prev_triangle_btn_ = check_btn(btn_triangle_);
+        prev_circle_btn_   = check_btn(btn_circle_);
+        prev_x_btn_        = check_btn(btn_x_);
+        prev_square_btn_   = check_btn(btn_square_);
     }
 
     void set_mode(const std::string &custom_mode) {
@@ -160,23 +169,18 @@ private:
 
         if (mode_client_->wait_for_service(1s)) {
             mode_client_->async_send_request(req);
-            RCLCPP_INFO(this->get_logger(), "Requested flight mode change to: %s", custom_mode.c_str());
-        } else {
-            RCLCPP_WARN(this->get_logger(), "SetMode service (/mavros/set_mode) unavailable!");
         }
     }
 
-    // States & Internal variables
     bool is_armed_{false};
     std::string current_mode_{""};
 
     int btn_triangle_{0}, btn_circle_{1}, btn_x_{2}, btn_square_{3}, btn_start_{9};
     int prev_start_btn_{0}, prev_triangle_btn_{0}, prev_circle_btn_{0}, prev_x_btn_{0}, prev_square_btn_{0};
 
-    int axis_sway_{0}, axis_surge_{1}, axis_heave_{4}, axis_yaw_{3};
+    int axis_sway_{0}, axis_surge_{1}, axis_heave_{2}, axis_yaw_{3};
     double target_surge_{0.0}, target_sway_{0.0}, target_heave_{0.0}, target_yaw_{0.0};
 
-    // ROS 2 Interfaces
     rclcpp::Subscription<sensor_msgs::msg::Joy>::SharedPtr joy_sub_;
     rclcpp::Subscription<mavros_msgs::msg::State>::SharedPtr state_sub_;
     rclcpp::Publisher<mavros_msgs::msg::ManualControl>::SharedPtr manual_pub_;
