@@ -1,0 +1,7 @@
+/home/ibrahim/.local/lib/python3.10/site-packages/setuptools/_distutils/dist.py:318: UserWarning: Unknown distribution option: 'tests_require'
+  warnings.warn(msg)
+  File "/home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/ps_rov_control/lib/python3.10/site-packages/ps_rov_control/rov_controller.py", line 92
+    self.set_mode('ALT
+                  ^
+SyntaxError: unterminated string literal (detected at line 92)
+

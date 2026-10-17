@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro">
+
+  <xacro:arg name="sitl_port_in" default="9002" />
+  <xacro:arg name="sitl_port_out" default="9003" />
+  <!-- ================= ARDUPILOT SITL PLUGIN ================= -->
+  <gazebo>
+    <plugin filename="libArduPilotPlugin.so" name="gz::sim::v8::systems::ArduPilotPlugin">
+      <fdm_addr>127.0.0.1</fdm_addr>
+      <fdm_port_in>$(arg sitl_port_in)</fdm_port_in>
+      <fdm_port_out>$(arg sitl_port_out)</fdm_port_out>
+      
+      <!-- The plugin reads pose from imu_link, already rotated FLU -> FRD.
+           Applying another 180-degree roll here would make the JSON attitude
+           disagree with the gyro and accelerometer. -->
+      <modelXYZToAirplaneXForwardZDown>0 0 0 0 0 0</modelXYZToAirplaneXForwardZDown>
+
+      <!-- Gazebo world is ENU; ArduPilot world is NED. -->
+      <gazeboXYZToNED>0 0 0 3.141593 0 1.570796</gazeboXYZToNED>
+      
+      <imuName>imu_sensor</imuName>
+      <connectionTimeoutMaxCount>5</connectionTimeoutMaxCount>
+
+      <!-- Match ArduSub VECTORED allocation in the IMU FRD control frame:
+           M1=t3, M2=t4, M3=t1, M4=t2. Positive yaw must produce
+           negative Gazebo Z torque; swapping left/right produces feedback
+           with the wrong sign in STABILIZE and ALT_HOLD. -->
+      <control channel="0">
+        <type>COMMAND</type>
+        <jointName>t3_joint</jointName>
+        <offset>-0.5</offset>
+        <!-- Positive ArduSub forward command must produce Gazebo forward thrust. -->
+        <multiplier>-103.0</multiplier>
+        <servo_min>1100</servo_min>
+        <servo_max>1900</servo_max>
+        <cmd_topic>/model/robot_description/joint/t3_joint/cmd_thrust</cmd_topic>
+      </control>
+
+      <!-- ArduSub Motor 2 maps to t4. -->
+      <control channel="1">
+        <type>COMMAND</type>
+        <jointName>t4_joint</jointName>
+        <offset>-0.5</offset>
+        <multiplier>-103.0</multiplier>
+        <servo_min>1100</servo_min>
+        <servo_max>1900</servo_max>
+        <cmd_topic>/model/robot_description/joint/t4_joint/cmd_thrust</cmd_topic>
+      </control>
+
+      <!-- ArduSub Motor 3 maps to t1. -->
+      <control channel="2">
+        <type>COMMAND</type>
+        <jointName>t1_joint</jointName>
+        <offset>-0.5</offset>
+        <multiplier>-103.0</multiplier>
+        <servo_min>1100</servo_min>
+        <servo_max>1900</servo_max>
+        <cmd_topic>/model/robot_description/joint/t1_joint/cmd_thrust</cmd_topic>
+      </control>
+
+      <!-- ArduSub Motor 4 maps to t2. -->
+      <control channel="3">
+        <type>COMMAND</type>
+        <jointName>t2_joint</jointName>
+        <offset>-0.5</offset>
+        <multiplier>-103.0</multiplier>
+        <servo_min>1100</servo_min>
+        <servo_max>1900</servo_max>
+        <cmd_topic>/model/robot_description/joint/t2_joint/cmd_thrust</cmd_topic>
+      </control>
+
+      <!-- ArduSub Motor 5: vertical left.  Negative gain maps ArduSub heave
+           commands to the physical thrust direction of this Gazebo joint. -->
+      <control channel="4">
+        <type>COMMAND</type>
+        <jointName>t5_joint</jointName>
+        <offset>-0.5</offset>
+        <multiplier>-103.0</multiplier>
+        <servo_min>1100</servo_min>
+        <servo_max>1900</servo_max>
+        <cmd_topic>/model/robot_description/joint/t5_joint/cmd_thrust</cmd_topic>
+      </control>
+
+      <!-- ArduSub Motor 6: vertical right.  Keep the same heave polarity as
+           Motor 5 so collective vertical commands do not invert. -->
+      <control channel="5">
+        <type>COMMAND</type>
+        <jointName>t6_joint</jointName>
+        <offset>-0.5</offset>
+        <multiplier>-103.0</multiplier>
+        <servo_min>1100</servo_min>
+        <servo_max>1900</servo_max>
+        <cmd_topic>/model/robot_description/joint/t6_joint/cmd_thrust</cmd_topic>
+      </control>
+    </plugin>
+  </gazebo>
+
+</robot>

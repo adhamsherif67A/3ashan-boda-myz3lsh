@@ -1,0 +1,7 @@
+[01m[K/home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/src/ps_rov_control/src/rov_controller.cpp:[m[K In member function ‘[01m[Kvoid ROVControllerNode::publish_control()[m[K’:
+[01m[K/home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/src/ps_rov_control/src/rov_controller.cpp:77:46:[m[K [01;31m[Kerror: [m[K‘[01m[Kusing SharedPtr = class std::shared_ptr<rclcpp::Clock>[m[K’ {aka ‘[01m[Kclass std::shared_ptr<rclcpp::Clock>[m[K’} has no member named ‘[01m[Know[m[K’
+   77 |         msg.header.stamp = this->get_clock().[01;31m[Know[m[K();
+      |                                              [01;31m[K^~~[m[K
+gmake[2]: *** [CMakeFiles/rov_controller.dir/build.make:76: CMakeFiles/rov_controller.dir/src/rov_controller.cpp.o] Error 1
+gmake[1]: *** [CMakeFiles/Makefile2:137: CMakeFiles/rov_controller.dir/all] Error 2
+gmake: *** [Makefile:146: all] Error 2

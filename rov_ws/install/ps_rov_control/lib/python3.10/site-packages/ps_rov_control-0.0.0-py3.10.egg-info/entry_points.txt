@@ -1,0 +1,2 @@
+[console_scripts]
+rov_controller = ps_rov_control.rov_controller:main

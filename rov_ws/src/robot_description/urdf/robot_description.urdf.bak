@@ -1,0 +1,537 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Automatically updated URDF for robot_description with Gazebo Harmonic plugins, Blue Robotics T200 thrusters, ZED 2i RGBD camera. Collisions optimized for performance. -->
+<robot name="robot_description" xmlns:xacro="http://www.ros.org/wiki/xacro">
+
+  <!-- ================= INCLUDES ================= -->
+  <!-- Imports the ArduSub SITL plugin and channel mappings -->
+  <xacro:include filename="ardusub.urdf.xacro" />
+  
+  <!-- ================= BASE LINK (REP-103 ORIENTATION FIX) ================= -->
+  <link name="base_link" />
+
+  <joint name="base_to_center_body" type="fixed">
+    <parent link="base_link" />
+    <child link="center_body_link" />
+    <origin xyz="0 0 0" rpy="1.5708 0 -1.5708" />
+  </joint>
+
+ <!-- ================= CENTER BODY LINK ================= -->
+  <link name="center_body_link">
+    <inertial>
+      <!-- Shift center of mass DOWN 5cm (-Y in SolidWorks frame) for pendulum stability -->
+      <origin xyz="0 -0.05 0" rpy="0 0 0" />
+      <mass value="20.277556" />
+      <inertia
+        ixx="0.130363" ixy="0.0" ixz="0.0"
+        iyy="0.128936" iyz="0.0" izz="0.143796" />
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://robot_description/meshes/center_body_link.STL" />
+      </geometry>
+      <material name="">
+        <color rgba="0.792156 0.819607 0.933333 1" />
+      </material>
+    </visual>
+    <!-- Simplified collision box MUST remain for Gazebo Buoyancy calculation to work -->
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <!-- Corrected axes: X=Width(0.30), Y=Height(0.152), Z=Length(0.45). -->
+        <!-- Volume = 0.0205 m^3, which perfectly floats your ~20.5kg total mass -->
+        <box size="0.30 0.152 0.45" />
+      </geometry>
+    </collision>
+  </link>
+
+  <!-- ================= IMU SENSOR LINK (ADDED FOR ARDUSUB) ================= -->
+  <link name="imu_link">
+    <inertial>
+      <mass value="0.01"/>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <inertia ixx="1e-5" ixy="0" ixz="0" iyy="1e-5" iyz="0" izz="1e-5"/>
+    </inertial>
+  </link>
+
+  <!-- Attached to base_link so it stays perfectly level -->
+  <joint name="imu_joint" type="fixed">
+    <parent link="base_link"/>
+    <child link="imu_link"/>
+    <origin xyz="0 0 0" rpy="0 0 0"/>
+  </joint>
+
+  <!-- ================= THRUSTER 1 (Front Right) ================= -->
+  <link name="t2_link">
+    <inertial>
+      <origin
+        xyz="-1.08966931033905E-08 3.11780230521919E-08 -0.0500887102731119"
+        rpy="0 0 0" />
+      <mass
+        value="0.00795518300761561" />
+      <inertia
+        ixx="2.41748468881164E-06"
+        ixy="-7.25627214040798E-10"
+        ixz="-3.55178079186426E-12"
+        iyy="2.41745446614986E-06"
+        iyz="1.44151710284484E-12"
+        izz="3.71960234309297E-06" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://robot_description/meshes/t1_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
+      </material>
+    </visual>
+  </link>
+  <joint
+    name="t2_joint"
+    type="continuous">
+    <origin
+      xyz="0.13838 -0.054 0.1764"
+      rpy="0 0.7854 -3.1416" />
+    <parent
+      link="center_body_link" />
+    <child
+      link="t2_link" />
+    <axis
+      xyz="0 0 1" />
+    <dynamics
+      damping="0.00"
+      friction="10.0" />
+  </joint>
+
+  <!-- ================= THRUSTER 2 (Front Left) ================= -->
+  <link name="t1_link">
+    <inertial>
+      <origin
+        xyz="-1.61067845727558E-08 1.53905257427311E-08 -0.050088712348201"
+        rpy="0 0 0" />
+      <mass
+        value="0.00795517948182443" />
+      <inertia
+        ixx="2.41717360442979E-06"
+        ixy="6.57840615257653E-10"
+        ixz="-1.39669826006218E-12"
+        iyy="2.41775444163606E-06"
+        iyz="-1.20617136864855E-13"
+        izz="3.71959089963029E-06" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://robot_description/meshes/t2_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
+      </material>
+    </visual>
+  </link>
+  <joint
+    name="t1_joint"
+    type="continuous">
+    <origin
+      xyz="-0.13844 -0.054 0.1764"
+      rpy="0 0.7854 0" />
+    <parent
+      link="center_body_link" />
+    <child
+      link="t1_link" />
+    <axis
+      xyz="0 0 1" />
+    <dynamics
+      damping="0.00"
+      friction="10.0" />
+  </joint>
+
+  <!-- ================= THRUSTER 3 (Rear Right) ================= -->
+  <link name="t4_link">
+    <inertial>
+      <origin
+        xyz="8.9031159111741E-09 -2.97949713790047E-08 -0.0500887078012004"
+        rpy="0 0 0" />
+      <mass
+        value="0.00795517971197979" />
+      <inertia
+        ixx="2.41680398967998E-06"
+        ixy="2.52673864241306E-10"
+        ixz="3.46967415467155E-12"
+        iyy="2.41813325197008E-06"
+        iyz="-1.15601130930072E-12"
+        izz="3.71960074076315E-06" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://robot_description/meshes/t3_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
+      </material>
+    </visual>
+  </link>
+  <joint
+    name="t4_joint"
+    type="continuous">
+    <origin
+      xyz="0.13838 -0.054 -0.13678"
+      rpy="3.1416 0.7854 0" />
+    <parent
+      link="center_body_link" />
+    <child
+      link="t4_link" />
+    <axis
+      xyz="0 0 1" />
+    <dynamics
+      damping="0.00"
+      friction="10.0" />
+  </joint>
+
+  <!-- ================= THRUSTER 4 (Rear Left) ================= -->
+  <link name="t3_link">
+    <inertial>
+      <origin
+        xyz="-4.40342207141953E-10 2.56878742721511E-08 -0.0500887057699948"
+        rpy="0 0 0" />
+      <mass
+        value="0.00795517738490121" />
+      <inertia
+        ixx="2.41761443028931E-06"
+        ixy="-7.09975411782266E-10"
+        ixz="-3.13387334934389E-12"
+        iyy="2.4173214072068E-06"
+        iyz="1.17266484872777E-12"
+        izz="3.71959971913934E-06" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://robot_description/meshes/t4_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
+      </material>
+    </visual>
+  </link>
+  <joint
+    name="t3_joint"
+    type="continuous">
+    <origin
+      xyz="-0.13844 -0.054 -0.13678"
+      rpy="3.1416 -0.7854 0" />
+    <parent
+      link="center_body_link" />
+    <child
+      link="t3_link" />
+    <axis
+      xyz="0 0 1" />
+    <dynamics
+      damping="0.00"
+      friction="10.0" />
+  </joint>
+
+  <!-- ================= THRUSTER 5 (Vertical Right) ================= -->
+  <link name="t6_link">
+    <inertial>
+      <origin
+        xyz="2.71889307734696E-08 -7.39440886299292E-09 -0.0500886373591969"
+        rpy="0 0 0" />
+      <mass
+        value="0.00795510370042245" />
+      <inertia
+        ixx="2.41710257772283E-06"
+        ixy="-6.36555115893321E-10"
+        ixz="3.11747116826418E-12"
+        iyy="2.41777824788279E-06"
+        iyz="6.76781664135883E-13"
+        izz="3.71955188972876E-06" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://robot_description/meshes/t5_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
+      </material>
+    </visual>
+  </link>
+  <joint
+    name="t6_joint"
+    type="continuous">
+    <origin
+      xyz="0.16097 0.053527 0.01981"
+      rpy="-1.5708 -0.0014872 0" />
+    <parent
+      link="center_body_link" />
+    <child
+      link="t6_link" />
+    <axis
+      xyz="0 0 1" />
+    <dynamics
+      damping="0.00"
+      friction="10.0" />
+  </joint>
+
+  <!-- ================= THRUSTER 6 (Vertical Left) ================= -->
+  <link name="t5_link">
+    <inertial>
+      <origin
+        xyz="7.37391059324466E-09 1.7235358473755E-08 -0.0500886410108445"
+        rpy="0 0 0" />
+      <mass
+        value="0.00795510646406922" />
+      <inertia
+        ixx="2.41692525899133E-06"
+        ixy="-4.90356248969197E-10"
+        ixz="2.51846427602641E-13"
+        iyy="2.4179585855046E-06"
+        iyz="3.93757263652323E-12"
+        izz="3.71955432359261E-06" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://robot_description/meshes/t6_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
+      </material>
+    </visual>
+  </link>
+  <joint
+    name="t5_joint"
+    type="continuous">
+    <origin
+      xyz="-0.16103 0.053527 0.01981"
+      rpy="-1.5708 -0.0014872 0" />
+    <parent
+      link="center_body_link" />
+    <child
+      link="t5_link" />
+    <axis
+      xyz="0 0 1" />
+    <dynamics
+      damping="0.00"
+      friction="10.0" />
+  </joint>
+
+  <!-- ================= ZED DEPTH CAMERA ================= -->
+  <link name="zed_link">
+    <inertial>
+      <origin
+        xyz="9.00483588806011E-07 -0.000181067964746262 -0.0192686412103351"
+        rpy="0 0 0" />
+      <mass
+        value="0.170322963146176" />
+      <inertia
+        ixx="3.28035303401861E-05"
+        ixy="1.38793706937027E-09"
+        ixz="3.29410823054304E-09"
+        iyy="0.000392941649327699"
+        iyz="-6.65600014225272E-08"
+        izz="0.000385038733143617" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://robot_description/meshes/zed_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
+      </material>
+    </visual>
+  </link>
+  <joint
+    name="zed_joint"
+    type="fixed">
+    <origin
+      xyz="2.3687E-05 -0.0048463 0.2623"
+      rpy="0 -0.0014872 0" />
+    <parent
+      link="center_body_link" />
+    <child
+      link="zed_link" />
+    <axis
+      xyz="0 0 0" />
+    <dynamics
+      damping="0.00"
+      friction="10.0" />
+  </joint>
+
+  <!-- ================= BAR30 SENSOR LINK ================= -->
+  <link name="bar30_link">
+    <inertial>
+      <origin
+        xyz="0 0 0.00602941176470595"
+        rpy="0 0 0" />
+      <mass
+        value="0.00166897109721956" />
+      <inertia
+        ixx="4.91084398506047E-08"
+        ixy="1.54450130000139E-24"
+        ixz="-3.80720617658117E-25"
+        iyy="4.91084398506047E-08"
+        iyz="3.08553948837591E-24"
+        izz="3.4667965806215E-08" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://robot_description/meshes/bar30_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
+      </material>
+    </visual>
+  </link>
+  <joint
+    name="bar30_joint"
+    type="fixed">
+    <origin
+      xyz="0.00023795 0 -0.16"
+      rpy="0 -0.0014872 0" />
+    <parent
+      link="center_body_link" />
+    <child
+      link="bar30_link" />
+    <dynamics
+      damping="0.00"
+      friction="10.0" />
+  </joint>
+
+  <!-- ================= GAZEBO SENSORS & PLUGINS ================= -->
+
+  <gazebo reference="imu_link">
+    <sensor name="imu_sensor" type="imu">
+      <always_on>1</always_on>
+      <update_rate>250</update_rate>
+      <imu>
+        <angular_velocity>
+          <x><noise type="gaussian"><mean>0</mean><stddev>0.0002</stddev></noise></x>
+          <y><noise type="gaussian"><mean>0</mean><stddev>0.0002</stddev></noise></y>
+          <z><noise type="gaussian"><mean>0</mean><stddev>0.0002</stddev></noise></z>
+        </angular_velocity>
+        <linear_acceleration>
+          <x><noise type="gaussian"><mean>0</mean><stddev>0.017</stddev></noise></x>
+          <y><noise type="gaussian"><mean>0</mean><stddev>0.017</stddev></noise></y>
+          <z><noise type="gaussian"><mean>0</mean><stddev>0.017</stddev></noise></z>
+        </linear_acceleration>
+      </imu>
+    </sensor>
+  </gazebo>
+
+  <!-- ZED 2i RGBD Camera (110 deg FOV, 720p, 0.2m near clip) -->
+  <gazebo reference="zed_link">
+    <sensor name="zed2i_camera" type="rgbd_camera">
+      <always_on>1</always_on>
+      <update_rate>30</update_rate>
+      <camera>
+        <horizontal_fov>1.91986</horizontal_fov>
+        <image>
+          <width>1280</width>
+          <height>720</height>
+          <format>R8G8B8</format>
+        </image>
+        <clip>
+          <near>0.2</near>
+          <far>20.0</far>
+        </clip>
+      </camera>
+      <topic>robot_description/zed2i</topic>
+    </sensor>
+  </gazebo>
+
+  <gazebo reference="bar30_link">
+    <sensor name="bar30_sensor" type="air_pressure">
+      <always_on>1</always_on>
+      <update_rate>50</update_rate>
+      <air_pressure>
+        <reference_altitude>0</reference_altitude>
+        <pressure>
+          <noise type="gaussian">
+            <mean>0</mean>
+            <stddev>0.1</stddev>
+          </noise>
+        </pressure>
+      </air_pressure>
+    </sensor>
+  </gazebo>
+
+  <gazebo>
+    <plugin filename="gz-sim-hydrodynamics-system" name="gz::sim::systems::Hydrodynamics">
+      <link_name>base_link</link_name>
+      <xDotU>1.5</xDotU><yDotV>2.5</yDotV><zDotW>2.5</zDotW>
+      <kDotP>0.02</kDotP><mDotQ>0.05</mDotQ><nDotR>0.05</nDotR>
+      <xUabsU>-30.0</xUabsU><xU>-5.0</xU><yVabsV>-50.0</yVabsV><yV>-5.0</yV>
+      <zWabsW>-50.0</zWabsW><zW>-5.0</zW><kPabsP>-2.0</kPabsP><kP>-0.5</kP>
+      <mQabsQ>-2.0</mQabsQ><mQ>-0.5</mQ><nRabsR>-2.0</nRabsR><nR>-0.5</nR>
+    </plugin>
+  </gazebo>
+
+  <!-- Blue Robotics T200 Thruster Plugins (1-6) -->
+  <gazebo><plugin filename="gz-sim-thruster-system" name="gz::sim::systems::Thruster"><namespace>robot_description</namespace><joint_name>t1_joint</joint_name><fluid_density>997</fluid_density><thrust_coefficient>0.02</thrust_coefficient><torque_coefficient>0.01</torque_coefficient><propeller_diameter>0.076</propeller_diameter><max_thrust_cmd>25</max_thrust_cmd><min_thrust_cmd>-25.0</min_thrust_cmd></plugin></gazebo>
+  <gazebo><plugin filename="gz-sim-thruster-system" name="gz::sim::systems::Thruster"><namespace>robot_description</namespace><joint_name>t2_joint</joint_name><fluid_density>997</fluid_density><thrust_coefficient>0.02</thrust_coefficient><torque_coefficient>0.01</torque_coefficient><propeller_diameter>0.076</propeller_diameter><max_thrust_cmd>25</max_thrust_cmd><min_thrust_cmd>-25.0</min_thrust_cmd></plugin></gazebo>
+  <!-- CW Thrusters get negative torque -->
+  <gazebo><plugin filename="gz-sim-thruster-system" name="gz::sim::systems::Thruster"><namespace>robot_description</namespace><joint_name>t3_joint</joint_name><fluid_density>997</fluid_density><thrust_coefficient>0.02</thrust_coefficient><torque_coefficient>-0.01</torque_coefficient><propeller_diameter>0.076</propeller_diameter><max_thrust_cmd>25</max_thrust_cmd><min_thrust_cmd>-25.0</min_thrust_cmd></plugin></gazebo>
+  <gazebo><plugin filename="gz-sim-thruster-system" name="gz::sim::systems::Thruster"><namespace>robot_description</namespace><joint_name>t4_joint</joint_name><fluid_density>997</fluid_density><thrust_coefficient>0.02</thrust_coefficient><torque_coefficient>-0.01</torque_coefficient><propeller_diameter>0.076</propeller_diameter><max_thrust_cmd>25</max_thrust_cmd><min_thrust_cmd>-25.0</min_thrust_cmd></plugin></gazebo>
+  <gazebo><plugin filename="gz-sim-thruster-system" name="gz::sim::systems::Thruster"><namespace>robot_description</namespace><joint_name>t5_joint</joint_name><fluid_density>997</fluid_density><thrust_coefficient>0.02</thrust_coefficient><torque_coefficient>0.01</torque_coefficient><propeller_diameter>0.076</propeller_diameter><max_thrust_cmd>25</max_thrust_cmd><min_thrust_cmd>-25.0</min_thrust_cmd></plugin></gazebo>
+  <gazebo><plugin filename="gz-sim-thruster-system" name="gz::sim::systems::Thruster"><namespace>robot_description</namespace><joint_name>t6_joint</joint_name><fluid_density>997</fluid_density><thrust_coefficient>0.02</thrust_coefficient><torque_coefficient>-0.01</torque_coefficient><propeller_diameter>0.076</propeller_diameter><max_thrust_cmd>25</max_thrust_cmd><min_thrust_cmd>-25.0</min_thrust_cmd></plugin></gazebo>
+
+  <!-- Joint State & Odometry Publishers -->
+  <gazebo>
+    <plugin filename="gz-sim-joint-state-publisher-system" name="gz::sim::systems::JointStatePublisher" />
+  </gazebo>
+
+  <gazebo>
+    <plugin filename="gz-sim-odometry-publisher-system" name="gz::sim::systems::OdometryPublisher">
+      <odom_frame>odom</odom_frame>
+      <robot_base_frame>base_link</robot_base_frame>
+      <odom_publish_frequency>50</odom_publish_frequency>
+    </plugin>
+  </gazebo>
+
+</robot>

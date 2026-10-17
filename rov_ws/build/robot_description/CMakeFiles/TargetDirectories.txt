@@ -1,0 +1,10 @@
+/home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/build/robot_description/CMakeFiles/uninstall.dir
+/home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/build/robot_description/CMakeFiles/robot_description_uninstall.dir
+/home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/build/robot_description/CMakeFiles/mako-pool-waves.dir
+/home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/build/robot_description/CMakeFiles/test.dir
+/home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/build/robot_description/CMakeFiles/edit_cache.dir
+/home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/build/robot_description/CMakeFiles/rebuild_cache.dir
+/home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/build/robot_description/CMakeFiles/list_install_components.dir
+/home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/build/robot_description/CMakeFiles/install.dir
+/home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/build/robot_description/CMakeFiles/install/local.dir
+/home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/build/robot_description/CMakeFiles/install/strip.dir

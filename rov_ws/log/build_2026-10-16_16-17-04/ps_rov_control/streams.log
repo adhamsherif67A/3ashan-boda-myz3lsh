@@ -1,0 +1,47 @@
+[0.006s] Invoking command in '/home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/build/ps_rov_control': CMAKE_PREFIX_PATH=/home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description:/home/ibrahim/ros2_ws/install/zed_ros2:/home/ibrahim/ros2_ws/install/zed_wrapper:/home/ibrahim/ros2_ws/install/zed_components:/home/ibrahim/ros2_ws/install/zed_interfaces:/home/ibrahim/ros2_ws/install/scout_base:/home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/ps_rov_control:/home/ibrahim/ros2_first_ws/install/my_robot_controller:/opt/ros/humble:/home/ibrahim/ros2_ws/install/ugv_sdk:/home/ibrahim/ros2_ws/install/scout_msgs:/home/ibrahim/ros2_ws/install/scout_description:/home/ibrahim/ros2_ws/install/async_port /usr/bin/cmake /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/src/ps_rov_control -DCMAKE_INSTALL_PREFIX=/home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/ps_rov_control
+[0.108s] -- The C compiler identification is GNU 11.4.0
+[0.188s] -- The CXX compiler identification is GNU 11.4.0
+[0.196s] -- Detecting C compiler ABI info
+[0.265s] -- Detecting C compiler ABI info - done
+[0.275s] -- Check for working C compiler: /usr/lib/ccache/cc - skipped
+[0.275s] -- Detecting C compile features
+[0.276s] -- Detecting C compile features - done
+[0.280s] -- Detecting CXX compiler ABI info
+[0.358s] -- Detecting CXX compiler ABI info - done
+[0.362s] -- Check for working CXX compiler: /usr/lib/ccache/c++ - skipped
+[0.362s] -- Detecting CXX compile features
+[0.363s] -- Detecting CXX compile features - done
+[0.366s] -- Found ament_cmake: 1.3.14 (/opt/ros/humble/share/ament_cmake/cmake)
+[0.607s] -- Found Python3: /usr/bin/python3 (found version "3.10.12") found components: Interpreter 
+[0.678s] -- Found rclcpp: 16.0.19 (/opt/ros/humble/share/rclcpp/cmake)
+[0.716s] -- Found rosidl_generator_c: 3.1.9 (/opt/ros/humble/share/rosidl_generator_c/cmake)
+[0.720s] -- Found rosidl_adapter: 3.1.9 (/opt/ros/humble/share/rosidl_adapter/cmake)
+[0.726s] -- Found rosidl_generator_cpp: 3.1.9 (/opt/ros/humble/share/rosidl_generator_cpp/cmake)
+[0.735s] -- Using all available rosidl_typesupport_c: rosidl_typesupport_fastrtps_c;rosidl_typesupport_introspection_c
+[0.745s] -- Using all available rosidl_typesupport_cpp: rosidl_typesupport_fastrtps_cpp;rosidl_typesupport_introspection_cpp
+[0.774s] -- Found rmw_implementation_cmake: 6.1.3 (/opt/ros/humble/share/rmw_implementation_cmake/cmake)
+[0.776s] -- Found rmw_fastrtps_cpp: 6.2.10 (/opt/ros/humble/share/rmw_fastrtps_cpp/cmake)
+[0.847s] -- Found OpenSSL: /usr/lib/x86_64-linux-gnu/libcrypto.so (found version "3.0.2")  
+[0.867s] -- Found FastRTPS: /opt/ros/humble/include  
+[0.894s] -- Using RMW implementation 'rmw_fastrtps_cpp' as default
+[0.901s] -- Looking for pthread.h
+[1.002s] -- Looking for pthread.h - found
+[1.002s] -- Performing Test CMAKE_HAVE_LIBC_PTHREAD
+[1.120s] -- Performing Test CMAKE_HAVE_LIBC_PTHREAD - Success
+[1.121s] -- Found Threads: TRUE  
+[1.168s] -- Found sensor_msgs: 4.9.2 (/opt/ros/humble/share/sensor_msgs/cmake)
+[1.186s] -- Found mavros_msgs: 2.14.0 (/opt/ros/humble/share/mavros_msgs/cmake)
+[1.256s] -- Configuring done
+[1.261s] -- Generating done
+[1.263s] -- Build files have been written to: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/build/ps_rov_control
+[1.268s] Invoked command in '/home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/build/ps_rov_control' returned '0': CMAKE_PREFIX_PATH=/home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description:/home/ibrahim/ros2_ws/install/zed_ros2:/home/ibrahim/ros2_ws/install/zed_wrapper:/home/ibrahim/ros2_ws/install/zed_components:/home/ibrahim/ros2_ws/install/zed_interfaces:/home/ibrahim/ros2_ws/install/scout_base:/home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/ps_rov_control:/home/ibrahim/ros2_first_ws/install/my_robot_controller:/opt/ros/humble:/home/ibrahim/ros2_ws/install/ugv_sdk:/home/ibrahim/ros2_ws/install/scout_msgs:/home/ibrahim/ros2_ws/install/scout_description:/home/ibrahim/ros2_ws/install/async_port /usr/bin/cmake /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/src/ps_rov_control -DCMAKE_INSTALL_PREFIX=/home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/ps_rov_control
+[1.269s] Invoking command in '/home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/build/ps_rov_control': CMAKE_PREFIX_PATH=/home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description:/home/ibrahim/ros2_ws/install/zed_ros2:/home/ibrahim/ros2_ws/install/zed_wrapper:/home/ibrahim/ros2_ws/install/zed_components:/home/ibrahim/ros2_ws/install/zed_interfaces:/home/ibrahim/ros2_ws/install/scout_base:/home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/ps_rov_control:/home/ibrahim/ros2_first_ws/install/my_robot_controller:/opt/ros/humble:/home/ibrahim/ros2_ws/install/ugv_sdk:/home/ibrahim/ros2_ws/install/scout_msgs:/home/ibrahim/ros2_ws/install/scout_description:/home/ibrahim/ros2_ws/install/async_port /usr/bin/cmake --build /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/build/ps_rov_control -- -j24 -l24
+[1.326s] [ 50%] [32mBuilding CXX object CMakeFiles/rov_controller.dir/src/rov_controller.cpp.o[0m
+[4.426s] [01m[K/home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/src/ps_rov_control/src/rov_controller.cpp:[m[K In member function ‘[01m[Kvoid ROVControllerNode::publish_control()[m[K’:
+[4.426s] [01m[K/home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/src/ps_rov_control/src/rov_controller.cpp:77:46:[m[K [01;31m[Kerror: [m[K‘[01m[Kusing SharedPtr = class std::shared_ptr<rclcpp::Clock>[m[K’ {aka ‘[01m[Kclass std::shared_ptr<rclcpp::Clock>[m[K’} has no member named ‘[01m[Know[m[K’
+[4.426s]    77 |         msg.header.stamp = this->get_clock().[01;31m[Know[m[K();
+[4.426s]       |                                              [01;31m[K^~~[m[K
+[4.427s] gmake[2]: *** [CMakeFiles/rov_controller.dir/build.make:76: CMakeFiles/rov_controller.dir/src/rov_controller.cpp.o] Error 1
+[4.427s] gmake[1]: *** [CMakeFiles/Makefile2:137: CMakeFiles/rov_controller.dir/all] Error 2
+[4.427s] gmake: *** [Makefile:146: all] Error 2
+[4.429s] Invoked command in '/home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/build/ps_rov_control' returned '2': CMAKE_PREFIX_PATH=/home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description:/home/ibrahim/ros2_ws/install/zed_ros2:/home/ibrahim/ros2_ws/install/zed_wrapper:/home/ibrahim/ros2_ws/install/zed_components:/home/ibrahim/ros2_ws/install/zed_interfaces:/home/ibrahim/ros2_ws/install/scout_base:/home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/ps_rov_control:/home/ibrahim/ros2_first_ws/install/my_robot_controller:/opt/ros/humble:/home/ibrahim/ros2_ws/install/ugv_sdk:/home/ibrahim/ros2_ws/install/scout_msgs:/home/ibrahim/ros2_ws/install/scout_description:/home/ibrahim/ros2_ws/install/async_port /usr/bin/cmake --build /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/build/ps_rov_control -- -j24 -l24

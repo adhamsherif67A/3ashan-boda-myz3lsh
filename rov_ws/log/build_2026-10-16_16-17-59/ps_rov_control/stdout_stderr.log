@@ -1,0 +1,22 @@
+[35m[1mConsolidate compiler generated dependencies of target rov_controller[0m
+[ 50%] [32mBuilding CXX object CMakeFiles/rov_controller.dir/src/rov_controller.cpp.o[0m
+[100%] [32m[1mLinking CXX executable rov_controller[0m
+[100%] Built target rov_controller
+-- Install configuration: ""
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/ps_rov_control/lib/ps_rov_control/rov_controller
+-- Set runtime path of "/home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/ps_rov_control/lib/ps_rov_control/rov_controller" to ""
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/ps_rov_control/share/ament_index/resource_index/package_run_dependencies/ps_rov_control
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/ps_rov_control/share/ament_index/resource_index/parent_prefix_path/ps_rov_control
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/ps_rov_control/share/ps_rov_control/environment/ament_prefix_path.sh
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/ps_rov_control/share/ps_rov_control/environment/ament_prefix_path.dsv
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/ps_rov_control/share/ps_rov_control/environment/path.sh
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/ps_rov_control/share/ps_rov_control/environment/path.dsv
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/ps_rov_control/share/ps_rov_control/local_setup.bash
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/ps_rov_control/share/ps_rov_control/local_setup.sh
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/ps_rov_control/share/ps_rov_control/local_setup.zsh
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/ps_rov_control/share/ps_rov_control/local_setup.dsv
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/ps_rov_control/share/ps_rov_control/package.dsv
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/ps_rov_control/share/ament_index/resource_index/packages/ps_rov_control
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/ps_rov_control/share/ps_rov_control/cmake/ps_rov_controlConfig.cmake
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/ps_rov_control/share/ps_rov_control/cmake/ps_rov_controlConfig-version.cmake
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/ps_rov_control/share/ps_rov_control/package.xml

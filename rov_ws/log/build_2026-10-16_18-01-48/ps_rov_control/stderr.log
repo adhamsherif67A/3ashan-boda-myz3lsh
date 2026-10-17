@@ -1,0 +1,79 @@
+[01m[K/home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/src/ps_rov_control/src/game_controller.cpp:51:20:[m[K [01;31m[Kerror: [m[Kexpected ‘[01m[K}[m[K’ at end of input
+   51 |         RCLCPP_INFO
+      |                    [01;31m[K^[m[K
+[01m[K/home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/src/ps_rov_control/src/game_controller.cpp:21:47:[m[K [01;36m[Knote: [m[Kto match this ‘[01m[K{[m[K’
+   21 | class ROVControllerNode : public rclcpp::Node [01;36m[K{[m[K
+      |                                               [01;36m[K^[m[K
+[01m[K/home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/src/ps_rov_control/src/game_controller.cpp:[m[K In constructor ‘[01m[KROVControllerNode::ROVControllerNode()[m[K’:
+[01m[K/home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/src/ps_rov_control/src/game_controller.cpp:24:9:[m[K [01;31m[Kerror: [m[K‘[01m[KBTN_TRIANGLE[m[K’ was not declared in this scope
+   24 |         [01;31m[KBTN_TRIANGLE[m[K = 0;
+      |         [01;31m[K^~~~~~~~~~~~[m[K
+[01m[K/home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/src/ps_rov_control/src/game_controller.cpp:25:9:[m[K [01;31m[Kerror: [m[K‘[01m[KBTN_CIRCLE[m[K’ was not declared in this scope
+   25 |         [01;31m[KBTN_CIRCLE[m[K   = 1;
+      |         [01;31m[K^~~~~~~~~~[m[K
+[01m[K/home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/src/ps_rov_control/src/game_controller.cpp:26:9:[m[K [01;31m[Kerror: [m[K‘[01m[KBTN_X[m[K’ was not declared in this scope
+   26 |         [01;31m[KBTN_X[m[K        = 2;
+      |         [01;31m[K^~~~~[m[K
+[01m[K/home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/src/ps_rov_control/src/game_controller.cpp:27:9:[m[K [01;31m[Kerror: [m[K‘[01m[KBTN_SQUARE[m[K’ was not declared in this scope
+   27 |         [01;31m[KBTN_SQUARE[m[K   = 3;
+      |         [01;31m[K^~~~~~~~~~[m[K
+[01m[K/home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/src/ps_rov_control/src/game_controller.cpp:28:9:[m[K [01;31m[Kerror: [m[K‘[01m[KBTN_START[m[K’ was not declared in this scope
+   28 |         [01;31m[KBTN_START[m[K    = 9;
+      |         [01;31m[K^~~~~~~~~[m[K
+[01m[K/home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/src/ps_rov_control/src/game_controller.cpp:30:9:[m[K [01;31m[Kerror: [m[K‘[01m[KAXIS_SWAY[m[K’ was not declared in this scope
+   30 |         [01;31m[KAXIS_SWAY[m[K  = 0;
+      |         [01;31m[K^~~~~~~~~[m[K
+[01m[K/home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/src/ps_rov_control/src/game_controller.cpp:31:9:[m[K [01;31m[Kerror: [m[K‘[01m[KAXIS_SURGE[m[K’ was not declared in this scope
+   31 |         [01;31m[KAXIS_SURGE[m[K = 1;
+      |         [01;31m[K^~~~~~~~~~[m[K
+[01m[K/home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/src/ps_rov_control/src/game_controller.cpp:32:9:[m[K [01;31m[Kerror: [m[K‘[01m[KAXIS_HEAVE[m[K’ was not declared in this scope
+   32 |         [01;31m[KAXIS_HEAVE[m[K = 2;
+      |         [01;31m[K^~~~~~~~~~[m[K
+[01m[K/home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/src/ps_rov_control/src/game_controller.cpp:33:9:[m[K [01;31m[Kerror: [m[K‘[01m[KAXIS_YAW[m[K’ was not declared in this scope
+   33 |         [01;31m[KAXIS_YAW[m[K   = 3;
+      |         [01;31m[K^~~~~~~~[m[K
+[01m[K/home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/src/ps_rov_control/src/game_controller.cpp:35:9:[m[K [01;31m[Kerror: [m[K‘[01m[Kjoy_sub_[m[K’ was not declared in this scope
+   35 |         [01;31m[Kjoy_sub_[m[K = this->create_subscription<sensor_msgs::msg::Joy>(
+      |         [01;31m[K^~~~~~~~[m[K
+[01m[K/home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/src/ps_rov_control/src/game_controller.cpp:36:55:[m[K [01;31m[Kerror: [m[K‘[01m[Kjoy_callback[m[K’ is not a member of ‘[01m[KROVControllerNode[m[K’
+   36 |             "/joy", 10, std::bind(&ROVControllerNode::[01;31m[Kjoy_callback[m[K, this, std::placeholders::_1));
+      |                                                       [01;31m[K^~~~~~~~~~~~[m[K
+[01m[K/home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/src/ps_rov_control/src/game_controller.cpp:38:9:[m[K [01;31m[Kerror: [m[K‘[01m[Kstate_sub_[m[K’ was not declared in this scope
+   38 |         [01;31m[Kstate_sub_[m[K = this->create_subscription<mavros_msgs::msg::State>(
+      |         [01;31m[K^~~~~~~~~~[m[K
+[01m[K/home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/src/ps_rov_control/src/game_controller.cpp:39:64:[m[K [01;31m[Kerror: [m[K‘[01m[Kstate_callback[m[K’ is not a member of ‘[01m[KROVControllerNode[m[K’
+   39 |             "/mavros/state", 10, std::bind(&ROVControllerNode::[01;31m[Kstate_callback[m[K, this, std::placeholders::_1));
+      |                                                                [01;31m[K^~~~~~~~~~~~~~[m[K
+[01m[K/home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/src/ps_rov_control/src/game_controller.cpp:41:9:[m[K [01;31m[Kerror: [m[K‘[01m[Kmanual_pub_[m[K’ was not declared in this scope
+   41 |         [01;31m[Kmanual_pub_[m[K = this->create_publisher<mavros_msgs::msg::ManualControl>(
+      |         [01;31m[K^~~~~~~~~~~[m[K
+[01m[K/home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/src/ps_rov_control/src/game_controller.cpp:44:9:[m[K [01;31m[Kerror: [m[K‘[01m[Karm_client_[m[K’ was not declared in this scope; did you mean ‘[01m[Krmw_client_t[m[K’?
+   44 |         [01;31m[Karm_client_[m[K = this->create_client<mavros_msgs::srv::CommandBool>("/mavros/cmd/arming");
+      |         [01;31m[K^~~~~~~~~~~[m[K
+      |         [32m[Krmw_client_t[m[K
+[01m[K/home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/src/ps_rov_control/src/game_controller.cpp:45:9:[m[K [01;31m[Kerror: [m[K‘[01m[Kmode_client_[m[K’ was not declared in this scope
+   45 |         [01;31m[Kmode_client_[m[K = this->create_client<mavros_msgs::srv::SetMode>("/mavros/set_mode");
+      |         [01;31m[K^~~~~~~~~~~~[m[K
+[01m[K/home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/src/ps_rov_control/src/game_controller.cpp:48:9:[m[K [01;31m[Kerror: [m[K‘[01m[Ktimer_[m[K’ was not declared in this scope; did you mean ‘[01m[Ktimer_t[m[K’?
+   48 |         [01;31m[Ktimer_[m[K = this->create_wall_timer(
+      |         [01;31m[K^~~~~~[m[K
+      |         [32m[Ktimer_t[m[K
+[01m[K/home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/src/ps_rov_control/src/game_controller.cpp:49:49:[m[K [01;31m[Kerror: [m[K‘[01m[Kpublish_control[m[K’ is not a member of ‘[01m[KROVControllerNode[m[K’
+   49 |             50ms, std::bind(&ROVControllerNode::[01;31m[Kpublish_control[m[K, this));
+      |                                                 [01;31m[K^~~~~~~~~~~~~~~[m[K
+[01m[K/home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/src/ps_rov_control/src/game_controller.cpp:51:9:[m[K [01;31m[Kerror: [m[K‘[01m[KRCLCPP_INFO[m[K’ was not declared in this scope
+   51 |         [01;31m[KRCLCPP_INFO[m[K
+      |         [01;31m[K^~~~~~~~~~~[m[K
+[01m[K/home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/src/ps_rov_control/src/game_controller.cpp:51:20:[m[K [01;31m[Kerror: [m[Kexpected ‘[01m[K}[m[K’ at end of input
+   51 |         RCLCPP_INFO
+      |                    [01;31m[K^[m[K
+[01m[K/home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/src/ps_rov_control/src/game_controller.cpp:23:55:[m[K [01;36m[Knote: [m[Kto match this ‘[01m[K{[m[K’
+   23 |     ROVControllerNode() : Node("rov_controller_node") [01;36m[K{[m[K
+      |                                                       [01;36m[K^[m[K
+[01m[K/home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/src/ps_rov_control/src/game_controller.cpp:[m[K At global scope:
+[01m[K/home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/src/ps_rov_control/src/game_controller.cpp:51:20:[m[K [01;31m[Kerror: [m[Kexpected unqualified-id at end of input
+   51 |         RCLCPP_INFO
+      |                    [01;31m[K^[m[K
+gmake[2]: *** [CMakeFiles/game_controller.dir/build.make:76: CMakeFiles/game_controller.dir/src/game_controller.cpp.o] Error 1
+gmake[1]: *** [CMakeFiles/Makefile2:137: CMakeFiles/game_controller.dir/all] Error 2
+gmake: *** [Makefile:146: all] Error 2

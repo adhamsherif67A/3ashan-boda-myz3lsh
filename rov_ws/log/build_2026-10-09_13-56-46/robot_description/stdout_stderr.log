@@ -1,0 +1,1038 @@
+-- The C compiler identification is GNU 11.4.0
+-- The CXX compiler identification is GNU 11.4.0
+-- Detecting C compiler ABI info
+-- Detecting C compiler ABI info - done
+-- Check for working C compiler: /usr/lib/ccache/cc - skipped
+-- Detecting C compile features
+-- Detecting C compile features - done
+-- Detecting CXX compiler ABI info
+-- Detecting CXX compiler ABI info - done
+-- Check for working CXX compiler: /usr/lib/ccache/c++ - skipped
+-- Detecting CXX compile features
+-- Detecting CXX compile features - done
+-- Found ament_cmake: 1.3.14 (/opt/ros/humble/share/ament_cmake/cmake)
+-- Found Python3: /usr/bin/python3 (found version "3.10.12") found components: Interpreter 
+-- Looking for gz-sim8 -- found version 8.15.0
+-- Searching for dependencies of gz-sim8
+-- Looking for sdformat14 -- found version 14.9.0
+-- Searching for dependencies of sdformat14
+-- Checking for module 'tinyxml2'
+--   Found tinyxml2, version 9.0.0
+-- Looking for gz-math7 -- found version 7.6.0
+-- Searching for dependencies of gz-math7
+-- Looking for gz-utils2 -- found version 2.2.1
+-- Searching for dependencies of gz-utils2
+-- Looking for gz-utils2 -- found version 2.2.1
+-- Searching for dependencies of gz-utils2
+-- Searching for <gz-utils2> component [cli]
+-- Looking for gz-utils2-cli -- found version 2.2.1
+-- Searching for dependencies of gz-utils2-cli
+-- Looking for gz-plugin2 -- found version 2.0.4
+-- Searching for dependencies of gz-plugin2
+-- Looking for gz-utils2 -- found version 2.2.1
+-- Searching for <gz-plugin2> component [loader]
+-- Looking for gz-plugin2-loader -- found version 2.0.4
+-- Searching for dependencies of gz-plugin2-loader
+-- Searching for <gz-plugin2> component [register]
+-- Looking for gz-plugin2-register -- found version 2.0.4
+-- Searching for dependencies of gz-plugin2-register
+-- Looking for gz-transport13 -- found version 13.6.0
+-- Searching for dependencies of gz-transport13
+-- Found Protobuf: /usr/lib/x86_64-linux-gnu/libprotobuf.so (found version "3.12.4") 
+-- Config-file not installed for ZeroMQ -- checking for pkg-config
+-- Checking for module 'libzmq >= 4'
+--   Found libzmq , version 4.3.4
+-- Found ZeroMQ: TRUE (Required is at least version "4") 
+-- Checking for module 'uuid'
+--   Found uuid, version 2.37.2
+-- Found UUID: TRUE  
+-- Looking for gz-utils2 -- found version 2.2.1
+-- Looking for gz-msgs10 -- found version 10.4.0
+-- Searching for dependencies of gz-msgs10
+-- Looking for gz-utils2 -- found version 2.2.1
+-- Looking for gz-math7 -- found version 7.6.0
+-- Searching for <gz-transport13> component [log]
+-- Looking for gz-transport13-log -- found version 13.6.0
+-- Searching for dependencies of gz-transport13-log
+-- Searching for <gz-transport13> component [parameters]
+-- Looking for gz-transport13-parameters -- found version 13.6.0
+-- Searching for dependencies of gz-transport13-parameters
+-- Looking for gz-msgs10 -- found version 10.4.0
+-- Looking for gz-common5 -- found version 5.8.0
+-- Searching for dependencies of gz-common5
+-- Looking for gz-utils2 -- found version 2.2.1
+-- Looking for dlfcn.h - found
+-- Looking for libdl - found
+-- Found DL: TRUE  
+-- Searching for <gz-common5> component [av]
+-- Looking for gz-common5-av -- found version 5.8.0
+-- Searching for dependencies of gz-common5-av
+-- Checking for module 'libswscale'
+--   Found libswscale, version 5.9.100
+-- Found SWSCALE: TRUE  
+-- Checking for module 'libavdevice >= 56.4.100'
+--   Found libavdevice , version 58.13.100
+-- Found AVDEVICE: TRUE (Required is at least version "56.4.100") 
+-- Checking for module 'libavformat'
+--   Found libavformat, version 58.76.100
+-- Found AVFORMAT: TRUE  
+-- Checking for module 'libavcodec'
+--   Found libavcodec, version 58.134.100
+-- Found AVCODEC: TRUE  
+-- Checking for module 'libavutil'
+--   Found libavutil, version 56.70.100
+-- Found AVUTIL: TRUE  
+-- Searching for <gz-common5> component [events]
+-- Looking for gz-common5-events -- found version 5.8.0
+-- Searching for dependencies of gz-common5-events
+-- Looking for gz-math7 -- found version 7.6.0
+-- Searching for <gz-common5> component [graphics]
+-- Looking for gz-common5-graphics -- found version 5.8.0
+-- Searching for dependencies of gz-common5-graphics
+-- Looking for gz-math7 -- found version 7.6.0
+-- Found GzAssimp: TRUE (found version "5.2.0") 
+-- Searching for <gz-common5> component [io]
+-- Looking for gz-common5-io -- found version 5.8.0
+-- Searching for dependencies of gz-common5-io
+-- Searching for <gz-common5> component [profiler]
+-- Looking for gz-common5-profiler -- found version 5.8.0
+-- Searching for dependencies of gz-common5-profiler
+-- Looking for gz-fuel_tools9 -- found version 9.1.1
+-- Searching for dependencies of gz-fuel_tools9
+-- Found CURL: /usr/lib/x86_64-linux-gnu/libcurl.so (found version "7.81.0")  
+-- Checking for module 'jsoncpp'
+--   Found jsoncpp, version 1.9.5
+-- Found JSONCPP: TRUE  
+-- Checking for module 'libzip'
+--   Found libzip, version 1.7.3
+-- Found ZIP: TRUE  
+-- Looking for gz-utils2 -- found version 2.2.1
+-- Looking for gz-common5 -- found version 5.8.0
+-- Searching for dependencies of gz-common5
+-- Looking for gz-utils2 -- found version 2.2.1
+-- Looking for dlfcn.h - found
+-- Looking for libdl - found
+-- Searching for <gz-common5> component [testing]
+-- Looking for gz-common5-testing -- found version 5.8.0
+-- Searching for dependencies of gz-common5-testing
+-- Looking for gz-math7 -- found version 7.6.0
+-- Looking for gz-msgs10 -- found version 10.4.0
+-- Looking for gz-gui8 -- found version 8.4.0
+-- Searching for dependencies of gz-gui8
+-- Looking for gz-utils2 -- found version 2.2.1
+-- Looking for gz-math7 -- found version 7.6.0
+-- Looking for gz-common5 -- found version 5.8.0
+-- Looking for gz-plugin2 -- found version 2.0.4
+-- Looking for gz-transport13 -- found version 13.6.0
+-- Looking for gz-rendering8 -- found version 8.2.3
+-- Searching for dependencies of gz-rendering8
+-- Looking for gz-math7 -- found version 7.6.0
+-- Searching for dependencies of gz-math7
+-- Looking for gz-utils2 -- found version 2.2.1
+-- Searching for <gz-math7> component [eigen3]
+-- Looking for gz-math7-eigen3 -- found version 7.6.0
+-- Searching for dependencies of gz-math7-eigen3
+-- Looking for gz-common5 -- found version 5.8.0
+-- Searching for dependencies of gz-common5
+-- Looking for gz-utils2 -- found version 2.2.1
+-- Looking for dlfcn.h - found
+-- Looking for libdl - found
+-- Searching for <gz-common5> component [graphics]
+-- Searching for <gz-common5> component [events]
+-- Searching for <gz-common5> component [geospatial]
+-- Looking for gz-common5-geospatial -- found version 5.8.0
+-- Searching for dependencies of gz-common5-geospatial
+-- Looking for gz-math7 -- found version 7.6.0
+-- Looking for gz-common5 -- found version 5.8.0
+-- Looking for gz-plugin2 -- found version 2.0.4
+-- Searching for dependencies of gz-plugin2
+-- Looking for gz-utils2 -- found version 2.2.1
+-- Searching for <gz-plugin2> component [all]
+-- Looking for all libraries of gz-plugin2 -- found version 2.0.4
+-- Looking for gz-plugin2 -- found version 2.0.4
+-- Looking for gz-utils2 -- found version 2.2.1
+-- Found OpenGL: /usr/lib/x86_64-linux-gnu/libOpenGL.so  found components: OpenGL 
+-- Looking for gz-msgs10 -- found version 10.4.0
+-- Looking for gz-physics7 -- found version 7.8.0
+-- Searching for dependencies of gz-physics7
+-- Looking for gz-common5 -- found version 5.8.0
+-- Looking for gz-math7 -- found version 7.6.0
+-- Looking for gz-plugin2 -- found version 2.0.4
+-- Looking for gz-utils2 -- found version 2.2.1
+-- Searching for <gz-physics7> component [heightmap]
+-- Looking for gz-physics7-heightmap -- found version 7.8.0
+-- Searching for dependencies of gz-physics7-heightmap
+-- Looking for gz-common5 -- found version 5.8.0
+-- Searching for <gz-physics7> component [mesh]
+-- Looking for gz-physics7-mesh -- found version 7.8.0
+-- Searching for dependencies of gz-physics7-mesh
+-- Looking for gz-common5 -- found version 5.8.0
+-- Searching for <gz-physics7> component [sdf]
+-- Looking for gz-physics7-sdf -- found version 7.8.0
+-- Searching for dependencies of gz-physics7-sdf
+-- Looking for sdformat14 -- found version 14.9.0
+-- Looking for gz-sensors8 -- found version 8.2.2
+-- Searching for dependencies of gz-sensors8
+-- Looking for gz-math7 -- found version 7.6.0
+-- Looking for gz-common5 -- found version 5.8.0
+-- Looking for gz-transport13 -- found version 13.6.0
+-- Looking for gz-rendering8 -- found version 8.2.3
+-- Looking for gz-msgs10 -- found version 10.4.0
+-- Looking for sdformat14 -- found version 14.9.0
+-- Searching for <gz-sensors8> component [air_pressure]
+-- Looking for gz-sensors8-air_pressure -- found version 8.2.2
+-- Searching for dependencies of gz-sensors8-air_pressure
+-- Searching for <gz-sensors8> component [air_speed]
+-- Looking for gz-sensors8-air_speed -- found version 8.2.2
+-- Searching for dependencies of gz-sensors8-air_speed
+-- Searching for <gz-sensors8> component [altimeter]
+-- Looking for gz-sensors8-altimeter -- found version 8.2.2
+-- Searching for dependencies of gz-sensors8-altimeter
+-- Searching for <gz-sensors8> component [imu]
+-- Looking for gz-sensors8-imu -- found version 8.2.2
+-- Searching for dependencies of gz-sensors8-imu
+-- Searching for <gz-sensors8> component [force_torque]
+-- Looking for gz-sensors8-force_torque -- found version 8.2.2
+-- Searching for dependencies of gz-sensors8-force_torque
+-- Searching for <gz-sensors8> component [logical_camera]
+-- Looking for gz-sensors8-logical_camera -- found version 8.2.2
+-- Searching for dependencies of gz-sensors8-logical_camera
+-- Searching for <gz-sensors8> component [magnetometer]
+-- Looking for gz-sensors8-magnetometer -- found version 8.2.2
+-- Searching for dependencies of gz-sensors8-magnetometer
+-- Searching for <gz-sensors8> component [navsat]
+-- Looking for gz-sensors8-navsat -- found version 8.2.2
+-- Searching for dependencies of gz-sensors8-navsat
+-- Searching for <gz-sensors8> component [dvl]
+-- Looking for gz-sensors8-dvl -- found version 8.2.2
+-- Searching for dependencies of gz-sensors8-dvl
+-- Looking for gz-sensors8 -- found version 8.2.2
+-- Searching for dependencies of gz-sensors8
+-- Looking for gz-math7 -- found version 7.6.0
+-- Looking for gz-common5 -- found version 5.8.0
+-- Looking for gz-transport13 -- found version 13.6.0
+-- Looking for gz-rendering8 -- found version 8.2.3
+-- Looking for gz-msgs10 -- found version 10.4.0
+-- Looking for sdformat14 -- found version 14.9.0
+-- Searching for <gz-sensors8> component [rendering]
+-- Looking for gz-sensors8-rendering -- found version 8.2.2
+-- Searching for dependencies of gz-sensors8-rendering
+-- Searching for <gz-sensors8> component [rendering]
+-- Searching for <gz-sensors8> component [lidar]
+-- Looking for gz-sensors8-lidar -- found version 8.2.2
+-- Searching for dependencies of gz-sensors8-lidar
+-- Looking for gz-sensors8 -- found version 8.2.2
+-- Searching for <gz-sensors8> component [gpu_lidar]
+-- Looking for gz-sensors8-gpu_lidar -- found version 8.2.2
+-- Searching for dependencies of gz-sensors8-gpu_lidar
+-- Looking for gz-sensors8 -- found version 8.2.2
+-- Searching for <gz-sensors8> component [camera]
+-- Looking for gz-sensors8-camera -- found version 8.2.2
+-- Searching for dependencies of gz-sensors8-camera
+-- Looking for gz-sensors8 -- found version 8.2.2
+-- Searching for <gz-sensors8> component [boundingbox_camera]
+-- Looking for gz-sensors8-boundingbox_camera -- found version 8.2.2
+-- Searching for dependencies of gz-sensors8-boundingbox_camera
+-- Searching for <gz-sensors8> component [segmentation_camera]
+-- Looking for gz-sensors8-segmentation_camera -- found version 8.2.2
+-- Searching for dependencies of gz-sensors8-segmentation_camera
+-- Searching for <gz-sensors8> component [depth_camera]
+-- Looking for gz-sensors8-depth_camera -- found version 8.2.2
+-- Searching for dependencies of gz-sensors8-depth_camera
+-- Looking for gz-sensors8 -- found version 8.2.2
+-- Searching for <gz-sensors8> component [rgbd_camera]
+-- Looking for gz-sensors8-rgbd_camera -- found version 8.2.2
+-- Searching for dependencies of gz-sensors8-rgbd_camera
+-- Looking for gz-sensors8 -- found version 8.2.2
+-- Searching for <gz-sensors8> component [thermal_camera]
+-- Looking for gz-sensors8-thermal_camera -- found version 8.2.2
+-- Searching for dependencies of gz-sensors8-thermal_camera
+-- Looking for gz-sensors8 -- found version 8.2.2
+-- Searching for <gz-sensors8> component [wide_angle_camera]
+-- Looking for gz-sensors8-wide_angle_camera -- found version 8.2.2
+-- Searching for dependencies of gz-sensors8-wide_angle_camera
+-- Looking for gz-rendering8 -- found version 8.2.3
+-- Looking for gz-math7 -- found version 7.6.0
+-- Looking for gz-utils2 -- found version 2.2.1
+-- Looking for gz-plugin2 -- found version 2.0.4
+-- Looking for gz-transport13 -- found version 13.6.0
+-- Found ament_cmake_pytest: 1.3.14 (/opt/ros/humble/share/ament_cmake_pytest/cmake)
+-- Configuring done
+-- Generating done
+-- Build files have been written to: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/build/robot_description
+[ 50%] [32mBuilding CXX object CMakeFiles/mako-pool-waves.dir/src/PoolWaves.cc.o[0m
+[100%] [32m[1mLinking CXX shared library libmako-pool-waves.so[0m
+[100%] Built target mako-pool-waves
+-- Install configuration: ""
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/lib/libmako-pool-waves.so
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/config
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/config/zed_vo.yaml
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/config/zed2i_bridge.yaml
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/config/joint_names_mako urdf ass.yaml
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/config/ardusub_external_nav.parm
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/config/model_tf.rviz
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/config/pilot_views.rviz
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/launch
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/launch/gazebo.launch.py
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/launch/display.launch.py
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/launch/zed_vo.launch.py
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/launch/view_tf.launch.py
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/meshes
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/meshes/ZED_SOURCE.md
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/meshes/t1_link.STL
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/meshes/bar30_link.STL
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/meshes/zed2i.stl
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/meshes/t2_link.STL
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/meshes/t3_link.STL
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/meshes/t6_link.STL
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/meshes/appearance
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/meshes/appearance/body.stl
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/meshes/appearance/motors.stl
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/meshes/appearance/thruster_housings.stl
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/meshes/appearance/hardware.stl
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/meshes/appearance/dome.stl
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/meshes/appearance/README.md
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/meshes/center_body_link.STL
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/meshes/t4_link.STL
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/meshes/ZED_LICENSE
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/meshes/t5_link.STL
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/urdf
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/urdf/mako urdf ass.csv
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/urdf/ardusub.urdf.xacro.bak
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/urdf/third_person_camera.urdf.xacro
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/urdf/zed_macro.urdf.xacro
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/urdf/robot_description.urdf.bak
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/urdf/robot_description.urdf
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/urdf/zed2i_sim.urdf.xacro
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/urdf/bottom_camera.urdf.xacro
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/urdf/ardusub.urdf.xacro
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/WORLD_SELECTION.md
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/pools.sdf
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/shipwreck
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/shipwreck/course_preview.png
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/shipwreck/model.sdf
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/shipwreck/model.config
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/shipwreck/meshes
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/shipwreck/meshes/ribs.stl
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/shipwreck/meshes/broken_shipwreck.stl
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/shipwreck/meshes/hull.stl
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/shipwreck/meshes/collision
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/shipwreck/meshes/collision/piece_056.stl
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/shipwreck/meshes/collision/piece_001.stl
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/shipwreck/meshes/collision/piece_040.stl
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/shipwreck/meshes/collision/piece_027.stl
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/shipwreck/meshes/collision/piece_066.stl
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/shipwreck/meshes/collision/piece_014.stl
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/shipwreck/meshes/collision/piece_026.stl
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/shipwreck/meshes/collision/piece_073.stl
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/shipwreck/meshes/collision/piece_057.stl
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/shipwreck/meshes/collision/piece_069.stl
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/shipwreck/meshes/collision/piece_103.stl
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/shipwreck/meshes/collision/piece_078.stl
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/shipwreck/meshes/collision/piece_113.stl
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/shipwreck/meshes/collision/piece_065.stl
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/shipwreck/meshes/collision/piece_126.stl
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/shipwreck/meshes/collision/piece_006.stl
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/shipwreck/meshes/collision/piece_096.stl
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/shipwreck/meshes/collision/piece_071.stl
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/shipwreck/meshes/collision/piece_015.stl
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/shipwreck/meshes/collision/piece_070.stl
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/shipwreck/meshes/collision/piece_094.stl
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/shipwreck/meshes/collision/piece_061.stl
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/shipwreck/meshes/collision/piece_062.stl
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/shipwreck/meshes/collision/piece_064.stl
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/shipwreck/meshes/collision/piece_076.stl
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/shipwreck/meshes/collision/piece_108.stl
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/shipwreck/meshes/collision/piece_024.stl
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/shipwreck/meshes/collision/piece_123.stl
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/shipwreck/meshes/collision/piece_095.stl
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/shipwreck/meshes/collision/piece_028.stl
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/shipwreck/meshes/collision/piece_109.stl
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/shipwreck/meshes/collision/piece_068.stl
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/shipwreck/meshes/collision/piece_115.stl
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/shipwreck/meshes/collision/piece_110.stl
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/shipwreck/meshes/collision/piece_038.stl
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/shipwreck/meshes/collision/piece_107.stl
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/shipwreck/meshes/collision/piece_021.stl
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/shipwreck/meshes/collision/piece_039.stl
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/shipwreck/meshes/collision/piece_043.stl
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/shipwreck/meshes/collision/piece_101.stl
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/shipwreck/meshes/collision/piece_041.stl
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/shipwreck/meshes/collision/piece_092.stl
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/shipwreck/meshes/collision/piece_116.stl
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/shipwreck/meshes/collision/piece_005.stl
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/shipwreck/meshes/collision/piece_052.stl
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/shipwreck/meshes/collision/piece_003.stl
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/shipwreck/meshes/collision/piece_084.stl
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/shipwreck/meshes/collision/piece_118.stl
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/shipwreck/meshes/collision/piece_075.stl
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/shipwreck/meshes/collision/piece_017.stl
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/shipwreck/meshes/collision/piece_106.stl
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/shipwreck/meshes/collision/piece_081.stl
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/shipwreck/meshes/collision/piece_016.stl
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/shipwreck/meshes/collision/piece_060.stl
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/shipwreck/meshes/collision/piece_011.stl
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/shipwreck/meshes/collision/piece_074.stl
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/shipwreck/meshes/collision/piece_018.stl
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/shipwreck/meshes/collision/piece_090.stl
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/shipwreck/meshes/collision/piece_124.stl
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/shipwreck/meshes/collision/piece_105.stl
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/shipwreck/meshes/collision/piece_086.stl
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/shipwreck/meshes/collision/piece_104.stl
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/shipwreck/meshes/collision/piece_004.stl
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/shipwreck/meshes/collision/piece_013.stl
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/shipwreck/meshes/collision/piece_049.stl
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/shipwreck/meshes/collision/piece_023.stl
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/shipwreck/meshes/collision/piece_119.stl
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/shipwreck/meshes/collision/piece_117.stl
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/shipwreck/meshes/collision/piece_032.stl
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/shipwreck/meshes/collision/piece_020.stl
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/shipwreck/meshes/collision/piece_048.stl
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/shipwreck/meshes/collision/piece_128.stl
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/shipwreck/meshes/collision/piece_114.stl
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/shipwreck/meshes/collision/piece_055.stl
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/shipwreck/meshes/collision/piece_059.stl
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/shipwreck/meshes/collision/piece_035.stl
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/shipwreck/meshes/collision/piece_120.stl
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/shipwreck/meshes/collision/piece_127.stl
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/shipwreck/meshes/collision/piece_111.stl
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/shipwreck/meshes/collision/piece_098.stl
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/shipwreck/meshes/collision/piece_099.stl
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/shipwreck/meshes/collision/piece_079.stl
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/shipwreck/meshes/collision/piece_022.stl
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/shipwreck/meshes/collision/piece_012.stl
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/shipwreck/meshes/collision/piece_112.stl
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/shipwreck/meshes/collision/piece_085.stl
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/shipwreck/meshes/collision/piece_036.stl
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/shipwreck/meshes/collision/piece_088.stl
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/shipwreck/meshes/collision/piece_100.stl
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/shipwreck/meshes/collision/piece_083.stl
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/shipwreck/meshes/collision/piece_042.stl
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/shipwreck/meshes/collision/piece_025.stl
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/shipwreck/meshes/collision/piece_125.stl
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/shipwreck/meshes/collision/piece_050.stl
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/shipwreck/meshes/collision/piece_053.stl
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/shipwreck/meshes/collision/piece_007.stl
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/shipwreck/meshes/collision/piece_080.stl
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/shipwreck/meshes/collision/piece_029.stl
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/shipwreck/meshes/collision/piece_000.stl
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/shipwreck/meshes/collision/piece_122.stl
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/shipwreck/meshes/collision/piece_033.stl
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/shipwreck/meshes/collision/piece_010.stl
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/shipwreck/meshes/collision/piece_051.stl
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/shipwreck/meshes/collision/piece_046.stl
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/shipwreck/meshes/collision/piece_054.stl
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/shipwreck/meshes/collision/piece_045.stl
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/shipwreck/meshes/collision/piece_091.stl
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/shipwreck/meshes/collision/piece_087.stl
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/shipwreck/meshes/collision/piece_102.stl
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/shipwreck/meshes/collision/piece_008.stl
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/shipwreck/meshes/collision/piece_082.stl
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/shipwreck/meshes/collision/piece_030.stl
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/shipwreck/meshes/collision/piece_019.stl
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/shipwreck/meshes/collision/piece_072.stl
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/shipwreck/meshes/collision/piece_097.stl
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/shipwreck/meshes/collision/piece_009.stl
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/shipwreck/meshes/collision/piece_067.stl
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/shipwreck/meshes/collision/piece_034.stl
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/shipwreck/meshes/collision/piece_089.stl
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/shipwreck/meshes/collision/piece_063.stl
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/shipwreck/meshes/collision/piece_077.stl
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/shipwreck/meshes/collision/piece_037.stl
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/shipwreck/meshes/collision/piece_093.stl
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/shipwreck/meshes/collision/piece_047.stl
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/shipwreck/meshes/collision/piece_002.stl
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/shipwreck/meshes/collision/piece_031.stl
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/shipwreck/meshes/collision/piece_121.stl
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/shipwreck/meshes/collision/piece_058.stl
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/shipwreck/meshes/collision/piece_044.stl
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/shipwreck/meshes/deck.stl
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/shipwreck/README.md
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/reef_rock_arch
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/reef_rock_arch/reef_rock_arch.stl
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/reef_rock_arch/model.sdf
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/reef_rock_arch/model.config
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/reef_rock_arch/meshes
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/reef_rock_arch/meshes/part_004.stl
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/reef_rock_arch/meshes/part_006.stl
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/reef_rock_arch/meshes/part_009.stl
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/reef_rock_arch/meshes/part_002.stl
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/reef_rock_arch/meshes/part_001.stl
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/reef_rock_arch/meshes/part_012.stl
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/reef_rock_arch/meshes/part_000.stl
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/reef_rock_arch/meshes/part_013.stl
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/reef_rock_arch/meshes/part_005.stl
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/reef_rock_arch/meshes/part_003.stl
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/reef_rock_arch/meshes/part_010.stl
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/reef_rock_arch/meshes/part_008.stl
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/reef_rock_arch/meshes/part_007.stl
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/reef_rock_arch/meshes/part_014.stl
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/reef_rock_arch/meshes/part_011.stl
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/reef_rock_arch/README.md
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/pool
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/pool/tile_normal.png
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/pool/north_wall.dae
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/pool/south_wall.dae
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/pool/floor_tiles.png
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/pool/wall_tiles.png
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/pool/east_wall.dae
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/pool/floor.dae
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/pool/README.md
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/pool_world_preview.png
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/UNDERWATER_COURSE.md
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/ocean_reef_boundary
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/ocean_reef_boundary/model.sdf
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/ocean_reef_boundary/model.config
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/ocean_reef_boundary/ocean_reef_boundary.stl
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/ocean_reef_boundary/meshes
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/ocean_reef_boundary/meshes/part_069.stl
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/ocean_reef_boundary/meshes/part_051.stl
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/ocean_reef_boundary/meshes/part_004.stl
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/ocean_reef_boundary/meshes/part_058.stl
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/ocean_reef_boundary/meshes/part_022.stl
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/ocean_reef_boundary/meshes/part_006.stl
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/ocean_reef_boundary/meshes/part_064.stl
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/ocean_reef_boundary/meshes/part_065.stl
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/ocean_reef_boundary/meshes/part_042.stl
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/ocean_reef_boundary/meshes/part_074.stl
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/ocean_reef_boundary/meshes/part_071.stl
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/ocean_reef_boundary/meshes/part_009.stl
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/ocean_reef_boundary/meshes/part_002.stl
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/ocean_reef_boundary/meshes/part_056.stl
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/ocean_reef_boundary/meshes/part_055.stl
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/ocean_reef_boundary/meshes/part_036.stl
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/ocean_reef_boundary/meshes/part_068.stl
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/ocean_reef_boundary/meshes/part_054.stl
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/ocean_reef_boundary/meshes/part_033.stl
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/ocean_reef_boundary/meshes/part_046.stl
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/ocean_reef_boundary/meshes/part_047.stl
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/ocean_reef_boundary/meshes/part_037.stl
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/ocean_reef_boundary/meshes/part_029.stl
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/ocean_reef_boundary/meshes/part_038.stl
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/ocean_reef_boundary/meshes/part_001.stl
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/ocean_reef_boundary/meshes/part_050.stl
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/ocean_reef_boundary/meshes/part_027.stl
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/ocean_reef_boundary/meshes/part_028.stl
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/ocean_reef_boundary/meshes/part_059.stl
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/ocean_reef_boundary/meshes/part_012.stl
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/ocean_reef_boundary/meshes/part_032.stl
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/ocean_reef_boundary/meshes/part_053.stl
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/ocean_reef_boundary/meshes/part_000.stl
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/ocean_reef_boundary/meshes/part_013.stl
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/ocean_reef_boundary/meshes/part_005.stl
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/ocean_reef_boundary/meshes/part_070.stl
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/ocean_reef_boundary/meshes/part_072.stl
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/ocean_reef_boundary/meshes/part_023.stl
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/ocean_reef_boundary/meshes/part_052.stl
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/ocean_reef_boundary/meshes/part_003.stl
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/ocean_reef_boundary/meshes/part_041.stl
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/ocean_reef_boundary/meshes/part_010.stl
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/ocean_reef_boundary/meshes/part_019.stl
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/ocean_reef_boundary/meshes/part_044.stl
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/ocean_reef_boundary/meshes/part_060.stl
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/ocean_reef_boundary/meshes/part_040.stl
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/ocean_reef_boundary/meshes/part_073.stl
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/ocean_reef_boundary/meshes/part_025.stl
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/ocean_reef_boundary/meshes/part_030.stl
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/ocean_reef_boundary/meshes/part_021.stl
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/ocean_reef_boundary/meshes/part_008.stl
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/ocean_reef_boundary/meshes/part_048.stl
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/ocean_reef_boundary/meshes/part_031.stl
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/ocean_reef_boundary/meshes/part_015.stl
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/ocean_reef_boundary/meshes/part_045.stl
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/ocean_reef_boundary/meshes/part_024.stl
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/ocean_reef_boundary/meshes/part_066.stl
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/ocean_reef_boundary/meshes/part_035.stl
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/ocean_reef_boundary/meshes/part_057.stl
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/ocean_reef_boundary/meshes/part_007.stl
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/ocean_reef_boundary/meshes/part_063.stl
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/ocean_reef_boundary/meshes/part_062.stl
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/ocean_reef_boundary/meshes/part_018.stl
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/ocean_reef_boundary/meshes/part_049.stl
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/ocean_reef_boundary/meshes/part_026.stl
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/ocean_reef_boundary/meshes/part_014.stl
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/ocean_reef_boundary/meshes/part_043.stl
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/ocean_reef_boundary/meshes/part_020.stl
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/ocean_reef_boundary/meshes/part_039.stl
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/ocean_reef_boundary/meshes/part_017.stl
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/ocean_reef_boundary/meshes/part_016.stl
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/ocean_reef_boundary/meshes/part_061.stl
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/ocean_reef_boundary/meshes/part_067.stl
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/ocean_reef_boundary/meshes/part_011.stl
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/ocean_reef_boundary/meshes/part_034.stl
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/underwater_course_preview.png
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/ocean_world_preview.png
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/team_logo
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/team_logo/team_logo.png
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/team_logo/floor_logo.dae
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/team_logo/README.md
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/broken_seabed_pipe
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/broken_seabed_pipe/broken_seabed_pipe.stl
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/broken_seabed_pipe/model.sdf
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/broken_seabed_pipe/model.config
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/broken_seabed_pipe/meshes
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/broken_seabed_pipe/meshes/part_051.stl
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/broken_seabed_pipe/meshes/part_004.stl
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/broken_seabed_pipe/meshes/part_058.stl
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/broken_seabed_pipe/meshes/part_022.stl
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/broken_seabed_pipe/meshes/part_006.stl
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/broken_seabed_pipe/meshes/part_042.stl
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/broken_seabed_pipe/meshes/part_009.stl
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/broken_seabed_pipe/meshes/part_002.stl
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/broken_seabed_pipe/meshes/part_056.stl
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/broken_seabed_pipe/meshes/part_055.stl
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/broken_seabed_pipe/meshes/part_036.stl
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/broken_seabed_pipe/meshes/part_054.stl
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/broken_seabed_pipe/meshes/part_033.stl
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/broken_seabed_pipe/meshes/part_046.stl
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/broken_seabed_pipe/meshes/part_047.stl
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/broken_seabed_pipe/meshes/part_037.stl
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/broken_seabed_pipe/meshes/part_029.stl
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/broken_seabed_pipe/meshes/part_038.stl
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/broken_seabed_pipe/meshes/part_001.stl
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/broken_seabed_pipe/meshes/part_050.stl
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/broken_seabed_pipe/meshes/part_027.stl
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/broken_seabed_pipe/meshes/part_028.stl
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/broken_seabed_pipe/meshes/part_012.stl
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/broken_seabed_pipe/meshes/part_032.stl
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/broken_seabed_pipe/meshes/part_053.stl
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/broken_seabed_pipe/meshes/part_000.stl
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/broken_seabed_pipe/meshes/part_013.stl
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/broken_seabed_pipe/meshes/part_005.stl
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/broken_seabed_pipe/meshes/part_023.stl
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/broken_seabed_pipe/meshes/part_052.stl
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/broken_seabed_pipe/meshes/part_003.stl
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/broken_seabed_pipe/meshes/part_041.stl
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/broken_seabed_pipe/meshes/part_010.stl
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/broken_seabed_pipe/meshes/part_019.stl
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/broken_seabed_pipe/meshes/part_044.stl
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/broken_seabed_pipe/meshes/part_040.stl
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/broken_seabed_pipe/meshes/part_025.stl
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/broken_seabed_pipe/meshes/part_030.stl
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/broken_seabed_pipe/meshes/part_021.stl
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/broken_seabed_pipe/meshes/part_008.stl
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/broken_seabed_pipe/meshes/part_048.stl
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/broken_seabed_pipe/meshes/part_031.stl
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/broken_seabed_pipe/meshes/part_015.stl
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/broken_seabed_pipe/meshes/part_045.stl
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/broken_seabed_pipe/meshes/part_024.stl
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/broken_seabed_pipe/meshes/part_035.stl
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/broken_seabed_pipe/meshes/part_057.stl
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/broken_seabed_pipe/meshes/part_007.stl
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/broken_seabed_pipe/meshes/part_018.stl
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/broken_seabed_pipe/meshes/part_049.stl
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/broken_seabed_pipe/meshes/part_026.stl
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/broken_seabed_pipe/meshes/part_014.stl
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/broken_seabed_pipe/meshes/part_043.stl
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/broken_seabed_pipe/meshes/part_020.stl
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/broken_seabed_pipe/meshes/part_039.stl
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/broken_seabed_pipe/meshes/part_017.stl
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/broken_seabed_pipe/meshes/part_016.stl
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/broken_seabed_pipe/meshes/part_011.stl
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/broken_seabed_pipe/meshes/part_034.stl
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/broken_seabed_pipe/README.md
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/sunken_freighter_boundary
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/sunken_freighter_boundary/sunken_freighter_boundary.stl
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/sunken_freighter_boundary/model.sdf
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/sunken_freighter_boundary/model.config
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/sunken_freighter_boundary/meshes
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/sunken_freighter_boundary/meshes/part_004.stl
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/sunken_freighter_boundary/meshes/part_022.stl
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/sunken_freighter_boundary/meshes/part_006.stl
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/sunken_freighter_boundary/meshes/part_009.stl
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/sunken_freighter_boundary/meshes/part_002.stl
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/sunken_freighter_boundary/meshes/part_033.stl
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/sunken_freighter_boundary/meshes/part_029.stl
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/sunken_freighter_boundary/meshes/part_001.stl
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/sunken_freighter_boundary/meshes/part_027.stl
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/sunken_freighter_boundary/meshes/part_028.stl
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/sunken_freighter_boundary/meshes/part_012.stl
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/sunken_freighter_boundary/meshes/part_032.stl
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/sunken_freighter_boundary/meshes/part_000.stl
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/sunken_freighter_boundary/meshes/part_013.stl
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/sunken_freighter_boundary/meshes/part_005.stl
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/sunken_freighter_boundary/meshes/part_023.stl
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/sunken_freighter_boundary/meshes/part_003.stl
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/sunken_freighter_boundary/meshes/part_010.stl
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/sunken_freighter_boundary/meshes/part_019.stl
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/sunken_freighter_boundary/meshes/part_025.stl
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/sunken_freighter_boundary/meshes/part_030.stl
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/sunken_freighter_boundary/meshes/part_021.stl
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/sunken_freighter_boundary/meshes/part_008.stl
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/sunken_freighter_boundary/meshes/part_031.stl
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/sunken_freighter_boundary/meshes/part_015.stl
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/sunken_freighter_boundary/meshes/part_024.stl
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/sunken_freighter_boundary/meshes/part_007.stl
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/sunken_freighter_boundary/meshes/part_018.stl
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/sunken_freighter_boundary/meshes/part_026.stl
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/sunken_freighter_boundary/meshes/part_014.stl
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/sunken_freighter_boundary/meshes/part_020.stl
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/sunken_freighter_boundary/meshes/part_017.stl
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/sunken_freighter_boundary/meshes/part_016.stl
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/sunken_freighter_boundary/meshes/part_011.stl
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/coral_garden
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/coral_garden/model.sdf
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/coral_garden/model.config
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/coral_garden/meshes
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/coral_garden/meshes/pvc_frame.stl
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/coral_garden/meshes/left_red.stl
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/coral_garden/meshes/right_red.stl
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/coral_garden/meshes/right_red_mirrored.stl
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/coral_garden/meshes/bottom_red.stl
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/coral_garden/meshes/upper_red_mirrored.stl
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/coral_garden/meshes/left_red_mirrored.stl
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/coral_garden/meshes/bottom_red_mirrored.stl
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/coral_garden/meshes/upper_red.stl
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/coral_garden/meshes/coral_garden.stl
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/coral_garden/README.md
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/crabs
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/crabs/model.sdf
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/crabs/model.config
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/crabs/materials
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/crabs/materials/scripts
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/crabs/materials/scripts/crab_top.material
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/crabs/materials/scripts/crabs.png
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/crabs/materials/textures
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/crabs/materials/textures/crabs_square.png
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/crabs/materials/textures/crabs.png
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/crabs/meshes
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/crabs/meshes/structure.stl
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/crabs/meshes/top_plate_uv.dae
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/crabs/meshes/top_plate.dae
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/crabs/meshes/top_plate.stl
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/crabs/meshes/crab_texture.dae
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/crabs/README.md
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/fly_transect
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/fly_transect/model.sdf
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/fly_transect/model.config
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/fly_transect/meshes
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/fly_transect/meshes/black_pipes.stl
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/fly_transect/meshes/yellow_pipes.stl
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/fly_transect/meshes/fly_transect.stl
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/fly_transect/meshes/red_pipes.stl
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/fly_transect/meshes/blue_pipes.stl
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/fly_transect/README.md
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/ocean
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/ocean/terrain_collision
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/ocean/terrain_collision/patch_110.stl
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/ocean/terrain_collision/patch_131.stl
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/ocean/terrain_collision/patch_129.stl
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/ocean/terrain_collision/patch_018.stl
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/ocean/terrain_collision/patch_184.stl
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/ocean/terrain_collision/patch_267.stl
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/ocean/terrain_collision/patch_154.stl
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/ocean/terrain_collision/patch_125.stl
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/ocean/terrain_collision/patch_193.stl
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/ocean/terrain_collision/patch_005.stl
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/ocean/terrain_collision/patch_084.stl
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/ocean/terrain_collision/patch_249.stl
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/ocean/terrain_collision/patch_113.stl
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/ocean/terrain_collision/patch_017.stl
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/ocean/terrain_collision/patch_243.stl
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/ocean/terrain_collision/patch_007.stl
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/ocean/terrain_collision/patch_002.stl
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/ocean/terrain_collision/patch_015.stl
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/ocean/terrain_collision/patch_235.stl
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/ocean/terrain_collision/patch_124.stl
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/ocean/terrain_collision/patch_253.stl
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/ocean/terrain_collision/patch_105.stl
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/ocean/terrain_collision/patch_073.stl
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/ocean/terrain_collision/patch_198.stl
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/ocean/terrain_collision/patch_030.stl
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/ocean/terrain_collision/patch_285.stl
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/ocean/terrain_collision/patch_199.stl
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/ocean/terrain_collision/patch_091.stl
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/ocean/terrain_collision/patch_028.stl
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/ocean/terrain_collision/patch_128.stl
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/ocean/terrain_collision/patch_083.stl
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/ocean/terrain_collision/patch_157.stl
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/ocean/terrain_collision/patch_052.stl
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/ocean/terrain_collision/patch_068.stl
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/ocean/terrain_collision/patch_063.stl
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/ocean/terrain_collision/patch_085.stl
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/ocean/terrain_collision/patch_031.stl
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/ocean/terrain_collision/patch_103.stl
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/ocean/terrain_collision/patch_196.stl
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/ocean/terrain_collision/patch_141.stl
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/ocean/terrain_collision/patch_087.stl
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/ocean/terrain_collision/patch_044.stl
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/ocean/terrain_collision/patch_238.stl
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/ocean/terrain_collision/patch_057.stl
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/ocean/terrain_collision/patch_014.stl
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/ocean/terrain_collision/patch_208.stl
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/ocean/terrain_collision/patch_056.stl
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/ocean/terrain_collision/patch_166.stl
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/ocean/terrain_collision/patch_221.stl
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/ocean/terrain_collision/patch_145.stl
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/ocean/terrain_collision/patch_209.stl
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/ocean/terrain_collision/patch_183.stl
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/ocean/terrain_collision/patch_150.stl
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/ocean/terrain_collision/patch_027.stl
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/ocean/terrain_collision/patch_142.stl
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/ocean/terrain_collision/patch_227.stl
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/ocean/terrain_collision/patch_038.stl
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/ocean/terrain_collision/patch_163.stl
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/ocean/terrain_collision/patch_242.stl
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/ocean/terrain_collision/patch_077.stl
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/ocean/terrain_collision/patch_153.stl
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/ocean/terrain_collision/patch_192.stl
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/ocean/terrain_collision/patch_200.stl
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/ocean/terrain_collision/patch_182.stl
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/ocean/terrain_collision/patch_226.stl
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/ocean/terrain_collision/patch_260.stl
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/ocean/terrain_collision/patch_261.stl
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/ocean/terrain_collision/patch_217.stl
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/ocean/terrain_collision/patch_109.stl
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/ocean/terrain_collision/patch_134.stl
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/ocean/terrain_collision/patch_148.stl
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/ocean/terrain_collision/patch_277.stl
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/ocean/terrain_collision/patch_257.stl
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/ocean/terrain_collision/patch_203.stl
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/ocean/terrain_collision/patch_168.stl
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/ocean/terrain_collision/patch_248.stl
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/ocean/terrain_collision/patch_026.stl
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/ocean/terrain_collision/patch_086.stl
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/ocean/terrain_collision/patch_213.stl
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/ocean/terrain_collision/patch_264.stl
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/ocean/terrain_collision/patch_146.stl
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/ocean/terrain_collision/patch_092.stl
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/ocean/terrain_collision/patch_122.stl
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/ocean/terrain_collision/patch_118.stl
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/ocean/terrain_collision/patch_106.stl
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/ocean/terrain_collision/patch_273.stl
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/ocean/terrain_collision/patch_117.stl
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/ocean/terrain_collision/patch_206.stl
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/ocean/terrain_collision/patch_189.stl
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/ocean/terrain_collision/patch_230.stl
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/ocean/terrain_collision/patch_245.stl
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/ocean/terrain_collision/patch_019.stl
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/ocean/terrain_collision/patch_140.stl
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/ocean/terrain_collision/patch_284.stl
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/ocean/terrain_collision/patch_258.stl
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/ocean/terrain_collision/patch_059.stl
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/ocean/terrain_collision/patch_215.stl
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/ocean/terrain_collision/patch_186.stl
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/ocean/terrain_collision/patch_139.stl
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/ocean/terrain_collision/patch_237.stl
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/ocean/terrain_collision/patch_219.stl
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/ocean/terrain_collision/patch_050.stl
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/ocean/terrain_collision/patch_133.stl
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/ocean/terrain_collision/patch_280.stl
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/ocean/terrain_collision/patch_009.stl
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/ocean/terrain_collision/patch_079.stl
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/ocean/terrain_collision/patch_097.stl
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/ocean/terrain_collision/patch_111.stl
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/ocean/terrain_collision/patch_008.stl
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/ocean/terrain_collision/patch_047.stl
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/ocean/terrain_collision/patch_246.stl
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/ocean/terrain_collision/patch_069.stl
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/ocean/terrain_collision/patch_229.stl
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/ocean/terrain_collision/patch_075.stl
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/ocean/terrain_collision/patch_071.stl
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/ocean/terrain_collision/patch_074.stl
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/ocean/terrain_collision/patch_076.stl
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/ocean/terrain_collision/patch_065.stl
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/ocean/terrain_collision/patch_212.stl
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/ocean/terrain_collision/patch_231.stl
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/ocean/terrain_collision/patch_256.stl
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/ocean/terrain_collision/patch_164.stl
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/ocean/terrain_collision/patch_223.stl
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/ocean/terrain_collision/patch_013.stl
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/ocean/terrain_collision/patch_158.stl
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/ocean/terrain_collision/patch_170.stl
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/ocean/terrain_collision/patch_167.stl
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/ocean/terrain_collision/patch_096.stl
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/ocean/terrain_collision/patch_016.stl
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/ocean/terrain_collision/patch_187.stl
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/ocean/terrain_collision/patch_123.stl
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/ocean/terrain_collision/patch_218.stl
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/ocean/terrain_collision/patch_204.stl
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/ocean/terrain_collision/patch_239.stl
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/ocean/terrain_collision/patch_197.stl
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/ocean/terrain_collision/patch_119.stl
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/ocean/terrain_collision/patch_202.stl
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/ocean/terrain_collision/patch_281.stl
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/ocean/terrain_collision/patch_094.stl
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/ocean/terrain_collision/patch_010.stl
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/ocean/terrain_collision/patch_054.stl
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/ocean/terrain_collision/patch_211.stl
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/ocean/terrain_collision/patch_172.stl
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/ocean/terrain_collision/patch_224.stl
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/ocean/terrain_collision/patch_174.stl
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/ocean/terrain_collision/patch_108.stl
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/ocean/terrain_collision/patch_232.stl
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/ocean/terrain_collision/patch_191.stl
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/ocean/terrain_collision/patch_078.stl
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/ocean/terrain_collision/patch_176.stl
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/ocean/terrain_collision/patch_039.stl
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/ocean/terrain_collision/patch_228.stl
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/ocean/terrain_collision/patch_287.stl
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/ocean/terrain_collision/patch_095.stl
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/ocean/terrain_collision/patch_178.stl
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/ocean/terrain_collision/patch_082.stl
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/ocean/terrain_collision/patch_175.stl
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/ocean/terrain_collision/patch_046.stl
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/ocean/terrain_collision/patch_283.stl
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/ocean/terrain_collision/patch_070.stl
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/ocean/terrain_collision/patch_252.stl
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/ocean/terrain_collision/patch_135.stl
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/ocean/terrain_collision/patch_000.stl
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/ocean/terrain_collision/patch_132.stl
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/ocean/terrain_collision/patch_151.stl
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/ocean/terrain_collision/patch_003.stl
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/ocean/terrain_collision/patch_274.stl
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/ocean/terrain_collision/patch_181.stl
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/ocean/terrain_collision/patch_032.stl
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/ocean/terrain_collision/patch_080.stl
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/ocean/terrain_collision/patch_114.stl
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/ocean/terrain_collision/patch_179.stl
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/ocean/terrain_collision/patch_093.stl
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/ocean/terrain_collision/patch_262.stl
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/ocean/terrain_collision/patch_276.stl
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/ocean/terrain_collision/patch_220.stl
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/ocean/terrain_collision/patch_177.stl
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/ocean/terrain_collision/patch_040.stl
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/ocean/terrain_collision/patch_162.stl
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/ocean/terrain_collision/patch_190.stl
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/ocean/terrain_collision/patch_259.stl
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/ocean/terrain_collision/patch_033.stl
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/ocean/terrain_collision/patch_116.stl
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/ocean/terrain_collision/patch_159.stl
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/ocean/terrain_collision/patch_102.stl
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/ocean/terrain_collision/patch_160.stl
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/ocean/terrain_collision/patch_100.stl
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/ocean/terrain_collision/patch_251.stl
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/ocean/terrain_collision/patch_216.stl
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/ocean/terrain_collision/patch_201.stl
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/ocean/terrain_collision/patch_268.stl
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/ocean/terrain_collision/patch_205.stl
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/ocean/terrain_collision/patch_042.stl
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/ocean/terrain_collision/patch_006.stl
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/ocean/terrain_collision/patch_278.stl
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/ocean/terrain_collision/patch_236.stl
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/ocean/terrain_collision/patch_051.stl
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/ocean/terrain_collision/patch_152.stl
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/ocean/terrain_collision/patch_279.stl
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/ocean/terrain_collision/patch_053.stl
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/ocean/terrain_collision/patch_254.stl
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/ocean/terrain_collision/patch_055.stl
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/ocean/terrain_collision/patch_269.stl
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/ocean/terrain_collision/patch_064.stl
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/ocean/terrain_collision/patch_062.stl
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/ocean/terrain_collision/patch_147.stl
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/ocean/terrain_collision/patch_263.stl
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/ocean/terrain_collision/patch_101.stl
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/ocean/terrain_collision/patch_121.stl
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/ocean/terrain_collision/patch_025.stl
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/ocean/terrain_collision/patch_271.stl
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/ocean/terrain_collision/patch_266.stl
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/ocean/terrain_collision/patch_265.stl
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/ocean/terrain_collision/patch_126.stl
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/ocean/terrain_collision/patch_058.stl
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/ocean/terrain_collision/patch_011.stl
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/ocean/terrain_collision/patch_194.stl
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/ocean/terrain_collision/patch_066.stl
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/ocean/terrain_collision/patch_115.stl
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/ocean/terrain_collision/patch_156.stl
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/ocean/terrain_collision/patch_180.stl
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/ocean/terrain_collision/patch_088.stl
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/ocean/terrain_collision/patch_214.stl
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/ocean/terrain_collision/patch_107.stl
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/ocean/terrain_collision/patch_036.stl
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/ocean/terrain_collision/patch_241.stl
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/ocean/terrain_collision/patch_089.stl
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/ocean/terrain_collision/patch_225.stl
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/ocean/terrain_collision/patch_144.stl
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/ocean/terrain_collision/patch_247.stl
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/ocean/terrain_collision/patch_169.stl
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/ocean/terrain_collision/patch_034.stl
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/ocean/terrain_collision/patch_155.stl
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/ocean/terrain_collision/patch_048.stl
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/ocean/terrain_collision/patch_037.stl
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/ocean/terrain_collision/patch_104.stl
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/ocean/terrain_collision/patch_173.stl
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/ocean/terrain_collision/patch_286.stl
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/ocean/terrain_collision/patch_188.stl
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/ocean/terrain_collision/patch_185.stl
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/ocean/terrain_collision/patch_270.stl
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/ocean/terrain_collision/patch_012.stl
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/ocean/terrain_collision/patch_067.stl
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/ocean/terrain_collision/patch_250.stl
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/ocean/terrain_collision/patch_081.stl
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/ocean/terrain_collision/patch_024.stl
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/ocean/terrain_collision/patch_195.stl
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/ocean/terrain_collision/patch_161.stl
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/ocean/terrain_collision/patch_233.stl
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/ocean/terrain_collision/patch_272.stl
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/ocean/terrain_collision/patch_136.stl
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/ocean/terrain_collision/patch_120.stl
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/ocean/terrain_collision/patch_165.stl
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/ocean/terrain_collision/patch_001.stl
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/ocean/terrain_collision/patch_130.stl
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/ocean/terrain_collision/patch_138.stl
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/ocean/terrain_collision/patch_240.stl
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/ocean/terrain_collision/patch_112.stl
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/ocean/terrain_collision/patch_210.stl
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/ocean/terrain_collision/patch_061.stl
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/ocean/terrain_collision/patch_255.stl
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/ocean/terrain_collision/patch_143.stl
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/ocean/terrain_collision/patch_043.stl
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/ocean/terrain_collision/patch_020.stl
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/ocean/terrain_collision/patch_099.stl
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/ocean/terrain_collision/patch_127.stl
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/ocean/terrain_collision/patch_060.stl
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/ocean/terrain_collision/patch_049.stl
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/ocean/terrain_collision/patch_171.stl
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/ocean/terrain_collision/patch_137.stl
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/ocean/terrain_collision/patch_035.stl
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/ocean/terrain_collision/patch_022.stl
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/ocean/terrain_collision/patch_275.stl
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/ocean/terrain_collision/patch_072.stl
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/ocean/terrain_collision/patch_090.stl
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/ocean/terrain_collision/patch_004.stl
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/ocean/terrain_collision/patch_234.stl
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/ocean/terrain_collision/patch_023.stl
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/ocean/terrain_collision/patch_149.stl
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/ocean/terrain_collision/patch_029.stl
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/ocean/terrain_collision/patch_244.stl
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/ocean/terrain_collision/patch_041.stl
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/ocean/terrain_collision/patch_222.stl
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/ocean/terrain_collision/patch_282.stl
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/ocean/terrain_collision/patch_098.stl
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/ocean/terrain_collision/patch_021.stl
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/ocean/terrain_collision/patch_045.stl
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/ocean/terrain_collision/patch_207.stl
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/ocean/seabed.dae
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/ocean/seabed_surface.stl
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/ocean/terrain.npz
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/ocean/sand.png
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/assets/ocean/README.md
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/pool.sdf
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/pool.world
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/worlds/ocean.world
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/package.xml
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/TF2_MODEL.md
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/ZED2I_SIM.md
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/ZED_VO.md
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/lib/robot_description/cloud_frame_relay.py
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/lib/robot_description/check_sim_tf.py
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/lib/robot_description/gz_odom_to_mavros.py
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/lib/robot_description/fix_ardusub_params.py
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/lib/robot_description/local_waypoint_mission.py
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/ament_index/resource_index/package_run_dependencies/robot_description
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/ament_index/resource_index/parent_prefix_path/robot_description
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/environment/ament_prefix_path.sh
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/environment/ament_prefix_path.dsv
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/environment/path.sh
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/environment/path.dsv
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/local_setup.bash
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/local_setup.sh
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/local_setup.zsh
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/local_setup.dsv
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/package.dsv
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/ament_index/resource_index/packages/robot_description
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/cmake/robot_descriptionConfig.cmake
+-- Installing: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/cmake/robot_descriptionConfig-version.cmake
+-- Up-to-date: /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_description/share/robot_description/package.xml

@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro">
+
+  <!-- ================= ARDUPILOT SITL PLUGIN ================= -->
+  <gazebo>
+    <plugin filename="libArduPilotPlugin.so" name="gz::sim::v8::systems::ArduPilotPlugin">
+      <fdm_addr>127.0.0.1</fdm_addr>
+      <fdm_port_in>9002</fdm_port_in>
+      <fdm_port_out>9003</fdm_port_out>
+      
+      <modelXYZToAirplaneXForwardZDown>0 0 0 3.141593 0 0</modelXYZToAirplaneXForwardZDown>
+      <gazeboXYZToNED>0 0 0 3.141593 0 -1.570796</gazeboXYZToNED>
+      
+      <imuName>imu_sensor</imuName>
+      <connectionTimeoutMaxCount>5</connectionTimeoutMaxCount>
+
+      <!-- ArduSub Motor 1 (Front Right) -> Routes to your t2_joint -->
+      <control channel="0">
+        <type>COMMAND</type>
+        <jointName>t2_joint</jointName>
+        <offset>-0.5</offset>
+        <multiplier>25.0</multiplier>
+        <servo_min>1240</servo_min>
+        <servo_max>1760</servo_max>
+        <cmd_topic>/model/robot_description/joint/t2_joint/cmd_thrust</cmd_topic>
+      </control>
+
+      <!-- ArduSub Motor 2 (Front Left) -> Routes to your t1_joint -->
+      <control channel="1">
+        <type>COMMAND</type>
+        <jointName>t1_joint</jointName>
+        <offset>-0.5</offset>
+        <multiplier>25.0</multiplier>
+        <servo_min>1240</servo_min>
+        <servo_max>1760</servo_max>
+        <cmd_topic>/model/robot_description/joint/t1_joint/cmd_thrust</cmd_topic>
+      </control>
+
+      <!-- ArduSub Motor 3 (Back Right) -> Routes to your t4_joint -->
+      <control channel="2">
+        <type>COMMAND</type>
+        <jointName>t4_joint</jointName>
+        <offset>-0.5</offset>
+        <multiplier>25.0</multiplier>
+        <servo_min>1240</servo_min>
+        <servo_max>1760</servo_max>
+        <cmd_topic>/model/robot_description/joint/t4_joint/cmd_thrust</cmd_topic>
+      </control>
+
+      <!-- ArduSub Motor 4 (Back Left) -> Routes to your t3_joint -->
+      <control channel="3">
+        <type>COMMAND</type>
+        <jointName>t3_joint</jointName>
+        <offset>-0.5</offset>
+        <multiplier>25.0</multiplier>
+        <servo_min>1240</servo_min>
+        <servo_max>1760</servo_max>
+        <cmd_topic>/model/robot_description/joint/t3_joint/cmd_thrust</cmd_topic>
+      </control>
+
+      <!-- ArduSub Motor 5 (Up Right) -> Routes to your t6_joint -->
+      <control channel="4">
+        <type>COMMAND</type>
+        <jointName>t6_joint</jointName>
+        <offset>-0.5</offset>
+        <multiplier>25.0</multiplier>
+        <servo_min>1240</servo_min>
+        <servo_max>1760</servo_max>
+        <cmd_topic>/model/robot_description/joint/t6_joint/cmd_thrust</cmd_topic>
+      </control>
+
+      <!-- ArduSub Motor 6 (Up Left) -> Routes to your t5_joint -->
+      <control channel="5">
+        <type>COMMAND</type>
+        <jointName>t5_joint</jointName>
+        <offset>-0.5</offset>
+        <multiplier>25.0</multiplier>
+        <servo_min>1240</servo_min>
+        <servo_max>1760</servo_max>
+        <cmd_topic>/model/robot_description/joint/t5_joint/cmd_thrust</cmd_topic>
+      </control>
+    </plugin>
+  </gazebo>
+
+</robot>

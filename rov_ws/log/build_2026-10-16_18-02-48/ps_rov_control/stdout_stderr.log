@@ -1,0 +1,9 @@
+[35m[1mConsolidate compiler generated dependencies of target game_controller[0m
+[ 50%] [32mBuilding CXX object CMakeFiles/game_controller.dir/src/game_controller.cpp.o[0m
+[01m[K/home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/src/ps_rov_control/src/game_controller.cpp:[m[K In member function ‘[01m[Kvoid ROVControllerNode::publish_control()[m[K’:
+[01m[K/home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/src/ps_rov_control/src/game_controller.cpp:94:13:[m[K [01;31m[Kerror: [m[K‘[01m[Kstruct mavros_msgs::msg::ManualControl_<std::allocator<void> >[m[K’ has no member named ‘[01m[Kenabled_mask[m[K’
+   94 |         msg.[01;31m[Kenabled_mask[m[K = 0x3F;
+      |             [01;31m[K^~~~~~~~~~~~[m[K
+gmake[2]: *** [CMakeFiles/game_controller.dir/build.make:76: CMakeFiles/game_controller.dir/src/game_controller.cpp.o] Error 1
+gmake[1]: *** [CMakeFiles/Makefile2:137: CMakeFiles/game_controller.dir/all] Error 2
+gmake: *** [Makefile:146: all] Error 2

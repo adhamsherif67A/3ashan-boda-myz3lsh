@@ -1,0 +1,6 @@
+source install/setup.bash
+ros2 launch robot_description gazebo.launch.py
+
+
+cd ~/ardupilot/ArduSub
+sim_vehicle.py -v ArduSub -f JSON:vectored --console

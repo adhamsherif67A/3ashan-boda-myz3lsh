@@ -1,0 +1,24 @@
+[0.450s] Invoking command in '/home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/src/ps_rov_control': PYTHONPATH=/home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/build/ps_rov_control/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/ps_rov_control/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py egg_info --egg-base ../../build/ps_rov_control build --build-base /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/build/ps_rov_control/build install --record /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/build/ps_rov_control/install.log --install-scripts $base/lib/ps_rov_control --single-version-externally-managed install_data
+[0.526s] /home/ibrahim/.local/lib/python3.10/site-packages/setuptools/_distutils/dist.py:318: UserWarning: Unknown distribution option: 'tests_require'
+[0.526s]   warnings.warn(msg)
+[0.566s] running egg_info
+[0.573s] writing ../../build/ps_rov_control/ps_rov_control.egg-info/PKG-INFO
+[0.573s] writing dependency_links to ../../build/ps_rov_control/ps_rov_control.egg-info/dependency_links.txt
+[0.573s] writing entry points to ../../build/ps_rov_control/ps_rov_control.egg-info/entry_points.txt
+[0.573s] writing requirements to ../../build/ps_rov_control/ps_rov_control.egg-info/requires.txt
+[0.573s] writing top-level names to ../../build/ps_rov_control/ps_rov_control.egg-info/top_level.txt
+[0.587s] reading manifest file '../../build/ps_rov_control/ps_rov_control.egg-info/SOURCES.txt'
+[0.588s] writing manifest file '../../build/ps_rov_control/ps_rov_control.egg-info/SOURCES.txt'
+[0.588s] running build
+[0.589s] running build_py
+[0.589s] running install
+[0.591s] running install_lib
+[0.598s] running install_data
+[0.598s] copying launch/rov_simulation.launch.py -> /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/ps_rov_control/share/ps_rov_control/launch
+[0.599s] running install_egg_info
+[0.606s] removing '/home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/ps_rov_control/lib/python3.10/site-packages/ps_rov_control-0.0.0-py3.10.egg-info' (and everything under it)
+[0.606s] Copying ../../build/ps_rov_control/ps_rov_control.egg-info to /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/ps_rov_control/lib/python3.10/site-packages/ps_rov_control-0.0.0-py3.10.egg-info
+[0.607s] running install_scripts
+[0.621s] Installing rov_controller script to /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/ps_rov_control/lib/ps_rov_control
+[0.621s] writing list of installed files to '/home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/build/ps_rov_control/install.log'
+[0.633s] Invoked command in '/home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/src/ps_rov_control' returned '0': PYTHONPATH=/home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/build/ps_rov_control/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/ps_rov_control/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py egg_info --egg-base ../../build/ps_rov_control build --build-base /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/build/ps_rov_control/build install --record /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/build/ps_rov_control/install.log --install-scripts $base/lib/ps_rov_control --single-version-externally-managed install_data

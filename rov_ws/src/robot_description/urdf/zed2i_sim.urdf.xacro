@@ -1,0 +1,47 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro">
+  <xacro:arg name="camera_width" default="1280" />
+  <xacro:arg name="camera_height" default="720" />
+  <xacro:arg name="camera_fps" default="15" />
+  <xacro:arg name="pilot_fps" default="30" />
+  <xacro:include filename="zed_macro.urdf.xacro" />
+  <xacro:macro name="zed2i_eye_sensor" params="eye">
+    <!-- Gazebo cloud XYZ uses X forward, Y left, Z up. Its sensor
+         frame must be the camera body frame. Images/CameraInfo separately
+         use optical_frame_id (X right, Y down, Z forward). -->
+    <gazebo reference="zed2i_${eye}_camera_frame">
+      <!-- Dedicated RGB stream avoids generating depth/clouds at pilot rate. -->
+      <sensor name="zed2i_${eye}_pilot" type="camera">
+        <always_on>true</always_on>
+        <update_rate>$(arg pilot_fps)</update_rate>
+        <topic>/zed2i/sim/pilot/${eye}/image</topic>
+        <gz_frame_id>zed2i_${eye}_camera_frame_optical</gz_frame_id>
+        <camera>
+          <horizontal_fov>1.919862177</horizontal_fov>
+          <image><width>$(arg camera_width)</width><height>$(arg camera_height)</height><format>R8G8B8</format></image>
+          <clip><near>0.2</near><far>15.0</far></clip>
+          <optical_frame_id>zed2i_${eye}_camera_frame_optical</optical_frame_id>
+          <camera_info_topic>/zed2i/sim/pilot/${eye}/camera_info</camera_info_topic>
+        </camera>
+      </sensor>
+      <sensor name="zed2i_${eye}_rgbd" type="rgbd_camera">
+        <always_on>true</always_on>
+        <update_rate>$(arg camera_fps)</update_rate>
+        <topic>/zed2i/sim/${eye}</topic>
+        <gz_frame_id>zed2i_${eye}_camera_frame</gz_frame_id>
+        <camera>
+          <horizontal_fov>1.919862177</horizontal_fov>
+          <image><width>$(arg camera_width)</width><height>$(arg camera_height)</height><format>R8G8B8</format></image>
+          <clip><near>0.2</near><far>15.0</far></clip>
+          <depth_camera><clip><near>0.2</near><far>15.0</far></clip></depth_camera>
+          <optical_frame_id>zed2i_${eye}_camera_frame_optical</optical_frame_id>
+        </camera>
+      </sensor>
+    </gazebo>
+  </xacro:macro>
+  <xacro:macro name="zed2i_sim" params="">
+    <xacro:zed_camera name="zed2i" model="zed2i"><origin xyz="0 0 0" rpy="0 0 0" /></xacro:zed_camera>
+    <xacro:zed2i_eye_sensor eye="left" />
+    <xacro:zed2i_eye_sensor eye="right" />
+  </xacro:macro>
+</robot>

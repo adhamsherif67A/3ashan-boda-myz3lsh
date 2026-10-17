@@ -1,0 +1,654 @@
+<?xml version='1.0' encoding='utf-8'?>
+<sdf version="1.10">
+  <model name="sunken_freighter_boundary">
+    <static>true</static>
+    <link name="structure">
+      <visual name="visual_000">
+        <geometry>
+          <mesh>
+            <uri>model://robot_description/worlds/assets/sunken_freighter_boundary/meshes/part_000.stl</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <ambient>0.23 0.29 0.29 1</ambient>
+          <diffuse>0.23 0.29 0.29 1</diffuse>
+          <specular>0.08 0.08 0.08 1</specular>
+        </material>
+      </visual>
+      <collision name="collision_000">
+        <geometry>
+          <mesh>
+            <uri>model://robot_description/worlds/assets/sunken_freighter_boundary/meshes/part_000.stl</uri>
+          </mesh>
+        </geometry>
+      </collision>
+      <visual name="visual_001">
+        <geometry>
+          <mesh>
+            <uri>model://robot_description/worlds/assets/sunken_freighter_boundary/meshes/part_001.stl</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <ambient>0.39 0.24 0.15 1</ambient>
+          <diffuse>0.39 0.24 0.15 1</diffuse>
+          <specular>0.08 0.08 0.08 1</specular>
+        </material>
+      </visual>
+      <collision name="collision_001">
+        <geometry>
+          <mesh>
+            <uri>model://robot_description/worlds/assets/sunken_freighter_boundary/meshes/part_001.stl</uri>
+          </mesh>
+        </geometry>
+      </collision>
+      <visual name="visual_002">
+        <geometry>
+          <mesh>
+            <uri>model://robot_description/worlds/assets/sunken_freighter_boundary/meshes/part_002.stl</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <ambient>0.39 0.24 0.15 1</ambient>
+          <diffuse>0.39 0.24 0.15 1</diffuse>
+          <specular>0.08 0.08 0.08 1</specular>
+        </material>
+      </visual>
+      <collision name="collision_002">
+        <geometry>
+          <mesh>
+            <uri>model://robot_description/worlds/assets/sunken_freighter_boundary/meshes/part_002.stl</uri>
+          </mesh>
+        </geometry>
+      </collision>
+      <visual name="visual_003">
+        <geometry>
+          <mesh>
+            <uri>model://robot_description/worlds/assets/sunken_freighter_boundary/meshes/part_003.stl</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <ambient>0.39 0.24 0.15 1</ambient>
+          <diffuse>0.39 0.24 0.15 1</diffuse>
+          <specular>0.08 0.08 0.08 1</specular>
+        </material>
+      </visual>
+      <collision name="collision_003">
+        <geometry>
+          <mesh>
+            <uri>model://robot_description/worlds/assets/sunken_freighter_boundary/meshes/part_003.stl</uri>
+          </mesh>
+        </geometry>
+      </collision>
+      <visual name="visual_004">
+        <geometry>
+          <mesh>
+            <uri>model://robot_description/worlds/assets/sunken_freighter_boundary/meshes/part_004.stl</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <ambient>0.39 0.24 0.15 1</ambient>
+          <diffuse>0.39 0.24 0.15 1</diffuse>
+          <specular>0.08 0.08 0.08 1</specular>
+        </material>
+      </visual>
+      <collision name="collision_004">
+        <geometry>
+          <mesh>
+            <uri>model://robot_description/worlds/assets/sunken_freighter_boundary/meshes/part_004.stl</uri>
+          </mesh>
+        </geometry>
+      </collision>
+      <visual name="visual_005">
+        <geometry>
+          <mesh>
+            <uri>model://robot_description/worlds/assets/sunken_freighter_boundary/meshes/part_005.stl</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <ambient>0.23 0.29 0.29 1</ambient>
+          <diffuse>0.23 0.29 0.29 1</diffuse>
+          <specular>0.08 0.08 0.08 1</specular>
+        </material>
+      </visual>
+      <collision name="collision_005">
+        <geometry>
+          <mesh>
+            <uri>model://robot_description/worlds/assets/sunken_freighter_boundary/meshes/part_005.stl</uri>
+          </mesh>
+        </geometry>
+      </collision>
+      <visual name="visual_006">
+        <geometry>
+          <mesh>
+            <uri>model://robot_description/worlds/assets/sunken_freighter_boundary/meshes/part_006.stl</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <ambient>0.23 0.29 0.29 1</ambient>
+          <diffuse>0.23 0.29 0.29 1</diffuse>
+          <specular>0.08 0.08 0.08 1</specular>
+        </material>
+      </visual>
+      <collision name="collision_006">
+        <geometry>
+          <mesh>
+            <uri>model://robot_description/worlds/assets/sunken_freighter_boundary/meshes/part_006.stl</uri>
+          </mesh>
+        </geometry>
+      </collision>
+      <visual name="visual_007">
+        <geometry>
+          <mesh>
+            <uri>model://robot_description/worlds/assets/sunken_freighter_boundary/meshes/part_007.stl</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <ambient>0.39 0.24 0.15 1</ambient>
+          <diffuse>0.39 0.24 0.15 1</diffuse>
+          <specular>0.08 0.08 0.08 1</specular>
+        </material>
+      </visual>
+      <collision name="collision_007">
+        <geometry>
+          <mesh>
+            <uri>model://robot_description/worlds/assets/sunken_freighter_boundary/meshes/part_007.stl</uri>
+          </mesh>
+        </geometry>
+      </collision>
+      <visual name="visual_008">
+        <geometry>
+          <mesh>
+            <uri>model://robot_description/worlds/assets/sunken_freighter_boundary/meshes/part_008.stl</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <ambient>0.39 0.24 0.15 1</ambient>
+          <diffuse>0.39 0.24 0.15 1</diffuse>
+          <specular>0.08 0.08 0.08 1</specular>
+        </material>
+      </visual>
+      <collision name="collision_008">
+        <geometry>
+          <mesh>
+            <uri>model://robot_description/worlds/assets/sunken_freighter_boundary/meshes/part_008.stl</uri>
+          </mesh>
+        </geometry>
+      </collision>
+      <visual name="visual_009">
+        <geometry>
+          <mesh>
+            <uri>model://robot_description/worlds/assets/sunken_freighter_boundary/meshes/part_009.stl</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <ambient>0.39 0.24 0.15 1</ambient>
+          <diffuse>0.39 0.24 0.15 1</diffuse>
+          <specular>0.08 0.08 0.08 1</specular>
+        </material>
+      </visual>
+      <collision name="collision_009">
+        <geometry>
+          <mesh>
+            <uri>model://robot_description/worlds/assets/sunken_freighter_boundary/meshes/part_009.stl</uri>
+          </mesh>
+        </geometry>
+      </collision>
+      <visual name="visual_010">
+        <geometry>
+          <mesh>
+            <uri>model://robot_description/worlds/assets/sunken_freighter_boundary/meshes/part_010.stl</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <ambient>0.39 0.24 0.15 1</ambient>
+          <diffuse>0.39 0.24 0.15 1</diffuse>
+          <specular>0.08 0.08 0.08 1</specular>
+        </material>
+      </visual>
+      <collision name="collision_010">
+        <geometry>
+          <mesh>
+            <uri>model://robot_description/worlds/assets/sunken_freighter_boundary/meshes/part_010.stl</uri>
+          </mesh>
+        </geometry>
+      </collision>
+      <visual name="visual_011">
+        <geometry>
+          <mesh>
+            <uri>model://robot_description/worlds/assets/sunken_freighter_boundary/meshes/part_011.stl</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <ambient>0.23 0.29 0.29 1</ambient>
+          <diffuse>0.23 0.29 0.29 1</diffuse>
+          <specular>0.08 0.08 0.08 1</specular>
+        </material>
+      </visual>
+      <collision name="collision_011">
+        <geometry>
+          <mesh>
+            <uri>model://robot_description/worlds/assets/sunken_freighter_boundary/meshes/part_011.stl</uri>
+          </mesh>
+        </geometry>
+      </collision>
+      <visual name="visual_012">
+        <geometry>
+          <mesh>
+            <uri>model://robot_description/worlds/assets/sunken_freighter_boundary/meshes/part_012.stl</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <ambient>0.23 0.29 0.29 1</ambient>
+          <diffuse>0.23 0.29 0.29 1</diffuse>
+          <specular>0.08 0.08 0.08 1</specular>
+        </material>
+      </visual>
+      <collision name="collision_012">
+        <geometry>
+          <mesh>
+            <uri>model://robot_description/worlds/assets/sunken_freighter_boundary/meshes/part_012.stl</uri>
+          </mesh>
+        </geometry>
+      </collision>
+      <visual name="visual_013">
+        <geometry>
+          <mesh>
+            <uri>model://robot_description/worlds/assets/sunken_freighter_boundary/meshes/part_013.stl</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <ambient>0.39 0.24 0.15 1</ambient>
+          <diffuse>0.39 0.24 0.15 1</diffuse>
+          <specular>0.08 0.08 0.08 1</specular>
+        </material>
+      </visual>
+      <collision name="collision_013">
+        <geometry>
+          <mesh>
+            <uri>model://robot_description/worlds/assets/sunken_freighter_boundary/meshes/part_013.stl</uri>
+          </mesh>
+        </geometry>
+      </collision>
+      <visual name="visual_014">
+        <geometry>
+          <mesh>
+            <uri>model://robot_description/worlds/assets/sunken_freighter_boundary/meshes/part_014.stl</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <ambient>0.39 0.24 0.15 1</ambient>
+          <diffuse>0.39 0.24 0.15 1</diffuse>
+          <specular>0.08 0.08 0.08 1</specular>
+        </material>
+      </visual>
+      <collision name="collision_014">
+        <geometry>
+          <mesh>
+            <uri>model://robot_description/worlds/assets/sunken_freighter_boundary/meshes/part_014.stl</uri>
+          </mesh>
+        </geometry>
+      </collision>
+      <visual name="visual_015">
+        <geometry>
+          <mesh>
+            <uri>model://robot_description/worlds/assets/sunken_freighter_boundary/meshes/part_015.stl</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <ambient>0.39 0.24 0.15 1</ambient>
+          <diffuse>0.39 0.24 0.15 1</diffuse>
+          <specular>0.08 0.08 0.08 1</specular>
+        </material>
+      </visual>
+      <collision name="collision_015">
+        <geometry>
+          <mesh>
+            <uri>model://robot_description/worlds/assets/sunken_freighter_boundary/meshes/part_015.stl</uri>
+          </mesh>
+        </geometry>
+      </collision>
+      <visual name="visual_016">
+        <geometry>
+          <mesh>
+            <uri>model://robot_description/worlds/assets/sunken_freighter_boundary/meshes/part_016.stl</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <ambient>0.39 0.24 0.15 1</ambient>
+          <diffuse>0.39 0.24 0.15 1</diffuse>
+          <specular>0.08 0.08 0.08 1</specular>
+        </material>
+      </visual>
+      <collision name="collision_016">
+        <geometry>
+          <mesh>
+            <uri>model://robot_description/worlds/assets/sunken_freighter_boundary/meshes/part_016.stl</uri>
+          </mesh>
+        </geometry>
+      </collision>
+      <visual name="visual_017">
+        <geometry>
+          <mesh>
+            <uri>model://robot_description/worlds/assets/sunken_freighter_boundary/meshes/part_017.stl</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <ambient>0.23 0.29 0.29 1</ambient>
+          <diffuse>0.23 0.29 0.29 1</diffuse>
+          <specular>0.08 0.08 0.08 1</specular>
+        </material>
+      </visual>
+      <collision name="collision_017">
+        <geometry>
+          <mesh>
+            <uri>model://robot_description/worlds/assets/sunken_freighter_boundary/meshes/part_017.stl</uri>
+          </mesh>
+        </geometry>
+      </collision>
+      <visual name="visual_018">
+        <geometry>
+          <mesh>
+            <uri>model://robot_description/worlds/assets/sunken_freighter_boundary/meshes/part_018.stl</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <ambient>0.23 0.29 0.29 1</ambient>
+          <diffuse>0.23 0.29 0.29 1</diffuse>
+          <specular>0.08 0.08 0.08 1</specular>
+        </material>
+      </visual>
+      <collision name="collision_018">
+        <geometry>
+          <mesh>
+            <uri>model://robot_description/worlds/assets/sunken_freighter_boundary/meshes/part_018.stl</uri>
+          </mesh>
+        </geometry>
+      </collision>
+      <visual name="visual_019">
+        <geometry>
+          <mesh>
+            <uri>model://robot_description/worlds/assets/sunken_freighter_boundary/meshes/part_019.stl</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <ambient>0.39 0.24 0.15 1</ambient>
+          <diffuse>0.39 0.24 0.15 1</diffuse>
+          <specular>0.08 0.08 0.08 1</specular>
+        </material>
+      </visual>
+      <collision name="collision_019">
+        <geometry>
+          <mesh>
+            <uri>model://robot_description/worlds/assets/sunken_freighter_boundary/meshes/part_019.stl</uri>
+          </mesh>
+        </geometry>
+      </collision>
+      <visual name="visual_020">
+        <geometry>
+          <mesh>
+            <uri>model://robot_description/worlds/assets/sunken_freighter_boundary/meshes/part_020.stl</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <ambient>0.39 0.24 0.15 1</ambient>
+          <diffuse>0.39 0.24 0.15 1</diffuse>
+          <specular>0.08 0.08 0.08 1</specular>
+        </material>
+      </visual>
+      <collision name="collision_020">
+        <geometry>
+          <mesh>
+            <uri>model://robot_description/worlds/assets/sunken_freighter_boundary/meshes/part_020.stl</uri>
+          </mesh>
+        </geometry>
+      </collision>
+      <visual name="visual_021">
+        <geometry>
+          <mesh>
+            <uri>model://robot_description/worlds/assets/sunken_freighter_boundary/meshes/part_021.stl</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <ambient>0.39 0.24 0.15 1</ambient>
+          <diffuse>0.39 0.24 0.15 1</diffuse>
+          <specular>0.08 0.08 0.08 1</specular>
+        </material>
+      </visual>
+      <collision name="collision_021">
+        <geometry>
+          <mesh>
+            <uri>model://robot_description/worlds/assets/sunken_freighter_boundary/meshes/part_021.stl</uri>
+          </mesh>
+        </geometry>
+      </collision>
+      <visual name="visual_022">
+        <geometry>
+          <mesh>
+            <uri>model://robot_description/worlds/assets/sunken_freighter_boundary/meshes/part_022.stl</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <ambient>0.39 0.24 0.15 1</ambient>
+          <diffuse>0.39 0.24 0.15 1</diffuse>
+          <specular>0.08 0.08 0.08 1</specular>
+        </material>
+      </visual>
+      <collision name="collision_022">
+        <geometry>
+          <mesh>
+            <uri>model://robot_description/worlds/assets/sunken_freighter_boundary/meshes/part_022.stl</uri>
+          </mesh>
+        </geometry>
+      </collision>
+      <visual name="visual_023">
+        <geometry>
+          <mesh>
+            <uri>model://robot_description/worlds/assets/sunken_freighter_boundary/meshes/part_023.stl</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <ambient>0.23 0.29 0.29 1</ambient>
+          <diffuse>0.23 0.29 0.29 1</diffuse>
+          <specular>0.08 0.08 0.08 1</specular>
+        </material>
+      </visual>
+      <collision name="collision_023">
+        <geometry>
+          <mesh>
+            <uri>model://robot_description/worlds/assets/sunken_freighter_boundary/meshes/part_023.stl</uri>
+          </mesh>
+        </geometry>
+      </collision>
+      <visual name="visual_024">
+        <geometry>
+          <mesh>
+            <uri>model://robot_description/worlds/assets/sunken_freighter_boundary/meshes/part_024.stl</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <ambient>0.23 0.29 0.29 1</ambient>
+          <diffuse>0.23 0.29 0.29 1</diffuse>
+          <specular>0.08 0.08 0.08 1</specular>
+        </material>
+      </visual>
+      <collision name="collision_024">
+        <geometry>
+          <mesh>
+            <uri>model://robot_description/worlds/assets/sunken_freighter_boundary/meshes/part_024.stl</uri>
+          </mesh>
+        </geometry>
+      </collision>
+      <visual name="visual_025">
+        <geometry>
+          <mesh>
+            <uri>model://robot_description/worlds/assets/sunken_freighter_boundary/meshes/part_025.stl</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <ambient>0.39 0.24 0.15 1</ambient>
+          <diffuse>0.39 0.24 0.15 1</diffuse>
+          <specular>0.08 0.08 0.08 1</specular>
+        </material>
+      </visual>
+      <collision name="collision_025">
+        <geometry>
+          <mesh>
+            <uri>model://robot_description/worlds/assets/sunken_freighter_boundary/meshes/part_025.stl</uri>
+          </mesh>
+        </geometry>
+      </collision>
+      <visual name="visual_026">
+        <geometry>
+          <mesh>
+            <uri>model://robot_description/worlds/assets/sunken_freighter_boundary/meshes/part_026.stl</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <ambient>0.39 0.24 0.15 1</ambient>
+          <diffuse>0.39 0.24 0.15 1</diffuse>
+          <specular>0.08 0.08 0.08 1</specular>
+        </material>
+      </visual>
+      <collision name="collision_026">
+        <geometry>
+          <mesh>
+            <uri>model://robot_description/worlds/assets/sunken_freighter_boundary/meshes/part_026.stl</uri>
+          </mesh>
+        </geometry>
+      </collision>
+      <visual name="visual_027">
+        <geometry>
+          <mesh>
+            <uri>model://robot_description/worlds/assets/sunken_freighter_boundary/meshes/part_027.stl</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <ambient>0.39 0.24 0.15 1</ambient>
+          <diffuse>0.39 0.24 0.15 1</diffuse>
+          <specular>0.08 0.08 0.08 1</specular>
+        </material>
+      </visual>
+      <collision name="collision_027">
+        <geometry>
+          <mesh>
+            <uri>model://robot_description/worlds/assets/sunken_freighter_boundary/meshes/part_027.stl</uri>
+          </mesh>
+        </geometry>
+      </collision>
+      <visual name="visual_028">
+        <geometry>
+          <mesh>
+            <uri>model://robot_description/worlds/assets/sunken_freighter_boundary/meshes/part_028.stl</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <ambient>0.39 0.24 0.15 1</ambient>
+          <diffuse>0.39 0.24 0.15 1</diffuse>
+          <specular>0.08 0.08 0.08 1</specular>
+        </material>
+      </visual>
+      <collision name="collision_028">
+        <geometry>
+          <mesh>
+            <uri>model://robot_description/worlds/assets/sunken_freighter_boundary/meshes/part_028.stl</uri>
+          </mesh>
+        </geometry>
+      </collision>
+      <visual name="visual_029">
+        <geometry>
+          <mesh>
+            <uri>model://robot_description/worlds/assets/sunken_freighter_boundary/meshes/part_029.stl</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <ambient>0.23 0.29 0.29 1</ambient>
+          <diffuse>0.23 0.29 0.29 1</diffuse>
+          <specular>0.08 0.08 0.08 1</specular>
+        </material>
+      </visual>
+      <collision name="collision_029">
+        <geometry>
+          <mesh>
+            <uri>model://robot_description/worlds/assets/sunken_freighter_boundary/meshes/part_029.stl</uri>
+          </mesh>
+        </geometry>
+      </collision>
+      <visual name="visual_030">
+        <geometry>
+          <mesh>
+            <uri>model://robot_description/worlds/assets/sunken_freighter_boundary/meshes/part_030.stl</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <ambient>0.39 0.24 0.15 1</ambient>
+          <diffuse>0.39 0.24 0.15 1</diffuse>
+          <specular>0.08 0.08 0.08 1</specular>
+        </material>
+      </visual>
+      <collision name="collision_030">
+        <geometry>
+          <mesh>
+            <uri>model://robot_description/worlds/assets/sunken_freighter_boundary/meshes/part_030.stl</uri>
+          </mesh>
+        </geometry>
+      </collision>
+      <visual name="visual_031">
+        <geometry>
+          <mesh>
+            <uri>model://robot_description/worlds/assets/sunken_freighter_boundary/meshes/part_031.stl</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <ambient>0.47 0.43 0.34 1</ambient>
+          <diffuse>0.47 0.43 0.34 1</diffuse>
+          <specular>0.08 0.08 0.08 1</specular>
+        </material>
+      </visual>
+      <collision name="collision_031">
+        <geometry>
+          <mesh>
+            <uri>model://robot_description/worlds/assets/sunken_freighter_boundary/meshes/part_031.stl</uri>
+          </mesh>
+        </geometry>
+      </collision>
+      <visual name="visual_032">
+        <geometry>
+          <mesh>
+            <uri>model://robot_description/worlds/assets/sunken_freighter_boundary/meshes/part_032.stl</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <ambient>0.29 0.37 0.31 1</ambient>
+          <diffuse>0.29 0.37 0.31 1</diffuse>
+          <specular>0.08 0.08 0.08 1</specular>
+        </material>
+      </visual>
+      <collision name="collision_032">
+        <geometry>
+          <mesh>
+            <uri>model://robot_description/worlds/assets/sunken_freighter_boundary/meshes/part_032.stl</uri>
+          </mesh>
+        </geometry>
+      </collision>
+      <visual name="visual_033">
+        <geometry>
+          <mesh>
+            <uri>model://robot_description/worlds/assets/sunken_freighter_boundary/meshes/part_033.stl</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <ambient>0.4 0.29 0.2 1</ambient>
+          <diffuse>0.4 0.29 0.2 1</diffuse>
+          <specular>0.08 0.08 0.08 1</specular>
+        </material>
+      </visual>
+      <collision name="collision_033">
+        <geometry>
+          <mesh>
+            <uri>model://robot_description/worlds/assets/sunken_freighter_boundary/meshes/part_033.stl</uri>
+          </mesh>
+        </geometry>
+      </collision>
+    </link>
+  </model>
+</sdf>

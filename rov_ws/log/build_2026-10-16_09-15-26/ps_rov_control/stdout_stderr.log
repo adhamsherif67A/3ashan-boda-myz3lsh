@@ -1,0 +1,29 @@
+/home/ibrahim/.local/lib/python3.10/site-packages/setuptools/_distutils/dist.py:318: UserWarning: Unknown distribution option: 'tests_require'
+  warnings.warn(msg)
+running egg_info
+writing ../../build/ps_rov_control/ps_rov_control.egg-info/PKG-INFO
+writing dependency_links to ../../build/ps_rov_control/ps_rov_control.egg-info/dependency_links.txt
+writing entry points to ../../build/ps_rov_control/ps_rov_control.egg-info/entry_points.txt
+writing requirements to ../../build/ps_rov_control/ps_rov_control.egg-info/requires.txt
+writing top-level names to ../../build/ps_rov_control/ps_rov_control.egg-info/top_level.txt
+reading manifest file '../../build/ps_rov_control/ps_rov_control.egg-info/SOURCES.txt'
+writing manifest file '../../build/ps_rov_control/ps_rov_control.egg-info/SOURCES.txt'
+running build
+running build_py
+copying ps_rov_control/rov_controller.py -> /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/build/ps_rov_control/build/lib/ps_rov_control
+running install
+running install_lib
+copying /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/build/ps_rov_control/build/lib/ps_rov_control/rov_controller.py -> /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/ps_rov_control/lib/python3.10/site-packages/ps_rov_control
+byte-compiling /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/ps_rov_control/lib/python3.10/site-packages/ps_rov_control/rov_controller.py to rov_controller.cpython-310.pyc
+running install_data
+  File "/home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/ps_rov_control/lib/python3.10/site-packages/ps_rov_control/rov_controller.py", line 2
+    محادثة مع Gemini
+                 ^^^^
+SyntaxError: invalid syntax
+
+running install_egg_info
+removing '/home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/ps_rov_control/lib/python3.10/site-packages/ps_rov_control-0.0.0-py3.10.egg-info' (and everything under it)
+Copying ../../build/ps_rov_control/ps_rov_control.egg-info to /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/ps_rov_control/lib/python3.10/site-packages/ps_rov_control-0.0.0-py3.10.egg-info
+running install_scripts
+Installing rov_controller script to /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/ps_rov_control/lib/ps_rov_control
+writing list of installed files to '/home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/build/ps_rov_control/install.log'

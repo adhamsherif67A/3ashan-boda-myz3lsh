@@ -1,0 +1,17 @@
+/home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/ps_rov_control/lib/ps_rov_control/game_controller
+/home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/ps_rov_control/share/ps_rov_control/launch/rov_control.launch.py
+/home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/ps_rov_control/share/ament_index/resource_index/package_run_dependencies/ps_rov_control
+/home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/ps_rov_control/share/ament_index/resource_index/parent_prefix_path/ps_rov_control
+/home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/ps_rov_control/share/ps_rov_control/environment/ament_prefix_path.sh
+/home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/ps_rov_control/share/ps_rov_control/environment/ament_prefix_path.dsv
+/home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/ps_rov_control/share/ps_rov_control/environment/path.sh
+/home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/ps_rov_control/share/ps_rov_control/environment/path.dsv
+/home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/ps_rov_control/share/ps_rov_control/local_setup.bash
+/home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/ps_rov_control/share/ps_rov_control/local_setup.sh
+/home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/ps_rov_control/share/ps_rov_control/local_setup.zsh
+/home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/ps_rov_control/share/ps_rov_control/local_setup.dsv
+/home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/ps_rov_control/share/ps_rov_control/package.dsv
+/home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/ps_rov_control/share/ament_index/resource_index/packages/ps_rov_control
+/home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/ps_rov_control/share/ps_rov_control/cmake/ps_rov_controlConfig.cmake
+/home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/ps_rov_control/share/ps_rov_control/cmake/ps_rov_controlConfig-version.cmake
+/home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/ps_rov_control/share/ps_rov_control/package.xml

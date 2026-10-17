@@ -1,0 +1,48 @@
+# ArduSub Gazebo SITL: EKF3 source selection for robot_description.
+#
+# This model has no GPS or magnetometer sensor.  Its air_pressure sensor is
+# atmospheric, not a hydrostatic depth measurement.  The launch file relays
+# Gazebo ground-truth odometry through MAVROS ODOMETRY, so EKF3 must use that
+# ExternalNav stream (source 6) in every controlled mode.
+EK3_SRC1_POSXY 6
+EK3_SRC1_POSZ 6
+EK3_SRC1_VELXY 6
+EK3_SRC1_VELZ 6
+# Position and velocity use ExternalNav.  Yaw uses the corrected IMU because
+# the Gazebo odometry yaw convention otherwise causes a wrapped yaw error in
+# Depth Hold and saturates the horizontal motors.
+EK3_SRC1_YAW 1
+
+# Six-thruster ArduSub VECTORED frame.  This must match the M1..M6 channel
+# routing in urdf/ardusub.urdf.xacro.
+FRAME_CONFIG 1
+
+# The IMU link is physically rotated FLU -> FRD in the URDF.
+AHRS_ORIENTATION 0
+
+# Avoid a simulated GCS failsafe changing modes / commanding motors while
+# testing the estimator.
+FS_GCS_ENABLE 0
+
+# Match the MAVLink sender ID of the standard MAVROS apm.launch.
+MAV_GCS_SYSID 1
+
+# Vertical T200 output polarity (motors 5 and 6).
+MOT_5_DIRECTION 1
+MOT_6_DIRECTION 1
+
+MOT_PWM_MAX 1760
+
+MOT_PWM_MIN 1240
+
+# Apply the full simulator setup before the first motor output.
+VISO_TYPE 3
+VISO_POS_X 0.0
+VISO_POS_Y 0.0
+VISO_POS_Z 0.0
+MOT_SPIN_ARM 0.0
+MOT_SPIN_MIN 0.0
+MOT_SAFE_DISARM 0
+MOT_SPOOL_TIME 0.0
+FS_PILOT_TIMEOUT 10.0
+THR_DZ 100
