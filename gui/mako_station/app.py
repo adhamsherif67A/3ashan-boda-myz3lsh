@@ -12,6 +12,7 @@ from PyQt5.QtWidgets import (QApplication,QMainWindow,QWidget,QVBoxLayout,QHBoxL
     QLabel,QPushButton,QComboBox,QCheckBox,QFrame,QGridLayout,QProgressBar,QPlainTextEdit,
     QSizePolicy,QMessageBox,QShortcut,QFileDialog)
 from .simulation import WORKSPACE,DOMAIN,SessionThread
+from .update_ui import UpdateController
 from .ros_worker import RosWorker
 
 NAVY='#071321';PANEL='#0e2134';BORDER='#243b51';GOLD='#d6ae79';SILVER='#e6edf4';MUTED='#94a8ba'
@@ -103,7 +104,7 @@ class PilotWindow(QMainWindow):
         super().__init__()
         self.setWindowTitle('Operation MX')
         # Bound the window icon: the original logo exceeds X11 property limits.
-        icon = QPixmap(str(Path(__file__).resolve().parent/'assets/operation_mx_icon.png'))
+        icon = QPixmap(os.environ.get('MAKO_APP_ICON',str(Path(__file__).resolve().parent/'assets/operation_mx_icon.png')))
         self.setWindowIcon(QIcon(icon.scaled(256,256,Qt.KeepAspectRatio,Qt.SmoothTransformation)))
         self.setMinimumSize(1120,740);self.resize(1500,950);self.setStyleSheet(STYLE)
         self.phase='Stopped';self.closing=False;self.finished=False;self.started_at=None
@@ -189,6 +190,7 @@ class PilotWindow(QMainWindow):
         self.log_box=QPlainTextEdit();self.log_box.setReadOnly(True);self.log_box.setMaximumBlockCount(120);self.log_box.setFixedHeight(78);video_column.addWidget(self.log_box)
         body.addLayout(video_column,1);root.addLayout(body,1)
         footer=QHBoxLayout();footer.addWidget(label('MARINEXPERTS  /  NAVY · SILVER · GOLD','caption'));footer.addStretch()
+        self.updates=UpdateController(self,footer,enabled=start_workers)
         footer.addWidget(label('V  change view     C  capture     R  record','caption'));root.addLayout(footer)
         QShortcut('V',self,activated=self.cycle_view);QShortcut('C',self,activated=self.capture);QShortcut('R',self,activated=self.toggle_recording)
         self.refresh=QTimer(self);self.refresh.timeout.connect(self.tick);self.refresh.start(33)
@@ -322,14 +324,14 @@ class PilotWindow(QMainWindow):
     def capture(self):
         frames,_=self.ros.snapshot();frame=frames.get('main')
         if not frame or time.monotonic()-frame[1]>1.5:self.log('No live pilot frame to capture.');return
-        folder=WORKSPACE/'gui/runs/captures';folder.mkdir(parents=True,exist_ok=True)
+        folder=Path(os.environ.get('MAKO_DATA_DIR',WORKSPACE/'gui'))/'runs/captures';folder.mkdir(parents=True,exist_ok=True)
         path=folder/(datetime.now(ZoneInfo('Africa/Cairo')).strftime('%Y%m%d_%H%M%S_%f')+'.png')
         if frame[0].save(str(path)):self.log('Frame saved: '+str(path))
 
     def toggle_recording(self):
         if self.recorder.state()!=QProcess.NotRunning:self.stop_recording();return
         if not os.environ.get('DISPLAY'):self.log('Screen recording requires an X11 desktop display.');return
-        folder=WORKSPACE/'gui/runs/recordings';folder.mkdir(parents=True,exist_ok=True)
+        folder=Path(os.environ.get('MAKO_DATA_DIR',WORKSPACE/'gui'))/'runs/recordings';folder.mkdir(parents=True,exist_ok=True)
         path=folder/(datetime.now(ZoneInfo('Africa/Cairo')).strftime('%Y%m%d_%H%M%S')+'.mp4')
         screen=QApplication.primaryScreen().geometry()
         self.recorder.setStandardErrorFile(str(path.with_suffix('.log')))

@@ -32,13 +32,24 @@ the container.
 | World | Environment | Tasks and obstacles |
 | --- | --- | --- |
 | `pool.world` | 14 × 12 m swimming pool, 3 m deep, tiled floor/walls and one open wall | Mirrored PVC coral garden with eight red targets, colored fly transect, crabs |
-| `ocean.world` | 18 × 16 m seabed, 4 m water depth, pale sand relief and reef/ship scenery | Shipwreck, broken submerged pipe and rock arch, partly buried in sand |
+| `ocean.world` | 18 × 16 m seabed, 4 m water depth, pale sand relief and reef/ship scenery | Shipwreck, broken submerged pipe, rock arch, and a far-side search cave with three survey targets |
 
 Both worlds contain the team logo below the ROV spawn. World assets and textures
 are installed locally with the package; the courses do not require Fuel downloads.
 The ROV starts near `(0, 0, -1)` in Gazebo's ENU coordinates.
 
+The ocean search-and-survey task asks pilots to find a ship's bell, an Admiralty
+anchor and a four-blade propeller using the ZED or bottom RGB camera. Give pilots
+the [real-photo briefing](src/robot_description/designs/search_survey/briefing/pilot_photo_briefing.pdf);
+it contains no target positions. The [mission guide](src/robot_description/designs/search_survey/README.md)
+contains the instructor map, STL paths and regeneration instructions.
+
 ### Cameras, TF and navigation
+
+Experimental onboard ArduSub AUTOTUNE is available through MAVROS after
+applying the [firmware port](firmware/ardusub-autotune/README.md). It defaults to
+yaw tuning and includes depth hold and original-gain restoration on abort.
+The port builds for SITL and FMUv3; real-water validation is still required.
 
 - Simulated ZED 2i left/right RGB eyes, registered depth, camera calibration topics
   and aligned point clouds, using ROS topic names familiar from the ZED wrapper.

@@ -1,5 +1,9 @@
 # MarineXperts Operation MX
 
+Online desktop distribution, the one-time installer, signing, GitHub releases
+and rollback are documented in [UPDATES.md](UPDATES.md). Versioned installations
+download verified releases automatically and activate them between sessions.
+
 Desktop application: **Operation MX**, installed in Software2026 and the application menu.
 Double-click `/home/boda/Desktop/OperationMX.desktop`, or run
 `/home/boda/Software2026/run_mako_gui.sh`.

@@ -1,0 +1,2018 @@
+<?xml version='1.0' encoding='utf-8'?>
+<sdf version="1.9">
+  <model name="search_survey_cave">
+    <static>true</static>
+    <link name="cave_and_targets">
+      <visual name="arch_00_00_visual">
+        <pose>0 0 0 0 0 0</pose>
+        <geometry>
+          <mesh>
+            <uri>model://robot_description/worlds/assets/search_survey/meshes/arch_00_00.stl</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <ambient>0.3535871070110782 0.3928745633456425 0.3634089710947193 1</ambient>
+          <diffuse>0.3535871070110782 0.3928745633456425 0.3634089710947193 1</diffuse>
+          <specular>0.18 0.18 0.18 1</specular>
+          <pbr>
+            <metal>
+              <metalness>0</metalness>
+              <roughness>0.96</roughness>
+            </metal>
+          </pbr>
+        </material>
+      </visual>
+      <collision name="arch_00_00_collision">
+        <pose>0 0 0 0 0 0</pose>
+        <geometry>
+          <mesh>
+            <uri>model://robot_description/worlds/assets/search_survey/meshes/arch_00_00.stl</uri>
+          </mesh>
+        </geometry>
+      </collision>
+      <visual name="arch_00_01_visual">
+        <pose>0 0 0 0 0 0</pose>
+        <geometry>
+          <mesh>
+            <uri>model://robot_description/worlds/assets/search_survey/meshes/arch_00_01.stl</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <ambient>0.3212862974840968 0.35698477498232983 0.33021091685865506 1</ambient>
+          <diffuse>0.3212862974840968 0.35698477498232983 0.33021091685865506 1</diffuse>
+          <specular>0.18 0.18 0.18 1</specular>
+          <pbr>
+            <metal>
+              <metalness>0</metalness>
+              <roughness>0.96</roughness>
+            </metal>
+          </pbr>
+        </material>
+      </visual>
+      <collision name="arch_00_01_collision">
+        <pose>0 0 0 0 0 0</pose>
+        <geometry>
+          <mesh>
+            <uri>model://robot_description/worlds/assets/search_survey/meshes/arch_00_01.stl</uri>
+          </mesh>
+        </geometry>
+      </collision>
+      <visual name="arch_00_02_visual">
+        <pose>0 0 0 0 0 0</pose>
+        <geometry>
+          <mesh>
+            <uri>model://robot_description/worlds/assets/search_survey/meshes/arch_00_02.stl</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <ambient>0.39973496206658027 0.44414995785175587 0.41083871101287417 1</ambient>
+          <diffuse>0.39973496206658027 0.44414995785175587 0.41083871101287417 1</diffuse>
+          <specular>0.18 0.18 0.18 1</specular>
+          <pbr>
+            <metal>
+              <metalness>0</metalness>
+              <roughness>0.96</roughness>
+            </metal>
+          </pbr>
+        </material>
+      </visual>
+      <collision name="arch_00_02_collision">
+        <pose>0 0 0 0 0 0</pose>
+        <geometry>
+          <mesh>
+            <uri>model://robot_description/worlds/assets/search_survey/meshes/arch_00_02.stl</uri>
+          </mesh>
+        </geometry>
+      </collision>
+      <visual name="arch_00_03_visual">
+        <pose>0 0 0 0 0 0</pose>
+        <geometry>
+          <mesh>
+            <uri>model://robot_description/worlds/assets/search_survey/meshes/arch_00_03.stl</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <ambient>0.37767218975443234 0.4196357663938137 0.3881630839142777 1</ambient>
+          <diffuse>0.37767218975443234 0.4196357663938137 0.3881630839142777 1</diffuse>
+          <specular>0.18 0.18 0.18 1</specular>
+          <pbr>
+            <metal>
+              <metalness>0</metalness>
+              <roughness>0.96</roughness>
+            </metal>
+          </pbr>
+        </material>
+      </visual>
+      <collision name="arch_00_03_collision">
+        <pose>0 0 0 0 0 0</pose>
+        <geometry>
+          <mesh>
+            <uri>model://robot_description/worlds/assets/search_survey/meshes/arch_00_03.stl</uri>
+          </mesh>
+        </geometry>
+      </collision>
+      <visual name="arch_00_04_visual">
+        <pose>0 0 0 0 0 0</pose>
+        <geometry>
+          <mesh>
+            <uri>model://robot_description/worlds/assets/search_survey/meshes/arch_00_04.stl</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <ambient>0.3848488430692689 0.42760982563252103 0.3955390887100819 1</ambient>
+          <diffuse>0.3848488430692689 0.42760982563252103 0.3955390887100819 1</diffuse>
+          <specular>0.18 0.18 0.18 1</specular>
+          <pbr>
+            <metal>
+              <metalness>0</metalness>
+              <roughness>0.96</roughness>
+            </metal>
+          </pbr>
+        </material>
+      </visual>
+      <collision name="arch_00_04_collision">
+        <pose>0 0 0 0 0 0</pose>
+        <geometry>
+          <mesh>
+            <uri>model://robot_description/worlds/assets/search_survey/meshes/arch_00_04.stl</uri>
+          </mesh>
+        </geometry>
+      </collision>
+      <visual name="arch_00_05_visual">
+        <pose>0 0 0 0 0 0</pose>
+        <geometry>
+          <mesh>
+            <uri>model://robot_description/worlds/assets/search_survey/meshes/arch_00_05.stl</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <ambient>0.33200421903015953 0.3688935767001773 0.341226558447664 1</ambient>
+          <diffuse>0.33200421903015953 0.3688935767001773 0.341226558447664 1</diffuse>
+          <specular>0.18 0.18 0.18 1</specular>
+          <pbr>
+            <metal>
+              <metalness>0</metalness>
+              <roughness>0.96</roughness>
+            </metal>
+          </pbr>
+        </material>
+      </visual>
+      <collision name="arch_00_05_collision">
+        <pose>0 0 0 0 0 0</pose>
+        <geometry>
+          <mesh>
+            <uri>model://robot_description/worlds/assets/search_survey/meshes/arch_00_05.stl</uri>
+          </mesh>
+        </geometry>
+      </collision>
+      <visual name="arch_00_06_visual">
+        <pose>0 0 0 0 0 0</pose>
+        <geometry>
+          <mesh>
+            <uri>model://robot_description/worlds/assets/search_survey/meshes/arch_00_06.stl</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <ambient>0.4024229889487741 0.4471366543875268 0.4136014053084623 1</ambient>
+          <diffuse>0.4024229889487741 0.4471366543875268 0.4136014053084623 1</diffuse>
+          <specular>0.18 0.18 0.18 1</specular>
+          <pbr>
+            <metal>
+              <metalness>0</metalness>
+              <roughness>0.96</roughness>
+            </metal>
+          </pbr>
+        </material>
+      </visual>
+      <collision name="arch_00_06_collision">
+        <pose>0 0 0 0 0 0</pose>
+        <geometry>
+          <mesh>
+            <uri>model://robot_description/worlds/assets/search_survey/meshes/arch_00_06.stl</uri>
+          </mesh>
+        </geometry>
+      </collision>
+      <visual name="arch_00_07_visual">
+        <pose>0 0 0 0 0 0</pose>
+        <geometry>
+          <mesh>
+            <uri>model://robot_description/worlds/assets/search_survey/meshes/arch_00_07.stl</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <ambient>0.3285590843665263 0.3650656492961404 0.33768572559892984 1</ambient>
+          <diffuse>0.3285590843665263 0.3650656492961404 0.33768572559892984 1</diffuse>
+          <specular>0.18 0.18 0.18 1</specular>
+          <pbr>
+            <metal>
+              <metalness>0</metalness>
+              <roughness>0.96</roughness>
+            </metal>
+          </pbr>
+        </material>
+      </visual>
+      <collision name="arch_00_07_collision">
+        <pose>0 0 0 0 0 0</pose>
+        <geometry>
+          <mesh>
+            <uri>model://robot_description/worlds/assets/search_survey/meshes/arch_00_07.stl</uri>
+          </mesh>
+        </geometry>
+      </collision>
+      <visual name="arch_00_08_visual">
+        <pose>0 0 0 0 0 0</pose>
+        <geometry>
+          <mesh>
+            <uri>model://robot_description/worlds/assets/search_survey/meshes/arch_00_08.stl</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <ambient>0.3438796928848314 0.3820885476498127 0.3534319065760767 1</ambient>
+          <diffuse>0.3438796928848314 0.3820885476498127 0.3534319065760767 1</diffuse>
+          <specular>0.18 0.18 0.18 1</specular>
+          <pbr>
+            <metal>
+              <metalness>0</metalness>
+              <roughness>0.96</roughness>
+            </metal>
+          </pbr>
+        </material>
+      </visual>
+      <collision name="arch_00_08_collision">
+        <pose>0 0 0 0 0 0</pose>
+        <geometry>
+          <mesh>
+            <uri>model://robot_description/worlds/assets/search_survey/meshes/arch_00_08.stl</uri>
+          </mesh>
+        </geometry>
+      </collision>
+      <visual name="arch_00_09_visual">
+        <pose>0 0 0 0 0 0</pose>
+        <geometry>
+          <mesh>
+            <uri>model://robot_description/worlds/assets/search_survey/meshes/arch_00_09.stl</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <ambient>0.3756665352406093 0.41740726137845474 0.38610171677507066 1</ambient>
+          <diffuse>0.3756665352406093 0.41740726137845474 0.38610171677507066 1</diffuse>
+          <specular>0.18 0.18 0.18 1</specular>
+          <pbr>
+            <metal>
+              <metalness>0</metalness>
+              <roughness>0.96</roughness>
+            </metal>
+          </pbr>
+        </material>
+      </visual>
+      <collision name="arch_00_09_collision">
+        <pose>0 0 0 0 0 0</pose>
+        <geometry>
+          <mesh>
+            <uri>model://robot_description/worlds/assets/search_survey/meshes/arch_00_09.stl</uri>
+          </mesh>
+        </geometry>
+      </collision>
+      <visual name="arch_00_10_visual">
+        <pose>0 0 0 0 0 0</pose>
+        <geometry>
+          <mesh>
+            <uri>model://robot_description/worlds/assets/search_survey/meshes/arch_00_10.stl</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <ambient>0.3734720615852859 0.41496895731698435 0.38384628551821054 1</ambient>
+          <diffuse>0.3734720615852859 0.41496895731698435 0.38384628551821054 1</diffuse>
+          <specular>0.18 0.18 0.18 1</specular>
+          <pbr>
+            <metal>
+              <metalness>0</metalness>
+              <roughness>0.96</roughness>
+            </metal>
+          </pbr>
+        </material>
+      </visual>
+      <collision name="arch_00_10_collision">
+        <pose>0 0 0 0 0 0</pose>
+        <geometry>
+          <mesh>
+            <uri>model://robot_description/worlds/assets/search_survey/meshes/arch_00_10.stl</uri>
+          </mesh>
+        </geometry>
+      </collision>
+      <visual name="arch_00_11_visual">
+        <pose>0 0 0 0 0 0</pose>
+        <geometry>
+          <mesh>
+            <uri>model://robot_description/worlds/assets/search_survey/meshes/arch_00_11.stl</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <ambient>0.32796460640427977 0.3644051182269776 0.3370747343599542 1</ambient>
+          <diffuse>0.32796460640427977 0.3644051182269776 0.3370747343599542 1</diffuse>
+          <specular>0.18 0.18 0.18 1</specular>
+          <pbr>
+            <metal>
+              <metalness>0</metalness>
+              <roughness>0.96</roughness>
+            </metal>
+          </pbr>
+        </material>
+      </visual>
+      <collision name="arch_00_11_collision">
+        <pose>0 0 0 0 0 0</pose>
+        <geometry>
+          <mesh>
+            <uri>model://robot_description/worlds/assets/search_survey/meshes/arch_00_11.stl</uri>
+          </mesh>
+        </geometry>
+      </collision>
+      <visual name="arch_00_12_visual">
+        <pose>0 0 0 0 0 0</pose>
+        <geometry>
+          <mesh>
+            <uri>model://robot_description/worlds/assets/search_survey/meshes/arch_00_12.stl</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <ambient>0.3901546535321669 0.43350517059129656 0.4009922827969493 1</ambient>
+          <diffuse>0.3901546535321669 0.43350517059129656 0.4009922827969493 1</diffuse>
+          <specular>0.18 0.18 0.18 1</specular>
+          <pbr>
+            <metal>
+              <metalness>0</metalness>
+              <roughness>0.96</roughness>
+            </metal>
+          </pbr>
+        </material>
+      </visual>
+      <collision name="arch_00_12_collision">
+        <pose>0 0 0 0 0 0</pose>
+        <geometry>
+          <mesh>
+            <uri>model://robot_description/worlds/assets/search_survey/meshes/arch_00_12.stl</uri>
+          </mesh>
+        </geometry>
+      </collision>
+      <visual name="arch_00_13_visual">
+        <pose>0 0 0 0 0 0</pose>
+        <geometry>
+          <mesh>
+            <uri>model://robot_description/worlds/assets/search_survey/meshes/arch_00_13.stl</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <ambient>0.380617141571718 0.4229079350796867 0.39118983994871015 1</ambient>
+          <diffuse>0.380617141571718 0.4229079350796867 0.39118983994871015 1</diffuse>
+          <specular>0.18 0.18 0.18 1</specular>
+          <pbr>
+            <metal>
+              <metalness>0</metalness>
+              <roughness>0.96</roughness>
+            </metal>
+          </pbr>
+        </material>
+      </visual>
+      <collision name="arch_00_13_collision">
+        <pose>0 0 0 0 0 0</pose>
+        <geometry>
+          <mesh>
+            <uri>model://robot_description/worlds/assets/search_survey/meshes/arch_00_13.stl</uri>
+          </mesh>
+        </geometry>
+      </collision>
+      <visual name="arch_01_00_visual">
+        <pose>0 0 0 0 0 0</pose>
+        <geometry>
+          <mesh>
+            <uri>model://robot_description/worlds/assets/search_survey/meshes/arch_01_00.stl</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <ambient>0.35772771212132204 0.39747523569035786 0.367664593013581 1</ambient>
+          <diffuse>0.35772771212132204 0.39747523569035786 0.367664593013581 1</diffuse>
+          <specular>0.18 0.18 0.18 1</specular>
+          <pbr>
+            <metal>
+              <metalness>0</metalness>
+              <roughness>0.96</roughness>
+            </metal>
+          </pbr>
+        </material>
+      </visual>
+      <collision name="arch_01_00_collision">
+        <pose>0 0 0 0 0 0</pose>
+        <geometry>
+          <mesh>
+            <uri>model://robot_description/worlds/assets/search_survey/meshes/arch_01_00.stl</uri>
+          </mesh>
+        </geometry>
+      </collision>
+      <visual name="arch_01_01_visual">
+        <pose>0 0 0 0 0 0</pose>
+        <geometry>
+          <mesh>
+            <uri>model://robot_description/worlds/assets/search_survey/meshes/arch_01_01.stl</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <ambient>0.33651703429987095 0.37390781588874555 0.3458647296970896 1</ambient>
+          <diffuse>0.33651703429987095 0.37390781588874555 0.3458647296970896 1</diffuse>
+          <specular>0.18 0.18 0.18 1</specular>
+          <pbr>
+            <metal>
+              <metalness>0</metalness>
+              <roughness>0.96</roughness>
+            </metal>
+          </pbr>
+        </material>
+      </visual>
+      <collision name="arch_01_01_collision">
+        <pose>0 0 0 0 0 0</pose>
+        <geometry>
+          <mesh>
+            <uri>model://robot_description/worlds/assets/search_survey/meshes/arch_01_01.stl</uri>
+          </mesh>
+        </geometry>
+      </collision>
+      <visual name="arch_01_02_visual">
+        <pose>0 0 0 0 0 0</pose>
+        <geometry>
+          <mesh>
+            <uri>model://robot_description/worlds/assets/search_survey/meshes/arch_01_02.stl</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <ambient>0.339140253718417 0.3768225041315745 0.3485608163217063 1</ambient>
+          <diffuse>0.339140253718417 0.3768225041315745 0.3485608163217063 1</diffuse>
+          <specular>0.18 0.18 0.18 1</specular>
+          <pbr>
+            <metal>
+              <metalness>0</metalness>
+              <roughness>0.96</roughness>
+            </metal>
+          </pbr>
+        </material>
+      </visual>
+      <collision name="arch_01_02_collision">
+        <pose>0 0 0 0 0 0</pose>
+        <geometry>
+          <mesh>
+            <uri>model://robot_description/worlds/assets/search_survey/meshes/arch_01_02.stl</uri>
+          </mesh>
+        </geometry>
+      </collision>
+      <visual name="arch_01_03_visual">
+        <pose>0 0 0 0 0 0</pose>
+        <geometry>
+          <mesh>
+            <uri>model://robot_description/worlds/assets/search_survey/meshes/arch_01_03.stl</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <ambient>0.36255890819623104 0.4028432313291457 0.3726299889794597 1</ambient>
+          <diffuse>0.36255890819623104 0.4028432313291457 0.3726299889794597 1</diffuse>
+          <specular>0.18 0.18 0.18 1</specular>
+          <pbr>
+            <metal>
+              <metalness>0</metalness>
+              <roughness>0.96</roughness>
+            </metal>
+          </pbr>
+        </material>
+      </visual>
+      <collision name="arch_01_03_collision">
+        <pose>0 0 0 0 0 0</pose>
+        <geometry>
+          <mesh>
+            <uri>model://robot_description/worlds/assets/search_survey/meshes/arch_01_03.stl</uri>
+          </mesh>
+        </geometry>
+      </collision>
+      <visual name="arch_01_04_visual">
+        <pose>0 0 0 0 0 0</pose>
+        <geometry>
+          <mesh>
+            <uri>model://robot_description/worlds/assets/search_survey/meshes/arch_01_04.stl</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <ambient>0.37751310546261363 0.4194590060695707 0.3879995806143529 1</ambient>
+          <diffuse>0.37751310546261363 0.4194590060695707 0.3879995806143529 1</diffuse>
+          <specular>0.18 0.18 0.18 1</specular>
+          <pbr>
+            <metal>
+              <metalness>0</metalness>
+              <roughness>0.96</roughness>
+            </metal>
+          </pbr>
+        </material>
+      </visual>
+      <collision name="arch_01_04_collision">
+        <pose>0 0 0 0 0 0</pose>
+        <geometry>
+          <mesh>
+            <uri>model://robot_description/worlds/assets/search_survey/meshes/arch_01_04.stl</uri>
+          </mesh>
+        </geometry>
+      </collision>
+      <visual name="arch_01_05_visual">
+        <pose>0 0 0 0 0 0</pose>
+        <geometry>
+          <mesh>
+            <uri>model://robot_description/worlds/assets/search_survey/meshes/arch_01_05.stl</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <ambient>0.31467130128130255 0.3496347792014473 0.3234121707613387 1</ambient>
+          <diffuse>0.31467130128130255 0.3496347792014473 0.3234121707613387 1</diffuse>
+          <specular>0.18 0.18 0.18 1</specular>
+          <pbr>
+            <metal>
+              <metalness>0</metalness>
+              <roughness>0.96</roughness>
+            </metal>
+          </pbr>
+        </material>
+      </visual>
+      <collision name="arch_01_05_collision">
+        <pose>0 0 0 0 0 0</pose>
+        <geometry>
+          <mesh>
+            <uri>model://robot_description/worlds/assets/search_survey/meshes/arch_01_05.stl</uri>
+          </mesh>
+        </geometry>
+      </collision>
+      <visual name="arch_01_06_visual">
+        <pose>0 0 0 0 0 0</pose>
+        <geometry>
+          <mesh>
+            <uri>model://robot_description/worlds/assets/search_survey/meshes/arch_01_06.stl</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <ambient>0.3659351772878591 0.40659464143095464 0.376100043323633 1</ambient>
+          <diffuse>0.3659351772878591 0.40659464143095464 0.376100043323633 1</diffuse>
+          <specular>0.18 0.18 0.18 1</specular>
+          <pbr>
+            <metal>
+              <metalness>0</metalness>
+              <roughness>0.96</roughness>
+            </metal>
+          </pbr>
+        </material>
+      </visual>
+      <collision name="arch_01_06_collision">
+        <pose>0 0 0 0 0 0</pose>
+        <geometry>
+          <mesh>
+            <uri>model://robot_description/worlds/assets/search_survey/meshes/arch_01_06.stl</uri>
+          </mesh>
+        </geometry>
+      </collision>
+      <visual name="arch_01_07_visual">
+        <pose>0 0 0 0 0 0</pose>
+        <geometry>
+          <mesh>
+            <uri>model://robot_description/worlds/assets/search_survey/meshes/arch_01_07.stl</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <ambient>0.3152404228911718 0.3502671365457465 0.32399710130481546 1</ambient>
+          <diffuse>0.3152404228911718 0.3502671365457465 0.32399710130481546 1</diffuse>
+          <specular>0.18 0.18 0.18 1</specular>
+          <pbr>
+            <metal>
+              <metalness>0</metalness>
+              <roughness>0.96</roughness>
+            </metal>
+          </pbr>
+        </material>
+      </visual>
+      <collision name="arch_01_07_collision">
+        <pose>0 0 0 0 0 0</pose>
+        <geometry>
+          <mesh>
+            <uri>model://robot_description/worlds/assets/search_survey/meshes/arch_01_07.stl</uri>
+          </mesh>
+        </geometry>
+      </collision>
+      <visual name="arch_01_08_visual">
+        <pose>0 0 0 0 0 0</pose>
+        <geometry>
+          <mesh>
+            <uri>model://robot_description/worlds/assets/search_survey/meshes/arch_01_08.stl</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <ambient>0.32121456505401746 0.35690507228224166 0.33013719186107354 1</ambient>
+          <diffuse>0.32121456505401746 0.35690507228224166 0.33013719186107354 1</diffuse>
+          <specular>0.18 0.18 0.18 1</specular>
+          <pbr>
+            <metal>
+              <metalness>0</metalness>
+              <roughness>0.96</roughness>
+            </metal>
+          </pbr>
+        </material>
+      </visual>
+      <collision name="arch_01_08_collision">
+        <pose>0 0 0 0 0 0</pose>
+        <geometry>
+          <mesh>
+            <uri>model://robot_description/worlds/assets/search_survey/meshes/arch_01_08.stl</uri>
+          </mesh>
+        </geometry>
+      </collision>
+      <visual name="arch_01_09_visual">
+        <pose>0 0 0 0 0 0</pose>
+        <geometry>
+          <mesh>
+            <uri>model://robot_description/worlds/assets/search_survey/meshes/arch_01_09.stl</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <ambient>0.34150404194871553 0.37944893549857284 0.3509902653361799 1</ambient>
+          <diffuse>0.34150404194871553 0.37944893549857284 0.3509902653361799 1</diffuse>
+          <specular>0.18 0.18 0.18 1</specular>
+          <pbr>
+            <metal>
+              <metalness>0</metalness>
+              <roughness>0.96</roughness>
+            </metal>
+          </pbr>
+        </material>
+      </visual>
+      <collision name="arch_01_09_collision">
+        <pose>0 0 0 0 0 0</pose>
+        <geometry>
+          <mesh>
+            <uri>model://robot_description/worlds/assets/search_survey/meshes/arch_01_09.stl</uri>
+          </mesh>
+        </geometry>
+      </collision>
+      <visual name="arch_01_10_visual">
+        <pose>0 0 0 0 0 0</pose>
+        <geometry>
+          <mesh>
+            <uri>model://robot_description/worlds/assets/search_survey/meshes/arch_01_10.stl</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <ambient>0.3978173533370584 0.44201928148562053 0.40886783537419896 1</ambient>
+          <diffuse>0.3978173533370584 0.44201928148562053 0.40886783537419896 1</diffuse>
+          <specular>0.18 0.18 0.18 1</specular>
+          <pbr>
+            <metal>
+              <metalness>0</metalness>
+              <roughness>0.96</roughness>
+            </metal>
+          </pbr>
+        </material>
+      </visual>
+      <collision name="arch_01_10_collision">
+        <pose>0 0 0 0 0 0</pose>
+        <geometry>
+          <mesh>
+            <uri>model://robot_description/worlds/assets/search_survey/meshes/arch_01_10.stl</uri>
+          </mesh>
+        </geometry>
+      </collision>
+      <visual name="arch_01_11_visual">
+        <pose>0 0 0 0 0 0</pose>
+        <geometry>
+          <mesh>
+            <uri>model://robot_description/worlds/assets/search_survey/meshes/arch_01_11.stl</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <ambient>0.3248581131163247 0.3609534590181386 0.33388194959177814 1</ambient>
+          <diffuse>0.3248581131163247 0.3609534590181386 0.33388194959177814 1</diffuse>
+          <specular>0.18 0.18 0.18 1</specular>
+          <pbr>
+            <metal>
+              <metalness>0</metalness>
+              <roughness>0.96</roughness>
+            </metal>
+          </pbr>
+        </material>
+      </visual>
+      <collision name="arch_01_11_collision">
+        <pose>0 0 0 0 0 0</pose>
+        <geometry>
+          <mesh>
+            <uri>model://robot_description/worlds/assets/search_survey/meshes/arch_01_11.stl</uri>
+          </mesh>
+        </geometry>
+      </collision>
+      <visual name="arch_01_12_visual">
+        <pose>0 0 0 0 0 0</pose>
+        <geometry>
+          <mesh>
+            <uri>model://robot_description/worlds/assets/search_survey/meshes/arch_01_12.stl</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <ambient>0.3252126234337832 0.36134735937087026 0.334246307418055 1</ambient>
+          <diffuse>0.3252126234337832 0.36134735937087026 0.334246307418055 1</diffuse>
+          <specular>0.18 0.18 0.18 1</specular>
+          <pbr>
+            <metal>
+              <metalness>0</metalness>
+              <roughness>0.96</roughness>
+            </metal>
+          </pbr>
+        </material>
+      </visual>
+      <collision name="arch_01_12_collision">
+        <pose>0 0 0 0 0 0</pose>
+        <geometry>
+          <mesh>
+            <uri>model://robot_description/worlds/assets/search_survey/meshes/arch_01_12.stl</uri>
+          </mesh>
+        </geometry>
+      </collision>
+      <visual name="arch_01_13_visual">
+        <pose>0 0 0 0 0 0</pose>
+        <geometry>
+          <mesh>
+            <uri>model://robot_description/worlds/assets/search_survey/meshes/arch_01_13.stl</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <ambient>0.31880999453021613 0.35423332725579576 0.32766582771161107 1</ambient>
+          <diffuse>0.31880999453021613 0.35423332725579576 0.32766582771161107 1</diffuse>
+          <specular>0.18 0.18 0.18 1</specular>
+          <pbr>
+            <metal>
+              <metalness>0</metalness>
+              <roughness>0.96</roughness>
+            </metal>
+          </pbr>
+        </material>
+      </visual>
+      <collision name="arch_01_13_collision">
+        <pose>0 0 0 0 0 0</pose>
+        <geometry>
+          <mesh>
+            <uri>model://robot_description/worlds/assets/search_survey/meshes/arch_01_13.stl</uri>
+          </mesh>
+        </geometry>
+      </collision>
+      <visual name="arch_02_00_visual">
+        <pose>0 0 0 0 0 0</pose>
+        <geometry>
+          <mesh>
+            <uri>model://robot_description/worlds/assets/search_survey/meshes/arch_02_00.stl</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <ambient>0.31587093271571276 0.35096770301745867 0.32464512529114925 1</ambient>
+          <diffuse>0.31587093271571276 0.35096770301745867 0.32464512529114925 1</diffuse>
+          <specular>0.18 0.18 0.18 1</specular>
+          <pbr>
+            <metal>
+              <metalness>0</metalness>
+              <roughness>0.96</roughness>
+            </metal>
+          </pbr>
+        </material>
+      </visual>
+      <collision name="arch_02_00_collision">
+        <pose>0 0 0 0 0 0</pose>
+        <geometry>
+          <mesh>
+            <uri>model://robot_description/worlds/assets/search_survey/meshes/arch_02_00.stl</uri>
+          </mesh>
+        </geometry>
+      </collision>
+      <visual name="arch_02_01_visual">
+        <pose>0 0 0 0 0 0</pose>
+        <geometry>
+          <mesh>
+            <uri>model://robot_description/worlds/assets/search_survey/meshes/arch_02_01.stl</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <ambient>0.36340538423856106 0.40378376026506785 0.37349997824518777 1</ambient>
+          <diffuse>0.36340538423856106 0.40378376026506785 0.37349997824518777 1</diffuse>
+          <specular>0.18 0.18 0.18 1</specular>
+          <pbr>
+            <metal>
+              <metalness>0</metalness>
+              <roughness>0.96</roughness>
+            </metal>
+          </pbr>
+        </material>
+      </visual>
+      <collision name="arch_02_01_collision">
+        <pose>0 0 0 0 0 0</pose>
+        <geometry>
+          <mesh>
+            <uri>model://robot_description/worlds/assets/search_survey/meshes/arch_02_01.stl</uri>
+          </mesh>
+        </geometry>
+      </collision>
+      <visual name="arch_02_02_visual">
+        <pose>0 0 0 0 0 0</pose>
+        <geometry>
+          <mesh>
+            <uri>model://robot_description/worlds/assets/search_survey/meshes/arch_02_02.stl</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <ambient>0.35023457361901544 0.38914952624335053 0.3599633117750992 1</ambient>
+          <diffuse>0.35023457361901544 0.38914952624335053 0.3599633117750992 1</diffuse>
+          <specular>0.18 0.18 0.18 1</specular>
+          <pbr>
+            <metal>
+              <metalness>0</metalness>
+              <roughness>0.96</roughness>
+            </metal>
+          </pbr>
+        </material>
+      </visual>
+      <collision name="arch_02_02_collision">
+        <pose>0 0 0 0 0 0</pose>
+        <geometry>
+          <mesh>
+            <uri>model://robot_description/worlds/assets/search_survey/meshes/arch_02_02.stl</uri>
+          </mesh>
+        </geometry>
+      </collision>
+      <visual name="arch_02_03_visual">
+        <pose>0 0 0 0 0 0</pose>
+        <geometry>
+          <mesh>
+            <uri>model://robot_description/worlds/assets/search_survey/meshes/arch_02_03.stl</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <ambient>0.37319281509089247 0.414658683434325 0.3835592821767506 1</ambient>
+          <diffuse>0.37319281509089247 0.414658683434325 0.3835592821767506 1</diffuse>
+          <specular>0.18 0.18 0.18 1</specular>
+          <pbr>
+            <metal>
+              <metalness>0</metalness>
+              <roughness>0.96</roughness>
+            </metal>
+          </pbr>
+        </material>
+      </visual>
+      <collision name="arch_02_03_collision">
+        <pose>0 0 0 0 0 0</pose>
+        <geometry>
+          <mesh>
+            <uri>model://robot_description/worlds/assets/search_survey/meshes/arch_02_03.stl</uri>
+          </mesh>
+        </geometry>
+      </collision>
+      <visual name="arch_02_04_visual">
+        <pose>0 0 0 0 0 0</pose>
+        <geometry>
+          <mesh>
+            <uri>model://robot_description/worlds/assets/search_survey/meshes/arch_02_04.stl</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <ambient>0.34379507183056873 0.3819945242561875 0.35334493493697344 1</ambient>
+          <diffuse>0.34379507183056873 0.3819945242561875 0.35334493493697344 1</diffuse>
+          <specular>0.18 0.18 0.18 1</specular>
+          <pbr>
+            <metal>
+              <metalness>0</metalness>
+              <roughness>0.96</roughness>
+            </metal>
+          </pbr>
+        </material>
+      </visual>
+      <collision name="arch_02_04_collision">
+        <pose>0 0 0 0 0 0</pose>
+        <geometry>
+          <mesh>
+            <uri>model://robot_description/worlds/assets/search_survey/meshes/arch_02_04.stl</uri>
+          </mesh>
+        </geometry>
+      </collision>
+      <visual name="arch_02_05_visual">
+        <pose>0 0 0 0 0 0</pose>
+        <geometry>
+          <mesh>
+            <uri>model://robot_description/worlds/assets/search_survey/meshes/arch_02_05.stl</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <ambient>0.35766223758637483 0.3974024862070832 0.3675972997415519 1</ambient>
+          <diffuse>0.35766223758637483 0.3974024862070832 0.3675972997415519 1</diffuse>
+          <specular>0.18 0.18 0.18 1</specular>
+          <pbr>
+            <metal>
+              <metalness>0</metalness>
+              <roughness>0.96</roughness>
+            </metal>
+          </pbr>
+        </material>
+      </visual>
+      <collision name="arch_02_05_collision">
+        <pose>0 0 0 0 0 0</pose>
+        <geometry>
+          <mesh>
+            <uri>model://robot_description/worlds/assets/search_survey/meshes/arch_02_05.stl</uri>
+          </mesh>
+        </geometry>
+      </collision>
+      <visual name="arch_02_06_visual">
+        <pose>0 0 0 0 0 0</pose>
+        <geometry>
+          <mesh>
+            <uri>model://robot_description/worlds/assets/search_survey/meshes/arch_02_06.stl</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <ambient>0.32355978346234704 0.35951087051371894 0.33254755522519003 1</ambient>
+          <diffuse>0.32355978346234704 0.35951087051371894 0.33254755522519003 1</diffuse>
+          <specular>0.18 0.18 0.18 1</specular>
+          <pbr>
+            <metal>
+              <metalness>0</metalness>
+              <roughness>0.96</roughness>
+            </metal>
+          </pbr>
+        </material>
+      </visual>
+      <collision name="arch_02_06_collision">
+        <pose>0 0 0 0 0 0</pose>
+        <geometry>
+          <mesh>
+            <uri>model://robot_description/worlds/assets/search_survey/meshes/arch_02_06.stl</uri>
+          </mesh>
+        </geometry>
+      </collision>
+      <visual name="arch_02_07_visual">
+        <pose>0 0 0 0 0 0</pose>
+        <geometry>
+          <mesh>
+            <uri>model://robot_description/worlds/assets/search_survey/meshes/arch_02_07.stl</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <ambient>0.38690800675201864 0.42989778528002076 0.39765545138401914 1</ambient>
+          <diffuse>0.38690800675201864 0.42989778528002076 0.39765545138401914 1</diffuse>
+          <specular>0.18 0.18 0.18 1</specular>
+          <pbr>
+            <metal>
+              <metalness>0</metalness>
+              <roughness>0.96</roughness>
+            </metal>
+          </pbr>
+        </material>
+      </visual>
+      <collision name="arch_02_07_collision">
+        <pose>0 0 0 0 0 0</pose>
+        <geometry>
+          <mesh>
+            <uri>model://robot_description/worlds/assets/search_survey/meshes/arch_02_07.stl</uri>
+          </mesh>
+        </geometry>
+      </collision>
+      <visual name="arch_02_08_visual">
+        <pose>0 0 0 0 0 0</pose>
+        <geometry>
+          <mesh>
+            <uri>model://robot_description/worlds/assets/search_survey/meshes/arch_02_08.stl</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <ambient>0.3250325530098405 0.3611472811220451 0.33406123503789165 1</ambient>
+          <diffuse>0.3250325530098405 0.3611472811220451 0.33406123503789165 1</diffuse>
+          <specular>0.18 0.18 0.18 1</specular>
+          <pbr>
+            <metal>
+              <metalness>0</metalness>
+              <roughness>0.96</roughness>
+            </metal>
+          </pbr>
+        </material>
+      </visual>
+      <collision name="arch_02_08_collision">
+        <pose>0 0 0 0 0 0</pose>
+        <geometry>
+          <mesh>
+            <uri>model://robot_description/worlds/assets/search_survey/meshes/arch_02_08.stl</uri>
+          </mesh>
+        </geometry>
+      </collision>
+      <visual name="arch_02_09_visual">
+        <pose>0 0 0 0 0 0</pose>
+        <geometry>
+          <mesh>
+            <uri>model://robot_description/worlds/assets/search_survey/meshes/arch_02_09.stl</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <ambient>0.39636475637053004 0.44040528485614455 0.40737488849193365 1</ambient>
+          <diffuse>0.39636475637053004 0.44040528485614455 0.40737488849193365 1</diffuse>
+          <specular>0.18 0.18 0.18 1</specular>
+          <pbr>
+            <metal>
+              <metalness>0</metalness>
+              <roughness>0.96</roughness>
+            </metal>
+          </pbr>
+        </material>
+      </visual>
+      <collision name="arch_02_09_collision">
+        <pose>0 0 0 0 0 0</pose>
+        <geometry>
+          <mesh>
+            <uri>model://robot_description/worlds/assets/search_survey/meshes/arch_02_09.stl</uri>
+          </mesh>
+        </geometry>
+      </collision>
+      <visual name="arch_02_10_visual">
+        <pose>0 0 0 0 0 0</pose>
+        <geometry>
+          <mesh>
+            <uri>model://robot_description/worlds/assets/search_survey/meshes/arch_02_10.stl</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <ambient>0.3734270502759418 0.4149189447510465 0.383800023894718 1</ambient>
+          <diffuse>0.3734270502759418 0.4149189447510465 0.383800023894718 1</diffuse>
+          <specular>0.18 0.18 0.18 1</specular>
+          <pbr>
+            <metal>
+              <metalness>0</metalness>
+              <roughness>0.96</roughness>
+            </metal>
+          </pbr>
+        </material>
+      </visual>
+      <collision name="arch_02_10_collision">
+        <pose>0 0 0 0 0 0</pose>
+        <geometry>
+          <mesh>
+            <uri>model://robot_description/worlds/assets/search_survey/meshes/arch_02_10.stl</uri>
+          </mesh>
+        </geometry>
+      </collision>
+      <visual name="arch_02_11_visual">
+        <pose>0 0 0 0 0 0</pose>
+        <geometry>
+          <mesh>
+            <uri>model://robot_description/worlds/assets/search_survey/meshes/arch_02_11.stl</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <ambient>0.32473913578924096 0.36082126198804554 0.33375966733894213 1</ambient>
+          <diffuse>0.32473913578924096 0.36082126198804554 0.33375966733894213 1</diffuse>
+          <specular>0.18 0.18 0.18 1</specular>
+          <pbr>
+            <metal>
+              <metalness>0</metalness>
+              <roughness>0.96</roughness>
+            </metal>
+          </pbr>
+        </material>
+      </visual>
+      <collision name="arch_02_11_collision">
+        <pose>0 0 0 0 0 0</pose>
+        <geometry>
+          <mesh>
+            <uri>model://robot_description/worlds/assets/search_survey/meshes/arch_02_11.stl</uri>
+          </mesh>
+        </geometry>
+      </collision>
+      <visual name="arch_02_12_visual">
+        <pose>0 0 0 0 0 0</pose>
+        <geometry>
+          <mesh>
+            <uri>model://robot_description/worlds/assets/search_survey/meshes/arch_02_12.stl</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <ambient>0.39164573083773124 0.43516192315303476 0.40252477891655714 1</ambient>
+          <diffuse>0.39164573083773124 0.43516192315303476 0.40252477891655714 1</diffuse>
+          <specular>0.18 0.18 0.18 1</specular>
+          <pbr>
+            <metal>
+              <metalness>0</metalness>
+              <roughness>0.96</roughness>
+            </metal>
+          </pbr>
+        </material>
+      </visual>
+      <collision name="arch_02_12_collision">
+        <pose>0 0 0 0 0 0</pose>
+        <geometry>
+          <mesh>
+            <uri>model://robot_description/worlds/assets/search_survey/meshes/arch_02_12.stl</uri>
+          </mesh>
+        </geometry>
+      </collision>
+      <visual name="arch_02_13_visual">
+        <pose>0 0 0 0 0 0</pose>
+        <geometry>
+          <mesh>
+            <uri>model://robot_description/worlds/assets/search_survey/meshes/arch_02_13.stl</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <ambient>0.35039056246383016 0.3893228471820336 0.360123633643381 1</ambient>
+          <diffuse>0.35039056246383016 0.3893228471820336 0.360123633643381 1</diffuse>
+          <specular>0.18 0.18 0.18 1</specular>
+          <pbr>
+            <metal>
+              <metalness>0</metalness>
+              <roughness>0.96</roughness>
+            </metal>
+          </pbr>
+        </material>
+      </visual>
+      <collision name="arch_02_13_collision">
+        <pose>0 0 0 0 0 0</pose>
+        <geometry>
+          <mesh>
+            <uri>model://robot_description/worlds/assets/search_survey/meshes/arch_02_13.stl</uri>
+          </mesh>
+        </geometry>
+      </collision>
+      <visual name="back_0_0_visual">
+        <pose>-2.0999999999999996 -1.92 0.37 0 0 0</pose>
+        <geometry>
+          <mesh>
+            <uri>model://robot_description/worlds/assets/search_survey/meshes/back_0_0.stl</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <ambient>0.35 0.39 0.35 1</ambient>
+          <diffuse>0.35 0.39 0.35 1</diffuse>
+          <specular>0.18 0.18 0.18 1</specular>
+          <pbr>
+            <metal>
+              <metalness>0</metalness>
+              <roughness>0.96</roughness>
+            </metal>
+          </pbr>
+        </material>
+      </visual>
+      <collision name="back_0_0_collision">
+        <pose>-2.0999999999999996 -1.92 0.37 0 0 0</pose>
+        <geometry>
+          <mesh>
+            <uri>model://robot_description/worlds/assets/search_survey/meshes/back_0_0.stl</uri>
+          </mesh>
+        </geometry>
+      </collision>
+      <visual name="back_1_0_visual">
+        <pose>-1.4 -1.92 0.37 0 0 0</pose>
+        <geometry>
+          <mesh>
+            <uri>model://robot_description/worlds/assets/search_survey/meshes/back_1_0.stl</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <ambient>0.35 0.39 0.35 1</ambient>
+          <diffuse>0.35 0.39 0.35 1</diffuse>
+          <specular>0.18 0.18 0.18 1</specular>
+          <pbr>
+            <metal>
+              <metalness>0</metalness>
+              <roughness>0.96</roughness>
+            </metal>
+          </pbr>
+        </material>
+      </visual>
+      <collision name="back_1_0_collision">
+        <pose>-1.4 -1.92 0.37 0 0 0</pose>
+        <geometry>
+          <mesh>
+            <uri>model://robot_description/worlds/assets/search_survey/meshes/back_1_0.stl</uri>
+          </mesh>
+        </geometry>
+      </collision>
+      <visual name="back_1_1_visual">
+        <pose>-1.4 -1.92 1.1 0 0 0</pose>
+        <geometry>
+          <mesh>
+            <uri>model://robot_description/worlds/assets/search_survey/meshes/back_1_1.stl</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <ambient>0.35 0.39 0.35 1</ambient>
+          <diffuse>0.35 0.39 0.35 1</diffuse>
+          <specular>0.18 0.18 0.18 1</specular>
+          <pbr>
+            <metal>
+              <metalness>0</metalness>
+              <roughness>0.96</roughness>
+            </metal>
+          </pbr>
+        </material>
+      </visual>
+      <collision name="back_1_1_collision">
+        <pose>-1.4 -1.92 1.1 0 0 0</pose>
+        <geometry>
+          <mesh>
+            <uri>model://robot_description/worlds/assets/search_survey/meshes/back_1_1.stl</uri>
+          </mesh>
+        </geometry>
+      </collision>
+      <visual name="back_2_0_visual">
+        <pose>-0.7 -1.92 0.37 0 0 0</pose>
+        <geometry>
+          <mesh>
+            <uri>model://robot_description/worlds/assets/search_survey/meshes/back_2_0.stl</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <ambient>0.35 0.39 0.35 1</ambient>
+          <diffuse>0.35 0.39 0.35 1</diffuse>
+          <specular>0.18 0.18 0.18 1</specular>
+          <pbr>
+            <metal>
+              <metalness>0</metalness>
+              <roughness>0.96</roughness>
+            </metal>
+          </pbr>
+        </material>
+      </visual>
+      <collision name="back_2_0_collision">
+        <pose>-0.7 -1.92 0.37 0 0 0</pose>
+        <geometry>
+          <mesh>
+            <uri>model://robot_description/worlds/assets/search_survey/meshes/back_2_0.stl</uri>
+          </mesh>
+        </geometry>
+      </collision>
+      <visual name="back_2_1_visual">
+        <pose>-0.7 -1.92 1.1 0 0 0</pose>
+        <geometry>
+          <mesh>
+            <uri>model://robot_description/worlds/assets/search_survey/meshes/back_2_1.stl</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <ambient>0.35 0.39 0.35 1</ambient>
+          <diffuse>0.35 0.39 0.35 1</diffuse>
+          <specular>0.18 0.18 0.18 1</specular>
+          <pbr>
+            <metal>
+              <metalness>0</metalness>
+              <roughness>0.96</roughness>
+            </metal>
+          </pbr>
+        </material>
+      </visual>
+      <collision name="back_2_1_collision">
+        <pose>-0.7 -1.92 1.1 0 0 0</pose>
+        <geometry>
+          <mesh>
+            <uri>model://robot_description/worlds/assets/search_survey/meshes/back_2_1.stl</uri>
+          </mesh>
+        </geometry>
+      </collision>
+      <visual name="back_3_0_visual">
+        <pose>0.0 -1.92 0.37 0 0 0</pose>
+        <geometry>
+          <mesh>
+            <uri>model://robot_description/worlds/assets/search_survey/meshes/back_3_0.stl</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <ambient>0.35 0.39 0.35 1</ambient>
+          <diffuse>0.35 0.39 0.35 1</diffuse>
+          <specular>0.18 0.18 0.18 1</specular>
+          <pbr>
+            <metal>
+              <metalness>0</metalness>
+              <roughness>0.96</roughness>
+            </metal>
+          </pbr>
+        </material>
+      </visual>
+      <collision name="back_3_0_collision">
+        <pose>0.0 -1.92 0.37 0 0 0</pose>
+        <geometry>
+          <mesh>
+            <uri>model://robot_description/worlds/assets/search_survey/meshes/back_3_0.stl</uri>
+          </mesh>
+        </geometry>
+      </collision>
+      <visual name="back_3_1_visual">
+        <pose>0.0 -1.92 1.1 0 0 0</pose>
+        <geometry>
+          <mesh>
+            <uri>model://robot_description/worlds/assets/search_survey/meshes/back_3_1.stl</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <ambient>0.35 0.39 0.35 1</ambient>
+          <diffuse>0.35 0.39 0.35 1</diffuse>
+          <specular>0.18 0.18 0.18 1</specular>
+          <pbr>
+            <metal>
+              <metalness>0</metalness>
+              <roughness>0.96</roughness>
+            </metal>
+          </pbr>
+        </material>
+      </visual>
+      <collision name="back_3_1_collision">
+        <pose>0.0 -1.92 1.1 0 0 0</pose>
+        <geometry>
+          <mesh>
+            <uri>model://robot_description/worlds/assets/search_survey/meshes/back_3_1.stl</uri>
+          </mesh>
+        </geometry>
+      </collision>
+      <visual name="back_4_0_visual">
+        <pose>0.7 -1.92 0.37 0 0 0</pose>
+        <geometry>
+          <mesh>
+            <uri>model://robot_description/worlds/assets/search_survey/meshes/back_4_0.stl</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <ambient>0.35 0.39 0.35 1</ambient>
+          <diffuse>0.35 0.39 0.35 1</diffuse>
+          <specular>0.18 0.18 0.18 1</specular>
+          <pbr>
+            <metal>
+              <metalness>0</metalness>
+              <roughness>0.96</roughness>
+            </metal>
+          </pbr>
+        </material>
+      </visual>
+      <collision name="back_4_0_collision">
+        <pose>0.7 -1.92 0.37 0 0 0</pose>
+        <geometry>
+          <mesh>
+            <uri>model://robot_description/worlds/assets/search_survey/meshes/back_4_0.stl</uri>
+          </mesh>
+        </geometry>
+      </collision>
+      <visual name="back_4_1_visual">
+        <pose>0.7 -1.92 1.1 0 0 0</pose>
+        <geometry>
+          <mesh>
+            <uri>model://robot_description/worlds/assets/search_survey/meshes/back_4_1.stl</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <ambient>0.35 0.39 0.35 1</ambient>
+          <diffuse>0.35 0.39 0.35 1</diffuse>
+          <specular>0.18 0.18 0.18 1</specular>
+          <pbr>
+            <metal>
+              <metalness>0</metalness>
+              <roughness>0.96</roughness>
+            </metal>
+          </pbr>
+        </material>
+      </visual>
+      <collision name="back_4_1_collision">
+        <pose>0.7 -1.92 1.1 0 0 0</pose>
+        <geometry>
+          <mesh>
+            <uri>model://robot_description/worlds/assets/search_survey/meshes/back_4_1.stl</uri>
+          </mesh>
+        </geometry>
+      </collision>
+      <visual name="back_5_0_visual">
+        <pose>1.4 -1.92 0.37 0 0 0</pose>
+        <geometry>
+          <mesh>
+            <uri>model://robot_description/worlds/assets/search_survey/meshes/back_5_0.stl</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <ambient>0.35 0.39 0.35 1</ambient>
+          <diffuse>0.35 0.39 0.35 1</diffuse>
+          <specular>0.18 0.18 0.18 1</specular>
+          <pbr>
+            <metal>
+              <metalness>0</metalness>
+              <roughness>0.96</roughness>
+            </metal>
+          </pbr>
+        </material>
+      </visual>
+      <collision name="back_5_0_collision">
+        <pose>1.4 -1.92 0.37 0 0 0</pose>
+        <geometry>
+          <mesh>
+            <uri>model://robot_description/worlds/assets/search_survey/meshes/back_5_0.stl</uri>
+          </mesh>
+        </geometry>
+      </collision>
+      <visual name="back_5_1_visual">
+        <pose>1.4 -1.92 1.1 0 0 0</pose>
+        <geometry>
+          <mesh>
+            <uri>model://robot_description/worlds/assets/search_survey/meshes/back_5_1.stl</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <ambient>0.35 0.39 0.35 1</ambient>
+          <diffuse>0.35 0.39 0.35 1</diffuse>
+          <specular>0.18 0.18 0.18 1</specular>
+          <pbr>
+            <metal>
+              <metalness>0</metalness>
+              <roughness>0.96</roughness>
+            </metal>
+          </pbr>
+        </material>
+      </visual>
+      <collision name="back_5_1_collision">
+        <pose>1.4 -1.92 1.1 0 0 0</pose>
+        <geometry>
+          <mesh>
+            <uri>model://robot_description/worlds/assets/search_survey/meshes/back_5_1.stl</uri>
+          </mesh>
+        </geometry>
+      </collision>
+      <visual name="back_6_0_visual">
+        <pose>2.0999999999999996 -1.92 0.37 0 0 0</pose>
+        <geometry>
+          <mesh>
+            <uri>model://robot_description/worlds/assets/search_survey/meshes/back_6_0.stl</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <ambient>0.35 0.39 0.35 1</ambient>
+          <diffuse>0.35 0.39 0.35 1</diffuse>
+          <specular>0.18 0.18 0.18 1</specular>
+          <pbr>
+            <metal>
+              <metalness>0</metalness>
+              <roughness>0.96</roughness>
+            </metal>
+          </pbr>
+        </material>
+      </visual>
+      <collision name="back_6_0_collision">
+        <pose>2.0999999999999996 -1.92 0.37 0 0 0</pose>
+        <geometry>
+          <mesh>
+            <uri>model://robot_description/worlds/assets/search_survey/meshes/back_6_0.stl</uri>
+          </mesh>
+        </geometry>
+      </collision>
+      <visual name="outcrop_0_visual">
+        <pose>-2.65 1.65 0.2 0 0 0</pose>
+        <geometry>
+          <mesh>
+            <uri>model://robot_description/worlds/assets/search_survey/meshes/outcrop_0.stl</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <ambient>0.35 0.39 0.35 1</ambient>
+          <diffuse>0.35 0.39 0.35 1</diffuse>
+          <specular>0.18 0.18 0.18 1</specular>
+          <pbr>
+            <metal>
+              <metalness>0</metalness>
+              <roughness>0.96</roughness>
+            </metal>
+          </pbr>
+        </material>
+      </visual>
+      <collision name="outcrop_0_collision">
+        <pose>-2.65 1.65 0.2 0 0 0</pose>
+        <geometry>
+          <mesh>
+            <uri>model://robot_description/worlds/assets/search_survey/meshes/outcrop_0.stl</uri>
+          </mesh>
+        </geometry>
+      </collision>
+      <visual name="outcrop_1_visual">
+        <pose>2.62 1.7 0.22 0 0 0</pose>
+        <geometry>
+          <mesh>
+            <uri>model://robot_description/worlds/assets/search_survey/meshes/outcrop_1.stl</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <ambient>0.35 0.39 0.35 1</ambient>
+          <diffuse>0.35 0.39 0.35 1</diffuse>
+          <specular>0.18 0.18 0.18 1</specular>
+          <pbr>
+            <metal>
+              <metalness>0</metalness>
+              <roughness>0.96</roughness>
+            </metal>
+          </pbr>
+        </material>
+      </visual>
+      <collision name="outcrop_1_collision">
+        <pose>2.62 1.7 0.22 0 0 0</pose>
+        <geometry>
+          <mesh>
+            <uri>model://robot_description/worlds/assets/search_survey/meshes/outcrop_1.stl</uri>
+          </mesh>
+        </geometry>
+      </collision>
+      <visual name="outcrop_2_visual">
+        <pose>-2.5 -0.6 0.22 0 0 0</pose>
+        <geometry>
+          <mesh>
+            <uri>model://robot_description/worlds/assets/search_survey/meshes/outcrop_2.stl</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <ambient>0.35 0.39 0.35 1</ambient>
+          <diffuse>0.35 0.39 0.35 1</diffuse>
+          <specular>0.18 0.18 0.18 1</specular>
+          <pbr>
+            <metal>
+              <metalness>0</metalness>
+              <roughness>0.96</roughness>
+            </metal>
+          </pbr>
+        </material>
+      </visual>
+      <collision name="outcrop_2_collision">
+        <pose>-2.5 -0.6 0.22 0 0 0</pose>
+        <geometry>
+          <mesh>
+            <uri>model://robot_description/worlds/assets/search_survey/meshes/outcrop_2.stl</uri>
+          </mesh>
+        </geometry>
+      </collision>
+      <visual name="outcrop_3_visual">
+        <pose>2.6 -1.4 0.24 0 0 0</pose>
+        <geometry>
+          <mesh>
+            <uri>model://robot_description/worlds/assets/search_survey/meshes/outcrop_3.stl</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <ambient>0.35 0.39 0.35 1</ambient>
+          <diffuse>0.35 0.39 0.35 1</diffuse>
+          <specular>0.18 0.18 0.18 1</specular>
+          <pbr>
+            <metal>
+              <metalness>0</metalness>
+              <roughness>0.96</roughness>
+            </metal>
+          </pbr>
+        </material>
+      </visual>
+      <collision name="outcrop_3_collision">
+        <pose>2.6 -1.4 0.24 0 0 0</pose>
+        <geometry>
+          <mesh>
+            <uri>model://robot_description/worlds/assets/search_survey/meshes/outcrop_3.stl</uri>
+          </mesh>
+        </geometry>
+      </collision>
+      <visual name="west_gallery_wall_0_visual">
+        <pose>0 0 0 0 0 0</pose>
+        <geometry>
+          <mesh>
+            <uri>model://robot_description/worlds/assets/search_survey/meshes/west_gallery_wall_0.stl</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <ambient>0.33 0.37 0.34 1</ambient>
+          <diffuse>0.33 0.37 0.34 1</diffuse>
+          <specular>0.18 0.18 0.18 1</specular>
+          <pbr>
+            <metal>
+              <metalness>0</metalness>
+              <roughness>0.96</roughness>
+            </metal>
+          </pbr>
+        </material>
+      </visual>
+      <collision name="west_gallery_wall_0_collision">
+        <pose>0 0 0 0 0 0</pose>
+        <geometry>
+          <mesh>
+            <uri>model://robot_description/worlds/assets/search_survey/meshes/west_gallery_wall_0.stl</uri>
+          </mesh>
+        </geometry>
+      </collision>
+      <visual name="west_gallery_wall_1_visual">
+        <pose>0 0 0 0 0 0</pose>
+        <geometry>
+          <mesh>
+            <uri>model://robot_description/worlds/assets/search_survey/meshes/west_gallery_wall_1.stl</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <ambient>0.34500000000000003 0.385 0.35500000000000004 1</ambient>
+          <diffuse>0.34500000000000003 0.385 0.35500000000000004 1</diffuse>
+          <specular>0.18 0.18 0.18 1</specular>
+          <pbr>
+            <metal>
+              <metalness>0</metalness>
+              <roughness>0.96</roughness>
+            </metal>
+          </pbr>
+        </material>
+      </visual>
+      <collision name="west_gallery_wall_1_collision">
+        <pose>0 0 0 0 0 0</pose>
+        <geometry>
+          <mesh>
+            <uri>model://robot_description/worlds/assets/search_survey/meshes/west_gallery_wall_1.stl</uri>
+          </mesh>
+        </geometry>
+      </collision>
+      <visual name="west_gallery_wall_2_visual">
+        <pose>0 0 0 0 0 0</pose>
+        <geometry>
+          <mesh>
+            <uri>model://robot_description/worlds/assets/search_survey/meshes/west_gallery_wall_2.stl</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <ambient>0.36 0.4 0.37 1</ambient>
+          <diffuse>0.36 0.4 0.37 1</diffuse>
+          <specular>0.18 0.18 0.18 1</specular>
+          <pbr>
+            <metal>
+              <metalness>0</metalness>
+              <roughness>0.96</roughness>
+            </metal>
+          </pbr>
+        </material>
+      </visual>
+      <collision name="west_gallery_wall_2_collision">
+        <pose>0 0 0 0 0 0</pose>
+        <geometry>
+          <mesh>
+            <uri>model://robot_description/worlds/assets/search_survey/meshes/west_gallery_wall_2.stl</uri>
+          </mesh>
+        </geometry>
+      </collision>
+      <visual name="west_gallery_front_cap_visual">
+        <pose>0 0 0 0 0 0</pose>
+        <geometry>
+          <mesh>
+            <uri>model://robot_description/worlds/assets/search_survey/meshes/west_gallery_front_cap.stl</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <ambient>0.35 0.39 0.36 1</ambient>
+          <diffuse>0.35 0.39 0.36 1</diffuse>
+          <specular>0.18 0.18 0.18 1</specular>
+          <pbr>
+            <metal>
+              <metalness>0</metalness>
+              <roughness>0.96</roughness>
+            </metal>
+          </pbr>
+        </material>
+      </visual>
+      <collision name="west_gallery_front_cap_collision">
+        <pose>0 0 0 0 0 0</pose>
+        <geometry>
+          <mesh>
+            <uri>model://robot_description/worlds/assets/search_survey/meshes/west_gallery_front_cap.stl</uri>
+          </mesh>
+        </geometry>
+      </collision>
+      <visual name="west_empty_recess_visual">
+        <pose>-1.78 1.4 0.35 0 0 0</pose>
+        <geometry>
+          <mesh>
+            <uri>model://robot_description/worlds/assets/search_survey/meshes/west_empty_recess.stl</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <ambient>0.35 0.39 0.35 1</ambient>
+          <diffuse>0.35 0.39 0.35 1</diffuse>
+          <specular>0.18 0.18 0.18 1</specular>
+          <pbr>
+            <metal>
+              <metalness>0</metalness>
+              <roughness>0.96</roughness>
+            </metal>
+          </pbr>
+        </material>
+      </visual>
+      <collision name="west_empty_recess_collision">
+        <pose>-1.78 1.4 0.35 0 0 0</pose>
+        <geometry>
+          <mesh>
+            <uri>model://robot_description/worlds/assets/search_survey/meshes/west_empty_recess.stl</uri>
+          </mesh>
+        </geometry>
+      </collision>
+      <visual name="east_gallery_wall_0_visual">
+        <pose>0 0 0 0 0 0</pose>
+        <geometry>
+          <mesh>
+            <uri>model://robot_description/worlds/assets/search_survey/meshes/east_gallery_wall_0.stl</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <ambient>0.33 0.37 0.34 1</ambient>
+          <diffuse>0.33 0.37 0.34 1</diffuse>
+          <specular>0.18 0.18 0.18 1</specular>
+          <pbr>
+            <metal>
+              <metalness>0</metalness>
+              <roughness>0.96</roughness>
+            </metal>
+          </pbr>
+        </material>
+      </visual>
+      <collision name="east_gallery_wall_0_collision">
+        <pose>0 0 0 0 0 0</pose>
+        <geometry>
+          <mesh>
+            <uri>model://robot_description/worlds/assets/search_survey/meshes/east_gallery_wall_0.stl</uri>
+          </mesh>
+        </geometry>
+      </collision>
+      <visual name="east_gallery_wall_1_visual">
+        <pose>0 0 0 0 0 0</pose>
+        <geometry>
+          <mesh>
+            <uri>model://robot_description/worlds/assets/search_survey/meshes/east_gallery_wall_1.stl</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <ambient>0.34500000000000003 0.385 0.35500000000000004 1</ambient>
+          <diffuse>0.34500000000000003 0.385 0.35500000000000004 1</diffuse>
+          <specular>0.18 0.18 0.18 1</specular>
+          <pbr>
+            <metal>
+              <metalness>0</metalness>
+              <roughness>0.96</roughness>
+            </metal>
+          </pbr>
+        </material>
+      </visual>
+      <collision name="east_gallery_wall_1_collision">
+        <pose>0 0 0 0 0 0</pose>
+        <geometry>
+          <mesh>
+            <uri>model://robot_description/worlds/assets/search_survey/meshes/east_gallery_wall_1.stl</uri>
+          </mesh>
+        </geometry>
+      </collision>
+      <visual name="east_gallery_wall_2_visual">
+        <pose>0 0 0 0 0 0</pose>
+        <geometry>
+          <mesh>
+            <uri>model://robot_description/worlds/assets/search_survey/meshes/east_gallery_wall_2.stl</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <ambient>0.36 0.4 0.37 1</ambient>
+          <diffuse>0.36 0.4 0.37 1</diffuse>
+          <specular>0.18 0.18 0.18 1</specular>
+          <pbr>
+            <metal>
+              <metalness>0</metalness>
+              <roughness>0.96</roughness>
+            </metal>
+          </pbr>
+        </material>
+      </visual>
+      <collision name="east_gallery_wall_2_collision">
+        <pose>0 0 0 0 0 0</pose>
+        <geometry>
+          <mesh>
+            <uri>model://robot_description/worlds/assets/search_survey/meshes/east_gallery_wall_2.stl</uri>
+          </mesh>
+        </geometry>
+      </collision>
+      <visual name="east_gallery_front_cap_visual">
+        <pose>0 0 0 0 0 0</pose>
+        <geometry>
+          <mesh>
+            <uri>model://robot_description/worlds/assets/search_survey/meshes/east_gallery_front_cap.stl</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <ambient>0.35 0.39 0.36 1</ambient>
+          <diffuse>0.35 0.39 0.36 1</diffuse>
+          <specular>0.18 0.18 0.18 1</specular>
+          <pbr>
+            <metal>
+              <metalness>0</metalness>
+              <roughness>0.96</roughness>
+            </metal>
+          </pbr>
+        </material>
+      </visual>
+      <collision name="east_gallery_front_cap_collision">
+        <pose>0 0 0 0 0 0</pose>
+        <geometry>
+          <mesh>
+            <uri>model://robot_description/worlds/assets/search_survey/meshes/east_gallery_front_cap.stl</uri>
+          </mesh>
+        </geometry>
+      </collision>
+      <visual name="east_empty_recess_visual">
+        <pose>1.78 1.4 0.35 0 0 0</pose>
+        <geometry>
+          <mesh>
+            <uri>model://robot_description/worlds/assets/search_survey/meshes/east_empty_recess.stl</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <ambient>0.35 0.39 0.35 1</ambient>
+          <diffuse>0.35 0.39 0.35 1</diffuse>
+          <specular>0.18 0.18 0.18 1</specular>
+          <pbr>
+            <metal>
+              <metalness>0</metalness>
+              <roughness>0.96</roughness>
+            </metal>
+          </pbr>
+        </material>
+      </visual>
+      <collision name="east_empty_recess_collision">
+        <pose>1.78 1.4 0.35 0 0 0</pose>
+        <geometry>
+          <mesh>
+            <uri>model://robot_description/worlds/assets/search_survey/meshes/east_empty_recess.stl</uri>
+          </mesh>
+        </geometry>
+      </collision>
+      <visual name="rear_survey_sill_visual">
+        <pose>0 0 0 0 0 0</pose>
+        <geometry>
+          <mesh>
+            <uri>model://robot_description/worlds/assets/search_survey/meshes/rear_survey_sill.stl</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <ambient>0.38 0.4 0.35 1</ambient>
+          <diffuse>0.38 0.4 0.35 1</diffuse>
+          <specular>0.18 0.18 0.18 1</specular>
+          <pbr>
+            <metal>
+              <metalness>0</metalness>
+              <roughness>0.96</roughness>
+            </metal>
+          </pbr>
+        </material>
+      </visual>
+      <collision name="rear_survey_sill_collision">
+        <pose>0 0 0 0 0 0</pose>
+        <geometry>
+          <mesh>
+            <uri>model://robot_description/worlds/assets/search_survey/meshes/rear_survey_sill.stl</uri>
+          </mesh>
+        </geometry>
+      </collision>
+      <visual name="bell_ledge_visual">
+        <pose>-1.43 0.45 0.055 0 0 0</pose>
+        <geometry>
+          <mesh>
+            <uri>model://robot_description/worlds/assets/search_survey/meshes/bell_ledge.stl</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <ambient>0.39 0.4 0.35 1</ambient>
+          <diffuse>0.39 0.4 0.35 1</diffuse>
+          <specular>0.18 0.18 0.18 1</specular>
+          <pbr>
+            <metal>
+              <metalness>0</metalness>
+              <roughness>0.96</roughness>
+            </metal>
+          </pbr>
+        </material>
+      </visual>
+      <collision name="bell_ledge_collision">
+        <pose>-1.43 0.45 0.055 0 0 0</pose>
+        <geometry>
+          <mesh>
+            <uri>model://robot_description/worlds/assets/search_survey/meshes/bell_ledge.stl</uri>
+          </mesh>
+        </geometry>
+      </collision>
+      <visual name="01_ships_bell_visual">
+        <pose>-1.43 0.45 0.145 0 0 -0.2</pose>
+        <geometry>
+          <mesh>
+            <uri>model://robot_description/worlds/assets/search_survey/meshes/01_ships_bell.stl</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <ambient>0.43 0.31 0.14 1</ambient>
+          <diffuse>0.43 0.31 0.14 1</diffuse>
+          <specular>0.18 0.18 0.18 1</specular>
+          <pbr>
+            <metal>
+              <metalness>0.65</metalness>
+              <roughness>0.55</roughness>
+            </metal>
+          </pbr>
+        </material>
+      </visual>
+      <collision name="01_ships_bell_collision">
+        <pose>-1.43 0.45 0.145 0 0 -0.2</pose>
+        <geometry>
+          <mesh>
+            <uri>model://robot_description/worlds/assets/search_survey/meshes/01_ships_bell.stl</uri>
+          </mesh>
+        </geometry>
+      </collision>
+      <visual name="02_admiralty_anchor_visual">
+        <pose>1.43 0.42 0.055 0 0 0.12</pose>
+        <geometry>
+          <mesh>
+            <uri>model://robot_description/worlds/assets/search_survey/meshes/02_admiralty_anchor.stl</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <ambient>0.22 0.18 0.14 1</ambient>
+          <diffuse>0.22 0.18 0.14 1</diffuse>
+          <specular>0.18 0.18 0.18 1</specular>
+          <pbr>
+            <metal>
+              <metalness>0.55</metalness>
+              <roughness>0.55</roughness>
+            </metal>
+          </pbr>
+        </material>
+      </visual>
+      <collision name="02_admiralty_anchor_collision">
+        <pose>1.43 0.42 0.055 0 0 0.12</pose>
+        <geometry>
+          <mesh>
+            <uri>model://robot_description/worlds/assets/search_survey/meshes/02_admiralty_anchor.stl</uri>
+          </mesh>
+        </geometry>
+      </collision>
+      <visual name="propeller_rest_visual">
+        <pose>0 -1.05 0.025 0 0 0</pose>
+        <geometry>
+          <mesh>
+            <uri>model://robot_description/worlds/assets/search_survey/meshes/propeller_rest.stl</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <ambient>0.47 0.45 0.37 1</ambient>
+          <diffuse>0.47 0.45 0.37 1</diffuse>
+          <specular>0.18 0.18 0.18 1</specular>
+          <pbr>
+            <metal>
+              <metalness>0</metalness>
+              <roughness>0.96</roughness>
+            </metal>
+          </pbr>
+        </material>
+      </visual>
+      <collision name="propeller_rest_collision">
+        <pose>0 -1.05 0.025 0 0 0</pose>
+        <geometry>
+          <mesh>
+            <uri>model://robot_description/worlds/assets/search_survey/meshes/propeller_rest.stl</uri>
+          </mesh>
+        </geometry>
+      </collision>
+      <visual name="03_four_blade_propeller_visual">
+        <pose>0 -1.05 0.11 0 0 0.15</pose>
+        <geometry>
+          <mesh>
+            <uri>model://robot_description/worlds/assets/search_survey/meshes/03_four_blade_propeller.stl</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <ambient>0.28 0.225 0.14 1</ambient>
+          <diffuse>0.28 0.225 0.14 1</diffuse>
+          <specular>0.18 0.18 0.18 1</specular>
+          <pbr>
+            <metal>
+              <metalness>0.7</metalness>
+              <roughness>0.55</roughness>
+            </metal>
+          </pbr>
+        </material>
+      </visual>
+      <collision name="03_four_blade_propeller_collision">
+        <pose>0 -1.05 0.11 0 0 0.15</pose>
+        <geometry>
+          <mesh>
+            <uri>model://robot_description/worlds/assets/search_survey/meshes/03_four_blade_propeller.stl</uri>
+          </mesh>
+        </geometry>
+      </collision>
+      <light name="cave_reflected_fill" type="point">
+        <pose>0 -0.3 1.65 0 0 0</pose>
+        <diffuse>0.14 0.17 0.20 1</diffuse>
+        <specular>0.10 0.10 0.10 1</specular>
+        <cast_shadows>false</cast_shadows>
+        <attenuation>
+          <range>4</range>
+          <constant>1</constant>
+          <linear>.3</linear>
+          <quadratic>.15</quadratic>
+        </attenuation>
+      </light>
+    </link>
+  </model>
+</sdf>

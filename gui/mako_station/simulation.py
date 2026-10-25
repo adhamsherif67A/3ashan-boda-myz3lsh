@@ -33,7 +33,7 @@ def commands_from_file(path):
 
 
 def source_environment(workspace=WORKSPACE,software=SOFTWARE):
-    sources=[Path('/opt/ros/humble/setup.bash'),workspace/'install/setup.bash',software/'install/local_setup.bash']
+    sources=[Path(os.environ.get('MAKO_ROS_SETUP','/opt/ros/humble/setup.bash')),workspace/'install/setup.bash',software/'install/local_setup.bash']
     missing=[str(p) for p in sources if not p.exists()]
     if missing:raise RuntimeError('Missing ROS workspace setup: '+', '.join(missing))
     command='\n'.join('source '+shlex.quote(str(p)) for p in sources)+'\nenv -0'
@@ -92,7 +92,7 @@ class SimulationSession:
             raise ValueError('Invalid world or odometry mode')
         if slam and odometry!='vision':
             raise ValueError('SLAM mapping requires ZED visual odometry')
-        runs=self.workspace/'gui/runs';runs.mkdir(parents=True,exist_ok=True)
+        runs=Path(os.environ.get('MAKO_DATA_DIR',self.workspace/'gui'))/'runs';runs.mkdir(parents=True,exist_ok=True)
         self.lock=open(runs/'simulation.lock','a')
         try:fcntl.flock(self.lock,fcntl.LOCK_EX|fcntl.LOCK_NB)
         except BlockingIOError:

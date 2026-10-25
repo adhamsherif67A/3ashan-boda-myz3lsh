@@ -1,0 +1,63 @@
+name: Operation MX desktop release
+on:
+  push:
+    tags: ['v*']
+  release:
+    types: [published]
+  workflow_dispatch:
+    inputs:
+      version:
+        description: Stable version to build as a reviewable artifact (for example 1.0.1)
+        required: true
+permissions:
+  contents: read
+concurrency:
+  group: desktop-release-${{ github.event.release.tag_name || inputs.version || github.ref_name }}
+  cancel-in-progress: false
+jobs:
+  package:
+    if: github.event_name == 'workflow_dispatch' || !github.event.release.prerelease
+    runs-on: ubuntu-22.04
+    container: ros:humble-ros-base-jammy
+    permissions:
+      contents: write
+    steps:
+      - name: Install build and runtime dependencies
+        run: |
+          apt-get update
+          DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends git ca-certificates python3-cryptography python3-pyqt5 python3-yaml python3-pytest ros-humble-mavros-msgs ros-humble-rtabmap-launch ros-humble-apriltag-msgs ros-humble-aruco-msgs ros-humble-aruco-opencv-msgs ros-humble-nav2-msgs
+      - uses: actions/checkout@v4
+      - name: Validate release version and main ancestry
+        if: github.event_name == 'push'
+        shell: bash
+        run: |
+          test "v$(cat gui/mako_station/VERSION)" = "$GITHUB_REF_NAME"
+          git config --global --add safe.directory "$GITHUB_WORKSPACE"
+          git fetch --no-tags origin main
+          git merge-base --is-ancestor "$GITHUB_SHA" origin/main
+      - name: Test updater and UI
+        shell: bash
+        run: |
+          source /opt/ros/humble/setup.bash
+          QT_QPA_PLATFORM=offscreen python3 -m unittest discover -s gui/tests -q
+          python3 -m pytest -q src/robot_description/test/test_autotune_client.py
+      - name: Collect matching RTAB-Map runtime
+        shell: bash
+        run: |
+          source /opt/ros/humble/setup.bash
+          python3 tools/collect_desktop_runtime.py /tmp/operation-mx-runtime
+      - name: Build signed release and installer
+        env:
+          RELEASE_VERSION: ${{ github.event.release.tag_name || inputs.version || github.ref_name }}
+          OPERATION_MX_SIGNING_KEY: ${{ secrets.OPERATION_MX_SIGNING_KEY }}
+        run: python3 tools/build_desktop_release.py --version "$RELEASE_VERSION" --runtime /tmp/operation-mx-runtime
+      - uses: actions/upload-artifact@v4
+        with:
+          name: operation-mx-desktop
+          path: dist/desktop/
+      - name: Publish private app release after validation
+        if: github.event_name == 'release' || github.event_name == 'push'
+        env:
+          RELEASE_TAG: ${{ github.event.release.tag_name || github.ref_name }}
+          GITHUB_TOKEN: ${{ github.token }}
+        run: python3 tools/publish_desktop_release.py "$RELEASE_TAG" --create --target "$GITHUB_SHA" --notes-file gui/RELEASE_NOTES.md

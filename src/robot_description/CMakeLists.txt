@@ -25,6 +25,7 @@ install(
 
 install(
     PROGRAMS
+        scripts/autotune.py
         scripts/cloud_frame_relay.py
         scripts/check_sim_tf.py
         scripts/gz_odom_to_mavros.py
@@ -38,6 +39,7 @@ if(BUILD_TESTING)
   ament_add_pytest_test(model_frames test/test_model_frames.py)
   ament_add_pytest_test(reset_world test/test_reset_world.py)
   ament_add_pytest_test(external_nav test/test_external_nav.py)
+  ament_add_pytest_test(autotune_client test/test_autotune_client.py)
 endif()
 
 ament_package()
