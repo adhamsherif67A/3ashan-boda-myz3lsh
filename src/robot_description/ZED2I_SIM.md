@@ -2,7 +2,7 @@
 
 The previous zed_link, zed_joint, single sensor, and zed_link.STL have been replaced by the Stereolabs ZED 2i mesh and camera frame tree. The camera mounts to rov_base_link at x=0.186469391519 m, y=-0.000223754166 m, z=-0.0150005512922 m with zero rotation. This places zed2i_camera_center 36.384607519 mm ahead of the acrylic sphere center, on the same centerline. The camera model adds 15 mm in Z between the mount and center; the mount position accounts for this. The fixed base_link -> rov_base_link joint rotates 180 degrees about Z. Official eye offsets are x=-5 mm and y=+/-60 mm relative to the camera center. Optical frames use X right, Y down, Z forward.
 
-Two dedicated RGB cameras provide 1280x720 pilot images and CameraInfo at 30 Hz. Two colocated RGB-D sensors provide registered depth in meters and point clouds at 15 Hz, with 110 degree horizontal field of view and 0.2–15 m clipping. These are ideal simulated cameras, not calibrated real-camera measurements or ZED SDK stereo depth. Field of view and clipping can be edited in urdf/zed2i_sim.urdf.xacro.
+Two dedicated RGB cameras provide pilot images and CameraInfo at `pilot_fps`. Two RGB-D sensors provide color, registered depth in meters, and point clouds at `camera_fps`, with 110 degree horizontal field of view and 0.2–15 m clipping. These are ideal simulated cameras, not calibrated real-camera measurements or ZED SDK stereo depth. Field of view and clipping can be edited in urdf/zed2i_sim.urdf.xacro.
 
 Build and launch from the workspace:
 
@@ -17,7 +17,12 @@ The explicit base path avoids the duplicate robot_description package in legacy/
 
 Topics under /zed2i/zed_node/:
 
-- left/image_rect_color and right/image_rect_color
+- left/image_rect_color and right/image_rect_color, plus left/right camera info,
+  are the dedicated pilot RGB streams
+- left/depth/image_raw and right/depth/image_raw (additional per-eye depth)
+- in vision mode, synchronized RGB-D inputs are also published on
+  `/zed2i/rgbd/left/image_rect_color`, `/zed2i/rgbd/left/depth/image_raw`, and
+  `/zed2i/rgbd/left/camera_info`; visual odometry and SLAM use this triplet
 - left/camera_info and right/camera_info
 - left/depth/image_raw and right/depth/image_raw (additional simulated per-eye depth)
 - left/points and right/points
@@ -31,13 +36,71 @@ Use fixed frame odom in RViz and add the registered point-cloud topic. Do not la
 
 Upstream model provenance and license: meshes/ZED_SOURCE.md and meshes/ZED_LICENSE.
 
-The camera bridges use on-demand forwarding (`lazy: true`) and one-message queues. ROS topics remain visible while idle; subscribe in RViz or with ros2 topic echo/hz to activate a stream. This limits memory usage for the large image and point-cloud payloads.
+Pilot, chase, bottom, and point-cloud bridges use on-demand forwarding (`lazy: true`). The synchronized left RGB-D triplet uses a dedicated bridge in vision mode so Gazebo supplies matching image, depth, and CameraInfo stamps to visual odometry and SLAM. Subscribe in RViz or with `ros2 topic echo/hz` to inspect streams.
+
+## ROV depth topic
+
+The simulation also publishes the vehicle's ground-truth depth on `/rov/depth`
+as `std_msgs/msg/Float32`, in meters, positive downward from the world water
+surface at `z = 0`. Above-surface values are clamped to zero. This is separate
+from the ZED depth images and point clouds; those camera topics and the SLAM
+inputs are unchanged. Check the stream with `ros2 topic echo /rov/depth`.
+
+## Fly transect autonomy
+
+In the Operation MX app, start the Team Pool simulation, connect and manually
+arm the ROV, then press **Start transect**. The controller approaches the
+known start side, waits until both saturated blue rails are detected without a
+red rail intruding between them. Low-saturation cyan/grey pool tiles are
+rejected, and detection is temporally filtered so a missed camera frame does
+not reset the mission,
+then commands forward motion through MAVROS while following the fixed
+centerline between the two blue rails. Crossing is anchored to the prop's
+known world corridor (`x=1.0` to `x=4.0`, `y=-3.5`) so it cannot drift onto
+the pool tiles. it commands a sustained 0.60 m/s local-X velocity through
+`/mavros/setpoint_velocity/cmd_vel`, with 0.75 m progress markers for
+diagnostics. This avoids relying on the ineffective moving
+`PoseStamped` target path in the ArduSub simulation. A motion watchdog faults
+and holds if it produces less than 0.10 m of measured forward progress for
+2.5 s.
+The red rails are not steering targets after crossing starts. If the blue pair
+is lost, forward thrust is stopped immediately; after a 1.0 s camera-loss
+hold, it stops at the current position and holds. **Cancel** returns to
+ALT_HOLD; the mission never arms the vehicle. It is available only in
+`pool.world`.
 
 The default is 1280x720 pilot RGB at 30 Hz, with depth and bottom RGB at 15 Hz. Resolution and frame rate are launch arguments:
 
 ```bash
 ros2 launch robot_description gazebo.launch.py camera_width:=1280 camera_height:=720 pilot_fps:=30 camera_fps:=15
 ```
+
+For faster simulation, use a performance profile. The profiles change camera
+rendering and transport workload without changing the transect controller:
+
+```bash
+ros2 launch robot_description gazebo.launch.py performance_profile:=maximum_fps
+```
+
+Available profiles:
+
+- `maximum_fps`: 640x360, RGB-D/bottom 10 Hz, pilot RGB 15 Hz
+- `balanced`: 960x540, RGB-D/bottom 12 Hz, pilot RGB 20 Hz
+- `vision_quality`: 1280x720, RGB-D/bottom 15 Hz, pilot RGB 24 Hz
+- `full_sensors`: 1280x720, RGB-D/bottom 15 Hz, pilot RGB 30 Hz
+
+Individual `camera_width`, `camera_height`, `camera_fps`, and `pilot_fps`
+arguments override their profile values. SLAM runs use a dedicated 960x540,
+15 Hz RGB-D profile with a 20 Hz pilot stream. Visual odometry uses more
+features, a higher inlier threshold, tighter RGB-D synchronization, and an
+8 m useful depth range so far-wall depth noise does not dominate the map.
+Operation MX reports tracking quality, feature count, inliers, loop closures,
+and RGB-D rate.
+After three consecutive correspondence failures, visual odometry resets its
+short-term reference automatically. This lets tracking recover from a
+temporary low-texture or synchronization outage instead of leaving RTAB-Map
+permanently without odometry or allowing a failed motion guess to grow
+without bound.
 
 `pilot_fps:=60` requests 60 Hz RGB while leaving depth at 15 Hz. It is an optional setting, not a guaranteed workstation rate. Keeping `camera_fps:=15` avoids doubling the expensive depth/cloud generation. Subscribe only to the eye topics you use; RGB aliases add another transported image stream.
 
@@ -109,3 +172,10 @@ the vehicle's translation and rotation without changing inertia or collisions.
 `headless:=true` starts only the Gazebo server, with EGL-rendered camera feeds.
 MarineXperts Mako Pilot integrates this view with the ZED left eye and bottom inset.
 Application setup and session ownership: ../../../gui/README.md in the workspace.
+# Vehicle depth topic
+
+The simulation publishes the ROV's ground-truth depth on `/rov/depth` as
+`std_msgs/msg/Float32`, in meters, positive downward from the water surface
+(world `z = 0`). Values above the surface are clamped to zero. This vehicle
+depth estimate is separate from the ZED per-pixel depth images and point cloud;
+the camera topics and RTAB-Map inputs are unchanged.

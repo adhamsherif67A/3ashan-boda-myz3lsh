@@ -69,10 +69,27 @@ def launch_setup(context):
     # COMPILE XACRO: This dynamically injects your separate 
     # ardupilot.xacro file into the URDF before launching.
     # ==========================================================
-    camera_settings = {
-        name: LaunchConfiguration(name).perform(context)
-        for name in ('camera_width', 'camera_height', 'camera_fps', 'pilot_fps', 'sitl_port_in', 'sitl_port_out')
+    profile = LaunchConfiguration('performance_profile').perform(context)
+    profile_settings = {
+        'maximum_fps': ('640', '360', '10', '15'),
+        'balanced': ('960', '540', '12', '20'),
+        'vision_quality': ('1280', '720', '15', '24'),
+        'full_sensors': ('1280', '720', '15', '30'),
     }
+    if profile not in profile_settings:
+        raise ValueError(f'Unknown performance_profile: {profile}')
+    profile_values = profile_settings[profile]
+    camera_settings = {
+        'camera_width': LaunchConfiguration('camera_width').perform(context),
+        'camera_height': LaunchConfiguration('camera_height').perform(context),
+        'camera_fps': LaunchConfiguration('camera_fps').perform(context),
+        'pilot_fps': LaunchConfiguration('pilot_fps').perform(context),
+        'sitl_port_in': LaunchConfiguration('sitl_port_in').perform(context),
+        'sitl_port_out': LaunchConfiguration('sitl_port_out').perform(context),
+    }
+    for name, value in zip(('camera_width', 'camera_height', 'camera_fps', 'pilot_fps'), profile_values):
+        if camera_settings[name] == 'profile':
+            camera_settings[name] = value
     if any(int(camera_settings[name]) <= 0 for name in ('camera_width', 'camera_height')):
         raise ValueError('Camera dimensions must be positive integers')
     if float(camera_settings['camera_fps']) <= 0:
@@ -108,21 +125,22 @@ def launch_setup(context):
             launch_arguments={
                 'use_sim_time': 'true',
                 'visual_odometry': 'false',
-                'rgb_topic': '/zed2i/zed_node/left/image_rect_color',
-                'depth_topic': '/zed2i/zed_node/left/depth/image_raw',
-                'camera_info_topic': '/zed2i/zed_node/left/camera_info',
+                'rgb_topic': '/zed2i/rgbd/left/image_rect_color',
+                'depth_topic': '/zed2i/rgbd/left/depth/image_raw',
+                'camera_info_topic': '/zed2i/rgbd/left/camera_info',
                 'odom_topic': '/zed2i/vo/odometry',
                 'frame_id': 'base_link',
                 'map_frame_id': 'map',
                 'publish_tf_map': 'true',
                 'approx_sync': 'true',
-                'approx_sync_max_interval': '0.05',
+                'approx_sync_max_interval': '0.025',
                 'qos': '1',
-                'topic_queue_size': '2',
-                'sync_queue_size': '5',
+                'topic_queue_size': '3',
+                'sync_queue_size': '8',
                 'wait_for_transform': '0.2',
+                'args': '--ros-args -p RGBD/LinearUpdate:=0.03 -p RGBD/AngularUpdate:=0.03 -p RGBD/NeighborLinkRefining:=true -p Reg/Strategy:=1 -p Reg/Force3DoF:=false -p Grid/RangeMax:=8.0 -p Odom/ResetCountdown:=3',
                 'database_path': database_path,
-                'rtabmap_viz': LaunchConfiguration('slam_viz').perform(context),
+                'rtabmap_viz': 'true',
                 'rviz': 'false',
             }.items(),
         ))
@@ -209,6 +227,30 @@ def launch_setup(context):
             output='screen'
         ),
 
+        # Publish the ROV's positive-down depth as a dedicated simulation topic.
+        # This is ground-truth depth; it does not replace visual odometry or SLAM.
+        Node(
+            package='robot_description',
+            executable='odom_to_depth.py',
+            name='odom_to_depth',
+            parameters=[{'use_sim_time': True,
+                         'source_topic': '/odometry/gz',
+                         'depth_topic': '/rov/depth',
+                         'surface_z': 0.0}],
+            output='screen',
+        ),
+
+        # The transect controller is idle until explicitly enabled from the UI.
+        # Arming remains a manual operator action.
+        Node(
+            package='robot_description',
+            executable='fly_transect_mission.py',
+            name='fly_transect_mission',
+            parameters=[{'use_sim_time': True,
+                         'world': LaunchConfiguration('world').perform(context)}],
+            output='screen',
+        ),
+
         # Feed the selected body-frame odometry to ArduPilot through MAVROS. The
         # MAVROS ROS-to-FCU endpoint is /mavros/odometry/out; EKF3
         # uses this ExternalNav stream instead of the invalid air-pressure
@@ -288,6 +330,18 @@ def launch_setup(context):
                          'use_sim_time': True}],
             output='screen',
         ),
+
+        # Visual odometry and SLAM need color, depth, and calibration from the
+        # same RGB-D sensor. Keep this matched triplet active only in vision mode.
+        Node(
+            package='ros_gz_bridge',
+            executable='parameter_bridge',
+            name='zed2i_rgbd_bridge',
+            condition=IfCondition('true' if vision else 'false'),
+            parameters=[{'config_file': str(package_share / 'config' / 'zed2i_rgbd_bridge.yaml'),
+                         'use_sim_time': True}],
+            output='screen',
+        ),
     ]
 
 
@@ -327,18 +381,20 @@ def generate_launch_description():
         DeclareLaunchArgument('slam_database_path',
                               default_value=str(Path.home() / '.ros' / 'mako_slam.db'),
                               description='RTAB-Map database path. Existing databases are reused, not deleted.'),
-        DeclareLaunchArgument('slam_viz', default_value='true', choices=['true', 'false'],
-                              description='Open the RTAB-Map map viewer when SLAM is enabled.'),
         DeclareLaunchArgument(
             'publish_odom_tf', default_value='true', choices=['true', 'false'],
             description='Let Gazebo own odom -> base_link. Disable for an external estimator.'),
         DeclareLaunchArgument(
             'publish_map_tf', default_value='true', choices=['true', 'false'],
             description='Align map with odom for ground-truth simulation. Disable when SLAM owns this edge.'),
-        DeclareLaunchArgument('camera_width', default_value='1280', description='Native RGB and registered depth width'),
-        DeclareLaunchArgument('camera_height', default_value='720', description='Native RGB and registered depth height'),
-        DeclareLaunchArgument('camera_fps', default_value='15', description='RGB-D/depth and bottom camera processing rate'),
-        DeclareLaunchArgument('pilot_fps', default_value='30', description='Left/right pilot RGB rate; 60 is optional'),
+        DeclareLaunchArgument('camera_width', default_value='profile', description='Native RGB/depth width; profile or explicit integer'),
+        DeclareLaunchArgument('camera_height', default_value='profile', description='Native RGB/depth height; profile or explicit integer'),
+        DeclareLaunchArgument('camera_fps', default_value='profile', description='RGB-D/depth and bottom camera rate; profile or explicit number'),
+        DeclareLaunchArgument('pilot_fps', default_value='profile', description='Pilot RGB rate; profile or explicit number'),
+        DeclareLaunchArgument(
+            'performance_profile', default_value='balanced',
+            choices=['maximum_fps', 'balanced', 'vision_quality', 'full_sensors'],
+            description='Camera/rendering profile; explicit camera_* arguments override profile values'),
         DeclareLaunchArgument('render_gpu', default_value='auto', choices=['auto', 'nvidia', 'default'], description='Use NVIDIA PRIME offload when available'),
         OpaqueFunction(function=launch_setup),
     ])

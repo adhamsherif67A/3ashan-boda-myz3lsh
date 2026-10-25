@@ -10,7 +10,9 @@ ros2 launch robot_description gazebo.launch.py odometry_source:=vision
 ```
 
 The existing MAVROS and ArduSub SITL must be running with their normal FCU URL.
-The pipeline uses ZED left RGB, left registered depth and left CameraInfo;
+The pipeline uses the synchronized Gazebo RGB-D triplet on
+`/zed2i/rgbd/left/image_rect_color`, `/zed2i/rgbd/left/depth/image_raw`, and
+`/zed2i/rgbd/left/camera_info`;
 it does not use the bottom camera, IMU fusion, Gazebo odometry as an estimate,
 or SLAM loop closure. RGB-D depth supplies metric scale. Gazebo ground truth
 remains on /odometry/gz for evaluation only.
@@ -60,8 +62,7 @@ The application uses 640x360 camera images and a new `rtabmap.db` in each
 session directory under `mako_ws/gui/runs/`; stopping a session leaves its
 database intact. Direct launch is also supported with
 `slam:=true odometry_source:=vision`; set `slam_database_path:=...` to choose a
-database location. Use `slam_viz:=false` for a headless launch. Existing
-databases are reused, not deleted automatically.
+database location. Existing databases are reused, not deleted automatically.
 
 ## Runtime dependency
 

@@ -1,0 +1,26 @@
+# Synchronized left RGB-D inputs for visual odometry and RTAB-Map.
+# These three streams come from one Gazebo RGB-D sensor and share timestamps.
+- gz_topic_name: /zed2i/sim/left/image
+  ros_topic_name: /zed2i/rgbd/left/image_rect_color
+  ros_type_name: sensor_msgs/msg/Image
+  gz_type_name: gz.msgs.Image
+  direction: GZ_TO_ROS
+  publisher_queue: 2
+  subscriber_queue: 2
+  lazy: false
+- gz_topic_name: /zed2i/sim/left/depth_image
+  ros_topic_name: /zed2i/rgbd/left/depth/image_raw
+  ros_type_name: sensor_msgs/msg/Image
+  gz_type_name: gz.msgs.Image
+  direction: GZ_TO_ROS
+  publisher_queue: 2
+  subscriber_queue: 2
+  lazy: false
+- gz_topic_name: /zed2i/sim/left/camera_info
+  ros_topic_name: /zed2i/rgbd/left/camera_info
+  ros_type_name: sensor_msgs/msg/CameraInfo
+  gz_type_name: gz.msgs.CameraInfo
+  direction: GZ_TO_ROS
+  publisher_queue: 2
+  subscriber_queue: 2
+  lazy: false

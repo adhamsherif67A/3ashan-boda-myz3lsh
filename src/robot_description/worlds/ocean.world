@@ -7284,11 +7284,5 @@
       <name>sunken_boundary_freighter</name>
       <pose>0 6.8 -4.03093 0 0 0</pose>
     </include>
-    <!-- Far-side search-and-survey mission. Mouth faces +Y towards spawn. -->
-    <include>
-      <uri>model://robot_description/worlds/assets/search_survey/model.sdf</uri>
-      <name>search_survey_cave</name>
-      <pose>0 -4.0 -4.04 0 0 0</pose>
-    </include>
   </world>
 </sdf>
