@@ -10,19 +10,22 @@
     publish_null_when_lost: true
     approx_sync: true
     approx_sync_max_interval: 0.025
-    topic_queue_size: 2
-    sync_queue_size: 5
+    topic_queue_size: 3
+    sync_queue_size: 8
     qos: 1
     qos_camera_info: 1
     wait_for_transform: 0.2
     expected_update_rate: 0.0
     "Odom/Strategy": "1"
-    "Odom/ResetCountdown": "0"
+    # Recover after a short correspondence outage instead of keeping a
+    # failed frame as the reference indefinitely.
+    "Odom/ResetCountdown": "3"
+    "Odom/GuessMotion": "false"
     "Reg/Force3DoF": "false"
     "Vis/FeatureType": "1"
-    "Vis/MaxFeatures": "1000"
-    "Vis/MinInliers": "20"
-    "Vis/MaxDepth": "14.5"
+    "Vis/MaxFeatures": "1500"
+    "Vis/MinInliers": "30"
+    "Vis/MaxDepth": "8.0"
     "Vis/CorType": "1"
     "Vis/CorFlowMinEigThreshold": "0.000001"
     "SIFT/ContrastThreshold": "0.01"

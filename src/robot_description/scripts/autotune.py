@@ -1,126 +1,209 @@
 #!/usr/bin/env python3
-"""Request the onboard ArduSub AUTOTUNE mode through MAVROS; never auto-arm."""
-import argparse
+"""
+mavros_autotune.py — external step-response auto-tuner for ArduSub via MAVROS.
+
+Why external: ArduSub firmware has no AC_AutoTune (unlike Copter). This node
+replicates the idea outside the flight controller using MAVROS:
+  1. Arm + GUIDED mode
+  2. Send a step setpoint (velocity or attitude rate)
+  3. Log the response (velocity_local / imu)
+  4. Score it (overshoot + settle time)
+  5. Adjust one gain (twiddle-style hill-climb), push via /mavros/param/set
+  6. Repeat until converged
+
+Tunable target params reuse ArduSub's AC_PosControl/AC_AttitudeControl names:
+  PSC_VELXY_P/I   -> horizontal velocity control
+  ATC_RAT_RLL_P/I/D -> roll rate control (same idea for PIT/YAW)
+"""
+
 import time
 import rclpy
 from rclpy.node import Node
 from rclpy.qos import qos_profile_sensor_data
-from mavros_msgs.msg import State, StatusText
-from mavros_msgs.srv import ParamPull, SetMode, VehicleInfoGet
-from rcl_interfaces.srv import GetParameters
-from rcl_interfaces.msg import ParameterType
+from rclpy.logging import LoggingSeverity
+from geometry_msgs.msg import TwistStamped
+from sensor_msgs.msg import Imu
+from mavros_msgs.srv import ParamSetV2, CommandBool, SetMode
+from mavros_msgs.msg import ParamValue
 
 
-class AutoTuneClient(Node):
-    def __init__(self, namespace="/mavros", timeout=8.0):
-        super().__init__("ardusub_autotune")
-        self.timeout = timeout
-        self.state = None
-        self.state_at = 0.0
-        self.last_text = ""
-        prefix = namespace.rstrip("/")
-        self.create_subscription(State, prefix+"/state", self.on_state, qos_profile_sensor_data)
-        self.create_subscription(StatusText, prefix+"/statustext/recv", self.on_text, qos_profile_sensor_data)
-        self.mode_client = self.create_client(SetMode, prefix+"/set_mode")
-        self.param_client = self.create_client(GetParameters, prefix+"/param/get_parameters")
-        self.pull_client = self.create_client(ParamPull, prefix+"/param/pull")
-        self.info_client = self.create_client(VehicleInfoGet, prefix+"/vehicle_info_get")
+class MavrosAutoTune(Node):
+    def __init__(self):
+        super().__init__('mavros_autotune')
 
-    def on_state(self, msg):
-        self.state = msg
-        self.state_at = time.monotonic()
+        # ---- config ----
+        self.param_name = 'PSC_VELXY_P'   # or ATC_RAT_RLL_P, etc.
+        self.axis = 'vx'                  # 'vx','vy' for velocity; 'rollrate' for attitude
+        self.step_cmd = 0.3               # m/s or rad/s
+        self.step_time_s = 3.0
+        self.gain = 1.0                   # starting value, read real value first
+        self.delta = 0.3                  # twiddle step
+        self.max_iters = 15
+        self.best_score = None
+        self.debug = True             # toggle verbose tracing
+        self.cb_log_every = 20        # throttle high-rate callback logs (every N msgs)
+        self._vel_cb_count = 0
+        self._imu_cb_count = 0
 
-    def on_text(self, msg):
-        if "AutoTune" in msg.text or "mode" in msg.text.lower():
-            self.last_text = msg.text
-            self.get_logger().info(msg.text)
+        if self.debug:
+            self.get_logger().set_level(LoggingSeverity.DEBUG)
 
-    def wait(self, condition, message):
-        deadline = time.monotonic()+self.timeout
-        while rclpy.ok() and time.monotonic() < deadline:
-            if condition():
-                return
-            rclpy.spin_once(self, timeout_sec=.05)
-        raise RuntimeError(message + ("; FCU: "+self.last_text if self.last_text else ""))
+        self.vel = TwistStamped()
+        self.imu = Imu()
 
-    def call(self, client, request):
-        if not client.wait_for_service(timeout_sec=self.timeout):
-            raise RuntimeError("Unavailable MAVROS service: "+client.srv_name)
-        future = client.call_async(request)
-        self.wait(future.done, "Service timeout: "+client.srv_name)
-        return future.result()
+        self.vel_pub = self.create_publisher(TwistStamped, '/mavros/setpoint_velocity/cmd_vel', 10)
+        self.create_subscription(TwistStamped, '/mavros/local_position/velocity_local',
+                                  self._vel_cb, qos_profile_sensor_data)
+        self.create_subscription(Imu, '/mavros/imu/data', self._imu_cb, qos_profile_sensor_data)
 
-    def connected(self):
-        self.wait(lambda: self.state is not None and self.state.connected and
-                  time.monotonic()-self.state_at < 2, "No fresh connected FCU heartbeat")
+        self.arm_cli = self.create_client(CommandBool, '/mavros/cmd/arming')
+        self.mode_cli = self.create_client(SetMode, '/mavros/set_mode')
+        self.param_cli = self.create_client(ParamSetV2, '/mavros/param/set')
+        self.get_logger().debug(
+            f'init: param={self.param_name} axis={self.axis} step={self.step_cmd} '
+            f'gain0={self.gain} delta0={self.delta} max_iters={self.max_iters}')
 
-    def request(self, target):
-        self.connected()
-        response = self.call(self.mode_client, SetMode.Request(custom_mode=target))
-        if not response.mode_sent:
-            raise RuntimeError("MAVROS rejected mode request "+target)
-        # mode_sent means sent, not accepted: require a subsequent FCU heartbeat.
-        sent_at = time.monotonic()
-        self.wait(lambda: self.state.connected and self.state_at > sent_at and
-                  self.state.mode == target, "FCU did not enter "+target)
-        self.get_logger().info("Confirmed FCU mode: "+target)
+    def _vel_cb(self, msg):
+        self.vel = msg
+        self._vel_cb_count += 1
+        if self.debug and self._vel_cb_count % self.cb_log_every == 0:
+            self.get_logger().debug(
+                f'vel_cb #{self._vel_cb_count}: vx={msg.twist.linear.x:.3f} '
+                f'vy={msg.twist.linear.y:.3f} vz={msg.twist.linear.z:.3f}')
 
-    def start(self):
-        self.connected()
-        info = self.call(self.info_client, VehicleInfoGet.Request())
-        if not info.success or len(info.vehicles) != 1 or info.vehicles[0].type != 12:
-            raise RuntimeError("AUTOTUNE client requires an identified ArduSub submarine")
-        if info.vehicles[0].autopilot != 3:
-            raise RuntimeError("Expected ArduPilot firmware")
-        self.connected()
-        if not self.state.armed:
-            raise RuntimeError("Arm manually in DepthHold first; this client never arms the ROV")
-        if self.state.mode not in ("STABILIZE", "ALT_HOLD", "POSHOLD"):
-            raise RuntimeError("Start only from STABILIZE, ALT_HOLD or POSHOLD")
-        pull = self.call(self.pull_client, ParamPull.Request(force_pull=False))
-        if not pull.success:
-            raise RuntimeError("Could not read FCU parameters")
-        axes = self.call(self.param_client, GetParameters.Request(names=["AUTOTUNE_AXES"]))
-        if not axes.values or axes.values[0].type == ParameterType.PARAMETER_NOT_SET:
-            raise RuntimeError("Firmware has no AUTOTUNE_AXES; install the patched ArduSub firmware first")
-        self.get_logger().info("Requesting onboard AutoTune; mode changes abort and restore original gains")
-        self.request("AUTOTUNE")
+    def _imu_cb(self, msg):
+        self.imu = msg
+        self._imu_cb_count += 1
+        if self.debug and self._imu_cb_count % self.cb_log_every == 0:
+            self.get_logger().debug(
+                f'imu_cb #{self._imu_cb_count}: wx={msg.angular_velocity.x:.3f} '
+                f'wy={msg.angular_velocity.y:.3f} wz={msg.angular_velocity.z:.3f}')
 
-    def stop(self):
-        self.connected()
-        if self.state.mode != "AUTOTUNE":
-            self.get_logger().info("Already outside AUTOTUNE; preserving pilot-selected mode "+self.state.mode)
-            return
-        self.request("ALT_HOLD")
+    def _call(self, client, req):
+        self.get_logger().debug(f'-> calling {client.srv_name} req={req}')
+        client.wait_for_service()
+        try:
+            resp = client.call(req)  # blocking; fine for a one-off tuning script
+        except Exception as e:
+            self.get_logger().error(f'service call to {client.srv_name} raised: {e}')
+            raise
+        self.get_logger().debug(f'<- {client.srv_name} resp={resp}')
+        return resp
+
+    def set_guided_armed(self):
+        self.get_logger().info('switching to GUIDED and arming')
+        mode_resp = self._call(self.mode_cli, SetMode.Request(custom_mode='GUIDED'))
+        if not getattr(mode_resp, 'mode_sent', True):
+            self.get_logger().warn('set_mode(GUIDED) not acknowledged as sent')
+        arm_resp = self._call(self.arm_cli, CommandBool.Request(value=True))
+        if not getattr(arm_resp, 'success', True):
+            self.get_logger().error('arming request failed')
+        time.sleep(1.0)
+
+    def push_gain(self, value):
+        self.get_logger().debug(f'pushing param {self.param_name} = {value:.4f}')
+        req = ParamSetV2.Request()
+        req.param_id = self.param_name
+        req.value = ParamValue(real=float(value))
+        resp = self._call(self.param_cli, req)
+        if not getattr(resp, 'success', True):
+            self.get_logger().error(f'param set failed for {self.param_name}={value:.4f}')
+
+    def step_response_score(self):
+        """Send step, sample response, return simple overshoot+settle score (lower=better)."""
+        self.get_logger().debug(f'step_response_score: target={self.step_cmd} duration={self.step_time_s}s')
+        t0 = time.time()
+        samples = []
+        while time.time() - t0 < self.step_time_s:
+            cmd = TwistStamped()
+            cmd.twist.linear.x = self.step_cmd
+            self.vel_pub.publish(cmd)
+            samples.append(self.vel.twist.linear.x)
+            rclpy.spin_once(self, timeout_sec=0.05)
+
+        # stop
+        self.vel_pub.publish(TwistStamped())
+
+        if not samples:
+            self.get_logger().warn('step_response_score: no samples captured — check velocity_local topic')
+
+        target = self.step_cmd
+        overshoot = max(0.0, max(samples, default=0.0) - target)
+        settle_err = abs(samples[-1] - target) if samples else 1.0
+        score = overshoot + settle_err
+        self.get_logger().debug(
+            f'step_response_score: n_samples={len(samples)} '
+            f'min={min(samples, default=0):.3f} max={max(samples, default=0):.3f} '
+            f'last={samples[-1] if samples else float("nan"):.3f} '
+            f'overshoot={overshoot:.3f} settle_err={settle_err:.3f} score={score:.3f}')
+        return score
+
+    def safe_shutdown(self):
+        self.get_logger().info('Emergency Stop triggered! Halting ROV and reverting to MANUAL...')
+        
+        # 1. Send absolute zero velocity to kill momentum
+        stop_cmd = TwistStamped()
+        self.vel_pub.publish(stop_cmd)
+        
+        # Force the DDS network to flush the published message before the node dies
+        rclpy.spin_once(self, timeout_sec=0.1)
+        
+        # 2. Switch back to MANUAL mode
+        try:
+            req = SetMode.Request(custom_mode='MANUAL')
+            self._call(self.mode_cli, req)
+            self.get_logger().info('Successfully switched to MANUAL mode.')
+        except Exception as e:
+            self.get_logger().error(f'Failed to switch to MANUAL during shutdown: {e}')
+
+    def run(self):
+        self.get_logger().info('=== autotune run start ===')
+        self.set_guided_armed()
+        self.push_gain(self.gain)
+        self.best_score = self.step_response_score()
+        self.get_logger().info(f'start gain={self.gain:.3f} score={self.best_score:.3f}')
+
+        for i in range(self.max_iters):
+            trial = self.gain + self.delta
+            self.get_logger().debug(f'iter {i}: trying gain={trial:.4f} (delta={self.delta:.4f})')
+            self.push_gain(trial)
+            score = self.step_response_score()
+
+            if score < self.best_score:
+                self.get_logger().debug(f'iter {i}: improved ({score:.3f} < {self.best_score:.3f}) — accept')
+                self.gain = trial
+                self.best_score = score
+                self.delta *= 1.1
+            else:
+                self.get_logger().debug(f'iter {i}: worse ({score:.3f} >= {self.best_score:.3f}) — reverse+shrink')
+                self.delta *= -0.5  # reverse & shrink (classic twiddle)
+
+            self.get_logger().info(f'iter {i}: gain={self.gain:.3f} score={self.best_score:.3f} delta={self.delta:.4f}')
+            if abs(self.delta) < 0.01:
+                self.get_logger().debug('delta below threshold — stopping')
+                break
+
+        self.push_gain(self.gain)
+        self.get_logger().info(f'DONE — {self.param_name} = {self.gain:.3f}')
 
 
 def main():
-    parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("action", choices=["start", "stop", "status"])
-    parser.add_argument("--namespace", default="/mavros")
-    parser.add_argument("--timeout", type=float, default=8.0)
-    args, ros_args = parser.parse_known_args()
-    if args.timeout <= 0:
-        parser.error("--timeout must be positive")
-    rclpy.init(args=ros_args)
-    node = AutoTuneClient(args.namespace, args.timeout)
-    code = 0
+    rclpy.init()
+    node = MavrosAutoTune()
     try:
-        if args.action == "start":
-            node.start()
-        elif args.action == "stop":
-            node.stop()
-        else:
-            node.connected()
-            node.get_logger().info(f"connected={node.state.connected} armed={node.state.armed} mode={node.state.mode}")
-    except (RuntimeError, KeyboardInterrupt) as error:
-        node.get_logger().error(str(error) or "Interrupted; check FCU mode before continuing")
-        code = 1
+        node.run()
+    except KeyboardInterrupt:
+        node.get_logger().warn('Autotune interrupted by user (Ctrl+C).')
+    except Exception:
+        node.get_logger().error('autotune run crashed', exc_info=True)
     finally:
+        # Guarantee the ROV stops and switches modes before the node is destroyed
+        node.safe_shutdown()
+        
+        node.get_logger().info('=== autotune run end ===')
         node.destroy_node()
         rclpy.shutdown()
-    return code
 
 
-if __name__ == "__main__":
-    raise SystemExit(main())
+if __name__ == '__main__':
+    main()

@@ -33,7 +33,7 @@ def commands_from_file(path):
 
 
 def source_environment(workspace=WORKSPACE,software=SOFTWARE):
-    sources=[Path(os.environ.get('MAKO_ROS_SETUP','/opt/ros/humble/setup.bash')),workspace/'install/setup.bash',software/'install/local_setup.bash']
+    sources=[Path('/opt/ros/humble/setup.bash'),workspace/'install/setup.bash',software/'install/local_setup.bash']
     missing=[str(p) for p in sources if not p.exists()]
     if missing:raise RuntimeError('Missing ROS workspace setup: '+', '.join(missing))
     command='\n'.join('source '+shlex.quote(str(p)) for p in sources)+'\nenv -0'
@@ -86,13 +86,11 @@ class SimulationSession:
         self.directory=None
         self.lock=None
 
-    def start(self,world='pool.world',odometry='vision',notify=lambda text:None,slam=False):
+    def start(self,world='pool.world',odometry='vision',notify=lambda text:None):
         if self.processes.jobs:raise RuntimeError('Simulation is already running')
         if world not in ['pool.world','ocean.world'] or odometry not in ['vision','ground_truth']:
             raise ValueError('Invalid world or odometry mode')
-        if slam and odometry!='vision':
-            raise ValueError('SLAM mapping requires ZED visual odometry')
-        runs=Path(os.environ.get('MAKO_DATA_DIR',self.workspace/'gui'))/'runs';runs.mkdir(parents=True,exist_ok=True)
+        runs=self.workspace/'gui/runs';runs.mkdir(parents=True,exist_ok=True)
         self.lock=open(runs/'simulation.lock','a')
         try:fcntl.flock(self.lock,fcntl.LOCK_EX|fcntl.LOCK_NB)
         except BlockingIOError:
@@ -125,17 +123,6 @@ class SimulationSession:
             env['ROS_LOG_DIR']=str(self.directory/'ros')
             sitl_dir=self.directory/'sitl';sitl_dir.mkdir()
             sim+=['--use-dir',str(sitl_dir),'--mavproxy-args=--non-interactive','--no-extra-ports']
-            gazebo_command=['ros2','launch','robot_description','gazebo.launch.py',
-                            'headless:=true','world:='+world,'odometry_source:='+odometry,
-                            'configure_ardusub:=false','slam:='+('true' if slam else 'false'),
-                            'sitl_port_in:='+str(9002+10*self.instance),
-                            'sitl_port_out:='+str(9003+10*self.instance)]
-            if slam:
-                database=self.directory/'rtabmap.db'
-                gazebo_command.extend(['slam_database_path:='+str(database),
-                                       'camera_width:=640','camera_height:=360',
-                                       'camera_fps:=10','pilot_fps:=15'])
-                notify('SLAM database: '+str(database))
             # sim_vehicle's terminal helper runs the firmware under a shell in our
             # process group. No terminal emulator, map, console or detached session.
             sitl_env=env.copy()
@@ -145,7 +132,10 @@ class SimulationSession:
             # psutil keeps sim_vehicle cleanup scoped to its own session token.
             subprocess.run(['python3','-c','import psutil'],env=sitl_env,check=True,capture_output=True)
             commands=[('SITL',sim,sitl_env),('MAVROS',mavros,env),
-                      ('Gazebo',gazebo_command,env),
+                      ('Gazebo',['ros2','launch','robot_description','gazebo.launch.py',
+                                 'headless:=true','world:='+world,'odometry_source:='+odometry,
+                                 'configure_ardusub:=false',
+                                 'sitl_port_in:='+str(9002+10*self.instance),'sitl_port_out:='+str(9003+10*self.instance)],env),
                       ('Joystick',['ros2','run','joy','game_controller_node'],env),
                       ('Pilot control',['ros2','run','real_joy','realjoy_node'],env)]
             for name,argv,environment in commands:
@@ -180,12 +170,12 @@ class SessionThread(threading.Thread):
         self.requests=queue.Queue()
         self.running=False
 
-    def request(self,action,world='pool.world',odometry='vision',slam=False):
-        self.requests.put((action,world,odometry,slam))
+    def request(self,action,world='pool.world',odometry='vision'):
+        self.requests.put((action,world,odometry))
 
     def run(self):
         while True:
-            try:action,world,odometry,slam=self.requests.get(timeout=.25)
+            try:action,world,odometry=self.requests.get(timeout=.25)
             except queue.Empty:
                 if self.running:
                     failure=self.session.failure()
@@ -199,7 +189,7 @@ class SessionThread(threading.Thread):
                     self.session.stop();self.running=False
                 if action in ['start','reset']:
                     self.changed('Starting')
-                    self.session.start(world,odometry,self.log,slam)
+                    self.session.start(world,odometry,self.log)
                     self.running=True;self.changed('Running')
                     self.log('Session logs: '+str(self.session.directory))
                 else:self.changed('Stopped')

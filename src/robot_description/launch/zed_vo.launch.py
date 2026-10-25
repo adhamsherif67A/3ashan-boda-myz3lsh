@@ -28,9 +28,9 @@ def setup(context):
     return environment+[
         Node(package='rtabmap_odom',executable='rgbd_odometry',name='zed_rgbd_odometry',
              parameters=[str(share/'config/zed_vo.yaml')],
-             remappings=[('rgb/image','/zed2i/zed_node/left/image_rect_color'),
-                         ('depth/image','/zed2i/zed_node/left/depth/image_raw'),
-                         ('rgb/camera_info','/zed2i/zed_node/left/camera_info'),
+             remappings=[('rgb/image','/zed2i/rgbd/left/image_rect_color'),
+                         ('depth/image','/zed2i/rgbd/left/depth/image_raw'),
+                         ('rgb/camera_info','/zed2i/rgbd/left/camera_info'),
                          ('odom','/zed2i/vo/odometry'),('odom_info','/zed2i/vo/odom_info')],output='screen'),
     ]
 

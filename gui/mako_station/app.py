@@ -9,10 +9,9 @@ from zoneinfo import ZoneInfo
 from PyQt5.QtCore import Qt,QTimer,pyqtSignal,QRectF,QProcess,QLockFile,QStandardPaths,QProcessEnvironment,QSettings
 from PyQt5.QtGui import QColor,QFont,QImage,QPainter,QPixmap,QIcon
 from PyQt5.QtWidgets import (QApplication,QMainWindow,QWidget,QVBoxLayout,QHBoxLayout,
-    QLabel,QPushButton,QComboBox,QCheckBox,QFrame,QGridLayout,QProgressBar,QPlainTextEdit,
+    QLabel,QPushButton,QComboBox,QFrame,QGridLayout,QProgressBar,QPlainTextEdit,
     QSizePolicy,QMessageBox,QShortcut,QFileDialog)
 from .simulation import WORKSPACE,DOMAIN,SessionThread
-from .update_ui import UpdateController
 from .ros_worker import RosWorker
 
 NAVY='#071321';PANEL='#0e2134';BORDER='#243b51';GOLD='#d6ae79';SILVER='#e6edf4';MUTED='#94a8ba'
@@ -104,7 +103,7 @@ class PilotWindow(QMainWindow):
         super().__init__()
         self.setWindowTitle('Operation MX')
         # Bound the window icon: the original logo exceeds X11 property limits.
-        icon = QPixmap(os.environ.get('MAKO_APP_ICON',str(Path(__file__).resolve().parent/'assets/operation_mx_icon.png')))
+        icon = QPixmap(str(Path(__file__).resolve().parent/'assets/operation_mx_icon.png'))
         self.setWindowIcon(QIcon(icon.scaled(256,256,Qt.KeepAspectRatio,Qt.SmoothTransformation)))
         self.setMinimumSize(1120,740);self.resize(1500,950);self.setStyleSheet(STYLE)
         self.phase='Stopped';self.closing=False;self.finished=False;self.started_at=None
@@ -140,8 +139,6 @@ class PilotWindow(QMainWindow):
         self.world=QComboBox();self.world.addItem('Team pool','pool.world');self.world.addItem('Ocean · 4 m','ocean.world')
         sl.addWidget(self.world)
         self.odometry=QComboBox();self.odometry.addItem('ZED visual odometry','vision');self.odometry.addItem('Ground-truth pose','ground_truth');sl.addWidget(self.odometry)
-        self.slam=QCheckBox('Enable SLAM mapping');self.slam.setToolTip('Build a visual map with RTAB-Map. Requires ZED visual odometry. Each run saves to its own database.')
-        self.slam.toggled.connect(self.on_slam_toggled);sl.addWidget(self.slam)
         self.start_button=QPushButton('▶  Start simulation');self.start_button.setObjectName('primary');self.start_button.clicked.connect(lambda:self.action('start'))
         self.reset_button=QPushButton('↻  Reset simulation');self.reset_button.clicked.connect(lambda:self.action('reset'))
         self.stop_button=QPushButton('■  Stop simulation');self.stop_button.clicked.connect(lambda:self.action('stop'))
@@ -190,7 +187,6 @@ class PilotWindow(QMainWindow):
         self.log_box=QPlainTextEdit();self.log_box.setReadOnly(True);self.log_box.setMaximumBlockCount(120);self.log_box.setFixedHeight(78);video_column.addWidget(self.log_box)
         body.addLayout(video_column,1);root.addLayout(body,1)
         footer=QHBoxLayout();footer.addWidget(label('MARINEXPERTS  /  NAVY · SILVER · GOLD','caption'));footer.addStretch()
-        self.updates=UpdateController(self,footer,enabled=start_workers)
         footer.addWidget(label('V  change view     C  capture     R  record','caption'));root.addLayout(footer)
         QShortcut('V',self,activated=self.cycle_view);QShortcut('C',self,activated=self.capture);QShortcut('R',self,activated=self.toggle_recording)
         self.refresh=QTimer(self);self.refresh.timeout.connect(self.tick);self.refresh.start(33)
@@ -257,14 +253,7 @@ class PilotWindow(QMainWindow):
         if action in ['reset','stop']:
             self.stop_recording();self.ros.clear_session()
         self.on_phase({'start':'Starting','reset':'Resetting','stop':'Stopping'}[action])
-        slam=self.slam.isChecked()
-        odometry='vision' if slam else self.odometry.currentData()
-        self.manager.request(action,self.world.currentData(),odometry,slam)
-
-    def on_slam_toggled(self,enabled):
-        if enabled:
-            self.odometry.setCurrentIndex(self.odometry.findData('vision'))
-        self.odometry.setEnabled(self.phase in ['Stopped','Error'] and not enabled)
+        self.manager.request(action,self.world.currentData(),self.odometry.currentData())
 
     def on_phase(self,phase):
         self.phase=phase
@@ -272,14 +261,12 @@ class PilotWindow(QMainWindow):
         self.rviz_button.setToolTip('Open simulation odometry and TF' if phase=='Running' else 'Start simulation to enable RViz')
         active=phase=='Running';idle=phase in ['Stopped','Error']
         self.start_button.setEnabled(idle);self.reset_button.setEnabled(active);self.stop_button.setEnabled(active)
-        self.world.setEnabled(idle);self.odometry.setEnabled(idle and not self.slam.isChecked())
-        self.slam.setEnabled(idle)
+        self.world.setEnabled(idle);self.odometry.setEnabled(idle)
         self.arm_button.setEnabled(False);self.disarm_button.setEnabled(False);self.mode.setEnabled(False)
         self.phase_label.setText('●  SIMULATION '+phase.upper())
         color='#72d6b3' if active else ('#f1a5a5' if phase=='Error' else GOLD)
         self.phase_label.setStyleSheet(f'color:{color};font-weight:600;')
-        self.session_hint.setText({'Running':'Headless simulation active. SLAM map is being saved.' if self.slam.isChecked() else 'Headless simulation active.',
-            'Starting':'Starting the simulation stack…',
+        self.session_hint.setText({'Running':'Headless simulation active.','Starting':'Starting the simulation stack…',
             'Resetting':'Restarting the complete session…','Stopping':'Stopping the session…',
             'Stopped':'Choose a world, then start.','Error':'Start failed. See the message below.'}[phase])
         if active:self.started_at=time.monotonic()
@@ -324,14 +311,14 @@ class PilotWindow(QMainWindow):
     def capture(self):
         frames,_=self.ros.snapshot();frame=frames.get('main')
         if not frame or time.monotonic()-frame[1]>1.5:self.log('No live pilot frame to capture.');return
-        folder=Path(os.environ.get('MAKO_DATA_DIR',WORKSPACE/'gui'))/'runs/captures';folder.mkdir(parents=True,exist_ok=True)
+        folder=WORKSPACE/'gui/runs/captures';folder.mkdir(parents=True,exist_ok=True)
         path=folder/(datetime.now(ZoneInfo('Africa/Cairo')).strftime('%Y%m%d_%H%M%S_%f')+'.png')
         if frame[0].save(str(path)):self.log('Frame saved: '+str(path))
 
     def toggle_recording(self):
         if self.recorder.state()!=QProcess.NotRunning:self.stop_recording();return
         if not os.environ.get('DISPLAY'):self.log('Screen recording requires an X11 desktop display.');return
-        folder=Path(os.environ.get('MAKO_DATA_DIR',WORKSPACE/'gui'))/'runs/recordings';folder.mkdir(parents=True,exist_ok=True)
+        folder=WORKSPACE/'gui/runs/recordings';folder.mkdir(parents=True,exist_ok=True)
         path=folder/(datetime.now(ZoneInfo('Africa/Cairo')).strftime('%Y%m%d_%H%M%S')+'.mp4')
         screen=QApplication.primaryScreen().geometry()
         self.recorder.setStandardErrorFile(str(path.with_suffix('.log')))

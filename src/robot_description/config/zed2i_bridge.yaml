@@ -1,4 +1,4 @@
-# Bounded on-demand pilot, chase, bottom RGB and aligned depth feeds.
+# On-demand pilot, chase, bottom RGB and auxiliary aligned-depth feeds.
 - gz_topic_name: /zed2i/sim/pilot/left/image
   ros_topic_name: /zed2i/zed_node/left/image_rect_color
   ros_type_name: sensor_msgs/msg/Image
