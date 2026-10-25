@@ -1,0 +1,21 @@
+[0.403s] Invoking command in '/home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/src/robot_mapping': PYTHONPATH=/home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/build/robot_mapping/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_mapping/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py egg_info --egg-base ../../build/robot_mapping build --build-base /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/build/robot_mapping/build install --record /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/build/robot_mapping/install.log --install-scripts $base/lib/robot_mapping --single-version-externally-managed install_data
+[0.488s] /home/ibrahim/.local/lib/python3.10/site-packages/setuptools/_distutils/dist.py:318: UserWarning: Unknown distribution option: 'tests_require'
+[0.488s]   warnings.warn(msg)
+[0.535s] running egg_info
+[0.543s] writing ../../build/robot_mapping/robot_mapping.egg-info/PKG-INFO
+[0.543s] writing dependency_links to ../../build/robot_mapping/robot_mapping.egg-info/dependency_links.txt
+[0.543s] writing requirements to ../../build/robot_mapping/robot_mapping.egg-info/requires.txt
+[0.543s] writing top-level names to ../../build/robot_mapping/robot_mapping.egg-info/top_level.txt
+[0.559s] reading manifest file '../../build/robot_mapping/robot_mapping.egg-info/SOURCES.txt'
+[0.560s] writing manifest file '../../build/robot_mapping/robot_mapping.egg-info/SOURCES.txt'
+[0.560s] running build
+[0.560s] running build_py
+[0.560s] running install
+[0.562s] running install_lib
+[0.570s] running install_data
+[0.571s] running install_egg_info
+[0.579s] removing '/home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_mapping/lib/python3.10/site-packages/robot_mapping-0.0.0-py3.10.egg-info' (and everything under it)
+[0.579s] Copying ../../build/robot_mapping/robot_mapping.egg-info to /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_mapping/lib/python3.10/site-packages/robot_mapping-0.0.0-py3.10.egg-info
+[0.580s] running install_scripts
+[0.597s] writing list of installed files to '/home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/build/robot_mapping/install.log'
+[0.610s] Invoked command in '/home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/src/robot_mapping' returned '0': PYTHONPATH=/home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/build/robot_mapping/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/install/robot_mapping/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py egg_info --egg-base ../../build/robot_mapping build --build-base /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/build/robot_mapping/build install --record /home/ibrahim/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws/build/robot_mapping/install.log --install-scripts $base/lib/robot_mapping --single-version-externally-managed install_data

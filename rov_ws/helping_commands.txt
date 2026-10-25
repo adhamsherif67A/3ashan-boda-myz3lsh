@@ -1,5 +1,10 @@
+cd ~/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws
+
+clear
 colcon build 
+clear
 source install/setup.bash
-ros2 launch ps_rov_control rov_simulation.launch.py
+ros2 launch ps_rov_control rov_control.launch.py
 
-
+source install/setup.bash
+ros2 launch robot_mapping mapping.launch.py
