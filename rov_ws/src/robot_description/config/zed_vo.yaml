@@ -3,7 +3,9 @@
     use_sim_time: true
     frame_id: base_link
     odom_frame_id: odom
-    publish_tf: true
+    # The ExternalNav validator owns TF, so rejected tracking jumps cannot
+    # move the RViz robot or reach ArduSub. Raw odometry remains inspectable.
+    publish_tf: false
     initial_pose: "0 0 -1 0 0 0"
     publish_null_when_lost: true
     approx_sync: true

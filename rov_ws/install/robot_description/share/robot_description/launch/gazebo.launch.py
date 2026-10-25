@@ -185,7 +185,10 @@ def launch_setup(context):
             name='gz_odom_to_mavros',
             parameters=[{'use_sim_time': True,
                          'source_topic': '/zed2i/vo/odometry' if vision else '/odometry/gz',
-                         'require_covariance': vision, 'reset_on_clock_jump': vision}],
+                         'require_covariance': vision, 'reset_on_clock_jump': vision,
+                         'max_linear_speed': 2.0 if vision else 0.0,
+                         'max_angular_speed': 3.0 if vision else 0.0,
+                         'publish_tf': vision and LaunchConfiguration('publish_odom_tf').perform(context) == 'true'}],
             output='screen',
         ),
 

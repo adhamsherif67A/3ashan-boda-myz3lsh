@@ -8,6 +8,27 @@ Visualization Manager:
     Background Color: 35; 35; 35
     Frame Rate: 30
   Displays:
+    - Class: rviz_default_plugins/Odometry
+      Name: Validated odometry
+      Enabled: true
+      Topic:
+        Value: /mavros/odometry/out
+        Reliability Policy: Best Effort
+        Durability Policy: Volatile
+        History Policy: Keep Last
+        Depth: 10
+      Keep: 20
+      Position Tolerance: 0.02
+      Angle Tolerance: 0.05
+      Shape: Axes
+      Axes:
+        Length: 0.25
+        Radius: 0.015
+      Covariance:
+        Position:
+          Value: false
+        Orientation:
+          Value: false
     - Class: rviz_default_plugins/Grid
       Name: Grid
       Enabled: true

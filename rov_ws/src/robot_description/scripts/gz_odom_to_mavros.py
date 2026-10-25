@@ -12,6 +12,28 @@ from rclpy.node import Node
 from rclpy.qos import qos_profile_sensor_data
 
 
+def motion_error(message, previous, max_linear_speed=0.0, max_angular_speed=0.0):
+    """Reject visual tracking jumps even when the estimator reports low variance.
+
+    Limit extrapolation to 200 ms: an outage must not progressively authorize
+    a larger jump. Clock/estimator resets explicitly clear the previous pose.
+    """
+    if previous is None: return None
+    stamp = lambda m: m.header.stamp.sec + m.header.stamp.nanosec*1e-9
+    dt = min(max(stamp(message)-stamp(previous), 0.0), 0.2)
+    p, old = message.pose.pose, previous.pose.pose
+    distance = math.sqrt(sum((getattr(p.position,k)-getattr(old.position,k))**2
+                             for k in ('x','y','z')))
+    if max_linear_speed > 0 and distance > max_linear_speed*dt + 0.02:
+        return 'implausible visual position jump; reset simulation if tracking cannot recover'
+    dot = abs(sum(getattr(p.orientation,k)*getattr(old.orientation,k)
+                  for k in ('x','y','z','w')))
+    angle = 2*math.acos(min(1.0, dot))
+    if max_angular_speed > 0 and angle > max_angular_speed*dt + 0.02:
+        return 'implausible visual orientation jump'
+    return None
+
+
 def validation_error(message, now_ns, max_age=0.75, require_covariance=False,
                      max_variance=1.0, parent='odom', child='base_link'):
     if message.header.frame_id != parent or message.child_frame_id != child:
@@ -39,12 +61,17 @@ class GazeboOdomToMavros(Node):
         super().__init__('gz_odom_to_mavros')
         for key,value in [('source_topic','/odometry/gz'),('target_topic','/mavros/odometry/out'),
                           ('max_age',0.75),('require_covariance',False),('max_variance',1.0),
-                          ('reset_on_clock_jump',False)]:
+                          ('reset_on_clock_jump',False),('max_linear_speed',0.0),
+                          ('max_angular_speed',0.0),('publish_tf',False)]:
             self.declare_parameter(key,value)
         source=self.get_parameter('source_topic').value
         self.publisher=self.create_publisher(Odometry,self.get_parameter('target_topic').value,10)
         self.subscription=self.create_subscription(Odometry,source,self._odometry_callback,qos_profile_sensor_data)
         self.last_stamp=None
+        self.last_message=None
+        if self.get_parameter('publish_tf').value:
+            from tf2_ros import TransformBroadcaster
+            self.tf_broadcaster=TransformBroadcaster(self)
         self.reset_pending=False
         self.reset_future=None
         self.reset_generation=0
@@ -60,6 +87,7 @@ class GazeboOdomToMavros(Node):
 
     def _clock_jump(self,jump):
         self.last_stamp=None
+        self.last_message=None
         if jump.delta.nanoseconds < 0 and self.get_parameter('reset_on_clock_jump').value:
             self.reset_generation+=1
             self.reset_pending=True
@@ -85,11 +113,27 @@ class GazeboOdomToMavros(Node):
             self.get_parameter('max_age').value,self.get_parameter('require_covariance').value,
             self.get_parameter('max_variance').value)
         stamp=message.header.stamp.sec*1000000000+message.header.stamp.nanosec
+        if not error:
+            error=motion_error(message,self.last_message,
+                self.get_parameter('max_linear_speed').value,
+                self.get_parameter('max_angular_speed').value)
         if error or (self.last_stamp is not None and stamp <= self.last_stamp):
             self.get_logger().warn('ExternalNav rejected: '+(error or 'duplicate/out-of-order timestamp'),throttle_duration_sec=2.0)
             return
         self.last_stamp=stamp
+        self.last_message=message
         self.publisher.publish(message)
+        if self.get_parameter('publish_tf').value:
+            from geometry_msgs.msg import TransformStamped
+            transform=TransformStamped()
+            transform.header=message.header
+            transform.child_frame_id=message.child_frame_id
+            p=message.pose.pose.position
+            transform.transform.translation.x=p.x
+            transform.transform.translation.y=p.y
+            transform.transform.translation.z=p.z
+            transform.transform.rotation=message.pose.pose.orientation
+            self.tf_broadcaster.sendTransform(transform)
 
 
 def main():

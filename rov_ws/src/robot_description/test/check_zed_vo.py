@@ -39,13 +39,13 @@ spec=importlib.util.spec_from_file_location('vo_launch',share/'launch/zed_vo.lau
 params=Path(temporary.name)/'rsp.yaml';params.write_text(yaml.safe_dump({'/**':{'ros__parameters':{'robot_description':description,'use_sim_time':True}}}))
 commands=[('mavros',['ros2','launch','mavros','apm.launch','fcu_url:=udp://127.0.0.1:14651@127.0.0.1:14650']),
  ('ned',['ros2','run','tf2_ros','static_transform_publisher','--frame-id','odom','--child-frame-id','odom_ned','--roll','3.141592653589793','--pitch','0','--yaw','1.570796326794897']),
- ('gz',['gz','sim','-s','-r',str(world_file)]),
+ ('gz',['gz','sim','-s','-r','--headless-rendering',str(world_file)]),
  ('rsp',['ros2','run','robot_state_publisher','robot_state_publisher','--ros-args','--params-file',str(params)]),
  ('bridge',['ros2','run','ros_gz_bridge','parameter_bridge','/clock@rosgraph_msgs/msg/Clock[gz.msgs.Clock','/model/mako/odometry@nav_msgs/msg/Odometry[gz.msgs.Odometry','--ros-args','-r','/model/mako/odometry:=/odometry/gz']),
  ('camera_bridge',['ros2','run','ros_gz_bridge','parameter_bridge','--ros-args','-p','config_file:='+str(share/'config/zed2i_bridge.yaml')]),
  ('vo',['ros2','launch','robot_description','zed_vo.launch.py']),
- ('relay',['ros2','run','robot_description','gz_odom_to_mavros.py','--ros-args','-p','use_sim_time:=true','-p','source_topic:=/zed2i/vo/odometry','-p','require_covariance:=true','-p','reset_on_clock_jump:=true'])]
-processes=[];logs=[];visual=[];truth=[];external=[];mavlink_odometry=[];camera_rss=[]
+ ('relay',['ros2','run','robot_description','gz_odom_to_mavros.py','--ros-args','-p','use_sim_time:=true','-p','source_topic:=/zed2i/vo/odometry','-p','require_covariance:=true','-p','reset_on_clock_jump:=true','-p','max_linear_speed:=2.0','-p','max_angular_speed:=3.0','-p','publish_tf:=true'])]
+processes=[];logs=[];visual=[];truth=[];external=[];transforms=[];mavlink_odometry=[];camera_rss=[]
 stop=threading.Event()
 endpoint=mavutil.mavlink_connection('udpin:127.0.0.1:14650',source_system=1,source_component=1)
 def receive():
@@ -63,6 +63,8 @@ try:
   log=open('/tmp/mako_vo_'+name+'.log','w');logs.append(log);processes.append(subprocess.Popen(cmd,stdout=log,stderr=subprocess.STDOUT,start_new_session=True))
  rclpy.init();node=rclpy.create_node('vo_live_check',parameter_overrides=[Parameter('use_sim_time',value=True)])
  subscriptions=[node.create_subscription(Odometry,'/zed2i/vo/odometry',visual.append,qos_profile_sensor_data),node.create_subscription(Odometry,'/odometry/gz',truth.append,qos_profile_sensor_data),node.create_subscription(Odometry,'/mavros/odometry/out',external.append,10)]
+ from tf2_msgs.msg import TFMessage
+ subscriptions.append(node.create_subscription(TFMessage,'/tf',lambda message:transforms.extend(t for t in message.transforms if t.header.frame_id=='odom' and t.child_frame_id=='base_link'),10))
  from sensor_msgs.msg import Image, CameraInfo
  eyes={eye:[] for eye in ('left','right')}; calibration={}
  for eye in eyes:
@@ -89,7 +91,9 @@ try:
   assert all(frame[:2]==expected and frame[3]=='rgb8' and frame[4]==f'zed2i_{eye}_camera_frame_optical' for frame in frames),eye
   info=calibration[eye]
   assert (info.width,info.height)==expected and info.k[0]>0 and info.k[4]>0,eye
-  image_rate=(len(frames)-1)/(frames[-1][2]-frames[0][2])
+  # Exclude rendering/shader initialization from the steady camera-rate check.
+  steady_frames=frames[-30:]
+  image_rate=(len(steady_frames)-1)/(steady_frames[-1][2]-steady_frames[0][2])
   assert image_rate>=float(os.environ.get('PILOT_TEST_FPS','30'))*.85,(eye,image_rate)
   print('PASS:',eye,'native RGB and calibration',expected,'at',image_rate,'Hz',flush=True)
  from gz.transport13 import Node as GzNode
@@ -127,12 +131,24 @@ try:
   print(name,'PASS: visual displacement',delta_visual,'truth',delta_truth,'error',error,flush=True)
  yaw_start={eye:len(frames) for eye,frames in eyes.items()}
  yaw_truth_start=len(truth)
+ yaw_external_start=len(external)
  spin_for(3.0,[12,-12,-12,12,0,0])
  rotating_poses=truth[yaw_truth_start:]
  yaw_angles=[2*np.arctan2(m.pose.pose.orientation.z,m.pose.pose.orientation.w) for m in rotating_poses]
  yaw_stamps=[m.header.stamp.sec+m.header.stamp.nanosec*1e-9 for m in rotating_poses]
  peak_yaw=max(abs(np.diff(np.unwrap(yaw_angles))/np.diff(yaw_stamps)))
  assert peak_yaw>.4,('Yaw test did not rotate fast enough',peak_yaw)
+ # Covariance alone previously admitted position errors of up to 18 m.
+ # Compare at equal simulation timestamps, including accepted yaw samples.
+ def stamp(message):return message.header.stamp.sec+message.header.stamp.nanosec*1e-9
+ yaw_errors=[]
+ for message in external[yaw_external_start:]:
+  reference=min(truth,key=lambda candidate:abs(stamp(candidate)-stamp(message)))
+  assert abs(stamp(reference)-stamp(message))<.025
+  actual=message.pose.pose.position;expected=reference.pose.pose.position
+  yaw_errors.append(sum((getattr(actual,k)-getattr(expected,k))**2 for k in ('x','y','z'))**.5)
+ assert yaw_errors and max(yaw_errors)<.15,('Inaccurate yaw pose sent to ArduSub',yaw_errors)
+ print('PASS: accepted ExternalNav poses during rapid yaw; max error',max(yaw_errors),'m; rejected tracking updates are not forwarded',flush=True)
  for eye,frames in eyes.items():
   rotating=frames[yaw_start[eye]:]
   assert len(rotating)>=50,(eye,'Camera stalled during yaw',len(rotating))
@@ -141,6 +157,13 @@ try:
   assert max(gaps)<.15,(eye,'Image gap during yaw',max(gaps))
   wall_gaps=np.diff([frame[6] for frame in rotating])
   print('PASS:',eye,'rapid yaw at',peak_yaw,'rad/s;',len(rotating),'nonblank frames; max sim/wall gap',max(gaps),max(wall_gaps),flush=True)
+ assert transforms,'Validated odometry TF is missing'
+ for transform in transforms:
+  transform_stamp=transform.header.stamp.sec+transform.header.stamp.nanosec*1e-9
+  reference=min(external,key=lambda message:abs(stamp(message)-transform_stamp))
+  assert abs(stamp(reference)-transform_stamp)<.001
+  assert all(abs(getattr(transform.transform.translation,k)-getattr(reference.pose.pose.position,k))<1e-8 for k in ('x','y','z'))
+ print('PASS: TF contains only validated ExternalNav poses',flush=True)
  spin_for(1.0,[0]*6)
  before=len(external)
  reset=WorldControl(pause=False);reset.reset.all=True
