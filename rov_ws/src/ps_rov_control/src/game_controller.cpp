@@ -95,18 +95,19 @@ private:
         double heave = deadzone(target_heave_);
         double yaw   = deadzone(target_yaw_);
 
-        // تحويل الحركة لنطاق ArduSub (-1000 لـ +1000)
-        msg.x = static_cast<float>(clamp(surge * 1000.0, -1000.0, 1000.0));
-        msg.y = static_cast<float>(clamp(-sway * 1000.0, -1000.0, 1000.0));
+        // Surge معكوس عشان يمشي قدام صح
+        msg.x = static_cast<float>(clamp(-surge * 1000.0, -1000.0, 1000.0));
+        
+        // --- التعديل هنا: شلنا السالب من الـ Sway عشان يمين وشمال يتظبطوا ---
+        msg.y = static_cast<float>(clamp(sway * 1000.0, -1000.0, 1000.0));
+        
         msg.r = static_cast<float>(clamp(-yaw * 1000.0, -1000.0, 1000.0));
-
-        // الـ Heave لازم يكون 500 في المنتصف عشان الـ Arm يشتغل وميديش خطأ
         msg.z = static_cast<float>(clamp(500.0 + (heave * 500.0), 0.0, 1000.0));
 
         msg.buttons = 0;
         manual_pub_->publish(msg);
     }
-
+    
     void handle_arming(const std::vector<int32_t> &buttons) {
         if (buttons.size() > static_cast<size_t>(btn_start_)) {
             int current_start = buttons[btn_start_];
