@@ -109,7 +109,7 @@ its host's graphics driver.
 
 ```bash
 git clone --branch boda --single-branch \
-  https://github.com/adhamsherif67A/adhamsherif67A-MarineXperts-Season-2027.git \
+  https://github.com/adhamsherif67A/3ashan-boda-myz3lsh.git \
   MarineXperts-Season-2027
 cd MarineXperts-Season-2027
 git branch --show-current

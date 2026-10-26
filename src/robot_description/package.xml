@@ -29,6 +29,7 @@
   <depend>std_srvs</depend>
   <depend>rosgraph_msgs</depend>
   <depend>rclpy</depend>
+  <depend>rcl_interfaces</depend>
   <exec_depend>rtabmap_odom</exec_depend>
   <exec_depend>rtabmap_launch</exec_depend>
   <exec_depend>rtabmap_slam</exec_depend>

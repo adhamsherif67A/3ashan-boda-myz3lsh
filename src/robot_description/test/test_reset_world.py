@@ -18,7 +18,7 @@ class ResetWorld(unittest.TestCase):
             ('pool.world', {'crab_target', 'pvc_coral_garden', 'fly_transect'}, 3),
             ('ocean.world', {'shipwreck_1', 'reef_rock_arch', 'broken_seabed_pipe',
                              'east_coral_reef', 'west_coral_reef', 'south_coral_reef',
-                             'sunken_boundary_freighter'}, 4),
+                             'sunken_boundary_freighter', 'search_survey_cave'}, 4),
         ]:
             world = ET.parse(ROOT / 'worlds' / filename).find('world')
             self.assertEqual({item.findtext('name') for item in world.findall('include')}, task_names)

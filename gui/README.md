@@ -1,5 +1,9 @@
 # MarineXperts Operation MX
 
+Private desktop releases, GitHub access, the one-time installer and rollback are
+documented in [UPDATES.md](UPDATES.md). Versioned installations download signed
+updates while idle and activate them between sessions.
+
 Desktop application: **Operation MX**, installed in Software2026 and the application menu.
 Double-click `/home/boda/Desktop/OperationMX.desktop`, or run
 `/home/boda/Software2026/run_mako_gui.sh`.
@@ -9,6 +13,12 @@ Choose Team pool or Ocean, then **Start simulation**. This runs the commands fro
 the joy driver, and the existing RealJoy pilot-control node. No terminal emulators,
 Gazebo GUI, RViz, MAVProxy map or console windows open. ROS camera sensors still
 render on NVIDIA EGL when the driver is available; headless does not disable video.
+
+**Enable SLAM mapping** is optional and off by default. It selects ZED visual
+odometry, uses a reduced camera resolution and saves a fresh `rtabmap.db` in the
+session folder. Managed installations keep those sessions under the stable
+application data directory so maps survive updates.
+
 The launch also adds the working Harmonic ArduPilot plugin build directory
 `~/ardupilot/ardupilot_gazebo/build`, so Desktop startup does not rely on a terminal
 export or the incompatible Gazebo 11 plugin in `/usr/local/lib`.

@@ -13,7 +13,7 @@ import tempfile
 import urllib.parse
 import urllib.request
 
-REPOSITORY = 'adhamsherif67A/adhamsherif67A-MarineXperts-Season-2027'
+REPOSITORY = 'adhamsherif67A/3ashan-boda-myz3lsh'
 MANIFEST = 'operation-mx-update.json'
 MAX_ARCHIVE = 1024 * 1024 * 1024
 

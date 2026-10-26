@@ -7,10 +7,15 @@ background and activates them on the next launch, after the previous session
 has closed. The **Auto updates** checkbox is remembered; **Check updates**
 also works manually. Offline checks keep the installed version working.
 
+Repository: `adhamsherif67A/3ashan-boda-myz3lsh`.
+
 Each user must have access to the repository and configure **GitHub access** in
 the app. Use a personal token with repository **Contents: Read** permission.
 **Actions: Read** is useful for maintainers monitoring builds but is unnecessary
-for ordinary update downloads. Choose an expiration and replace expired tokens
+for ordinary update downloads. Fine-grained tokens must cover this repository
+under its resource owner. Outside collaborators who cannot select it may need
+a classic token with the `repo` scope instead; that scope is broader and should
+be given an expiration. Choose an expiration and replace expired tokens
 through the same dialog. Never distribute the release-signing private key to
 desktop users.
 

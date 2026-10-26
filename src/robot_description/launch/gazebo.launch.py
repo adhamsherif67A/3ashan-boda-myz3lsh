@@ -140,7 +140,7 @@ def launch_setup(context):
                 'wait_for_transform': '0.2',
                 'args': '--ros-args -p RGBD/LinearUpdate:=0.03 -p RGBD/AngularUpdate:=0.03 -p RGBD/NeighborLinkRefining:=true -p Reg/Strategy:=1 -p Reg/Force3DoF:=false -p Grid/RangeMax:=8.0 -p Odom/ResetCountdown:=3',
                 'database_path': database_path,
-                'rtabmap_viz': 'true',
+                'rtabmap_viz': LaunchConfiguration('slam_viz').perform(context),
                 'rviz': 'false',
             }.items(),
         ))
@@ -381,6 +381,8 @@ def generate_launch_description():
         DeclareLaunchArgument('slam_database_path',
                               default_value=str(Path.home() / '.ros' / 'mako_slam.db'),
                               description='RTAB-Map database path. Existing databases are reused, not deleted.'),
+        DeclareLaunchArgument('slam_viz', default_value='true', choices=['true', 'false'],
+                              description='Open the RTAB-Map viewer when SLAM is enabled.'),
         DeclareLaunchArgument(
             'publish_odom_tf', default_value='true', choices=['true', 'false'],
             description='Let Gazebo own odom -> base_link. Disable for an external estimator.'),
