@@ -14,6 +14,7 @@ state=State();state.connected=True;state.armed=True;state.mode='STABILIZE'
 joy=Joy();joy.axes=[0.0]*6;joy.buttons=[0]*8
 statepub=node.create_publisher(State,'/mavros/state',10);joypub=node.create_publisher(Joy,'/joy',qos_profile_sensor_data);clockpub=node.create_publisher(Clock,'/clock',10)
 frames=[];arms=[];modes=[];accept={'arm':True,'mode':True,'confirm':True};clock_time=1000
+autopub=node.create_publisher(ManualControl,'/mako/autopilot/manual_control',10);auto_cmd=None
 node.create_subscription(ManualControl,'/mavros/manual_control/send',lambda m:frames.append(m),10)
 def arm(req,resp):
  arms.append(req.value);resp.success=accept['arm'];resp.result=0 if resp.success else 4
@@ -33,6 +34,7 @@ def pump(seconds,sendjoy=True):
   assert process.poll() is None,log.read_text()
   statepub.publish(state)
   if sendjoy:joypub.publish(joy)
+  if auto_cmd is not None:autopub.publish(auto_cmd)
   clock=Clock();clock.clock.sec=clock_time;clockpub.publish(clock)
   rclpy.spin_once(node,timeout_sec=.02)
 def setparams(**values):
@@ -74,8 +76,14 @@ try:
  assert len(arms)==count,'Armed before FCU mode confirmation'
  pump(5.2);assert len(arms)==count,'Timed-out mode request armed vehicle'
  accept['confirm']=True;press(6);assert state.mode=='MANUAL' and state.armed and arms[-1] is True
+ joy.axes=[0.]*6;auto_cmd=ManualControl(x=300.,y=-200.,z=650.,r=100.);pump(.4)
+ m=frames[-1];assert (m.x,m.y,m.z,m.r)==(300,-200,650,100),'Autopilot command not forwarded'
+ joy.axes[1]=1.;pump(.3);assert frames[-1].x>350,'Pilot stick did not override the autopilot'
+ joy.axes[1]=0.;pump(.3);assert frames[-1].x==300,'Autopilot did not resume after the stick was released'
+ auto_cmd=ManualControl(x=5000.,y=math.nan,z=-50.,r=-5000.);pump(.3);m=frames[-1];assert (m.x,m.y,m.z,m.r)==(1000,0,0,-1000),'Autopilot command not bounded'
+ auto_cmd=None;pump(.6);m=frames[-1];assert (m.x,m.y,m.z,m.r)==(0,0,500,0),'Stale autopilot command was not released'
  state.connected=False;pump(.2);joy.axes[1]=1.;pump(.2);assert frames[-1].x==0
- print('PASS: clamping/nonfinite input, live tuning, atomic rejection, smoothing, timeout across clock reset, external mode/arm synchronization and rejection handling')
+ print('PASS: clamping/nonfinite input, live tuning, atomic rejection, smoothing, timeout across clock reset, external mode/arm synchronization and rejection handling, autopilot forwarding/override/release')
  assert 'rejected' in log.read_text().lower(),log.read_text()
 finally:
  process.send_signal(signal.SIGINT)

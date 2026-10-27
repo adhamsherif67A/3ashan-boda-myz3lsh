@@ -8,6 +8,15 @@ from PyQt5.QtCore import QThread, pyqtSignal
 from PyQt5.QtGui import QImage
 from .simulation import DOMAIN
 
+AUTOPILOT_TOPIC='/mako/autopilot/manual_control'
+NEUTRAL=(0.,0.,500.,0.)
+KEY_RAMP=120     # per 50 ms: keyboard commands reach full scale in about 0.4 s
+# The Mako's ArduSub forward/right axes point opposite to the ZED camera's view
+# (realjoy uses invert_forward for the same reason). Keyboard commands are in
+# camera terms, so forward and lateral are flipped before they are sent.
+FORWARD_SIGN=-1
+LATERAL_SIGN=-1
+
 VIEWS={'First person':'/zed2i/zed_node/left/image_rect_color',
        'Third person':'/third_person_camera/image_raw'}
 
@@ -30,6 +39,8 @@ class RosWorker(QThread):
         self.domain=domain;self.lock=threading.Lock();self.frames={};self.telemetry={}
         self.requested_view='First person'
         self.commands=queue.Queue();self.stopping=threading.Event()
+        # Keyboard target (x, y, z, r) from the UI thread; None when keyboard piloting is off.
+        self.keyboard=None;self.keyboard_output=None;self.release_until=0
 
     def set_view(self,view):
         if view not in VIEWS:raise ValueError('Unknown camera view')
@@ -69,6 +80,21 @@ class RosWorker(QThread):
 
     def request_arm(self,armed):self.commands.put(('arm',armed))
     def request_mode(self,mode):self.commands.put(('mode',mode))
+    def set_keyboard(self,target):
+        with self.lock:self.keyboard=target
+
+    def next_command(self,now):
+        """MANUAL_CONTROL values to publish now, or None to leave the joystick in charge."""
+        with self.lock:keyboard=self.keyboard
+        if keyboard is None:
+            if self.keyboard_output is not None:
+                # Keyboard switched off: send neutral briefly, then hand back to the joystick.
+                self.keyboard_output=None;self.release_until=now+.5
+            return NEUTRAL if now<self.release_until else None
+        current=self.keyboard_output or NEUTRAL
+        self.keyboard_output=tuple(a+max(-KEY_RAMP,min(KEY_RAMP,b-a)) for a,b in zip(current,keyboard))
+        x,y,z,r=self.keyboard_output
+        return (FORWARD_SIGN*x,LATERAL_SIGN*y,z,r)
 
     def run(self):
         node=None;context=None;executor=None
@@ -82,7 +108,7 @@ class RosWorker(QThread):
             from rclpy.parameter import Parameter
             from sensor_msgs.msg import Image
             from nav_msgs.msg import Odometry
-            from mavros_msgs.msg import State,RCOut
+            from mavros_msgs.msg import State,RCOut,ManualControl
             from mavros_msgs.srv import CommandBool,SetMode
             context=Context();rclpy.init(context=context)
             node=Node('mako_pilot_station',context=context,parameter_overrides=[Parameter('use_sim_time',value=True)])
@@ -94,7 +120,8 @@ class RosWorker(QThread):
             node.create_subscription(Image,'/bottom_camera/image_raw',lambda msg:self.frame(msg,'bottom'),qos)
             arming=node.create_client(CommandBool,'/mavros/cmd/arming')
             mode=node.create_client(SetMode,'/mavros/set_mode')
-            active_view=None;video=None
+            autopilot=node.create_publisher(ManualControl,AUTOPILOT_TOPIC,10)
+            active_view=None;video=None;last_autopilot=0
             while not self.stopping.is_set():
                 with self.lock:view=self.requested_view
                 if view!=active_view:
@@ -116,6 +143,11 @@ class RosWorker(QThread):
                                 self.message.emit(f'{action.title()} {value}: '+('accepted' if accepted else 'rejected by autopilot'))
                             except Exception as error:self.message.emit(str(error))
                         future.add_done_callback(done)
+                now=time.monotonic()
+                command=self.next_command(now) if now-last_autopilot>=.05 else None
+                if command is not None:
+                    message=ManualControl();message.x,message.y,message.z,message.r=command
+                    autopilot.publish(message);last_autopilot=now
                 executor.spin_once(timeout_sec=.025)
         except Exception as error:self.message.emit('ROS connection error: '+str(error))
         finally:
