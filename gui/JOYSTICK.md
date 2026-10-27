@@ -35,6 +35,13 @@ reduces sensitivity near the center while retaining full-scale travel. Sensitivi
 limits the maximum commanded movement. Forward, lateral and yaw are clamped to
 -1000…1000; heave is clamped to 0…1000, with neutral at 500. Nonfinite input is neutral.
 
+Operation MX's keyboard pilot publishes `mavros_msgs/ManualControl` on
+`/mako/autopilot/manual_control` (parameter `autopilot_topic`). While those
+commands are fresh (`autopilot_timeout_s`, default 0.3 s) and every stick is
+inside its dead zone, the controller forwards them, bounded to the same ranges.
+Any stick outside its dead zone has priority. When the commands stop, joystick
+control resumes; without a gamepad, one neutral command is sent.
+
 Examples for the application simulation:
 
 ```bash

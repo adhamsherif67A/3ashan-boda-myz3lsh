@@ -64,10 +64,18 @@ public:
     for (size_t i=0; i<axis_names_.size(); ++i)
       sensitivity_[i] = declare_parameter<double>("sensitivity_"+axis_names_[i], 1.0);
     smoothing_tau_ = declare_parameter<double>("smoothing_tau", 0.08);
+    autopilot_topic_ = declare_parameter<std::string>("autopilot_topic", "/mako/autopilot/manual_control");
+    autopilot_timeout_s_ = declare_parameter<double>("autopilot_timeout_s", 0.3);
 
     manual_pub_ = this->create_publisher<mavros_msgs::msg::ManualControl>(
 
       "/mavros/manual_control/send", 10);
+
+    // Operation MX tasks send commands here; centred sticks let them through.
+    autopilot_sub_ = create_subscription<mavros_msgs::msg::ManualControl>(autopilot_topic_, 10,
+      [this](const mavros_msgs::msg::ManualControl::SharedPtr msg) {
+        autopilot_cmd_ = *msg; autopilot_time_ = Clock::now(); have_autopilot_ = true;
+      });
 
     joy_sub_ = this->create_subscription<sensor_msgs::msg::Joy>(
       joy_topic_, rclcpp::SensorDataQoS(),
@@ -179,6 +187,13 @@ private:
     if (state_.armed) { arm_after_mode_=false;request_arm(false);publish_neutral_manual(); }
     else if (state_.mode==arm_mode_) request_arm(true);
     else { arm_after_mode_=true;request_mode(arm_mode_); }
+  }
+
+  static mavros_msgs::msg::ManualControl bounded_autopilot(const mavros_msgs::msg::ManualControl& in) {
+    mavros_msgs::msg::ManualControl mc{};
+    mc.x=realjoy::bipolar_command(in.x/1000.0);mc.y=realjoy::bipolar_command(in.y/1000.0);
+    mc.z=realjoy::heave_command((in.z-500.0)/500.0);mc.r=realjoy::bipolar_command(in.r/1000.0);
+    return mc;
   }
 
   void publish_neutral_manual() {
@@ -294,22 +309,42 @@ private:
     }
     const double dt=std::clamp(std::chrono::duration<double>(now-last_tick_).count(),0.0,0.1);
     last_tick_=now;
-    if(!have_joy_) return;
-    if(!state_ready() || std::chrono::duration<double>(now-last_joy_time_).count()>joy_timeout_s_) {
+    const bool autopilot=have_autopilot_ &&
+      std::chrono::duration<double>(now-autopilot_time_).count()<autopilot_timeout_s_;
+    if(!have_joy_ && !autopilot) {
+      // Without a gamepad, leave the vehicle with a neutral command when a task stops.
+      if(autopilot_engaged_) {RCLCPP_INFO(get_logger(), "Autopilot commands released");autopilot_engaged_=false;publish_neutral_manual();}
+      return;
+    }
+    const bool joy_fresh=have_joy_ &&
+      std::chrono::duration<double>(now-last_joy_time_).count()<=joy_timeout_s_;
+    if(!state_ready() || (!joy_fresh && !autopilot)) {
       if(!input_lost_) RCLCPP_WARN(get_logger(), "Joystick input or autopilot state expired; sending neutral");
       input_lost_=true;publish_neutral_manual();return;
     }
     input_lost_=false;
-    auto axis=[this](int index,bool invert,float expo,float deadzone,double sensitivity) {
-      return realjoy::shape_pilot_axis(realjoy::safe_axis(last_joy_,index),invert,expo,deadzone,sensitivity);
-    };
-    const double left=realjoy::safe_axis(last_joy_,cfg_.axis_yaw_left);
-    const double right=realjoy::safe_axis(last_joy_,cfg_.axis_yaw_right);
-    std::array<double,4> target={
-      axis(cfg_.axis_forward,cfg_.invert_forward,cfg_.expo_forward,cfg_.deadzone_forward,sensitivity_[0]),
-      axis(cfg_.axis_lateral,cfg_.invert_lateral,cfg_.expo_lateral,cfg_.deadzone_lateral,sensitivity_[1]),
-      axis(cfg_.axis_vertical,cfg_.invert_vertical,cfg_.expo_vertical,cfg_.deadzone_vertical,sensitivity_[2]),
-      realjoy::shape_pilot_axis(right-left,cfg_.invert_yaw,cfg_.expo_yaw,deadzone_yaw_,sensitivity_[3])};
+    std::array<double,4> target{};
+    if(joy_fresh) {
+      auto axis=[this](int index,bool invert,float expo,float deadzone,double sensitivity) {
+        return realjoy::shape_pilot_axis(realjoy::safe_axis(last_joy_,index),invert,expo,deadzone,sensitivity);
+      };
+      const double left=realjoy::safe_axis(last_joy_,cfg_.axis_yaw_left);
+      const double right=realjoy::safe_axis(last_joy_,cfg_.axis_yaw_right);
+      target={
+        axis(cfg_.axis_forward,cfg_.invert_forward,cfg_.expo_forward,cfg_.deadzone_forward,sensitivity_[0]),
+        axis(cfg_.axis_lateral,cfg_.invert_lateral,cfg_.expo_lateral,cfg_.deadzone_lateral,sensitivity_[1]),
+        axis(cfg_.axis_vertical,cfg_.invert_vertical,cfg_.expo_vertical,cfg_.deadzone_vertical,sensitivity_[2]),
+        realjoy::shape_pilot_axis(right-left,cfg_.invert_yaw,cfg_.expo_yaw,deadzone_yaw_,sensitivity_[3])};
+    }
+    // Any stick outside its dead zone takes priority over autopilot commands.
+    const bool pilot_active=std::any_of(target.begin(),target.end(),[](double v){return v!=0.0;});
+    if(autopilot && !pilot_active) {
+      if(!autopilot_engaged_) RCLCPP_INFO(get_logger(), "Autopilot commands engaged");
+      autopilot_engaged_=true;filtered_.fill(0.0);
+      manual_pub_->publish(bounded_autopilot(autopilot_cmd_));return;
+    }
+    if(autopilot_engaged_) RCLCPP_INFO(get_logger(), autopilot ? "Pilot override: joystick has priority" : "Autopilot commands released");
+    autopilot_engaged_=false;
     const double alpha=smoothing_tau_>0 ? 1.0-std::exp(-dt/smoothing_tau_) : 1.0;
     for(size_t i=0;i<target.size();++i) filtered_[i]+=alpha*(target[i]-filtered_[i]);
     mavros_msgs::msg::ManualControl mc{};
@@ -320,6 +355,12 @@ private:
 
 private:
   rclcpp::Subscription<sensor_msgs::msg::Joy>::SharedPtr joy_sub_;
+  rclcpp::Subscription<mavros_msgs::msg::ManualControl>::SharedPtr autopilot_sub_;
+  mavros_msgs::msg::ManualControl autopilot_cmd_{};
+  Clock::time_point autopilot_time_{};
+  bool have_autopilot_{false},autopilot_engaged_{false};
+  std::string autopilot_topic_;
+  double autopilot_timeout_s_{0.3};
   rclcpp::Publisher<mavros_msgs::msg::ManualControl>::SharedPtr manual_pub_;
   rclcpp::Client<mavros_msgs::srv::CommandBool>::SharedPtr arm_client_;
   rclcpp::Client<mavros_msgs::srv::SetMode>::SharedPtr set_mode_client_;

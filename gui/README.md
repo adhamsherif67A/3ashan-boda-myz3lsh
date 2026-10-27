@@ -43,6 +43,21 @@ simulation must be stopped once before starting the application because it uses
 the same standard SITL/MAVROS ports. The app reports occupied ports and preserves
 unrelated terminal windows and processes.
 
+The application opens full screen. **F11** or **Full screen** toggles it; start it
+with `--windowed` for a normal window. **Camera only** (**H**) hides the side panels
+so the pilot view fills the screen. Resize the bottom-camera view by dragging its
+top-left corner, or with **[** and **]**; the size is remembered.
+The mission timer is also shown at the top of the camera view.
+
+**Keyboard pilot** (next to Capture frame) lets you fly without a gamepad once the
+vehicle connects: W/S forward/backward, A/D sideways, Q/E or ←/→ turn, ↑/↓ up/down,
+hold Shift for full power instead of half. Commands ramp up over about 0.4 s and
+return to neutral when the keys are released, the window loses focus, or the button
+is switched off; a gamepad stick still has priority. The app publishes on
+`/mako/autopilot/manual_control`, which `realjoy_node` forwards to MAVROS while the
+sticks are centred, so Software2026 must be rebuilt with
+`gui/joystick_update/joystick.cpp`.
+
 First person uses the ZED left eye. Third person uses a real 720p/30 Hz RGB sensor
 1.45 m behind and 0.62 m above the ROV, looking forward/down. It is rigidly attached
 to the bow-facing frame, following vehicle translation and rotation. It has no
