@@ -3,9 +3,12 @@ cd ~/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws
 clear
 colcon build 
 clear
+
+cd ~/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws
 source install/setup.bash
 ros2 launch ps_rov_control rov_control.launch.py
 
 clear
+cd ~/Desktop/rov/adhamsherif67A-MarineXperts-Season-2027/rov_ws
 source install/setup.bash
 ros2 launch robot_mapping mapping.launch.py

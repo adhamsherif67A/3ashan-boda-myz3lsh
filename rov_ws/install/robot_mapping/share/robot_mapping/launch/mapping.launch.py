@@ -1,74 +1,58 @@
-import os
-from ament_index_python.packages import get_package_share_directory
 from launch import LaunchDescription
 from launch_ros.actions import Node
 
 def generate_launch_description():
 
-    pkg_share = get_package_share_directory('robot_mapping')
-    rviz_config_path = os.path.join(pkg_share, 'rviz', 'mapping_config.rviz')
-
-    # 1. Gazebo Bridges (توصيل جميع الكاميرات والعمق والـ Odom)
-    gz_bridge = Node(
-        package='ros_gz_bridge',
-        executable='parameter_bridge',
-        arguments=[
-            '/clock@rosgraph_msgs/msg/Clock[gz.msgs.Clock',
-            '/zed2i/sim/left/image@sensor_msgs/msg/Image[gz.msgs.Image',
-            '/zed2i/sim/left/depth_image@sensor_msgs/msg/Image[gz.msgs.Image',
-            '/zed2i/sim/left/camera_info@sensor_msgs/msg/CameraInfo[gz.msgs.CameraInfo',
-            '/bottom_camera/image_raw@sensor_msgs/msg/Image[gz.msgs.Image'
-        ],
-        output='screen'
-    )
-
-    # 2. RTAB-Map SLAM Node (مظبوط لإنشاء وتوفير الـ Map & MapGraph)
     rtabmap_node = Node(
         package='rtabmap_slam',
         executable='rtabmap',
         name='rtabmap',
         output='screen',
+        arguments=['-d'],  # بيمسح الخريطة القديمة ويبدأ نضيف من الصفر
         parameters=[{
             'use_sim_time': True,
-            'subscribe_depth': True,
             'frame_id': 'base_link',
-            'map_frame_id': 'map',
             'odom_frame_id': 'odom',
+            'map_frame_id': 'map',
+            'subscribe_depth': True,
             'approx_sync': True,
-            'queue_size': 30,
+            'queue_size': 100,
             'qos_image': 1,
-            'qos_depth': 1,
-            # تفعيل إنشاء الـ Grid Map والـ Graph لـ RViz2
+            'qos_camera_info': 1,
+            'qos_odom': 1,
+
+            # --- 1. حل مشكلة عوج الخريطة والطبقات المزدوجة (ICP Alignment) ---
+            'Reg/Strategy': '1',                  # تحويل المطابقة لـ (Visual + ICP) لتطبيق الأسطح هندسياً
+            'Reg/Force3DoF': 'false',             # حركة 3D كاملة للغواصة
+            'Vis/MinInliers': '15',               # رفعت شرط التطابق لـ 15 نقطة لمنع الـ Loop Closure الوهمي
+            'RGBD/OptimizeMaxError': '0.1',       # رفض أي تعديل عشوائي يلوى الخريطة
+            'RGBD/OptimizeFromLastNode': 'true',
+
+            # --- 2. دمج الطبقات وتنظيف الـ Point Cloud ---
+            'Grid/CellSize': '0.05',             # تجميع النقط في دقة 5 سم يدمج الطبقات المزدوجة ببعضها
+            'Grid/DepthDecimation': '2',
+            'Grid/RangeMax': '3.5',              # قطع الأبعاد البعيدة جداً لمنع نويز الماية
+            'Grid/RangeMin': '0.4',
+            'Grid/NoiseFilteringRadius': '0.1',   # إزالة النقط العشوائية المطرطشة
+            'Grid/NoiseFilteringMinNeighbors': '5',
+
+            # --- 3. استقرار الأداء ومنع التهنيج ---
+            'Rtabmap/DetectionRate': '1.0',       # معالجة فريم واحد بالثانية لملاءمة Gazebo
+            'RGBD/LinearUpdate': '0.15',          # تحديث الخريطة كل 15 سم حركة
+            'RGBD/AngularUpdate': '0.1',
             'Grid/FromDepth': 'true',
             'RGBD/CreateOccupancyGrid': 'true',
             'RGBD/NeighborLinkRefining': 'true',
-            'RGBD/ProximityBySpace': 'true',
-            'Reg/Strategy': '0',
-            'Reg/Force3DoF': 'false',
             'Mem/Reconstruct3D': 'true',
-            'RTABmap/DetectionRate': '2.0',
         }],
         remappings=[
-            ('rgb/image', '/zed2i/sim/left/image'),
-            ('depth/image', '/zed2i/sim/left/depth_image'),
-            ('rgb/camera_info', '/zed2i/sim/left/camera_info'),
-            ('odom', '/odometry/gz')
+            ('rgb/image', '/zed2i/zed_node/rgb/image_rect_color'),
+            ('depth/image', '/zed2i/zed_node/depth/depth_registered'),
+            ('rgb/camera_info', '/zed2i/zed_node/rgb/camera_info'),
+            ('odom', '/odometry/gz'),
         ],
-        arguments=['-d']
-    )
-
-    # 3. RViz2
-    rviz_node = Node(
-        package='rviz2',
-        executable='rviz2',
-        name='rviz2',
-        output='screen',
-        arguments=['-d', rviz_config_path],
-        parameters=[{'use_sim_time': True}]
     )
 
     return LaunchDescription([
-        gz_bridge,
-        rtabmap_node,
-        rviz_node
+        rtabmap_node
     ])
