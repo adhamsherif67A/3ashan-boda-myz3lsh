@@ -21,8 +21,6 @@ This package integrates **RTAB-Map ROS 2** into a Gazebo ROV simulation to gener
 * **Camera Info**: `/zed2i/zed_node/rgb/camera_info` (`sensor_msgs/msg/CameraInfo`)
 * **Odometry**: `/odometry/gz` (`nav_msgs/msg/Odometry`)
 
----
-
 ## 3. ROS 2 Launch File (`mapping.launch.py`)
 
 The complete launch script handles time synchronization, parameter tuning, topic remappings, automated database clearing, and launches RViz2 pre-configured with `pool_mapping.rviz`.
@@ -108,8 +106,6 @@ def generate_launch_description():
     ])
 ```
 
----
-
 ## 4. Key Parameter Tuning Breakdown
 
 1. **`Reg/Force3DoF: 'false'`**:
@@ -127,8 +123,6 @@ def generate_launch_description():
 5. **`Rtabmap/DetectionRate: '1.0'`**:
    * Throttles execution rate to 1 Hz, avoiding CPU bottlenecks and maintaining time synchronization with Gazebo.
 
----
-
 ## 5. Step-by-Step Execution & Workflow
 
 ### Prerequisites: Launch ROV Control & Simulation
@@ -141,8 +135,6 @@ source install/setup.bash
 ros2 launch ps_rov_control rov_control.launch.py
 ```
 
----
-
 ### Step 1: Launch 3D Mapping & RViz2
 
 Once the ROV controller is active, execute the mapping node in **Terminal 2**:
@@ -153,8 +145,6 @@ source install/setup.bash
 ros2 launch robot_mapping mapping.launch.py
 ```
 
----
-
 ### Step 2: Perform Loop Closure & Save Database
 
 Drive the ROV in a complete circuit around the pool and return to the starting area. Terminate the process using `Ctrl + C`. RTAB-Map automatically saves the session to `~/.ros/rtabmap.db`. Save a backup copy:
@@ -163,8 +153,6 @@ Drive the ROV in a complete circuit around the pool and return to the starting a
 cp ~/.ros/rtabmap.db ~/pool_3d_map.db
 ```
 
----
-
 ### Step 3: Export 3D Point Cloud (.PLY File)
 
 Convert the stored database into a `.ply` 3D point cloud file for inspection:
@@ -172,8 +160,6 @@ Convert the stored database into a `.ply` 3D point cloud file for inspection:
 ```bash
 rtabmap-export --ply ~/pool_3d_map.db
 ```
-
----
 
 ### Step 4: Load and Display Map on Another Machine
 
@@ -191,11 +177,21 @@ In RViz2:
 * Add **PointCloud2** subscribed to topic `/cloud_map`.
 * Set **Style** to `Flat Squares` and **Size (m)** to `0.05`.
 
----
+## 6. Note on Large Map Files (Git LFS)
 
-## 6. Project Deliverables Checklist
+The 3D map database and mesh files (`pool_3d_map.db` and `pool_3d_map.ply`) are managed using **Git LFS** due to GitHub file size limits.
+
+If you clone this repository and find that the map files are only a few bytes in size (pointer files), ensure `git-lfs` is installed and run the following command to download the complete binary files:
+
+```bash
+sudo apt install git-lfs
+git lfs install
+git lfs pull
+```
+
+## 7. Project Deliverables Checklist
 
 * [x] **Saved Database File**: `pool_3d_map.db`
 * [x] **Exported 3D Map File**: `pool_3d_map.ply`
-* [x] **Demonstration Video**: Short RViz screen capture demonstrating successful loop closure correction.
-* [x] **Documentation & Launch Configuration**: `mapping.launch.py` and `README.md`.
+* [x] **3D Mapping Demonstration Screenshots**: High-resolution RViz screenshots demonstrating the final 3D map reconstruction and loop closure verification. *(Provided in place of a video recording to prevent extreme CPU/GPU lag and system freezing caused by simultaneously running Gazebo simulation, RViz2, RTAB-Map, and screen recording software, as well as to keep repository media lightweight).*
+* [x] **Documentation & Launch Configuration**: `mapping.launch.py` and `mapping_documentation.md`.
