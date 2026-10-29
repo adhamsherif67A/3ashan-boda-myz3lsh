@@ -1,14 +1,23 @@
+import os
+from ament_index_python.packages import get_package_share_directory
 from launch import LaunchDescription
+from launch.actions import DeclareLaunchArgument
+from launch.substitutions import LaunchConfiguration
 from launch_ros.actions import Node
 
 def generate_launch_description():
 
+    # 1. تحديد مسار ملف RViz المخصص
+    pkg_share = get_package_share_directory('robot_mapping')
+    rviz_config_path = os.path.join(pkg_share, 'rviz', 'pool_mapping.rviz')
+
+    # 2. نود RTAB-Map
     rtabmap_node = Node(
         package='rtabmap_slam',
         executable='rtabmap',
         name='rtabmap',
         output='screen',
-        arguments=['-d'],  # بيمسح الخريطة القديمة ويبدأ نضيف من الصفر
+        arguments=['-d'],
         parameters=[{
             'use_sim_time': True,
             'frame_id': 'base_link',
@@ -22,23 +31,23 @@ def generate_launch_description():
             'qos_odom': 1,
 
             # --- 1. حل مشكلة عوج الخريطة والطبقات المزدوجة (ICP Alignment) ---
-            'Reg/Strategy': '1',                  # تحويل المطابقة لـ (Visual + ICP) لتطبيق الأسطح هندسياً
-            'Reg/Force3DoF': 'false',             # حركة 3D كاملة للغواصة
-            'Vis/MinInliers': '15',               # رفعت شرط التطابق لـ 15 نقطة لمنع الـ Loop Closure الوهمي
-            'RGBD/OptimizeMaxError': '0.1',       # رفض أي تعديل عشوائي يلوى الخريطة
+            'Reg/Strategy': '1',
+            'Reg/Force3DoF': 'false',
+            'Vis/MinInliers': '15',
+            'RGBD/OptimizeMaxError': '0.1',
             'RGBD/OptimizeFromLastNode': 'true',
 
             # --- 2. دمج الطبقات وتنظيف الـ Point Cloud ---
-            'Grid/CellSize': '0.05',             # تجميع النقط في دقة 5 سم يدمج الطبقات المزدوجة ببعضها
+            'Grid/CellSize': '0.05',
             'Grid/DepthDecimation': '2',
-            'Grid/RangeMax': '3.5',              # قطع الأبعاد البعيدة جداً لمنع نويز الماية
+            'Grid/RangeMax': '3.5',
             'Grid/RangeMin': '0.4',
-            'Grid/NoiseFilteringRadius': '0.1',   # إزالة النقط العشوائية المطرطشة
+            'Grid/NoiseFilteringRadius': '0.1',
             'Grid/NoiseFilteringMinNeighbors': '5',
 
             # --- 3. استقرار الأداء ومنع التهنيج ---
-            'Rtabmap/DetectionRate': '1.0',       # معالجة فريم واحد بالثانية لملاءمة Gazebo
-            'RGBD/LinearUpdate': '0.15',          # تحديث الخريطة كل 15 سم حركة
+            'Rtabmap/DetectionRate': '1.0',
+            'RGBD/LinearUpdate': '0.15',
             'RGBD/AngularUpdate': '0.1',
             'Grid/FromDepth': 'true',
             'RGBD/CreateOccupancyGrid': 'true',
@@ -53,6 +62,17 @@ def generate_launch_description():
         ],
     )
 
+    # 3. إضافة نود تشغيل RViz2 بملف الإعدادات الخاص بك
+    rviz_node = Node(
+        package='rviz2',
+        executable='rviz2',
+        name='rviz2',
+        output='screen',
+        arguments=['-d', rviz_config_path],
+        parameters=[{'use_sim_time': True}]
+    )
+
     return LaunchDescription([
-        rtabmap_node
+        rtabmap_node,
+        rviz_node,
     ])
