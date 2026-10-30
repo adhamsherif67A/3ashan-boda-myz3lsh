@@ -1,0 +1,16 @@
+{
+  "arguments": {
+    "demo": true,
+    "record": true,
+    "size": 2.0,
+    "laps": 1,
+    "no_rviz": false,
+    "world": "pool.world",
+    "route": "coverage"
+  },
+  "ros_domain_id": "42",
+  "middleware": "rmw_fastrtps_cpp",
+  "slam_odometry": "independent RGB-D visual odometry; no ground truth input",
+  "reference": "Gazebo odometry is used only for driving/evaluation",
+  "sensor_overlay": "Remove only camera_dome visual in generated world; collisions and sensor poses unchanged"
+}

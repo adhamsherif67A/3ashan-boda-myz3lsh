@@ -1,0 +1,29 @@
+{
+  "resolution_m": 0.25,
+  "plane_tolerance_m": 0.25,
+  "reference": "First exported map pose rigidly aligned to independent Gazebo reference; reference is not used by SLAM.",
+  "scope": "14x12 m floor and three inner wet walls z=-3..0; pool has no west wall.",
+  "surfaces": {
+    "floor": {
+      "observed_cells": 2688,
+      "total_cells": 2688,
+      "coverage_percent": 100.0
+    },
+    "east_wall": {
+      "observed_cells": 576,
+      "total_cells": 576,
+      "coverage_percent": 100.0
+    },
+    "north_wall": {
+      "observed_cells": 672,
+      "total_cells": 672,
+      "coverage_percent": 100.0
+    },
+    "south_wall": {
+      "observed_cells": 672,
+      "total_cells": 672,
+      "coverage_percent": 100.0
+    }
+  },
+  "coverage_target_met": true
+}

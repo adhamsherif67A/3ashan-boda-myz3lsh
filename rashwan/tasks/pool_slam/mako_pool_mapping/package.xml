@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<package format="3">
+  <name>mako_pool_mapping</name><version>0.1.0</version>
+  <description>Independent RGB-D pool SLAM, loop evidence and export for Mako.</description>
+  <maintainer email="rashwan@example.com">Rashwan</maintainer><license>BSD-3-Clause</license>
+  <buildtool_depend>ament_python</buildtool_depend>
+  <exec_depend>rclpy</exec_depend><exec_depend>launch_ros</exec_depend>
+  <exec_depend>ament_index_python</exec_depend><exec_depend>rtabmap_odom</exec_depend>
+  <exec_depend>rtabmap_slam</exec_depend><exec_depend>rtabmap_sync</exec_depend>
+  <exec_depend>rtabmap_util</exec_depend><exec_depend>rtabmap_msgs</exec_depend>
+  <exec_depend>rviz2</exec_depend><exec_depend>nav_msgs</exec_depend>
+  <exec_depend>visualization_msgs</exec_depend><exec_depend>mavros_msgs</exec_depend>
+  <exec_depend>python3-numpy</exec_depend>
+  <exec_depend>ros_gz_bridge</exec_depend><exec_depend>robot_description</exec_depend>
+  <exec_depend>cv_bridge</exec_depend><exec_depend>sensor_msgs</exec_depend>
+  <export><build_type>ament_python</build_type></export>
+</package>

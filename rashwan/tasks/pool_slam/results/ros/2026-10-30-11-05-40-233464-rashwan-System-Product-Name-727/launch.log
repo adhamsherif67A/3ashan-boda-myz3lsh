@@ -1,0 +1,23 @@
+1793358340.2339280 [INFO] [launch]: All log files can be found below /data/ros/2026-10-30-11-05-40-233464-rashwan-System-Product-Name-727
+1793358340.2339993 [INFO] [launch]: Default logging verbosity is set to INFO
+1793358340.2619300 [INFO] [parameter_bridge-1]: process started with pid [738]
+1793358340.2620251 [INFO] [rgbd_sync-2]: process started with pid [740]
+1793358340.2620611 [INFO] [rgbd_odometry-3]: process started with pid [742]
+1793358340.2620876 [INFO] [rtabmap-4]: process started with pid [744]
+1793358340.2621129 [INFO] [loop_evidence-5]: process started with pid [746]
+1793358340.2621377 [INFO] [rviz2-6]: process started with pid [748]
+1793358887.0202510 [WARNING] [launch]: user interrupted with ctrl-c (SIGINT)
+1793358887.0255373 [INFO] [rviz2-6]: sending signal 'SIGINT' to process[rviz2-6]
+1793358887.0269327 [INFO] [loop_evidence-5]: sending signal 'SIGINT' to process[loop_evidence-5]
+1793358887.0284424 [INFO] [rtabmap-4]: sending signal 'SIGINT' to process[rtabmap-4]
+1793358887.0300171 [INFO] [rgbd_odometry-3]: sending signal 'SIGINT' to process[rgbd_odometry-3]
+1793358887.0328717 [INFO] [rgbd_sync-2]: sending signal 'SIGINT' to process[rgbd_sync-2]
+1793358887.0358410 [INFO] [parameter_bridge-1]: sending signal 'SIGINT' to process[parameter_bridge-1]
+1793358887.1652927 [INFO] [parameter_bridge-1]: process has finished cleanly [pid 738]
+1793358887.1886249 [INFO] [rgbd_sync-2]: process has finished cleanly [pid 740]
+1793358887.2271936 [INFO] [loop_evidence-5]: process has finished cleanly [pid 746]
+1793358887.2360747 [INFO] [rgbd_odometry-3]: process has finished cleanly [pid 742]
+1793358888.9865422 [INFO] [rtabmap-4]: process has finished cleanly [pid 744]
+1793358892.0294521 [ERROR] [rviz2-6]: process[rviz2-6] failed to terminate '5' seconds after receiving 'SIGINT', escalating to 'SIGTERM'
+1793358892.0303020 [INFO] [rviz2-6]: sending signal 'SIGTERM' to process[rviz2-6]
+1793358892.0621166 [ERROR] [rviz2-6]: process has died [pid 748, exit code -15, cmd '/opt/ros/humble/lib/rviz2/rviz2 -d /tmp/pool_mapping_ws/install/mako_pool_mapping/share/mako_pool_mapping/config/pool_mapping.rviz --ros-args -r __node:=pool_mapping_rviz --params-file /tmp/launch_params_qgn93z1q'].

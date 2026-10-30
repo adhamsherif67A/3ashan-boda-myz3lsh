@@ -1,0 +1,12 @@
+/simulator/
+/pool_mapping_results/
+/mako_ps4_control/runs/
+/mako_ps4_control/launcher-config.json
+/mako_ps4_control/.launch*
+*.AppImage
+**/__pycache__/
+*.pyc
+**/build/
+**/install/
+**/log/
+*.egg-info/

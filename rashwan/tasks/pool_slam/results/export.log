@@ -1,0 +1,15 @@
+Opening database "/data/pool.db"...
+Opening database "/data/pool.db"... done (0.000177s).
+Loading optimized poses from database...
+Loading optimized poses from database... done (301 optimized poses loaded).
+Create and assemble the clouds...
+Create and assemble the clouds... done (0.456041s, 4959257 points).
+301 poses exported to "/data/pool_optimized_poses.txt". (min=[-3.503206,-2.575596,-0.507903] max=[3.593558,2.579850,0.000001])
+Voxel grid filtering of the assembled cloud... (voxel=0.050000, 4959257 points)
+Voxel grid filtering of the assembled cloud.... done! (0.170704s, 289236 points)
+Computing normals of the assembled cloud... (k=20, 289236 points)
+Computing normals of the assembled cloud... done! (0.049979s, 289236 points)
+Adjust normals to viewpoints of the assembled cloud... (289236 points)
+Adjust normals to viewpoints of the assembled cloud... (0.679771s, 289236 points)
+Saving /data/pool_optimized_cloud.ply... (289236 points)
+Saving /data/pool_optimized_cloud.ply... done!

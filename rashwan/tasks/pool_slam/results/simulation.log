@@ -1,0 +1,680 @@
+Logs: /home/sim/mako-runs/20261030_110525_128651
+Starting SITL: /opt/ardupilot/Tools/autotest/sim_vehicle.py -v ArduSub -f vectored --model=JSON -l 31.312000,30.067222,0,0 --out=udp:127.0.0.1:14550 --out=udp:127.0.0.1:14551 --add-param-file /opt/mako_ws/src/robot_description/config/ardusub_external_nav.parm --mavproxy-args=--non-interactive --no-extra-ports --use-dir /home/sim/mako-runs/20261030_110525_128651/sitl
+Starting MAVROS: ros2 launch mavros apm.launch fcu_url:=udp://127.0.0.1:14551@
+Starting Gazebo: ros2 launch mako_pool_mapping mapping_sim.launch.py world:=pool.world odometry_source:=ground_truth configure_ardusub:=false headless:=false pilot_fps:=30 sitl_port_in:=9002 sitl_port_out:=9003
+[INFO] [launch]: All log files can be found below /home/sim/mako-runs/20261030_110525_128651/ros/2026-10-30-11-05-25-249789-rashwan-System-Product-Name-49
+[INFO] [launch]: Default logging verbosity is set to INFO
+[INFO] [launch]: All log files can be found below /home/sim/mako-runs/20261030_110525_128651/ros/2026-10-30-11-05-25-251491-rashwan-System-Product-Name-48
+[INFO] [launch]: Default logging verbosity is set to INFO
+Setting top to                           : /opt/ardupilot 
+Setting out to                           : /opt/ardupilot/build 
+Autoconfiguration                        : enabled 
+Checking for program 'python'            : /usr/bin/python3 
+[INFO] [mavros_node-1]: process started with pid [85]
+[mavros_node-1] [INFO] [1793358325.324482500] [mavros_node]: Starting mavros_node container
+[mavros_node-1] [INFO] [1793358325.324519396] [mavros_node]: FCU URL: udp://127.0.0.1:14551@
+[mavros_node-1] [INFO] [1793358325.324523303] [mavros_node]: GCS URL: 
+[mavros_node-1] [INFO] [1793358325.324526008] [mavros_node]: UAS Prefix: /uas1
+[mavros_node-1] [INFO] [1793358325.324528488] [mavros_node]: Starting mavros router node
+[mavros_node-1] [INFO] [1793358325.326853936] [mavros_router]: Built-in SIMD instructions: SSE, SSE2
+[mavros_node-1] [INFO] [1793358325.326864215] [mavros_router]: Built-in MAVLink package version: 2026.9.9
+[mavros_node-1] [INFO] [1793358325.326869375] [mavros_router]: Known MAVLink dialects: common ardupilotmega ASLUAV AVSSUAS all csAirLink cubepilot development icarous loweheiser marsh paparazzi standard stemstudios storm32 uAvionix
+[mavros_node-1] [INFO] [1793358325.326871933] [mavros_router]: MAVROS Router started
+[mavros_node-1] [INFO] [1793358325.326922469] [mavros_node]: Starting mavros uas node
+[mavros_node-1] [INFO] [1793358325.340194650] [mavros_router]: Requested to add endpoint: type: 0, url: udp://127.0.0.1:14551@
+[mavros_node-1] [INFO] [1793358325.340217555] [mavros_router]: Endpoint link[1000] created
+[mavros_node-1] [INFO] [1793358325.340323020] [mavros_router]: link[1000] opened successfully
+[mavros_node-1] [INFO] [1793358325.340327115] [mavros_router]: Requested to add endpoint: type: 2, url: /uas1
+[mavros_node-1] [INFO] [1793358325.340331615] [mavros_router]: Endpoint link[1001] created
+[mavros_node-1] [INFO] [1793358325.340966280] [mavros_router]: link[1001] opened successfully
+[mavros_node-1] [WARN] [1793358325.350231782] [mavros]: plugin_denylist pattern 'image_pub' does not match any declared plugin
+[mavros_node-1] [INFO] [1793358325.350234814] [mavros]: UAS Executor started, threads: 4
+[mavros_node-1] [WARN] [1793358325.350251830] [mavros]: plugin_denylist pattern 'vision_speed_estimate' does not match any declared plugin
+[mavros_node-1] [INFO] [1793358325.350298933] [mavros]: Plugin actuator_control ignored
+Checking for python version >= 3.8.0     : 3.10.12 
+Setting board to                         : sitl 
+Processing /opt/ardupilot/libraries/AP_HAL_SITL/hwdef/sitl/hwdef.dat
+Writing hwdef setup in /opt/ardupilot/build/sitl/hwdef.h
+Using toolchain                          : native 
+Checking for 'g++' (C++ compiler)        : [mavros_node-1] [INFO] [1793358325.357881964] [mavros]: Plugin adsb created
+[mavros_node-1] [INFO] [1793358325.357899358] [mavros]: Plugin adsb initialized
+[mavros_node-1] [INFO] [1793358325.357903365] [mavros]: Plugin altitude ignored
+[mavros_node-1] [INFO] [1793358325.359409989] [mavros]: Plugin cam_imu_sync created
+[mavros_node-1] [INFO] [1793358325.359423163] [mavros]: Plugin cam_imu_sync initialized
+[mavros_node-1] [INFO] [1793358325.360942007] [mavros]: Plugin camera created
+[mavros_node-1] [INFO] [1793358325.360955044] [mavros]: Plugin camera initialized
+[mavros_node-1] [INFO] [1793358325.362505509] [mavros]: Plugin cellular_status created
+[mavros_node-1] [INFO] [1793358325.362526066] [mavros]: Plugin cellular_status initialized
+/usr/bin/g++ 
+Checking for 'gcc' (C compiler)          : [mavros_node-1] [INFO] [1793358325.368745574] [mavros]: Plugin command created
+[mavros_node-1] [INFO] [1793358325.368761885] [mavros]: Plugin command initialized
+[mavros_node-1] [INFO] [1793358325.370459668] [mavros]: Plugin companion_process_status created
+[mavros_node-1] [INFO] [1793358325.370474050] [mavros]: Plugin companion_process_status initialized
+[mavros_node-1] [INFO] [1793358325.370477581] [mavros]: Plugin debug_value ignored
+[mavros_node-1] [INFO] [1793358325.372248583] [mavros.distance_sensor]: DS: rangefinder_pub: Loading config: id: 0
+[mavros_node-1] frame_id: lidar
+[mavros_node-1] field_of_view: 0.0
+[mavros_node-1] send_tf: false
+[mavros_node-1] sensor_position: {x: 0.0, y: 0.0, z: -0.1}
+[mavros_node-1] [INFO] [1793358325.372652601] [mavros.distance_sensor]: DS: rangefinder_sub: Loading config: subscriber: true
+[mavros_node-1] id: 1
+[mavros_node-1] orientation: PITCH_270
+[mavros_node-1] [INFO] [1793358325.372793020] [mavros]: Plugin distance_sensor created
+[mavros_node-1] [INFO] [1793358325.372813360] [mavros]: Plugin distance_sensor initialized
+[mavros_node-1] [INFO] [1793358325.374787517] [mavros]: Plugin esc_status created
+[mavros_node-1] [INFO] [1793358325.374801575] [mavros]: Plugin esc_status initialized
+/usr/bin/gcc 
+Checking for c flags '-MMD'              : [mavros_node-1] [INFO] [1793358325.376684050] [mavros]: Plugin esc_telemetry created
+[mavros_node-1] [INFO] [1793358325.376697685] [mavros]: Plugin esc_telemetry initialized
+[mavros_node-1] [INFO] [1793358325.379098190] [mavros]: Plugin fake_gps created
+[mavros_node-1] [INFO] [1793358325.379109829] [mavros]: Plugin fake_gps initialized
+[mavros_node-1] [INFO] [1793358325.379113076] [mavros]: Plugin ftp ignored
+[mavros_node-1] [INFO] [1793358325.381669883] [mavros]: Plugin geofence created
+[mavros_node-1] [INFO] [1793358325.381689527] [mavros]: Plugin geofence initialized
+[mavros_node-1] [INFO] [1793358325.385228384] [mavros]: Plugin gimbal_control created
+[mavros_node-1] [INFO] [1793358325.385245774] [mavros]: Plugin gimbal_control initialized
+[mavros_node-1] [INFO] [1793358325.389016836] [mavros]: Plugin global_position created
+[mavros_node-1] [INFO] [1793358325.389034054] [mavros]: Plugin global_position initialized
+[mavros_node-1] [INFO] [1793358325.391287003] [mavros]: Plugin gps_input created
+[mavros_node-1] [INFO] [1793358325.391310666] [mavros]: Plugin gps_input initialized
+[mavros_node-1] [INFO] [1793358325.393734206] [mavros]: Plugin gps_rtk created
+[mavros_node-1] [INFO] [1793358325.393747626] [mavros]: Plugin gps_rtk initialized
+[mavros_node-1] [INFO] [1793358325.396330275] [mavros]: Plugin gps_status created
+[mavros_node-1] [INFO] [1793358325.396346172] [mavros]: Plugin gps_status initialized
+[mavros_node-1] [INFO] [1793358325.398833050] [mavros]: Plugin guided_target created
+[mavros_node-1] [INFO] [1793358325.398851671] [mavros]: Plugin guided_target initialized
+[mavros_node-1] [INFO] [1793358325.398855503] [mavros]: Plugin hil ignored
+[mavros_node-1] [INFO] [1793358325.401669116] [mavros]: Plugin home_position created
+[mavros_node-1] [INFO] [1793358325.401687660] [mavros]: Plugin home_position initialized
+yes 
+Checking for cxx flags '-MMD'            : [mavros_node-1] [INFO] [1793358325.405195870] [mavros]: Plugin imu created
+[mavros_node-1] [INFO] [1793358325.405234573] [mavros]: Plugin imu initialized
+[mavros_node-1] [INFO] [1793358325.408569307] [mavros]: Plugin landing_target created
+[mavros_node-1] [INFO] [1793358325.408583642] [mavros]: Plugin landing_target initialized
+[mavros_node-1] [INFO] [1793358325.412140748] [mavros]: Plugin local_position created
+[mavros_node-1] [INFO] [1793358325.412162503] [mavros]: Plugin local_position initialized
+yes 
+CXX Compiler                             : g++ 11.4.0 
+Checking for need to link with librt     : Mapping depth repair: omitted protective render cover base_link_fixed_joint_lump__camera_dome_link_visual_5
+[mavros_node-1] [INFO] [1793358325.415847373] [mavros]: Plugin log_transfer created
+[mavros_node-1] [INFO] [1793358325.415867896] [mavros]: Plugin log_transfer initialized
+[mavros_node-1] [INFO] [1793358325.418859496] [mavros]: Plugin mag_calibration_status created
+[mavros_node-1] [INFO] [1793358325.418875182] [mavros]: Plugin mag_calibration_status initialized
+[mavros_node-1] [INFO] [1793358325.421868194] [mavros]: Plugin manual_control created
+[mavros_node-1] [INFO] [1793358325.421882135] [mavros]: Plugin manual_control initialized
+[mavros_node-1] [INFO] [1793358325.424812472] [mavros]: Plugin mocap_pose_estimate created
+[mavros_node-1] [INFO] [1793358325.424832978] [mavros]: Plugin mocap_pose_estimate initialized
+[mavros_node-1] [INFO] [1793358325.428396686] [mavros]: Plugin mount_control created
+[mavros_node-1] [INFO] [1793358325.428414186] [mavros]: Plugin mount_control initialized
+[mavros_node-1] [INFO] [1793358325.431398341] [mavros]: Plugin nav_controller_output created
+[mavros_node-1] [INFO] [1793358325.431419641] [mavros]: Plugin nav_controller_output initialized
+[mavros_node-1] [INFO] [1793358325.434610753] [mavros]: Plugin obstacle_distance created
+[mavros_node-1] [INFO] [1793358325.434623647] [mavros]: Plugin obstacle_distance initialized
+[mavros_node-1] [INFO] [1793358325.437810076] [mavros]: Plugin obstacle_distance_3d created
+[mavros_node-1] [INFO] [1793358325.437823447] [mavros]: Plugin obstacle_distance_3d initialized
+[mavros_node-1] [INFO] [1793358325.441212569] [mavros]: Plugin odometry created
+[mavros_node-1] [INFO] [1793358325.441255594] [mavros]: Plugin odometry initialized
+not necessary 
+Checking for feenableexcept              : [mavros_node-1] [INFO] [1793358325.444618410] [mavros]: Plugin onboard_computer_status created
+[mavros_node-1] [INFO] [1793358325.444631723] [mavros]: Plugin onboard_computer_status initialized
+[mavros_node-1] [INFO] [1793358325.448745364] [mavros]: Plugin open_drone_id created
+[mavros_node-1] [INFO] [1793358325.448765621] [mavros]: Plugin open_drone_id initialized
+[mavros_node-1] [INFO] [1793358325.452571852] [mavros]: Plugin optical_flow created
+[mavros_node-1] [INFO] [1793358325.452635513] [mavros]: Plugin optical_flow initialized
+[mavros_node-1] [INFO] [1793358325.456331247] [mavros]: Plugin param created
+[mavros_node-1] [INFO] [1793358325.456347711] [mavros]: Plugin param initialized
+[INFO] [ruby $(which gz) sim-1]: process started with pid [139]
+[INFO] [robot_state_publisher-2]: process started with pid [141]
+[INFO] [parameter_bridge-3]: process started with pid [144]
+[INFO] [gz_odom_to_mavros.py-4]: process started with pid [146]
+[INFO] [static_transform_publisher-5]: process started with pid [148]
+[INFO] [static_transform_publisher-6]: process started with pid [150]
+[INFO] [parameter_bridge-7]: process started with pid [153]
+[INFO] [cloud_frame_relay.py-8]: process started with pid [155]
+[INFO] [parameter_bridge-9]: process started with pid [157]
+[mavros_node-1] [INFO] [1793358325.459980292] [mavros]: Plugin play_tune created
+[mavros_node-1] [INFO] [1793358325.460005758] [mavros]: Plugin play_tune initialized
+[mavros_node-1] [INFO] [1793358325.460010066] [mavros]: Plugin px4flow ignored
+[mavros_node-1] [INFO] [1793358325.469625151] [mavros]: Plugin rallypoint created
+[mavros_node-1] [INFO] [1793358325.469671388] [mavros]: Plugin rallypoint initialized
+[static_transform_publisher-6] [INFO] [1793358325.472104928] [tf_sim_map_odom]: Spinning until stopped - publishing transform
+[static_transform_publisher-6] translation: ('0.000000', '0.000000', '0.000000')
+[static_transform_publisher-6] rotation: ('0.000000', '0.000000', '0.000000', '1.000000')
+[static_transform_publisher-6] from 'map' to 'odom'
+[static_transform_publisher-5] [INFO] [1793358325.473948570] [tf_odom_ned]: Spinning until stopped - publishing transform
+[static_transform_publisher-5] translation: ('0.000000', '0.000000', '0.000000')
+[static_transform_publisher-5] rotation: ('0.707107', '0.707107', '0.000000', '0.000000')
+[static_transform_publisher-5] from 'odom' to 'odom_ned'
+yes 
+Enabling -Werror                         : yes 
+Enabled OpenDroneID                      : no 
+Enabled firmware ID checking             : no 
+GPS Debug Logging                        : no 
+Enabled custom controller                : yes 
+Checking for HAVE_CMATH_ISFINITE         : [parameter_bridge-7] [INFO] [1793358325.487040223] [ground_truth_tf_bridge]: Creating GZ->ROS Bridge: [/model/mako/tf (gz.msgs.Pose_V) -> /model/mako/tf (tf2_msgs/msg/TFMessage)] (Lazy 0)
+[robot_state_publisher-2] [INFO] [1793358325.490986760] [robot_state_publisher]: got segment bar30_link
+[robot_state_publisher-2] [INFO] [1793358325.491039591] [robot_state_publisher]: got segment base_link
+[robot_state_publisher-2] [INFO] [1793358325.491042843] [robot_state_publisher]: got segment bottom_camera_link
+[robot_state_publisher-2] [INFO] [1793358325.491044821] [robot_state_publisher]: got segment bottom_camera_optical_frame
+[robot_state_publisher-2] [INFO] [1793358325.491046905] [robot_state_publisher]: got segment camera_dome_link
+[robot_state_publisher-2] [INFO] [1793358325.491048742] [robot_state_publisher]: got segment center_body_link
+[robot_state_publisher-2] [INFO] [1793358325.491050411] [robot_state_publisher]: got segment hydrodynamics_link
+[robot_state_publisher-2] [INFO] [1793358325.491052114] [robot_state_publisher]: got segment imu_link
+[robot_state_publisher-2] [INFO] [1793358325.491053797] [robot_state_publisher]: got segment imu_ros_link
+[robot_state_publisher-2] [INFO] [1793358325.491055543] [robot_state_publisher]: got segment rov_base_link
+[robot_state_publisher-2] [INFO] [1793358325.491057239] [robot_state_publisher]: got segment t1_link
+[robot_state_publisher-2] [INFO] [1793358325.491058920] [robot_state_publisher]: got segment t2_link
+[robot_state_publisher-2] [INFO] [1793358325.491060553] [robot_state_publisher]: got segment t3_link
+[robot_state_publisher-2] [INFO] [1793358325.491062227] [robot_state_publisher]: got segment t4_link
+[robot_state_publisher-2] [INFO] [1793358325.491063854] [robot_state_publisher]: got segment t5_link
+[robot_state_publisher-2] [INFO] [1793358325.491065534] [robot_state_publisher]: got segment t6_link
+[robot_state_publisher-2] [INFO] [1793358325.491067138] [robot_state_publisher]: got segment third_person_camera_link
+[robot_state_publisher-2] [INFO] [1793358325.491068924] [robot_state_publisher]: got segment third_person_camera_optical_frame
+[robot_state_publisher-2] [INFO] [1793358325.491070749] [robot_state_publisher]: got segment zed2i_camera_center
+[robot_state_publisher-2] [INFO] [1793358325.491072627] [robot_state_publisher]: got segment zed2i_camera_link
+[robot_state_publisher-2] [INFO] [1793358325.491074359] [robot_state_publisher]: got segment zed2i_left_camera_frame
+[robot_state_publisher-2] [INFO] [1793358325.491076164] [robot_state_publisher]: got segment zed2i_left_camera_frame_optical
+[robot_state_publisher-2] [INFO] [1793358325.491077940] [robot_state_publisher]: got segment zed2i_right_camera_frame
+[robot_state_publisher-2] [INFO] [1793358325.491079625] [robot_state_publisher]: got segment zed2i_right_camera_frame_optical
+[parameter_bridge-3] [INFO] [1793358325.494971696] [ros_gz_bridge]: Creating GZ->ROS Bridge: [/clock (gz.msgs.Clock) -> /clock (rosgraph_msgs/msg/Clock)] (Lazy 0)
+[parameter_bridge-3] [INFO] [1793358325.495518731] [ros_gz_bridge]: Creating GZ->ROS Bridge: [/mako/imu (gz.msgs.IMU) -> /mako/imu (sensor_msgs/msg/Imu)] (Lazy 0)
+[parameter_bridge-3] [INFO] [1793358325.496888706] [ros_gz_bridge]: Creating GZ->ROS Bridge: [/model/mako/odometry (gz.msgs.Odometry) -> /model/mako/odometry (nav_msgs/msg/Odometry)] (Lazy 0)
+[parameter_bridge-3] [INFO] [1793358325.497506634] [ros_gz_bridge]: Creating GZ->ROS Bridge: [/world/CompetitionWorld2025/model/mako/joint_state (gz.msgs.Model) -> /world/CompetitionWorld2025/model/mako/joint_state (sensor_msgs/msg/JointState)] (Lazy 0)
+[parameter_bridge-3] [INFO] [1793358325.497869309] [ros_gz_bridge]: Creating ROS->GZ Bridge: [/model/mako/joint/t1_joint/cmd_thrust (std_msgs/msg/Float64) -> /model/mako/joint/t1_joint/cmd_thrust (gz.msgs.Double)] (Lazy 0)
+[parameter_bridge-3] [INFO] [1793358325.498182750] [ros_gz_bridge]: Creating ROS->GZ Bridge: [/model/mako/joint/t2_joint/cmd_thrust (std_msgs/msg/Float64) -> /model/mako/joint/t2_joint/cmd_thrust (gz.msgs.Double)] (Lazy 0)
+[parameter_bridge-3] [INFO] [1793358325.498366864] [ros_gz_bridge]: Creating ROS->GZ Bridge: [/model/mako/joint/t3_joint/cmd_thrust (std_msgs/msg/Float64) -> /model/mako/joint/t3_joint/cmd_thrust (gz.msgs.Double)] (Lazy 0)
+[parameter_bridge-3] [INFO] [1793358325.498530547] [ros_gz_bridge]: Creating ROS->GZ Bridge: [/model/mako/joint/t4_joint/cmd_thrust (std_msgs/msg/Float64) -> /model/mako/joint/t4_joint/cmd_thrust (gz.msgs.Double)] (Lazy 0)
+[parameter_bridge-3] [INFO] [1793358325.498674147] [ros_gz_bridge]: Creating ROS->GZ Bridge: [/model/mako/joint/t5_joint/cmd_thrust (std_msgs/msg/Float64) -> /model/mako/joint/t5_joint/cmd_thrust (gz.msgs.Double)] (Lazy 0)
+[parameter_bridge-3] [INFO] [1793358325.498810183] [ros_gz_bridge]: Creating ROS->GZ Bridge: [/model/mako/joint/t6_joint/cmd_thrust (std_msgs/msg/Float64) -> /model/mako/joint/t6_joint/cmd_thrust (gz.msgs.Double)] (Lazy 0)
+yes 
+Checking for HAVE_CMATH_ISINF            : [mavros_node-1] [INFO] [1793358325.534954802] [mavros]: Plugin rangefinder created
+[mavros_node-1] [INFO] [1793358325.534986742] [mavros]: Plugin rangefinder initialized
+yes 
+Checking for HAVE_CMATH_ISNAN            : [mavros_node-1] [INFO] [1793358325.604916504] [mavros]: Plugin rc_io created
+[mavros_node-1] [INFO] [1793358325.604951226] [mavros]: Plugin rc_io initialized
+[gz_odom_to_mavros.py-4] [INFO] [1793358325.612247907] [gz_odom_to_mavros]: ExternalNav source: /odometry/gz; expected frames odom -> base_link
+yes 
+Checking for NEED_CMATH_ISFINITE_STD_NAMESPACE : [ruby $(which gz) sim-1] QStandardPaths: XDG_RUNTIME_DIR not set, defaulting to '/tmp/runtime-sim'
+yes 
+Checking for NEED_CMATH_ISINF_STD_NAMESPACE    : [mavros_node-1] [INFO] [1793358325.702412519] [mavros]: Plugin setpoint_accel created
+[mavros_node-1] [INFO] [1793358325.702455505] [mavros]: Plugin setpoint_accel initialized
+[mavros_node-1] [INFO] [1793358325.721072840] [mavros]: Plugin setpoint_attitude created
+[mavros_node-1] [INFO] [1793358325.721096938] [mavros]: Plugin setpoint_attitude initialized
+[mavros_node-1] [INFO] [1793358325.727084442] [mavros]: Plugin setpoint_position created
+[mavros_node-1] [INFO] [1793358325.727105625] [mavros]: Plugin setpoint_position initialized
+yes 
+Checking for NEED_CMATH_ISNAN_STD_NAMESPACE    : [mavros_node-1] [INFO] [1793358325.733930110] [mavros]: Plugin setpoint_raw created
+[mavros_node-1] [INFO] [1793358325.733957409] [mavros]: Plugin setpoint_raw initialized
+[mavros_node-1] [INFO] [1793358325.740674157] [mavros]: Plugin setpoint_trajectory created
+[mavros_node-1] [INFO] [1793358325.740696500] [mavros]: Plugin setpoint_trajectory initialized
+[mavros_node-1] [INFO] [1793358325.746353453] [mavros]: Plugin setpoint_velocity created
+[mavros_node-1] [INFO] [1793358325.746375212] [mavros]: Plugin setpoint_velocity initialized
+[mavros_node-1] [INFO] [1793358325.752894309] [mavros]: Plugin sim_state created
+[mavros_node-1] [INFO] [1793358325.752919949] [mavros]: Plugin sim_state initialized
+[mavros_node-1] [INFO] [1793358325.771586403] [mavros]: Plugin sys_status created
+[mavros_node-1] [INFO] [1793358325.771645369] [mavros]: Plugin sys_status initialized
+yes 
+[mavros_node-1] [INFO] [1793358325.779312471] [mavros.time]: TM: Timesync mode: MAVLINK
+Checking for header endian.h                   : [mavros_node-1] [INFO] [1793358325.781281221] [mavros]: Plugin sys_time created
+[mavros_node-1] [INFO] [1793358325.781305720] [mavros]: Plugin sys_time initialized
+[mavros_node-1] [INFO] [1793358325.788187721] [mavros]: Plugin tdr_radio created
+[mavros_node-1] [INFO] [1793358325.788227434] [mavros]: Plugin tdr_radio initialized
+[mavros_node-1] [INFO] [1793358325.803412011] [mavros]: Plugin terrain created
+[mavros_node-1] [INFO] [1793358325.803448886] [mavros]: Plugin terrain initialized
+yes 
+Checking for header byteswap.h                 : [mavros_node-1] [INFO] [1793358325.810289615] [mavros]: Plugin trajectory created
+[mavros_node-1] [INFO] [1793358325.810318021] [mavros]: Plugin trajectory initialized
+[mavros_node-1] [INFO] [1793358325.823305680] [mavros]: Plugin tunnel created
+[mavros_node-1] [INFO] [1793358325.823517593] [mavros]: Plugin tunnel initialized
+[mavros_node-1] [INFO] [1793358325.833786918] [mavros]: Plugin vfr_hud created
+[mavros_node-1] [INFO] [1793358325.833814414] [mavros]: Plugin vfr_hud initialized
+[mavros_node-1] [INFO] [1793358325.833818788] [mavros]: Plugin vibration ignored
+yes 
+Checking for HAVE_MEMRCHR                      : [mavros_node-1] [INFO] [1793358325.844606676] [mavros]: Plugin vision_pose created
+[mavros_node-1] [INFO] [1793358325.844631360] [mavros]: Plugin vision_pose initialized
+[mavros_node-1] [INFO] [1793358325.851687879] [mavros]: Plugin vision_speed created
+[mavros_node-1] [INFO] [1793358325.851711158] [mavros]: Plugin vision_speed initialized
+[ruby $(which gz) sim-1] [1;33mWarning [Utils.cc:132][0m [/sdf/world[@name="CompetitionWorld2025"]/model[@name="mako"]/link[@name="base_link"]/sensor[@name="imu_ros_sensor"]/gz_frame_id:/tmp/mako-gazebo-8x561hbb/pool_with_mako.sdf:L2103]: XML Element[gz_frame_id], child of element[sensor], not defined in SDF. Copying[gz_frame_id] as children of [sensor].
+[ruby $(which gz) sim-1] [1;33mWarning [Utils.cc:132][0m [/sdf/world[@name="CompetitionWorld2025"]/model[@name="mako"]/link[@name="base_link"]/sensor[@name="third_person_rgb_camera"]/gz_frame_id:/tmp/mako-gazebo-8x561hbb/pool_with_mako.sdf:L2124]: XML Element[gz_frame_id], child of element[sensor], not defined in SDF. Copying[gz_frame_id] as children of [sensor].
+[ruby $(which gz) sim-1] [1;33mWarning [Utils.cc:132][0m [/sdf/world[@name="CompetitionWorld2025"]/model[@name="mako"]/link[@name="base_link"]/sensor[@name="zed2i_left_pilot"]/gz_frame_id:/tmp/mako-gazebo-8x561hbb/pool_with_mako.sdf:L2145]: XML Element[gz_frame_id], child of element[sensor], not defined in SDF. Copying[gz_frame_id] as children of [sensor].
+[ruby $(which gz) sim-1] [1;33mWarning [Utils.cc:132][0m [/sdf/world[@name="CompetitionWorld2025"]/model[@name="mako"]/link[@name="base_link"]/sensor[@name="zed2i_left_rgbd"]/gz_frame_id:/tmp/mako-gazebo-8x561hbb/pool_with_mako.sdf:L2172]: XML Element[gz_frame_id], child of element[sensor], not defined in SDF. Copying[gz_frame_id] as children of [sensor].
+[ruby $(which gz) sim-1] [1;33mWarning [Utils.cc:132][0m [/sdf/world[@name="CompetitionWorld2025"]/model[@name="mako"]/link[@name="base_link"]/sensor[@name="zed2i_right_pilot"]/gz_frame_id:/tmp/mako-gazebo-8x561hbb/pool_with_mako.sdf:L2193]: XML Element[gz_frame_id], child of element[sensor], not defined in SDF. Copying[gz_frame_id] as children of [sensor].
+[ruby $(which gz) sim-1] [1;33mWarning [Utils.cc:132][0m [/sdf/world[@name="CompetitionWorld2025"]/model[@name="mako"]/link[@name="base_link"]/sensor[@name="zed2i_right_rgbd"]/gz_frame_id:/tmp/mako-gazebo-8x561hbb/pool_with_mako.sdf:L2220]: XML Element[gz_frame_id], child of element[sensor], not defined in SDF. Copying[gz_frame_id] as children of [sensor].
+[ruby $(which gz) sim-1] [1;33mWarning [Utils.cc:132][0m [/sdf/world[@name="CompetitionWorld2025"]/model[@name="mako"]/link[@name="base_link"]/sensor[@name="bottom_rgb_camera"]/gz_frame_id:/tmp/mako-gazebo-8x561hbb/pool_with_mako.sdf:L2241]: XML Element[gz_frame_id], child of element[sensor], not defined in SDF. Copying[gz_frame_id] as children of [sensor].
+[mavros_node-1] [INFO] [1793358325.861334826] [mavros]: Plugin waypoint created
+[mavros_node-1] [INFO] [1793358325.861417597] [mavros]: Plugin waypoint initialized
+[mavros_node-1] [INFO] [1793358325.861422223] [mavros]: Plugin wheel_odometry ignored
+[mavros_node-1] [INFO] [1793358325.868200919] [mavros]: Plugin wind_estimation created
+[mavros_node-1] [INFO] [1793358325.868236603] [mavros]: Plugin wind_estimation initialized
+[mavros_node-1] [INFO] [1793358325.869021570] [mavros]: Built-in SIMD instructions: SSE, SSE2
+[mavros_node-1] [INFO] [1793358325.869030622] [mavros]: Built-in MAVLink package version: 2026.9.9
+[mavros_node-1] [INFO] [1793358325.869033081] [mavros]: Known MAVLink dialects: common ardupilotmega ASLUAV AVSSUAS all csAirLink cubepilot development icarous loweheiser marsh paparazzi standard stemstudios storm32 uAvionix
+[mavros_node-1] [INFO] [1793358325.869035570] [mavros]: MAVROS UAS via /uas1 started. MY ID 1.191, TARGET ID 1.1
+yes 
+Configured VSCode Intellisense:                : no 
+DC_DSDL compiler in                            : /opt/ardupilot/modules/DroneCAN/dronecan_dsdlc 
+Source is git repository                       : yes 
+Update submodules                              : yes 
+Checking for program 'git'                     : /usr/bin/git 
+Littlefs                                       : disabled 
+Checking for program 'size'                    : /usr/bin/size 
+Benchmarks                                     : disabled 
+Unit tests                                     : enabled 
+Scripting                                      : maybe 
+[mavros_node-1] [INFO] [1793358325.879977735] [mavros_router]: link[1001] detected remote address 1.191
+Scripting runtime checks                       : enabled 
+Debug build                                    : disabled 
+Coverage build                                 : disabled 
+Consistent build                               : disabled 
+Force 32-bit build                             : disabled 
+Checking for program 'rsync'                   : not found 
+Removing target_list file /opt/ardupilot/build/sitl/target_list
+'configure' finished successfully (0.600s)
+Waf: Entering directory `/opt/ardupilot/build/sitl'
+[parameter_bridge-9] [INFO] [1793358326.484723253] [zed2i_bridge]: Creating GZ->ROS Bridge: [/zed2i/sim/pilot/left/image (gz.msgs.Image) -> /zed2i/zed_node/left/image_rect_color (sensor_msgs/msg/Image)] (Lazy 1)
+[parameter_bridge-9] [INFO] [1793358326.485948930] [zed2i_bridge]: Creating GZ->ROS Bridge: [/zed2i/sim/pilot/left/camera_info (gz.msgs.CameraInfo) -> /zed2i/zed_node/left/camera_info (sensor_msgs/msg/CameraInfo)] (Lazy 1)
+[parameter_bridge-9] [INFO] [1793358326.486267895] [zed2i_bridge]: Creating GZ->ROS Bridge: [/zed2i/sim/left/depth_image (gz.msgs.Image) -> /zed2i/zed_node/left/depth/image_raw (sensor_msgs/msg/Image)] (Lazy 1)
+[parameter_bridge-9] [INFO] [1793358326.486458525] [zed2i_bridge]: Creating GZ->ROS Bridge: [/zed2i/sim/left/points (gz.msgs.PointCloudPacked) -> /zed2i/sim_ros/left/points_raw (sensor_msgs/msg/PointCloud2)] (Lazy 1)
+[parameter_bridge-9] [INFO] [1793358326.486702492] [zed2i_bridge]: Creating GZ->ROS Bridge: [/zed2i/sim/pilot/right/image (gz.msgs.Image) -> /zed2i/zed_node/right/image_rect_color (sensor_msgs/msg/Image)] (Lazy 1)
+[parameter_bridge-9] [INFO] [1793358326.487130775] [zed2i_bridge]: Creating GZ->ROS Bridge: [/zed2i/sim/pilot/right/camera_info (gz.msgs.CameraInfo) -> /zed2i/zed_node/right/camera_info (sensor_msgs/msg/CameraInfo)] (Lazy 1)
+[parameter_bridge-9] [INFO] [1793358326.487520240] [zed2i_bridge]: Creating GZ->ROS Bridge: [/zed2i/sim/right/depth_image (gz.msgs.Image) -> /zed2i/zed_node/right/depth/image_raw (sensor_msgs/msg/Image)] (Lazy 1)
+[parameter_bridge-9] [INFO] [1793358326.487974525] [zed2i_bridge]: Creating GZ->ROS Bridge: [/zed2i/sim/right/points (gz.msgs.PointCloudPacked) -> /zed2i/sim_ros/right/points_raw (sensor_msgs/msg/PointCloud2)] (Lazy 1)
+[parameter_bridge-9] [INFO] [1793358326.488565252] [zed2i_bridge]: Creating GZ->ROS Bridge: [/zed2i/sim/pilot/left/image (gz.msgs.Image) -> /zed2i/zed_node/rgb/image_rect_color (sensor_msgs/msg/Image)] (Lazy 1)
+[parameter_bridge-9] [INFO] [1793358326.488953518] [zed2i_bridge]: Creating GZ->ROS Bridge: [/zed2i/sim/pilot/left/camera_info (gz.msgs.CameraInfo) -> /zed2i/zed_node/rgb/camera_info (sensor_msgs/msg/CameraInfo)] (Lazy 1)
+[parameter_bridge-9] [INFO] [1793358326.489345562] [zed2i_bridge]: Creating GZ->ROS Bridge: [/zed2i/sim/left/depth_image (gz.msgs.Image) -> /zed2i/zed_node/depth/depth_registered (sensor_msgs/msg/Image)] (Lazy 1)
+[parameter_bridge-9] [INFO] [1793358326.489827210] [zed2i_bridge]: Creating GZ->ROS Bridge: [/zed2i/sim/left/camera_info (gz.msgs.CameraInfo) -> /zed2i/zed_node/depth/camera_info (sensor_msgs/msg/CameraInfo)] (Lazy 1)
+[parameter_bridge-9] [INFO] [1793358326.490376127] [zed2i_bridge]: Creating GZ->ROS Bridge: [/bottom_camera/sim/image (gz.msgs.Image) -> /bottom_camera/image_raw (sensor_msgs/msg/Image)] (Lazy 1)
+[parameter_bridge-9] [INFO] [1793358326.490776933] [zed2i_bridge]: Creating GZ->ROS Bridge: [/bottom_camera/sim/camera_info (gz.msgs.CameraInfo) -> /bottom_camera/camera_info (sensor_msgs/msg/CameraInfo)] (Lazy 1)
+[parameter_bridge-9] [INFO] [1793358326.491139222] [zed2i_bridge]: Creating GZ->ROS Bridge: [/third_person_camera/sim/image (gz.msgs.Image) -> /third_person_camera/image_raw (sensor_msgs/msg/Image)] (Lazy 1)
+[parameter_bridge-9] [INFO] [1793358326.491512266] [zed2i_bridge]: Creating GZ->ROS Bridge: [/third_person_camera/sim/camera_info (gz.msgs.CameraInfo) -> /third_person_camera/camera_info (sensor_msgs/msg/CameraInfo)] (Lazy 1)
+Embedding file locations.txt:Tools/autotest/locations.txt
+Embedding file models/Callisto.json:Tools/autotest/models/Callisto.json
+Embedding file models/freestyle.json:Tools/autotest/models/freestyle.json
+Embedding file models/plane-3d.parm:Tools/autotest/models/plane-3d.parm
+Embedding file models/plane.parm:Tools/autotest/models/plane.parm
+Embedding file models/skywalker_2013.json:Tools/autotest/models/skywalker_2013.json
+Embedding file models/xplane_heli.json:Tools/autotest/models/xplane_heli.json
+Embedding file models/xplane_plane.json:Tools/autotest/models/xplane_plane.json
+[11/12] Processing dronecangen: modules/DroneCAN/DSDL/ardupilot modules/DroneCAN/DSDL/com modules/DroneCAN/DSDL/cuav modules/DroneCAN/DSDL/dronecan modules/DroneCAN/DSDL/mppt modules/DroneCAN/DSDL/tests modules/DroneCAN/DSDL/uavcan
+expanding ardupilot.equipment.power.BatteryTag
+expanding com.tmotor.esc.PUSHSCI
+expanding dronecan.remoteid.ArmStatus
+expanding uavcan.equipment.indication.LightsCommand
+expanding uavcan.equipment.camera_gimbal.Mode
+expanding uavcan.navigation.GlobalNavigationSolution
+expanding com.hobbywing.esc.SetReportingFrequency
+expanding dronecan.remoteid.BasicID
+expanding uavcan.equipment.esc.StatusExtended
+expanding uavcan.protocol.GetTransportStats
+expanding ardupilot.equipment.power.BatteryPeriodic
+expanding dronecan.remoteid.SecureCommand
+expanding uavcan.equipment.ahrs.RawIMU
+expanding uavcan.equipment.power.PrimaryPowerSupplyStatus
+expanding uavcan.protocol.param.NumericValue
+expanding ardupilot.indication.Button
+expanding com.himark.servo.ServoInfo
+expanding dronecan.protocol.CanStats
+expanding uavcan.equipment.ahrs.MagneticFieldStrength2
+expanding uavcan.protocol.file.GetInfo
+expanding ardupilot.equipment.proximity_sensor.Proximity
+expanding com.tmotor.esc.FocCtrl
+expanding dronecan.remoteid.SelfID
+expanding uavcan.equipment.indication.BeepCommand
+expanding uavcan.equipment.camera_gimbal.AngularCommand
+expanding uavcan.tunnel.Broadcast
+expanding uavcan.protocol.debug.LogLevel
+expanding com.hobbywing.esc.SetBaud
+expanding dronecan.protocol.FlexDebug
+expanding uavcan.equipment.actuator.Command
+expanding uavcan.protocol.GetNodeInfo
+expanding com.hobbywing.esc.SetThrottleSource
+expanding dronecan.protocol.GlobalTime
+expanding uavcan.equipment.esc.RPMCommand
+expanding uavcan.protocol.AccessCommandShell
+expanding com.hobbywing.esc.SetID
+expanding uavcan.equipment.air_data.TrueAirspeed
+expanding uavcan.equipment.hardpoint.Status
+expanding uavcan.protocol.file.GetDirectoryEntryInfo
+expanding com.hobbywing.esc.GetMaintenanceInformation
+expanding uavcan.equipment.air_data.AngleOfAttack
+expanding uavcan.equipment.ice.reciprocating.CylinderStatus
+expanding uavcan.protocol.file.BeginFirmwareUpdate
+expanding com.hobbywing.esc.RawCommand
+expanding com.hex.equipment.flow.Measurement
+expanding uavcan.equipment.air_data.RawAirData
+expanding uavcan.equipment.camera_gimbal.GEOPOICommand
+expanding uavcan.protocol.file.Read
+expanding com.hobbywing.esc.SetAngle
+expanding uavcan.equipment.air_data.Sideslip
+expanding uavcan.equipment.actuator.ArrayCommand
+expanding uavcan.protocol.GlobalTimeSync
+expanding uavcan.protocol.param.Value
+expanding ardupilot.gnss.Heading
+expanding com.xacti.CopterAttStatus
+expanding mppt.Stream
+expanding uavcan.equipment.ice.reciprocating.Status
+expanding uavcan.protocol.file.Delete
+expanding ardupilot.gnss.Status
+expanding com.tmotor.esc.ParamCfg
+expanding mppt.OutputEnable
+expanding uavcan.equipment.gnss.RTCMStream
+expanding uavcan.protocol.file.EntryType
+expanding uavcan.protocol.debug.KeyValue
+expanding com.hobbywing.esc.GetEscID
+expanding com.xacti.GnssStatus
+expanding uavcan.equipment.air_data.StaticTemperature
+expanding uavcan.equipment.ahrs.MagneticFieldStrength
+expanding uavcan.protocol.GetDataTypeInfo
+expanding com.hobbywing.esc.StatusMsg3
+expanding com.xacti.GnssStatusReq
+expanding dronecan.sensors.hygrometer.Hygrometer
+expanding uavcan.equipment.range_sensor.Measurement
+expanding uavcan.protocol.SoftwareVersion
+expanding uavcan.protocol.dynamic_node_id.Allocation
+expanding com.hobbywing.esc.SetDirection
+expanding dronecan.sensors.rc.RCInput
+expanding uavcan.equipment.ahrs.Solution
+expanding uavcan.protocol.param.Empty
+expanding com.hobbywing.esc.SetLED
+expanding uavcan.equipment.gnss.Auxiliary
+expanding uavcan.protocol.file.Path
+expanding ardupilot.equipment.trafficmonitor.TrafficReport
+expanding dronecan.remoteid.OperatorID
+expanding uavcan.equipment.air_data.StaticPressure
+expanding uavcan.equipment.hardpoint.Command
+expanding uavcan.equipment.power.CircuitStatus
+expanding uavcan.tunnel.SerialConfig
+expanding uavcan.protocol.enumeration.Indication
+expanding com.hobbywing.esc.StatusMsg1
+expanding cuav.equipment.power.CBAT
+expanding uavcan.equipment.indication.RGB565
+expanding uavcan.equipment.camera_gimbal.Status
+expanding uavcan.protocol.file.Error
+expanding uavcan.protocol.param.GetSet
+expanding ardupilot.equipment.power.BatteryInfoAux
+expanding com.xacti.GimbalAttitudeStatus
+expanding dronecan.sensors.magnetometer.MagneticFieldStrengthHiRes
+expanding uavcan.equipment.device.Temperature
+expanding uavcan.protocol.NodeStatus
+expanding uavcan.protocol.dynamic_node_id.server.Entry
+expanding ardupilot.gnss.MovingBaselineData
+expanding com.hobbywing.esc.GetMajorConfig
+expanding uavcan.equipment.indication.SingleLightCommand
+expanding uavcan.tunnel.Targetted
+expanding uavcan.protocol.Panic
+expanding uavcan.protocol.dynamic_node_id.server.Discovery
+expanding ardupilot.gnss.RelPosHeading
+expanding com.himark.servo.ServoCmd
+expanding dronecan.remoteid.Location
+expanding uavcan.equipment.ice.FuelTankStatus
+expanding uavcan.protocol.CANIfaceStats
+expanding uavcan.protocol.file.Write
+expanding ardupilot.equipment.power.BatteryCells
+expanding com.tmotor.esc.PUSHCAN
+expanding dronecan.remoteid.System
+expanding uavcan.equipment.esc.RawCommand
+expanding uavcan.equipment.power.BatteryInfo
+expanding uavcan.protocol.RestartNode
+expanding ardupilot.equipment.power.BatteryContinuous
+expanding com.volz.servo.ActuatorStatus
+expanding dronecan.sensors.rpm.RPM
+expanding uavcan.equipment.safety.ArmingStatus
+expanding uavcan.equipment.gnss.Fix
+expanding uavcan.tunnel.Protocol
+expanding uavcan.protocol.debug.LogMessage
+expanding ardupilot.indication.NotifyState
+expanding com.xacti.GimbalControlData
+expanding uavcan.Timestamp
+expanding uavcan.equipment.actuator.Status
+expanding uavcan.protocol.HardwareVersion
+expanding uavcan.protocol.dynamic_node_id.server.RequestVote
+expanding ardupilot.indication.SafetyState
+expanding com.tmotor.esc.ParamGet
+expanding uavcan.equipment.air_data.IndicatedAirspeed
+expanding uavcan.equipment.esc.Status
+expanding uavcan.protocol.DataTypeKind
+expanding uavcan.protocol.param.ExecuteOpcode
+expanding com.hobbywing.esc.StatusMsg2
+expanding uavcan.CoarseOrientation
+expanding uavcan.equipment.gnss.Fix2
+expanding uavcan.protocol.dynamic_node_id.server.AppendEntries
+expanding com.hobbywing.esc.SelfTest
+expanding dronecan.protocol.Stats
+expanding uavcan.equipment.gnss.ECEFPositionVelocity
+expanding uavcan.tunnel.Call
+expanding uavcan.protocol.enumeration.Begin
+
+No target_list file found, creating
+Generating compile_commands.json
+Build commands will be stored in build/sitl/compile_commands.json
+Generating compile_commands.json
+Build commands will be stored in build/sitl/compile_commands.json
+[1336/1337] Linking build/sitl/bin/ardusub
+[1337/1337] checking symbols build/sitl/bin/ardusub
+Waf: Leaving directory `/opt/ardupilot/build/sitl'
+
+BUILD SUMMARY
+Build directory: /opt/ardupilot/build/sitl
+Target       Text (B)  Data (B)  BSS (B)  Total Flash Used (B)  Free Flash (B)  External Flash Used (B)
+-------------------------------------------------------------------------------------------------------
+bin/ardusub   3896451    178421   224320               4074872  Not Applicable  Not Applicable         
+
+'build' finished successfully (1.661s)
+RiTW: Starting ArduSub : /opt/ardupilot/build/sitl/bin/ardusub --model JSON --speedup 1 --slave 0 --defaults ../../../../../opt/ardupilot/Tools/autotest/default_params/sub.parm,/opt/mako_ws/src/robot_description/config/ardusub_external_nav.parm --sim-address=127.0.0.1 -I0 --home 31.312,30.067222000000015,0.0,0.0
+Setting SIM_SPEEDUP=1.000000
+Starting SITL: JSON
+Home: 31.312000 30.067222 alt=0.000000m hdg=0.000000
+JSON control interface set to 127.0.0.1:9002
+Starting sketch 'ArduSub'
+Starting SITL input
+Using Irlock at port : 9005
+bind port 5760 for SERIAL0
+SERIAL0 on TCP port 5760
+Waiting for connection ....
+[mavros_node-1] [WARN] [1793358327.773596122] [mavros.sys]: VER: broadcast request timeout, retries left 4
+Connection on serial port 5760
+Loaded defaults from ../../../../../opt/ardupilot/Tools/autotest/default_params/sub.parm,/opt/mako_ws/src/robot_description/config/ardusub_external_nav.parm
+Connect tcp:127.0.0.1:5760 source_system=255
+
+JSON received:
+	timestamp
+	imu: gyro
+	imu: accel_body
+	position
+	quaternion
+	velocity
+	no_time_sync
+	no_lockstep
+
+Forcing use_time_sync=0
+Lockstep mode changed: no_lockstep=1 (lockstep DISABLED)
+bind port 5762 for SERIAL1
+SERIAL1 on TCP port 5762
+bind port 5763 for SERIAL2
+SERIAL2 on TCP port 5763
+validate_structures:538: Validating structures
+Log Directory: 
+Telemetry log: mav.tlog
+Waiting for heartbeat from tcp:127.0.0.1:5760
+Detected vehicle 1:1 on link 0
+online system 1
+MANUAL> Mode MANUAL
+[mavros_node-1] [INFO] [1793358328.004629762] [mavros_router]: link[1000] detected remote address 1.1
+[mavros_node-1] [INFO] [1793358328.004720236] [mavros]: CON: Got HEARTBEAT, connected. FCU: ArduPilot
+[mavros_node-1] [INFO] [1793358328.004790068] [mavros.mission]: WP: detected enable_partial_push: 1
+AP: Calibrating barometer
+[mavros_node-1] [INFO] [1793358328.114394582] [mavros.sys]: FCU: Calibrating barometer
+[ruby $(which gz) sim-1] [1;33mWarning [Utils.cc:132][0m [/sdf/model[@name="mako"]/link[@name="base_link"]/sensor[@name="imu_ros_sensor"]/gz_frame_id:<data-string>:L440]: XML Element[gz_frame_id], child of element[sensor], not defined in SDF. Copying[gz_frame_id] as children of [sensor].
+[ruby $(which gz) sim-1] [1;33mWarning [Utils.cc:132][0m [/sdf/model[@name="mako"]/link[@name="base_link"]/sensor[@name="third_person_rgb_camera"]/gz_frame_id:<data-string>:L461]: XML Element[gz_frame_id], child of element[sensor], not defined in SDF. Copying[gz_frame_id] as children of [sensor].
+[ruby $(which gz) sim-1] [1;33mWarning [Utils.cc:132][0m [/sdf/model[@name="mako"]/link[@name="base_link"]/sensor[@name="zed2i_left_pilot"]/gz_frame_id:<data-string>:L482]: XML Element[gz_frame_id], child of element[sensor], not defined in SDF. Copying[gz_frame_id] as children of [sensor].
+[ruby $(which gz) sim-1] [1;33mWarning [Utils.cc:132][0m [/sdf/model[@name="mako"]/link[@name="base_link"]/sensor[@name="zed2i_left_rgbd"]/gz_frame_id:<data-string>:L509]: XML Element[gz_frame_id], child of element[sensor], not defined in SDF. Copying[gz_frame_id] as children of [sensor].
+[ruby $(which gz) sim-1] [1;33mWarning [Utils.cc:132][0m [/sdf/model[@name="mako"]/link[@name="base_link"]/sensor[@name="zed2i_right_pilot"]/gz_frame_id:<data-string>:L530]: XML Element[gz_frame_id], child of element[sensor], not defined in SDF. Copying[gz_frame_id] as children of [sensor].
+[ruby $(which gz) sim-1] [1;33mWarning [Utils.cc:132][0m [/sdf/model[@name="mako"]/link[@name="base_link"]/sensor[@name="zed2i_right_rgbd"]/gz_frame_id:<data-string>:L557]: XML Element[gz_frame_id], child of element[sensor], not defined in SDF. Copying[gz_frame_id] as children of [sensor].
+[ruby $(which gz) sim-1] [1;33mWarning [Utils.cc:132][0m [/sdf/model[@name="mako"]/link[@name="base_link"]/sensor[@name="bottom_rgb_camera"]/gz_frame_id:<data-string>:L578]: XML Element[gz_frame_id], child of element[sensor], not defined in SDF. Copying[gz_frame_id] as children of [sensor].
+Got COMMAND_ACK: REQUEST_MESSAGE: ACCEPTED
+[mavros_node-1] [WARN] [1793358329.028465734] [mavros.cmd]: CMD: Unexpected command 512, result 0
+[mavros_node-1] [INFO] [1793358329.028928737] [mavros.geofence]: GF: Using MISSION_ITEM_INT
+[mavros_node-1] [INFO] [1793358329.028947272] [mavros.rallypoint]: RP: Using MISSION_ITEM_INT
+[mavros_node-1] [INFO] [1793358329.028958161] [mavros.mission]: WP: Using MISSION_ITEM_INT
+[mavros_node-1] [INFO] [1793358329.028968012] [mavros.sys]: VER: 1.1: Capabilities         0x000000000000f9e7
+[mavros_node-1] [INFO] [1793358329.028978674] [mavros.sys]: VER: 1.1: Flight software:     04070000 (375cef58)
+[mavros_node-1] [INFO] [1793358329.028985881] [mavros.sys]: VER: 1.1: Middleware software: 00000000 (        )
+[mavros_node-1] [INFO] [1793358329.028992913] [mavros.sys]: VER: 1.1: OS software:         00000000 (        )
+[mavros_node-1] [INFO] [1793358329.028999112] [mavros.sys]: VER: 1.1: Board hardware:      00000000
+[mavros_node-1] [INFO] [1793358329.029005408] [mavros.sys]: VER: 1.1: VID/PID:             0000:0000
+[mavros_node-1] [INFO] [1793358329.029028142] [mavros.sys]: VER: 1.1: UID:                 0000000000000000
+AP: ArduSub V4.7.0-dev (375cef58)
+[mavros_node-1] [INFO] [1793358329.031595636] [mavros.sys]: FCU: ArduSub V4.7.0-dev (375cef58)
+AP: 03480926f08e4d4db5586be894c95954
+[mavros_node-1] [INFO] [1793358329.031777503] [mavros.sys]: FCU: 03480926f08e4d4db5586be894c95954
+AP: Frame: VECTORED
+[mavros_node-1] [INFO] [1793358329.031959673] [mavros.sys]: FCU: Frame: VECTORED
+Received 1400 parameters (ftp)
+Saved 1400 parameters to mav.parm
+AP: Barometer 1 calibration complete
+AP: Barometer 2 calibration complete
+[mavros_node-1] [INFO] [1793358329.765229424] [mavros.sys]: FCU: Barometer 1 calibration complete
+[mavros_node-1] [INFO] [1793358329.765873641] [mavros.sys]: FCU: Barometer 2 calibration complete
+AP: ArduPilot Ready
+[mavros_node-1] [INFO] [1793358329.775002598] [mavros.sys]: FCU: ArduPilot Ready
+AP: RCInput: decoding UDP (Pulses)
+AP: VisOdom: yaw shifted 359 to 89 deg
+[mavros_node-1] [INFO] [1793358329.893395209] [mavros.sys]: FCU: VisOdom: yaw shifted 359 to 89 deg
+[mavros_node-1] [WARN] [1793358329.941011568] [mavros.time]: TM: Wrong FCU time.
+Flight battery 100 percent
+fence present
+[mavros_node-1] [INFO] [1793358330.009654987] [mavros.rc]: RC_CHANNELS message detected!
+[mavros_node-1] [INFO] [1793358330.010391061] [mavros.imu]: IMU: Raw IMU message used.
+[mavros_node-1] [WARN] [1793358330.013215507] [mavros.global_position]: GP: No GPS fix
+Received 1404 parameters
+Saved 1401 parameters to mav.parm
+AP: EKF3 IMU0 initialised
+AP: EKF3 IMU1 initialised
+[mavros_node-1] [INFO] [1793358331.777075614] [mavros.sys]: FCU: EKF3 IMU0 initialised
+[mavros_node-1] [INFO] [1793358331.777389771] [mavros.sys]: FCU: EKF3 IMU1 initialised
+AP: EKF3 IMU0 tilt alignment complete
+AP: EKF3 IMU1 tilt alignment complete
+[mavros_node-1] [INFO] [1793358333.001426804] [mavros.sys]: FCU: EKF3 IMU0 tilt alignment complete
+[mavros_node-1] [INFO] [1793358333.001871124] [mavros.sys]: FCU: EKF3 IMU1 tilt alignment complete
+AP: EKF3 IMU0 is using external nav data
+AP: EKF3 IMU0 initial pos NED = -0.0,-0.0,1.0 (m)
+[mavros_node-1] [INFO] [1793358333.012657025] [mavros.sys]: FCU: EKF3 IMU0 is using external nav data
+AP: EKF3 IMU0 initial vel NED = 0.0,0.0,-0.0 (m/s)
+[mavros_node-1] [INFO] [1793358333.012869429] [mavros.sys]: FCU: EKF3 IMU0 initial pos NED = -0.0,-0.0,1.0 (m)
+[mavros_node-1] [INFO] [1793358333.013352994] [mavros.sys]: FCU: EKF3 IMU0 initial vel NED = 0.0,0.0,-0.0 (m/s)
+AP: EKF3 IMU1 is using external nav data
+[mavros_node-1] [INFO] [1793358333.013622598] [mavros.sys]: FCU: EKF3 IMU1 is using external nav data
+AP: EKF3 IMU1 initial pos NED = -0.0,-0.0,1.0 (m)
+[mavros_node-1] [INFO] [1793358333.014168656] [mavros.sys]: FCU: EKF3 IMU1 initial pos NED = -0.0,-0.0,1.0 (m)
+AP: EKF3 IMU1 initial vel NED = 0.0,0.0,-0.0 (m/s)
+[mavros_node-1] [INFO] [1793358333.014376053] [mavros.sys]: FCU: EKF3 IMU1 initial vel NED = 0.0,0.0,-0.0 (m/s)
+AP: EKF3 IMU0 MAG0 initial yaw alignment complete
+[mavros_node-1] [INFO] [1793358333.022366798] [mavros.sys]: FCU: EKF3 IMU0 MAG0 initial yaw alignment complete
+AP: EKF3 IMU1 MAG0 initial yaw alignment complete
+[mavros_node-1] [INFO] [1793358333.022836463] [mavros.sys]: FCU: EKF3 IMU1 MAG0 initial yaw alignment complete
+AP: GPS 1: probing for u-blox at 230400 baud
+[mavros_node-1] [INFO] [1793358337.162325093] [mavros.sys]: FCU: GPS 1: probing for u-blox at 230400 baud
+AP: GPS 1: detected u-blox
+[mavros_node-1] [INFO] [1793358337.188765355] [mavros.sys]: FCU: GPS 1: detected u-blox
+AP: ArduSub V4.7.0-dev (375cef58)
+AP: 03480926f08e4d4db5586be894c95954
+[mavros_node-1] [INFO] [1793358338.022946240] [mavros.sys]: FCU: ArduSub V4.7.0-dev (375cef58)
+AP: Frame: VECTORED
+[mavros_node-1] [INFO] [1793358338.025078923] [mavros.sys]: FCU: 03480926f08e4d4db5586be894c95954
+[mavros_node-1] [INFO] [1793358338.025973740] [mavros.sys]: FCU: Frame: VECTORED
+Failed to download /SRTM3/filelist_python : 'utf-8' codec can't decode byte 0x80 in position 0: invalid start byte
+Mission is stale
+[mavros_node-1] [INFO] [1793358343.132827180] [mavros.param]: PR: parameters list received
+[mavros_node-1] [WARN] [1793358343.134416661] [mavros.time]: TM: RTT too high for timesync: 3954.48 ms.
+[mavros_node-1] [WARN] [1793358343.135636843] [mavros.time]: TM: RTT too high for timesync: 2855.22 ms.
+[mavros_node-1] [WARN] [1793358343.136627744] [mavros.time]: TM: RTT too high for timesync: 1756.34 ms.
+[mavros_node-1] [WARN] [1793358343.137857145] [mavros.time]: TM: RTT too high for timesync: 657.85 ms.
+Got COMMAND_ACK: COMPONENT_ARM_DISARM: ACCEPTED
+[mavros_node-1] [INFO] [1793358343.152117232] [mavros.mission]: WP: item #0  F:0 C: 16 p: 0 0 0 0 x: 31.312 y: 30.06722 z: -0.9899999
+[mavros_node-1] [INFO] [1793358343.152156040] [mavros.mission]: WP: mission received
+AP: Arming motors
+[mavros_node-1] [INFO] [1793358343.152730053] [mavros.sys]: FCU: Arming motors
+ARMED
+Arming checks disabled
+AP: EKF3 IMU0 origin set
+AP: EKF3 IMU1 origin set
+[mavros_node-1] [INFO] [1793358347.788205115] [mavros.sys]: FCU: EKF3 IMU0 origin set
+[mavros_node-1] [INFO] [1793358347.788454147] [mavros.sys]: FCU: EKF3 IMU1 origin set
+[mavros_node-1] [INFO] [1793358348.009822983] [mavros.rallypoint]: RP: mission received
+[mavros_node-1] [INFO] [1793358353.010367053] [mavros.geofence]: GF: mission received
+Flight battery 100 percent
+[mavros_node-1] [ERROR] [1793358424.084644467] [mavros.time]: TM: Time jump detected. Resetting time synchroniser.
+Flight battery 100 percent
+Flight battery 100 percent
+Flight battery 100 percent
+[mavros_node-1] [ERROR] [1793358605.482521027] [mavros.time]: TM: Time jump detected. Resetting time synchroniser.
+Flight battery 100 percent
+[mavros_node-1] [ERROR] [1793358663.884473184] [mavros.time]: TM: Time jump detected. Resetting time synchroniser.
+Flight battery 100 percent
+Flight battery 90 percent
+Flight battery 90 percent
+[mavros_node-1] [ERROR] [1793358858.985155596] [mavros.time]: TM: Time jump detected. Resetting time synchroniser.
+Flight battery 90 percent
+Got COMMAND_ACK: COMPONENT_ARM_DISARM: ACCEPTED
+AP: Disarming motors
+[mavros_node-1] [INFO] [1793358886.406054770] [mavros.sys]: FCU: Disarming motors
+DISARMED
+[WARNING] [launch]: user interrupted with ctrl-c (SIGINT)
+SIM_VEHICLE: Start
+SIM_VEHICLE: Killing tasks
+SIM_VEHICLE: Starting up at [31.312, 30.067222, 0.0, 0.0]
+SIM_VEHICLE: WAF build
+SIM_VEHICLE: Configure waf
+SIM_VEHICLE: "/opt/ardupilot/modules/waf/waf-light" "configure" "--board" "sitl"
+{'waf_target': 'bin/ardusub', 'default_params_filename': 'default_params/sub.parm', 'model': 'JSON', 'sitl-port': True}
+SIM_VEHICLE: Building
+SIM_VEHICLE: "/opt/ardupilot/modules/waf/waf-light" "build" "--target" "bin/ardusub"
+SIM_VEHICLE: Using defaults from (../../../../../opt/ardupilot/Tools/autotest/default_params/sub.parm)
+SIM_VEHICLE: Adding parameters from (/opt/mako_ws/src/robot_description/config/ardusub_external_nav.parm)
+SIM_VEHICLE: Run ArduSub
+SIM_VEHICLE: "/opt/ardupilot/Tools/autotest/run_in_terminal_window.sh" "ArduSub" "/opt/ardupilot/build/sitl/bin/ardusub" "--model" "JSON" "--speedup" "1" "--slave" "0" "--defaults" "../../../../../opt/ardupilot/Tools/autotest/default_params/sub.parm,/opt/mako_ws/src/robot_description/config/ardusub_external_nav.parm" "--sim-address=127.0.0.1" "-I0" "--home" "31.312,30.067222000000015,0.0,0.0"
+SIM_VEHICLE: Run MavProxy
+SIM_VEHICLE: "mavproxy.py" "--retries" "5" "--master" "tcp:127.0.0.1:5760" "--sitl" "127.0.0.1:5501" "--non-interactive" "--out" "udp:127.0.0.1:14550" "--out" "udp:127.0.0.1:14551"
+SIM_VEHICLE: Keyboard Interrupt received ...
+[WARNING] [launch]: user interrupted with ctrl-c (SIGINT)
+[INFO] [mavros_node-1]: sending signal 'SIGINT' to process[mavros_node-1]
+[mavros_node-1] [INFO] [1793358892.232007710] [rclcpp]: signal_handler(SIGINT/SIGTERM)
+[mavros_node-1] [WARN] [1793358892.233794846] [mavros]: UAS Executor terminated
+SIM_VEHICLE: Killing tasks
+[INFO] [parameter_bridge-9]: sending signal 'SIGINT' to process[parameter_bridge-9]
+[INFO] [cloud_frame_relay.py-8]: sending signal 'SIGINT' to process[cloud_frame_relay.py-8]
+[INFO] [parameter_bridge-7]: sending signal 'SIGINT' to process[parameter_bridge-7]
+[INFO] [static_transform_publisher-6]: sending signal 'SIGINT' to process[static_transform_publisher-6]
+[INFO] [static_transform_publisher-5]: sending signal 'SIGINT' to process[static_transform_publisher-5]
+[INFO] [gz_odom_to_mavros.py-4]: sending signal 'SIGINT' to process[gz_odom_to_mavros.py-4]
+[INFO] [parameter_bridge-3]: sending signal 'SIGINT' to process[parameter_bridge-3]
+[ERROR] [static_transform_publisher-6]: process has died [pid 150, exit code -2, cmd '/opt/ros/humble/lib/tf2_ros/static_transform_publisher --frame-id map --child-frame-id odom --ros-args -r __node:=tf_sim_map_odom --params-file /tmp/launch_params_5xg4sup7'].
+[ERROR] [static_transform_publisher-5]: process has died [pid 148, exit code -2, cmd '/opt/ros/humble/lib/tf2_ros/static_transform_publisher --frame-id odom --child-frame-id odom_ned --roll 3.141592653589793 --pitch 0 --yaw 1.570796326794897 --ros-args -r __node:=tf_odom_ned --params-file /tmp/launch_params_9f36t5vv'].
+[INFO] [robot_state_publisher-2]: sending signal 'SIGINT' to process[robot_state_publisher-2]
+[INFO] [ruby $(which gz) sim-1]: sending signal 'SIGINT' to process[ruby $(which gz) sim-1]
+[parameter_bridge-9] [INFO] [1793358892.231999274] [rclcpp]: signal_handler(SIGINT/SIGTERM)
+[ERROR] [gz_odom_to_mavros.py-4]: process has died [pid 146, exit code -2, cmd '/opt/mako_ws/install/robot_description/lib/robot_description/gz_odom_to_mavros.py --ros-args -r __node:=gz_odom_to_mavros --params-file /tmp/launch_params_elqppg6f'].
+[robot_state_publisher-2] [INFO] [1793358892.232021213] [rclcpp]: signal_handler(SIGINT/SIGTERM)
+[ERROR] [robot_state_publisher-2]: process has died [pid 141, exit code -2, cmd '/opt/ros/humble/lib/robot_state_publisher/robot_state_publisher --ros-args -r __node:=robot_state_publisher --params-file /tmp/launch_params_3yjzy30d'].
+[static_transform_publisher-6] [INFO] [1793358892.232027951] [rclcpp]: signal_handler(SIGINT/SIGTERM)
+[static_transform_publisher-5] [INFO] [1793358892.232038014] [rclcpp]: signal_handler(SIGINT/SIGTERM)
+[parameter_bridge-3] [INFO] [1793358892.232038231] [rclcpp]: signal_handler(SIGINT/SIGTERM)
+[parameter_bridge-7] [INFO] [1793358892.232089781] [rclcpp]: signal_handler(SIGINT/SIGTERM)
+[parameter_bridge-9] [INFO] [1793358892.249390059] [rclcpp]: signal_handler(SIGINT/SIGTERM)
+[parameter_bridge-7] [INFO] [1793358892.255516558] [rclcpp]: signal_handler(SIGINT/SIGTERM)
+[cloud_frame_relay.py-8] Traceback (most recent call last):
+[cloud_frame_relay.py-8]   File "/opt/mako_ws/install/robot_description/lib/robot_description/cloud_frame_relay.py", line 58, in <module>
+[cloud_frame_relay.py-8]     main()
+[cloud_frame_relay.py-8]   File "/opt/mako_ws/install/robot_description/lib/robot_description/cloud_frame_relay.py", line 52, in main
+[cloud_frame_relay.py-8]     node.destroy_node()
+[cloud_frame_relay.py-8]   File "/opt/ros/humble/local/lib/python3.10/dist-packages/rclpy/node.py", line 1696, in destroy_node
+[cloud_frame_relay.py-8]     self.__node.destroy_when_not_in_use()
+[cloud_frame_relay.py-8] KeyboardInterrupt
+[ERROR] [cloud_frame_relay.py-8]: process has died [pid 155, exit code -2, cmd '/opt/mako_ws/install/robot_description/lib/robot_description/cloud_frame_relay.py --ros-args -r __node:=cloud_frame_relay --params-file /tmp/launch_params_xbjx4xbp'].
+[ERROR] [parameter_bridge-3]: process has died [pid 144, exit code -11, cmd '/opt/ros/humble/lib/ros_gz_bridge/parameter_bridge /clock@rosgraph_msgs/msg/Clock[gz.msgs.Clock /mako/imu@sensor_msgs/msg/Imu[gz.msgs.IMU /model/mako/odometry@nav_msgs/msg/Odometry[gz.msgs.Odometry /world/CompetitionWorld2025/model/mako/joint_state@sensor_msgs/msg/JointState[gz.msgs.Model /model/mako/joint/t1_joint/cmd_thrust@std_msgs/msg/Float64]gz.msgs.Double /model/mako/joint/t2_joint/cmd_thrust@std_msgs/msg/Float64]gz.msgs.Double /model/mako/joint/t3_joint/cmd_thrust@std_msgs/msg/Float64]gz.msgs.Double /model/mako/joint/t4_joint/cmd_thrust@std_msgs/msg/Float64]gz.msgs.Double /model/mako/joint/t5_joint/cmd_thrust@std_msgs/msg/Float64]gz.msgs.Double /model/mako/joint/t6_joint/cmd_thrust@std_msgs/msg/Float64]gz.msgs.Double --ros-args --params-file /tmp/launch_params_sdo4vxhi -r /model/mako/odometry:=/odometry/gz -r /mako/imu:=/imu/data -r /world/CompetitionWorld2025/model/mako/joint_state:=/joint_states'].
+[mavros_node-1] [INFO] [1793358892.338306809] [rclcpp]: signal_handler(SIGINT/SIGTERM)
+[INFO] [parameter_bridge-7]: process has finished cleanly [pid 153]
+[INFO] [parameter_bridge-9]: process has finished cleanly [pid 157]
+[ERROR] [ruby $(which gz) sim-1]: process has died [pid 139, exit code -2, cmd 'ruby $(which gz) sim -r /tmp/mako-gazebo-8x561hbb/pool_with_mako.sdf --force-version 8'].
+[INFO] [launch]: process[ruby $(which gz) sim-1] was required: shutting down launched system
+[INFO] [mavros_node-1]: process has finished cleanly [pid 85]

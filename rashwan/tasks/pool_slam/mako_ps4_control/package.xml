@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<package format="3">
+  <name>mako_ps4_control</name>
+  <version>0.1.0</version>
+  <description>PS4 manual control for Mako ArduSub simulation.</description>
+  <maintainer email="rashwan@example.com">Rashwan</maintainer>
+  <license>BSD-3-Clause</license>
+  <buildtool_depend>ament_cmake</buildtool_depend>
+  <depend>rclcpp</depend>
+  <depend>sensor_msgs</depend>
+  <depend>mavros_msgs</depend>
+  <export><build_type>ament_cmake</build_type></export>
+</package>

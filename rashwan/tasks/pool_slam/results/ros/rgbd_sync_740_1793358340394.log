@@ -1,0 +1,16 @@
+[INFO] [1793358340.407792721] [pool_mapping.rgbd_sync]: rgbd_sync: approx_sync = false
+[INFO] [1793358340.407877223] [pool_mapping.rgbd_sync]: rgbd_sync: topic_queue_size  = 5
+[INFO] [1793358340.407883319] [pool_mapping.rgbd_sync]: rgbd_sync: sync_queue_size  = 10
+[INFO] [1793358340.407887245] [pool_mapping.rgbd_sync]: rgbd_sync: qos             = 1
+[INFO] [1793358340.407891606] [pool_mapping.rgbd_sync]: rgbd_sync: qos_camera_info = 1
+[INFO] [1793358340.407894863] [pool_mapping.rgbd_sync]: rgbd_sync: depth_scale = 1.000000
+[INFO] [1793358340.407902574] [pool_mapping.rgbd_sync]: rgbd_sync: decimation = 1
+[INFO] [1793358340.407905960] [pool_mapping.rgbd_sync]: rgbd_sync: compressed_rate = 0.000000
+[INFO] [1793358340.407910021] [pool_mapping.rgbd_sync]: rgbd_sync: image_transport = raw
+[INFO] [1793358340.407913143] [pool_mapping.rgbd_sync]: rgbd_sync: depth_transport = raw
+[INFO] [1793358340.416302392] [pool_mapping.rgbd_sync]: 
+rgbd_sync subscribed to (exact sync):
+   /pool_mapping/camera/rgb,
+   /zed2i/zed_node/left/depth/image_raw,
+   /pool_mapping/camera/info
+[INFO] [1793358887.033653784] [rclcpp]: signal_handler(SIGINT/SIGTERM)

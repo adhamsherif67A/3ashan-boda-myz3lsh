@@ -1,0 +1,7 @@
+ffmpeg	7:4.4.2-0ubuntu0.22.04.1
+ros-humble-cv-bridge	3.2.1-1jammy.20260907.220118
+ros-humble-rtabmap	0.23.13-1jammy.20261002.103658
+ros-humble-rtabmap-odom	0.23.13-1jammy.20261002.140128
+ros-humble-rtabmap-slam	0.23.13-1jammy.20261011.111917
+ros-humble-rtabmap-sync	0.23.13-1jammy.20261002.123912
+ros-humble-rtabmap-util	0.23.13-1jammy.20261002.133003

@@ -1,0 +1,8 @@
+{
+  "frames_after_initialization": 5880,
+  "lost_frames": 0,
+  "longest_loss_s": 0.0,
+  "recoveries": 0,
+  "currently_lost": false,
+  "inliers": 497
+}

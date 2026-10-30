@@ -1,0 +1,59 @@
+Panels:
+  - Class: rviz_common/Displays
+    Name: Displays
+Visualization Manager:
+  Class: ""
+  Global Options:
+    Background Color: 25; 30; 42
+    Fixed Frame: pool_map
+    Frame Rate: 20
+  Displays:
+    - Class: rviz_default_plugins/Grid
+      Name: Grid
+      Enabled: true
+      Cell Size: 1
+      Plane: XY
+    - Class: rviz_default_plugins/PointCloud2
+      Name: Optimized 3D Pool
+      Enabled: true
+      Topic:
+        Value: /pool_mapping/cloud_map
+        Reliability Policy: Reliable
+        Durability Policy: Volatile
+        History Policy: Keep Last
+        Depth: 2
+      Color Transformer: RGB8
+      Position Transformer: XYZ
+      Style: Points
+      Size (Pixels): 2
+      Decay Time: 0
+      Use Fixed Frame: true
+    - Class: rviz_default_plugins/MarkerArray
+      Name: Graph and Loop Closure Evidence
+      Enabled: true
+      Topic:
+        Value: /pool_mapping/evidence_markers
+        Reliability Policy: Reliable
+        Durability Policy: Transient Local
+        History Policy: Keep Last
+        Depth: 1
+    - Class: rviz_default_plugins/Image
+      Name: Camera
+      Enabled: true
+      Topic:
+        Value: /pool_mapping/camera/rgb
+        Reliability Policy: Reliable
+        Durability Policy: Volatile
+        Depth: 1
+      Queue Size: 1
+  Views:
+    Current:
+      Class: rviz_default_plugins/Orbit
+      Distance: 19
+      Focal Point: {X: 0, Y: 0, Z: 0}
+      Pitch: 0.8
+      Yaw: 0.8
+      Name: Pool Overview
+Window Geometry:
+  Width: 1280
+  Height: 800

@@ -1,0 +1,4 @@
+Opening database "/data/pool.db"...
+Opening database "/data/pool.db"... done (0.000183s).
+Loaded 301 odometry poses from database.
+301 poses exported to "/data/pool_raw_poses.txt". (min=[-3.461588,-2.771171,-0.486123] max=[3.860988,2.617351,0.000000])

@@ -1,0 +1,3 @@
+Official release: https://github.com/mavlink/qgroundcontrol/releases/tag/v5.0.8
+Download: https://github.com/mavlink/qgroundcontrol/releases/download/v5.0.8/QGroundControl-x86_64.AppImage
+SHA256: 06969c67ef58ea063def0a8271447a1cc385438c4a7df36813315b4475146737

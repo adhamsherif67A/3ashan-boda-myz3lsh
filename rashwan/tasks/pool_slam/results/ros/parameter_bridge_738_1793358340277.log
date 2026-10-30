@@ -1,0 +1,3 @@
+[INFO] [1793358340.287789461] [mapping_camera_bridge]: Creating GZ->ROS Bridge: [/zed2i/sim/left/image (gz.msgs.Image) -> /zed2i/sim/left/image (sensor_msgs/msg/Image)] (Lazy 0)
+[INFO] [1793358340.289320852] [mapping_camera_bridge]: Creating GZ->ROS Bridge: [/zed2i/sim/left/camera_info (gz.msgs.CameraInfo) -> /zed2i/sim/left/camera_info (sensor_msgs/msg/CameraInfo)] (Lazy 0)
+[INFO] [1793358887.036396525] [rclcpp]: signal_handler(SIGINT/SIGTERM)
