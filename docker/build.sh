@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 set -euo pipefail
-image="${MAKO_IMAGE:-marinexperts/mako:boda}"
+image="${MAKO_IMAGE:-marinexperts/mako:latest}"
 jobs="${BUILD_JOBS:-2}"
 sim_uid="$(id -u)";sim_gid="$(id -g)"
 if [[ "$sim_uid" == 0 ]]; then sim_uid=1000;sim_gid=1000;fi
@@ -14,7 +14,7 @@ while (($#)); do
   esac
 done
 [[ "$jobs" =~ ^[1-9][0-9]*$ ]] || { echo 'BUILD_JOBS must be a positive integer' >&2;exit 2; }
-command -v docker >/dev/null || { echo 'Docker is missing. Follow the Docker installation link in readme.md.' >&2;exit 1; }
+command -v docker >/dev/null || { echo 'Docker is missing. See README.md, section 4 (Docker setup).' >&2;exit 1; }
 docker info >/dev/null || { echo 'Docker daemon is unavailable or your user cannot access it.' >&2;exit 1; }
 if ! $rebuild && docker image inspect "$image" >/dev/null 2>&1; then
   image_uid="$(docker image inspect "$image" --format '{{index .Config.Labels "org.marinexperts.user-id"}}')"
@@ -35,4 +35,4 @@ fi
 repo="$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")/.." && pwd)"
 # Support installations which do not have the optional buildx plugin.
 if ! docker buildx version >/dev/null 2>&1; then export DOCKER_BUILDKIT=0;fi
-exec docker build --build-arg "SIM_UID=$sim_uid" --build-arg "SIM_GID=$sim_gid" --build-arg "BUILD_JOBS=$jobs" -t "$image" "$repo"
+exec docker build --pull --build-arg "SIM_UID=$sim_uid" --build-arg "SIM_GID=$sim_gid" --build-arg "BUILD_JOBS=$jobs" -t "$image" "$repo"

@@ -2,12 +2,13 @@
   <name>robot_description</name>
   <version>1.0.0</version>
   <description>
-    <p>URDF description package for the Mako robot</p>
-    <p>This package contains configuration data, 3D models and launch files
-  for the Mako robot</p>
+    <p>Mako ROV description and simulation world.</p>
+    <p>URDF/xacro model, meshes, Gazebo Harmonic worlds and task assets, the
+  pool-waves Gazebo plugin, ROS-Gazebo bridge configuration and the launch file
+  that starts Gazebo with the robot. Vision and control live in mako_vision and
+  mako_control; mako_bringup composes them.</p>
   </description>
-  <author>TODO</author>
-  <maintainer email="TODO@email.com" />
+  <maintainer email="marinexperts@todo.todo">MarineXperts software team</maintainer>
   <license>BSD</license>
   <buildtool_depend>ament_cmake</buildtool_depend>
   <depend>gz-sim8</depend>
@@ -26,17 +27,9 @@
   <depend>ros_gz_bridge</depend>
   <depend>sensor_msgs</depend>
   <depend>std_msgs</depend>
-  <depend>std_srvs</depend>
   <depend>rosgraph_msgs</depend>
   <depend>rclpy</depend>
-  <depend>rcl_interfaces</depend>
-  <exec_depend>rtabmap_odom</exec_depend>
-  <exec_depend>rtabmap_launch</exec_depend>
-  <exec_depend>rtabmap_slam</exec_depend>
-  <exec_depend>rtabmap_viz</exec_depend>
   <depend>nav_msgs</depend>
-  <depend>geometry_msgs</depend>
-  <depend>mavros_msgs</depend>
   <test_depend>ament_cmake_pytest</test_depend>
   <export>
     <build_type>ament_cmake</build_type>

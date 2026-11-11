@@ -1,4 +1,9 @@
-"""ZED RGB-D visual odometry; no ground-truth input or bottom-camera input."""
+"""ZED RGB-D visual odometry (RTAB-Map rgbd_odometry) -> /zed2i/vo/odometry.
+
+Inputs are the synchronized ZED left RGB-D topics; no ground-truth or bottom-camera
+input is used. The same topics come from the Gazebo bridge in simulation or from the
+ZED wrapper on the real ROV (remap them there).
+"""
 import os
 from pathlib import Path
 from ament_index_python.packages import get_package_share_directory, get_package_prefix, PackageNotFoundError
@@ -8,7 +13,7 @@ from launch_ros.actions import Node
 
 
 def setup(context):
-    share=Path(get_package_share_directory('robot_description'))
+    share=Path(get_package_share_directory('mako_vision'))
     environment=[]
     try:get_package_prefix('rtabmap_odom')
     except PackageNotFoundError:

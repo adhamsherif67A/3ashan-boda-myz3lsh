@@ -28,6 +28,14 @@ class ContainerSetup(unittest.TestCase):
         self.assertIn('configure_ardusub:=false',jobs['Gazebo'])
         self.assertIn('headless:=true',jobs['Gazebo'])
         self.assertEqual(set(jobs),{'SITL','MAVROS','Gazebo'})
+        self.assertEqual(jobs['Gazebo'][:4],['ros2','launch','mako_bringup','simulation.launch.py'])
+        self.assertIn(str(ROOT/'src/mako_control/config/ardusub_external_nav.parm'),jobs['SITL'])
+
+    def test_slam_forces_vision_and_pilot_adds_realjoy(self):
+        jobs=dict(supervisor.plan(ROOT,Path('/opt/ardupilot'),'pool.world','ground_truth',True,30,slam=True,pilot=True,gamepad=False))
+        self.assertIn('odometry_source:=vision',jobs['Gazebo'])
+        self.assertIn('slam:=true',jobs['Gazebo'])
+        self.assertEqual(jobs['Pilot'],['ros2','launch','mako_control','pilot.launch.py','joystick:=false'])
 
     def test_instance_ports_stay_consistent_across_all_three_processes(self):
         jobs=dict(supervisor.plan(ROOT,Path('/opt/ardupilot'),'ocean.world','ground_truth',True,30,9))

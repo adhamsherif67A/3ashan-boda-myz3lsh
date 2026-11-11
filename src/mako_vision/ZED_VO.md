@@ -6,7 +6,7 @@ Build and source the workspace, then restart the simulation with:
 source /opt/ros/humble/setup.bash
 colcon build --base-paths src/robot_description --packages-select robot_description --symlink-install
 source install/setup.bash
-ros2 launch robot_description gazebo.launch.py odometry_source:=vision
+ros2 launch mako_bringup simulation.launch.py odometry_source:=vision
 ```
 
 The existing MAVROS and ArduSub SITL must be running with their normal FCU URL.
@@ -67,7 +67,7 @@ database location. Existing databases are reused, not deleted automatically.
 ## Runtime dependency
 
 The normal dependency is ros-humble-rtabmap-odom. On this workstation a sudo-free
-runtime was unpacked in .deps/rtabmap/root. zed_vo.launch.py discovers that local
+runtime was unpacked in .deps/rtabmap/root. visual_odometry.launch.py discovers that local
 prefix automatically; MAKO_VO_PREFIX can override the prefix location. These
 third-party binaries are excluded from Git. Other workstations should install
 the ROS package with apt. ROS interfaces remain standard in either case.
@@ -77,7 +77,7 @@ https://github.com/ArduPilot/ardupilot_wiki/blob/master/dev/source/docs/mavlink-
 
 ## Verified integration
 
-`python3 src/robot_description/test/check_zed_vo.py` runs an isolated Gazebo/ROS
+`python3 src/mako_vision/test/check_zed_vo.py` runs an isolated Gazebo/ROS
 simulation with the production odometry settings and a mock FCU UDP endpoint.
 The real MAVROS process converts and transmits MAVLink ODOMETRY to that endpoint.
 Tests cover forward, sideways and vertical thruster motion, pose displacement

@@ -1,3 +1,11 @@
+"""Gazebo Harmonic world with the Mako ROV, its simulated sensors and ROS bridges.
+
+This launch file belongs to the description/simulation layer only: it starts
+Gazebo, robot_state_publisher, the ROS-Gazebo bridges, the simulated depth relay
+and the point-cloud frame relay. Vision (mako_vision) and vehicle control
+(mako_control) are started by mako_bringup/simulation.launch.py, which includes
+this file.
+"""
 import os
 import subprocess
 import tempfile
@@ -9,12 +17,10 @@ from ament_index_python.packages import get_package_share_directory
 from launch import LaunchDescription
 from launch.actions import (
     DeclareLaunchArgument,
-    ExecuteProcess,
     IncludeLaunchDescription,
     OpaqueFunction,
     RegisterEventHandler,
     SetEnvironmentVariable,
-    TimerAction,
 )
 from launch.conditions import IfCondition
 from launch.event_handlers import OnShutdown
@@ -56,13 +62,7 @@ def launch_setup(context):
 
     source_world = package_share / 'worlds' / LaunchConfiguration('world').perform(context)
     world_name = ET.parse(source_world).find('world').get('name')
-    vision = LaunchConfiguration('odometry_source').perform(context) == 'vision'
-    slam = LaunchConfiguration('slam').perform(context) == 'true'
-    if slam and not vision:
-        raise RuntimeError('SLAM mapping requires odometry_source:=vision')
-    publish_map_tf = (
-        LaunchConfiguration('publish_map_tf').perform(context) == 'true' and not slam
-    )
+    rgbd_bridge = LaunchConfiguration('rgbd_bridge').perform(context) == 'true'
     urdf_path = package_share / 'urdf' / 'robot_description.urdf'
     
     # ==========================================================
@@ -116,35 +116,6 @@ def launch_setup(context):
         world_directory.cleanup()
         raise
     ros_gz_sim_share = Path(get_package_share_directory('ros_gz_sim'))
-    slam_actions = []
-    if slam:
-        rtabmap_share = Path(get_package_share_directory('rtabmap_launch'))
-        database_path = LaunchConfiguration('slam_database_path').perform(context)
-        slam_actions.append(IncludeLaunchDescription(
-            PythonLaunchDescriptionSource(str(rtabmap_share / 'launch' / 'rtabmap.launch.py')),
-            launch_arguments={
-                'use_sim_time': 'true',
-                'visual_odometry': 'false',
-                'rgb_topic': '/zed2i/rgbd/left/image_rect_color',
-                'depth_topic': '/zed2i/rgbd/left/depth/image_raw',
-                'camera_info_topic': '/zed2i/rgbd/left/camera_info',
-                'odom_topic': '/zed2i/vo/odometry',
-                'frame_id': 'base_link',
-                'map_frame_id': 'map',
-                'publish_tf_map': 'true',
-                'approx_sync': 'true',
-                'approx_sync_max_interval': '0.025',
-                'qos': '1',
-                'topic_queue_size': '3',
-                'sync_queue_size': '8',
-                'wait_for_transform': '0.2',
-                'args': '--ros-args -p RGBD/LinearUpdate:=0.03 -p RGBD/AngularUpdate:=0.03 -p RGBD/NeighborLinkRefining:=true -p Reg/Strategy:=1 -p Reg/Force3DoF:=false -p Grid/RangeMax:=8.0 -p Odom/ResetCountdown:=3',
-                'database_path': database_path,
-                'rtabmap_viz': LaunchConfiguration('slam_viz').perform(context),
-                'rviz': 'false',
-            }.items(),
-        ))
-
     # Environment variable for Gazebo Harmonic resources
     gz_resource_path = SetEnvironmentVariable(
         name='GZ_SIM_RESOURCE_PATH',
@@ -172,12 +143,6 @@ def launch_setup(context):
             PythonLaunchDescriptionSource(str(ros_gz_sim_share / 'launch' / 'gz_sim.launch.py')),
             launch_arguments={'gz_args': ('-r -s --headless-rendering ' if LaunchConfiguration('headless').perform(context) == 'true' else '-r ') + str(world_path)}.items(),
         ),
-
-        IncludeLaunchDescription(
-            PythonLaunchDescriptionSource(str(package_share / 'launch' / 'zed_vo.launch.py')),
-            condition=IfCondition('true' if vision else 'false'),
-        ),
-        *slam_actions,
 
         # Robot State Publisher
         Node(
@@ -240,76 +205,23 @@ def launch_setup(context):
             output='screen',
         ),
 
-        # The transect controller is idle until explicitly enabled from the UI.
-        # Arming remains a manual operator action.
-        Node(
-            package='robot_description',
-            executable='fly_transect_mission.py',
-            name='fly_transect_mission',
-            parameters=[{'use_sim_time': True,
-                         'world': LaunchConfiguration('world').perform(context)}],
-            output='screen',
-        ),
-
-        # Feed the selected body-frame odometry to ArduPilot through MAVROS. The
-        # MAVROS ROS-to-FCU endpoint is /mavros/odometry/out; EKF3
-        # uses this ExternalNav stream instead of the invalid air-pressure
-        # value produced by the non-hydrostatic Gazebo pressure sensor.
-        Node(
-            package='robot_description',
-            executable='gz_odom_to_mavros.py',
-            name='gz_odom_to_mavros',
-            parameters=[{'use_sim_time': True,
-                         'source_topic': '/zed2i/vo/odometry' if vision else '/odometry/gz',
-                         'require_covariance': vision, 'reset_on_clock_jump': vision,
-                         'max_linear_speed': 2.0 if vision else 0.0,
-                         'max_angular_speed': 3.0 if vision else 0.0,
-                         'publish_tf': vision and LaunchConfiguration('publish_odom_tf').perform(context) == 'true'}],
-            output='screen',
-        ),
-
-        # MAVROS is started separately because its FCU URL is deployment
-        # specific.  Once it exposes the parameter service, configure EKF3 to
-        # use the Gazebo odometry ExternalNav stream and disable unsuitable
-        # simulated-sensor behaviour.  The helper exits harmlessly if MAVROS
-        # has not appeared within the timeout.
-        TimerAction(
-            condition=IfCondition(LaunchConfiguration("configure_ardusub")),
-            period=5.0,
-            actions=[
-                ExecuteProcess(
-                    cmd=[
-                        'ros2', 'run', package_name, 'fix_ardusub_params.py',
-                        '--non-interactive', '--wait-for-mavros', '90',
-                    ],
-                    output='screen',
-                ),
-            ],
-        ),
-
-        # MAVROS ODOMETRY requires a NED companion for the message's parent frame.
-        Node(package='tf2_ros', executable='static_transform_publisher',
-             name='tf_odom_ned',
-             arguments=['--frame-id','odom','--child-frame-id','odom_ned',
-                        '--roll','3.141592653589793','--pitch','0','--yaw','1.570796326794897'],
-             parameters=[{'use_sim_time':True}], output='screen'),
-
-        # Ground-truth mode aligns map with odom. SLAM mode leaves map -> odom
-        # to RTAB-Map and suppresses this placeholder publisher.
+        # Ground-truth mode aligns map with odom. When SLAM owns map -> odom,
+        # mako_bringup passes publish_map_tf:=false to suppress this placeholder.
         Node(
             package='tf2_ros', executable='static_transform_publisher',
             name='tf_sim_map_odom',
-            condition=IfCondition('true' if publish_map_tf else 'false'),
+            condition=IfCondition(LaunchConfiguration('publish_map_tf')),
             arguments=['--frame-id', 'map', '--child-frame-id', 'odom'],
             parameters=[{'use_sim_time': True}], output='screen',
         ),
 
-        # Only one node may own odom -> base_link.
+        # Only one node may own odom -> base_link. In visual-odometry mode the
+        # mako_control ExternalNav relay owns it and this bridge is disabled.
         Node(
             package='ros_gz_bridge',
             executable='parameter_bridge',
             name='ground_truth_tf_bridge',
-            condition=IfCondition('false' if vision else LaunchConfiguration('publish_odom_tf')),
+            condition=IfCondition(LaunchConfiguration('publish_odom_tf')),
             arguments=['/model/mako/tf@tf2_msgs/msg/TFMessage[gz.msgs.Pose_V'],
             remappings=[('/model/mako/tf', '/tf')],
             parameters=[{'use_sim_time': True}],
@@ -337,7 +249,7 @@ def launch_setup(context):
             package='ros_gz_bridge',
             executable='parameter_bridge',
             name='zed2i_rgbd_bridge',
-            condition=IfCondition('true' if vision else 'false'),
+            condition=IfCondition('true' if rgbd_bridge else 'false'),
             parameters=[{'config_file': str(package_share / 'config' / 'zed2i_rgbd_bridge.yaml'),
                          'use_sim_time': True}],
             output='screen',
@@ -367,28 +279,18 @@ def gpu_environment(mode):
 
 def generate_launch_description():
     return LaunchDescription([
-        DeclareLaunchArgument('configure_ardusub', default_value='true', choices=['true', 'false'],
-                              description='Apply parameters through MAVROS; disable when SITL loaded them at startup.'),
         DeclareLaunchArgument('sitl_port_in', default_value='9002', description='Gazebo ArduPilot JSON servo input port'),
         DeclareLaunchArgument('sitl_port_out', default_value='9003', description='ArduPilot JSON state port'),
         DeclareLaunchArgument('headless', default_value='false', choices=['true', 'false'], description='Run the Gazebo server and rendered sensors without its GUI'),
         DeclareLaunchArgument('world', default_value='pool.world', choices=['pool.world', 'pool.sdf', 'ocean.world'], description='Select team pool tasks or ocean maneuvering course'),
-        DeclareLaunchArgument('odometry_source', default_value='ground_truth',
-                              choices=['ground_truth', 'vision'],
-                              description='Select the sole TF and MAVROS odometry source.'),
-        DeclareLaunchArgument('slam', default_value='false', choices=['true', 'false'],
-                              description='Enable RTAB-Map visual SLAM; requires ZED visual odometry.'),
-        DeclareLaunchArgument('slam_database_path',
-                              default_value=str(Path.home() / '.ros' / 'mako_slam.db'),
-                              description='RTAB-Map database path. Existing databases are reused, not deleted.'),
-        DeclareLaunchArgument('slam_viz', default_value='true', choices=['true', 'false'],
-                              description='Open the RTAB-Map viewer when SLAM is enabled.'),
+        DeclareLaunchArgument('rgbd_bridge', default_value='false', choices=['true', 'false'],
+                              description='Bridge the synchronized ZED RGB-D triplet used by visual odometry and SLAM.'),
         DeclareLaunchArgument(
             'publish_odom_tf', default_value='true', choices=['true', 'false'],
-            description='Let Gazebo own odom -> base_link. Disable for an external estimator.'),
+            description='Let Gazebo ground truth own odom -> base_link. Disable when visual odometry or another estimator owns it.'),
         DeclareLaunchArgument(
             'publish_map_tf', default_value='true', choices=['true', 'false'],
-            description='Align map with odom for ground-truth simulation. Disable when SLAM owns this edge.'),
+            description='Publish a static map -> odom for ground-truth simulation. Disable when SLAM owns this edge.'),
         DeclareLaunchArgument('camera_width', default_value='profile', description='Native RGB/depth width; profile or explicit integer'),
         DeclareLaunchArgument('camera_height', default_value='profile', description='Native RGB/depth height; profile or explicit integer'),
         DeclareLaunchArgument('camera_fps', default_value='profile', description='RGB-D/depth and bottom camera rate; profile or explicit number'),

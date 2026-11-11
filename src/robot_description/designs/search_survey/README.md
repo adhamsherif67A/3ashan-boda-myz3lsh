@@ -105,7 +105,7 @@ It does not use or stop any running SITL or simulation session.
 Launch the source workspace after building/sourcing its usual install:
 
 ```bash
-ros2 launch robot_description gazebo.launch.py world:=ocean.world
+ros2 launch mako_bringup simulation.launch.py world:=ocean.world
 ```
 
 Managed Operation MX installations use a packaged version of the world. They

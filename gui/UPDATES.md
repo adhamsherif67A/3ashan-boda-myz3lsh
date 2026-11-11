@@ -30,11 +30,11 @@ redirects. GitHub access is separate from the signature/checksum verification.
 
 The native environment must already contain ROS Humble, Gazebo Harmonic,
 `ros_gz_sim`, `ros_gz_bridge`, MAVROS with GeographicLib datasets, RViz, xacro,
-robot_state_publisher, joy, colcon, a C++ compiler, PyQt5 and python3-cryptography.
-ArduSub and the working Harmonic ArduPilot Gazebo plugin must be installed.
-The team's `real_joy` package must be built in the software workspace.
-RTAB-Map and its native libraries are delivered in each desktop release.
-The installer builds only the simulation ROS package, not ArduSub.
+robot_state_publisher, joy, mavros_msgs, colcon, a C++ compiler, PyQt5 and
+python3-cryptography. ArduSub and the working Harmonic ArduPilot Gazebo plugin must
+be installed. RTAB-Map and its native libraries are delivered in each desktop release.
+The installer builds the repository's ROS packages (`robot_description`,
+`mako_control` with `realjoy_node`, `mako_vision`, `mako_bringup`), not ArduSub.
 
 Download `operation-mx-installer-VERSION.tar.gz` from a published GitHub release.
 Extract it and run:
@@ -44,8 +44,9 @@ cd operation-mx-installer
 python3 install.py
 ```
 
-Default existing workspaces are `~/Software2026` and `~/ardupilot`. For other
-locations, use `--software-workspace /path/to/software --ardupilot /path/to/ardupilot`.
+The default ArduPilot location is `~/ardupilot`; use `--ardupilot /path/to/ardupilot`
+otherwise. `--software-workspace /path/to/overlay` is optional: Software2026 is no
+longer needed because `realjoy_node` is built from `mako_control`.
 The installer checks these prerequisites before touching the launcher.
 It requires no sudo, does not delete existing workspaces, and creates the
 Operation MX application-menu and desktop shortcuts after its startup checks pass.

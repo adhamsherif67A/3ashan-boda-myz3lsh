@@ -1,8 +1,9 @@
 # Team pool and ocean
 
-Default: `ros2 launch robot_description gazebo.launch.py`
-Team pool: `ros2 launch robot_description gazebo.launch.py world:=pool.world`
-Ocean: `ros2 launch robot_description gazebo.launch.py world:=ocean.world`
+Default: `ros2 launch mako_bringup simulation.launch.py`
+Team pool: `ros2 launch mako_bringup simulation.launch.py world:=pool.world`
+Ocean: `ros2 launch mako_bringup simulation.launch.py world:=ocean.world`
+World and robot only (no control or vision nodes): `ros2 launch robot_description gazebo.launch.py world:=ocean.world`
 Add `odometry_source:=vision` to either command to use ZED-only visual odometry.
 Pilot RGB defaults to 720p/30 Hz, depth 15 Hz, automatic NVIDIA offload.
 

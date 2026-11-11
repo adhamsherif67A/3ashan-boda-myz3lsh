@@ -48,7 +48,9 @@ def build(output, release_version, key_path, runtime, source=ROOT):
         metadata.write_text(json.dumps({'version': release_version, 'ros_distro': 'humble'}))
         with tarfile.open(archive, 'w:gz', dereference=True) as tar:
             tar.add(metadata, arcname='release.json', filter=include)
-            tar.add(source/'src/robot_description', arcname='workspace/src/robot_description', filter=include)
+            for package in ['robot_description', 'mako_control', 'mako_vision', 'mako_bringup']:
+                if (source/'src'/package).is_dir():
+                    tar.add(source/'src'/package, arcname='workspace/src/'+package, filter=include)
             tar.add(source/'commands.txt', arcname='workspace/commands.txt', filter=include)
             if (source/'firmware/ardusub-autotune').is_dir():
                 tar.add(source/'firmware/ardusub-autotune', arcname='workspace/firmware/ardusub-autotune', filter=include)

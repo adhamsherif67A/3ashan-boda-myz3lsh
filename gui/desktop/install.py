@@ -20,7 +20,8 @@ def desktop_quote(value):
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--root', type=Path, default=Path(os.environ.get('XDG_DATA_HOME', Path.home()/'.local/share'))/'operation-mx')
-    parser.add_argument('--software-workspace', type=Path, default=Path(os.environ.get('MAKO_SOFTWARE_WORKSPACE', Path.home()/'Software2026')))
+    parser.add_argument('--software-workspace', type=Path, default=Path(os.environ['MAKO_SOFTWARE_WORKSPACE']) if os.environ.get('MAKO_SOFTWARE_WORKSPACE') else None,
+                        help='Optional extra ROS overlay. realjoy_node is built from this repository (mako_control).')
     parser.add_argument('--ardupilot', type=Path, default=Path(os.environ.get('MAKO_ARDUPILOT', Path.home()/'ardupilot')))
     parser.add_argument('--ros-setup', type=Path, default=Path('/opt/ros/humble/setup.bash'))
     parser.add_argument('--upgrade', action='store_true', help='Upgrade an existing installation, preserving data and local paths')
@@ -31,10 +32,13 @@ def main():
         for flag, attribute, key in [('--software-workspace', 'software_workspace', 'software'),
                                      ('--ardupilot', 'ardupilot', 'ardupilot'), ('--ros-setup', 'ros_setup', 'ros_setup')]:
             if not any(item == flag or item.startswith(flag+'=') for item in sys.argv):
-                setattr(args, attribute, Path(previous[key]))
+                setattr(args, attribute, Path(previous[key]) if previous.get(key) else None)
     if not host_compatible():
         parser.error('Supported platform: Ubuntu 22.04 x86_64 with ROS Humble and Gazebo Harmonic')
-    for path in [args.ros_setup, args.software_workspace/'install/local_setup.bash', args.ardupilot/'Tools/autotest/sim_vehicle.py']:
+    required = [args.ros_setup, args.ardupilot/'Tools/autotest/sim_vehicle.py']
+    if args.software_workspace:
+        required.append(args.software_workspace/'install/local_setup.bash')
+    for path in required:
         if not path.is_file():
             parser.error('Missing prerequisite: '+str(path)+'; see UPDATES.md')
     source = Path(__file__).resolve().parent
@@ -55,7 +59,7 @@ def main():
         require_idle_backend()
         for name in ['launcher.py', 'updater.py', 'update_public_key.pem']:
             shutil.copy2(source/name, root/name)
-        atomic_json(root/'config.json', {'software': str(args.software_workspace.expanduser().resolve()),
+        atomic_json(root/'config.json', {'software': str(args.software_workspace.expanduser().resolve()) if args.software_workspace else '',
                                          'ardupilot': str(args.ardupilot.expanduser().resolve()),
                                          'ros_setup': str(args.ros_setup.resolve())})
         archive = source/json.loads(raw)['archive']['name']
@@ -92,15 +96,15 @@ def main():
                 target.write_text(entry)
                 target.chmod(0o755)
         # Keep the existing team's launcher as an entry point to the managed app.
-        legacy = args.software_workspace/'run_mako_gui.sh'
-        if legacy.exists():
+        legacy = args.software_workspace/'run_mako_gui.sh' if args.software_workspace else None
+        if legacy and legacy.exists():
             backup = legacy.with_name('run_mako_gui.before-online-updates.sh')
             if not backup.exists():
                 shutil.copy2(legacy, backup)
             legacy.write_text(binary.read_text())
             legacy.chmod(0o755)
-        old_entry = args.software_workspace/'OperationMX.desktop'
-        if old_entry.exists():
+        old_entry = args.software_workspace/'OperationMX.desktop' if args.software_workspace else None
+        if old_entry and old_entry.exists():
             old_entry.write_text(entry)
             old_entry.chmod(0o755)
         if shutil.which('update-desktop-database'):

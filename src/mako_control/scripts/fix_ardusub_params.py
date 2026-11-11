@@ -3,7 +3,7 @@
 Fix ArduSub SITL parameters so thrusters stop cleanly after motion and on disarm.
 
 Run with MAVROS active:
-    python3 /home/boda/mako_ws/src/robot_description/scripts/fix_ardusub_params.py
+    ros2 run mako_control fix_ardusub_params.py
 """
 
 import argparse
@@ -148,7 +148,7 @@ def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument(
         '--non-interactive', action='store_true',
-        help='Apply parameters immediately; used by gazebo.launch.py.')
+        help='Apply parameters immediately; used by mako_control control.launch.py.')
     parser.add_argument(
         '--wait-for-mavros', type=float, default=0.0, metavar='SECONDS',
         help='Wait for /mavros/param/set before applying parameters.')
@@ -159,7 +159,7 @@ def main():
     print("=" * 60)
     print()
     print("Prerequisites:")
-    print("  1. Gazebo + SITL running: ros2 launch robot_description gazebo.launch.py")
+    print("  1. Gazebo + SITL running: ros2 launch mako_bringup simulation.launch.py")
     print("  2. MAVROS running: ros2 launch mavros apm.launch fcu_url:=udp://127.0.0.1:14551@")
     print()
     if args.wait_for_mavros > 0:
