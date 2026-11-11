@@ -25,8 +25,9 @@ def mode(req,resp):
  if resp.mode_sent and accept['confirm']:state.mode=req.custom_mode
  return resp
 node.create_service(CommandBool,'/mavros/cmd/arming',arm);node.create_service(SetMode,'/mavros/set_mode',mode)
-log=Path(os.environ.get('MAKO_WORKSPACE',str(Path.home()/'mako_ws')))/'gui/runs/joystick_contract.log';log.parent.mkdir(exist_ok=True)
-process=subprocess.Popen([str(Path(os.environ.get('MAKO_SOFTWARE_WORKSPACE',str(Path.home()/'Software2026')))/'install/real_joy/lib/real_joy/realjoy_node'),'--ros-args','-p','use_sim_time:=true'],stdout=log.open('w'),stderr=subprocess.STDOUT,start_new_session=True)
+log=Path(os.environ.get('MAKO_WORKSPACE',str(Path(__file__).resolve().parents[3])))/'gui/runs/joystick_contract.log';log.parent.mkdir(parents=True,exist_ok=True)
+from ament_index_python.packages import get_package_prefix
+process=subprocess.Popen([str(Path(get_package_prefix('mako_control'))/'lib/mako_control/realjoy_node'),'--ros-args','-p','use_sim_time:=true'],stdout=log.open('w'),stderr=subprocess.STDOUT,start_new_session=True)
 client=node.create_client(SetParametersAtomically,'/realjoy_node/set_parameters_atomically')
 def pump(seconds,sendjoy=True):
  end=time.monotonic()+seconds

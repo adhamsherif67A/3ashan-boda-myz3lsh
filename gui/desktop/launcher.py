@@ -39,7 +39,7 @@ def environment(root, release, config):
     runtime = release/'runtime'
     prefix = runtime/'opt/ros/humble'
     env.update(OPERATION_MX_INSTALL_ROOT=str(root), MAKO_WORKSPACE=str(workspace),
-               MAKO_SOFTWARE_WORKSPACE=config['software'], MAKO_ARDUPILOT=config['ardupilot'],
+               MAKO_SOFTWARE_WORKSPACE=config.get('software') or str(workspace), MAKO_ARDUPILOT=config['ardupilot'],
                MAKO_ARDUPILOT_GAZEBO=str(Path(config['ardupilot'])/'ardupilot_gazebo'),
                MAKO_DATA_DIR=str(root/'data'), MAKO_APP_ICON=str(root/'data/icon.png'),
                MAKO_ROS_SETUP=config['ros_setup'])
@@ -56,7 +56,10 @@ def environment(root, release, config):
 
 
 def shell_setup(release, config, built=True):
-    paths = [Path(config['ros_setup']), Path(config['software'])/'install/local_setup.bash']
+    paths = [Path(config['ros_setup'])]
+    # realjoy_node is built in this workspace (mako_control); an extra overlay is optional.
+    if config.get('software'):
+        paths.append(Path(config['software'])/'install/local_setup.bash')
     if built:
         paths.append(release/'workspace/install/setup.bash')
     for path in paths:
@@ -73,12 +76,12 @@ def prepare(root, release, config):
     log_path.parent.mkdir(parents=True, exist_ok=True)
     with log_path.open('ab') as log:
         sources = shell_setup(release, config, built=False)
-        command = sources+'exec colcon build --symlink-install --packages-select robot_description --cmake-args -DBUILD_TESTING=OFF -DCMAKE_BUILD_TYPE=Release\n'
+        command = sources+'exec colcon build --symlink-install --packages-up-to mako_bringup --cmake-args -DBUILD_TESTING=OFF -DCMAKE_BUILD_TYPE=Release\n'
         subprocess.run(['bash', '-c', command], cwd=release/'workspace', env=env,
                        stdout=log, stderr=subprocess.STDOUT, check=True, timeout=900)
         sources = shell_setup(release, config)
         checks = "from ament_index_python.packages import get_package_prefix; " \
-                 "[get_package_prefix(p) for p in ['robot_description','rtabmap_launch','rtabmap_slam','rtabmap_viz','rtabmap_odom','mavros','joy','real_joy','ros_gz_sim','ros_gz_bridge']]"
+                 "[get_package_prefix(p) for p in ['robot_description','mako_control','mako_vision','mako_bringup','rtabmap_launch','rtabmap_slam','rtabmap_viz','rtabmap_odom','mavros','joy','ros_gz_sim','ros_gz_bridge']]"
         subprocess.run(['bash', '-c', sources+'exec /usr/bin/python3 -c '+shlex.quote(checks)],
                        env=env, stdout=log, stderr=subprocess.STDOUT, check=True, timeout=30)
         for package, binary in [('rtabmap_slam', 'rtabmap'), ('rtabmap_viz', 'rtabmap_viz'), ('rtabmap_odom', 'rgbd_odometry')]:

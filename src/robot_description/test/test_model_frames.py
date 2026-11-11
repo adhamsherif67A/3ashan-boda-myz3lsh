@@ -138,7 +138,7 @@ class ModelFrames(unittest.TestCase):
 
     def test_vertical_mixer_produces_upward_heave_and_positive_frd_roll(self):
         import runpy
-        params = runpy.run_path(str(ROOT / 'scripts/fix_ardusub_params.py'))['PARAMS']
+        params = runpy.run_path(str(ROOT.parent / 'mako_control/scripts/fix_ardusub_params.py'))['PARAMS']
         plugin = next(p for p in self.robot.findall('gazebo/plugin')
                       if p.get('filename') == 'libArduPilotPlugin.so')
         controls = {int(c.get('channel')): c for c in plugin.findall('control')}

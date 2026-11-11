@@ -28,9 +28,9 @@ class StationTests(unittest.TestCase):
         with tempfile.TemporaryDirectory() as directory:
             workspace=Path(directory)
             shutil.copy2(root/'commands.txt',workspace/'commands.txt')
-            config=workspace/'src/robot_description/config/ardusub_external_nav.parm'
+            config=workspace/'src/mako_control/config/ardusub_external_nav.parm'
             config.parent.mkdir(parents=True)
-            shutil.copy2(root/'src/robot_description/config/ardusub_external_nav.parm',config)
+            shutil.copy2(root/'src/mako_control/config/ardusub_external_nav.parm',config)
             autopilot=workspace/'autopilot'
             script=autopilot/'Tools/autotest/sim_vehicle.py'
             script.parent.mkdir(parents=True);script.touch()
@@ -46,11 +46,12 @@ class StationTests(unittest.TestCase):
                 self.assertEqual(sitl[sitl.index('--add-param-file')+1],str(config))
                 self.assertNotIn('--no-rebuild',sitl)
                 self.assertIn('configure_ardusub:=false',commands['Gazebo'])
-                self.assertEqual(commands['Pilot control'],['ros2','run','real_joy','realjoy_node'])
+                self.assertEqual(commands['Gazebo'][:4],['ros2','launch','mako_bringup','simulation.launch.py'])
+                self.assertEqual(commands['Pilot control'],['ros2','run','mako_control','realjoy_node'])
                 session.stop()
             values={line.split()[0]:float(line.split()[1]) for line in config.read_text().splitlines()
                     if line.strip() and not line.startswith('#')}
-            params=runpy.run_path(str(root/'src/robot_description/scripts/fix_ardusub_params.py'))['PARAMS']
+            params=runpy.run_path(str(root/'src/mako_control/scripts/fix_ardusub_params.py'))['PARAMS']
             for key,(value,_) in params.items():self.assertEqual(values[key],value,key)
             self.assertLess(values['MOT_PWM_MIN'],1500)
             self.assertGreater(values['MOT_PWM_MAX'],1500)

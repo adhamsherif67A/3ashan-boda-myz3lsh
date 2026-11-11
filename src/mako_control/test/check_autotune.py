@@ -75,7 +75,7 @@ def axes(mask):
 
 
 def run_client(action):
-    process = subprocess.Popen([sys.executable, str(WORKSPACE/'src/robot_description/scripts/autotune.py'),
+    process = subprocess.Popen([sys.executable, str(WORKSPACE/'src/mako_control/scripts/autotune.py'),
                                 action, '--timeout', '15'], stdout=subprocess.PIPE, stderr=subprocess.STDOUT, text=True)
     try:
         wait(lambda: process.poll() is not None, 50)

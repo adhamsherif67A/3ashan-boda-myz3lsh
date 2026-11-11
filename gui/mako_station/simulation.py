@@ -14,8 +14,18 @@ from datetime import datetime
 from zoneinfo import ZoneInfo
 
 
-WORKSPACE = Path(os.environ.get('MAKO_WORKSPACE', Path.home()/'mako_ws'))
-SOFTWARE = Path(os.environ.get('MAKO_SOFTWARE_WORKSPACE', Path.home()/'Software2026'))
+def default_workspace():
+    """The repository this app was started from, once built; otherwise ~/mako_ws."""
+    repository = Path(__file__).resolve().parents[2]
+    if (repository/'install/setup.bash').exists() or (repository/'src/mako_bringup').is_dir():
+        return repository
+    return Path.home()/'mako_ws'
+
+
+WORKSPACE = Path(os.environ.get('MAKO_WORKSPACE') or default_workspace())
+# Optional extra overlay (the old Software2026 workspace). realjoy_node is now built
+# in this repository's mako_control package, so it is no longer required.
+SOFTWARE = Path(os.environ.get('MAKO_SOFTWARE_WORKSPACE') or WORKSPACE)
 ARDUPILOT = Path(os.environ.get('MAKO_ARDUPILOT', Path.home()/'ardupilot'))
 DOMAIN = int(os.environ.get('MAKO_SIM_ROS_DOMAIN_ID', '42'))
 
@@ -33,7 +43,9 @@ def commands_from_file(path):
 
 
 def source_environment(workspace=WORKSPACE,software=SOFTWARE):
-    sources=[Path(os.environ.get('MAKO_ROS_SETUP','/opt/ros/humble/setup.bash')),workspace/'install/setup.bash',software/'install/local_setup.bash']
+    sources=[Path(os.environ.get('MAKO_ROS_SETUP','/opt/ros/humble/setup.bash')),workspace/'install/setup.bash']
+    overlay=Path(software)/'install/local_setup.bash'
+    if Path(software).resolve()!=Path(workspace).resolve() and overlay.exists():sources.append(overlay)
     missing=[str(p) for p in sources if not p.exists()]
     if missing:raise RuntimeError('Missing ROS workspace setup: '+', '.join(missing))
     command='\n'.join('source '+shlex.quote(str(p)) for p in sources)+'\nenv -0'
@@ -110,7 +122,7 @@ class SimulationSession:
             script=self.ardupilot/'Tools/autotest/sim_vehicle.py'
             if not script.exists():raise RuntimeError('ArduPilot sim_vehicle.py was not found')
             sim[0]=str(script)
-            parameter_file=self.workspace/'src/robot_description/config/ardusub_external_nav.parm'
+            parameter_file=self.workspace/'src/mako_control/config/ardusub_external_nav.parm'
             if not parameter_file.is_file():raise RuntimeError('SITL startup parameter file was not found')
             sim+=['--add-param-file',str(parameter_file)]
             if self.instance:sim+=['-I',str(self.instance)]
@@ -125,7 +137,7 @@ class SimulationSession:
             env['ROS_LOG_DIR']=str(self.directory/'ros')
             sitl_dir=self.directory/'sitl';sitl_dir.mkdir()
             sim+=['--use-dir',str(sitl_dir),'--mavproxy-args=--non-interactive','--no-extra-ports']
-            gazebo_command=['ros2','launch','robot_description','gazebo.launch.py',
+            gazebo_command=['ros2','launch','mako_bringup','simulation.launch.py',
                             'headless:=true','world:='+world,'odometry_source:='+odometry,
                             'configure_ardusub:=false','slam:='+('true' if slam else 'false'),
                             'sitl_port_in:='+str(9002+10*self.instance),
@@ -147,7 +159,7 @@ class SimulationSession:
             commands=[('SITL',sim,sitl_env),('MAVROS',mavros,env),
                       ('Gazebo',gazebo_command,env),
                       ('Joystick',['ros2','run','joy','game_controller_node'],env),
-                      ('Pilot control',['ros2','run','real_joy','realjoy_node'],env)]
+                      ('Pilot control',['ros2','run','mako_control','realjoy_node'],env)]
             for name,argv,environment in commands:
                 notify('Starting '+name+'…')
                 self.processes.spawn(name,argv,self.directory,environment,self.directory/(name.lower().replace(' ','_')+'.log'))

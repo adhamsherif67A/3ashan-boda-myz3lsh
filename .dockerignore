@@ -7,8 +7,10 @@
 !docker/
 !docker/**
 !src/
-!src/robot_description/
-!src/robot_description/**
+!src/**
+!gui/rov_gui_gst.py
+!gui/mako_station/
+!gui/mako_station/**
 **/__pycache__
 **/*.pyc
 **/build
@@ -16,3 +18,4 @@
 **/log
 **/logs
 **/export.log
+gui/runs

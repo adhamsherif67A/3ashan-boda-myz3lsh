@@ -40,7 +40,7 @@ jobs:
         run: |
           source /opt/ros/humble/setup.bash
           QT_QPA_PLATFORM=offscreen python3 -m unittest discover -s gui/tests -q
-          python3 -m pytest -q src/robot_description/test/test_autotune_client.py
+          python3 -m pytest -q src/mako_control/test/test_autotune_client.py src/mako_vision/test/test_transect_detector.py
       - name: Collect matching RTAB-Map runtime
         shell: bash
         run: |

@@ -13,9 +13,9 @@ def check(label,operation):
         print('OK:',label)
     except Exception as error:
         failed.append(label);print('MISSING:',label,'-',error)
-for package in ['robot_description','ros_gz_sim','ros_gz_bridge','mavros','rtabmap_odom','rviz2']:
+for package in ['robot_description','mako_control','mako_vision','mako_bringup','ros_gz_sim','ros_gz_bridge','mavros','joy','rtabmap_odom','rviz2']:
     check('ROS '+package,lambda p=package:get_package_prefix(p))
-for module in ['rclpy','pymavlink','MAVProxy','psutil','em']:
+for module in ['rclpy','pymavlink','MAVProxy','psutil','em','PyQt5']:
     check('Python '+module,lambda m=module:importlib.import_module(m))
 check('MAVProxy launcher',lambda:shutil.which('mavproxy.py'))
 check('Gazebo Harmonic CLI',lambda:shutil.which('gz') and '8.' in subprocess.check_output(['gz','sim','--versions'],text=True))

@@ -1,6 +1,6 @@
 """Manual ZED visual-odometry integration check (requires ROS setup and built package).
 Runs isolated Gazebo/ROS, real MAVROS, and a mock FCU endpoint without SITL.
-Usage: python3 src/robot_description/test/check_zed_vo.py
+Usage: python3 src/mako_vision/test/check_zed_vo.py
 """
 import os,time,subprocess,signal,tempfile,uuid,importlib.util
 import numpy as np
@@ -35,7 +35,7 @@ from nav_msgs.msg import Odometry
 from rclpy.parameter import Parameter
 from rclpy.qos import qos_profile_sensor_data
 os.environ['ROS_DOMAIN_ID']='125';os.environ['ROS_LOG_DIR']=str(Path(temporary.name)/'roslogs')
-spec=importlib.util.spec_from_file_location('vo_launch',share/'launch/zed_vo.launch.py');vo_launch=importlib.util.module_from_spec(spec);spec.loader.exec_module(vo_launch);vo_launch.setup(None)
+spec=importlib.util.spec_from_file_location('vo_launch',Path(get_package_share_directory('mako_vision'))/'launch/visual_odometry.launch.py');vo_launch=importlib.util.module_from_spec(spec);spec.loader.exec_module(vo_launch);vo_launch.setup(None)
 params=Path(temporary.name)/'rsp.yaml';params.write_text(yaml.safe_dump({'/**':{'ros__parameters':{'robot_description':description,'use_sim_time':True}}}))
 commands=[('mavros',['ros2','launch','mavros','apm.launch','fcu_url:=udp://127.0.0.1:14651@127.0.0.1:14650']),
  ('ned',['ros2','run','tf2_ros','static_transform_publisher','--frame-id','odom','--child-frame-id','odom_ned','--roll','3.141592653589793','--pitch','0','--yaw','1.570796326794897']),
@@ -43,8 +43,8 @@ commands=[('mavros',['ros2','launch','mavros','apm.launch','fcu_url:=udp://127.0
  ('rsp',['ros2','run','robot_state_publisher','robot_state_publisher','--ros-args','--params-file',str(params)]),
  ('bridge',['ros2','run','ros_gz_bridge','parameter_bridge','/clock@rosgraph_msgs/msg/Clock[gz.msgs.Clock','/model/mako/odometry@nav_msgs/msg/Odometry[gz.msgs.Odometry','--ros-args','-r','/model/mako/odometry:=/odometry/gz']),
  ('camera_bridge',['ros2','run','ros_gz_bridge','parameter_bridge','--ros-args','-p','config_file:='+str(share/'config/zed2i_bridge.yaml')]),
- ('vo',['ros2','launch','robot_description','zed_vo.launch.py']),
- ('relay',['ros2','run','robot_description','gz_odom_to_mavros.py','--ros-args','-p','use_sim_time:=true','-p','source_topic:=/zed2i/vo/odometry','-p','require_covariance:=true','-p','reset_on_clock_jump:=true','-p','max_linear_speed:=2.0','-p','max_angular_speed:=3.0','-p','publish_tf:=true'])]
+ ('vo',['ros2','launch','mako_vision','visual_odometry.launch.py']),
+ ('relay',['ros2','run','mako_control','gz_odom_to_mavros.py','--ros-args','-p','use_sim_time:=true','-p','source_topic:=/zed2i/vo/odometry','-p','require_covariance:=true','-p','reset_on_clock_jump:=true','-p','max_linear_speed:=2.0','-p','max_angular_speed:=3.0','-p','publish_tf:=true'])]
 processes=[];logs=[];visual=[];truth=[];external=[];transforms=[];mavlink_odometry=[];camera_rss=[]
 stop=threading.Event()
 endpoint=mavutil.mavlink_connection('udpin:127.0.0.1:14650',source_system=1,source_component=1)

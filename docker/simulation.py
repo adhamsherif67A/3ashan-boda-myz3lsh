@@ -12,7 +12,7 @@ def parse_commands(path):
     return list(sitl),list(mavros)
 
 
-def plan(workspace,autopilot,world,odometry,headless,rate,instance=0):
+def plan(workspace,autopilot,world,odometry,headless,rate,instance=0,slam=False,pilot=False,gamepad=True,profile='balanced'):
     sitl,mavros=parse_commands(workspace/'commands.txt')
     sitl[0]=str(autopilot/'Tools/autotest/sim_vehicle.py')
     if instance:
@@ -20,13 +20,17 @@ def plan(workspace,autopilot,world,odometry,headless,rate,instance=0):
         for old,new in [(14550,14550+10*instance),(14551,14551+10*instance)]:
             sitl=[arg.replace('127.0.0.1:'+str(old),'127.0.0.1:'+str(new)) for arg in sitl]
             mavros=[arg.replace('127.0.0.1:'+str(old),'127.0.0.1:'+str(new)) for arg in mavros]
-    sitl+=['--add-param-file',str(workspace/'src/robot_description/config/ardusub_external_nav.parm'),
+    sitl+=['--add-param-file',str(workspace/'src/mako_control/config/ardusub_external_nav.parm'),
            '--mavproxy-args=--non-interactive','--no-extra-ports']
-    gazebo=['ros2','launch','robot_description','gazebo.launch.py',
+    if slam:odometry='vision'
+    gazebo=['ros2','launch','mako_bringup','simulation.launch.py',
             'world:='+world,'odometry_source:='+odometry,'configure_ardusub:=false',
             'headless:='+str(headless).lower(),'pilot_fps:='+str(rate),
+            'performance_profile:='+profile,'slam:='+str(slam).lower(),
             'sitl_port_in:='+str(9002+10*instance),'sitl_port_out:='+str(9003+10*instance)]
     jobs=[('SITL',sitl),('MAVROS',mavros),('Gazebo',gazebo)]
+    if pilot:
+        jobs.append(('Pilot',['ros2','launch','mako_control','pilot.launch.py','joystick:='+str(gamepad).lower()]))
     return jobs
 
 
@@ -55,13 +59,19 @@ def main():
     parser.add_argument('--odometry-source',choices=['ground_truth','vision'],default='ground_truth')
     parser.add_argument('--headless',action='store_true')
     parser.add_argument('--pilot-fps',type=int,choices=[30,60],default=30)
+    parser.add_argument('--performance-profile',choices=['maximum_fps','balanced','vision_quality','full_sensors'],default='balanced',
+                        help='Camera resolution/rate profile')
+    parser.add_argument('--slam',action='store_true',help='RTAB-Map SLAM (implies --odometry-source vision)')
+    parser.add_argument('--pilot',action='store_true',help='Start realjoy_node and the gamepad driver so a gamepad flies the ROV')
+    parser.add_argument('--no-gamepad',action='store_true',help='With --pilot, start realjoy_node without the joy gamepad driver')
     parser.add_argument('--log-dir',type=Path)
     parser.add_argument('--instance',type=int,default=0,choices=range(11),help='Separate SITL/UDP port offset for concurrent tests')
     parser.add_argument('--dry-run',action='store_true',help='Print commands without starting processes')
     args=parser.parse_args()
     workspace=Path(os.environ.get('MAKO_WORKSPACE','/opt/mako_ws'))
     autopilot=Path(os.environ.get('MAKO_ARDUPILOT','/opt/ardupilot'))
-    jobs=plan(workspace,autopilot,args.world,args.odometry_source,args.headless,args.pilot_fps,args.instance)
+    jobs=plan(workspace,autopilot,args.world,args.odometry_source,args.headless,args.pilot_fps,args.instance,
+              slam=args.slam,pilot=args.pilot,gamepad=not args.no_gamepad,profile=args.performance_profile)
     if args.dry_run:
         for name,command in jobs:print(name+': '+shlex.join(command))
         return 0

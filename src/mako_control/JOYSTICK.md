@@ -1,6 +1,8 @@
 # Joystick controller
 
-The controller is implemented in `Software2026/src/real_joy/src/joystick.cpp`.
+The controller is `realjoy_node`, implemented in `src/mako_control/src/joystick.cpp`
+(headers in `src/mako_control/include/RealJoy/`). Start it with
+`ros2 launch mako_control pilot.launch.py` or let Operation MX start it.
 It uses confirmed `/mavros/state` for arming and mode toggles, rather than local
 flags. When arming requires MANUAL, it waits for the FCU to confirm that mode
 before sending the arming request. Service rejections and five-second response
@@ -58,8 +60,8 @@ To run the isolated integration test without controlling the ROV:
 
 ```bash
 source /opt/ros/humble/setup.bash
-source /home/boda/Software2026/install/local_setup.bash
-python3 /home/boda/Software2026/src/real_joy/test/check_joystick.py
+source install/setup.bash          # from the repository root, after colcon build
+python3 src/mako_control/test/check_joystick.py
 ```
 
 The test uses ROS domain 144, synthetic joystick/state messages and fake MAVROS

@@ -42,7 +42,7 @@ The original `imu_sensor` used by ArduSub remains unchanged. A second, co-locate
 source /opt/ros/humble/setup.bash
 colcon build --base-paths src/robot_description --packages-select robot_description --symlink-install --cmake-args -DBUILD_TESTING=ON
 source install/setup.bash
-ros2 launch robot_description gazebo.launch.py
+ros2 launch mako_bringup simulation.launch.py
 ```
 
 In a second sourced terminal, inspect the live model without adding any TF publishers:
@@ -66,7 +66,7 @@ The checker verifies all model frames, conflicting TF parents, camera axes, sens
 When an estimator is eventually added, start with:
 
 ```bash
-ros2 launch robot_description gazebo.launch.py publish_odom_tf:=false publish_map_tf:=false
+ros2 launch mako_bringup simulation.launch.py publish_odom_tf:=false publish_map_tf:=false
 ```
 
 The estimator must then publish `odom -> base_link`; the Gazebo odometry message stays available for evaluation. Avoid also publishing `odom -> rov_base_link`, since rov_base_link already has a fixed parent. A node estimating rov_base_link must transform its result back to base_link before broadcasting TF. MAVROS local-position / odometry TF publication must also remain disabled whenever another node owns the same edge. `display.launch.py` now defaults to viewing the running simulation and publishes no transforms or joint states. For a standalone model with Gazebo stopped, explicitly use `display.launch.py standalone:=true`.

@@ -10,7 +10,7 @@ Build and launch from the workspace:
 source /opt/ros/humble/setup.bash
 colcon build --base-paths src/robot_description --packages-select robot_description --symlink-install
 source install/setup.bash
-ros2 launch robot_description gazebo.launch.py
+ros2 launch mako_bringup simulation.launch.py
 ```
 
 The explicit base path avoids the duplicate robot_description package in legacy/.
@@ -72,14 +72,14 @@ ALT_HOLD; the mission never arms the vehicle. It is available only in
 The default is 1280x720 pilot RGB at 30 Hz, with depth and bottom RGB at 15 Hz. Resolution and frame rate are launch arguments:
 
 ```bash
-ros2 launch robot_description gazebo.launch.py camera_width:=1280 camera_height:=720 pilot_fps:=30 camera_fps:=15
+ros2 launch mako_bringup simulation.launch.py camera_width:=1280 camera_height:=720 pilot_fps:=30 camera_fps:=15
 ```
 
 For faster simulation, use a performance profile. The profiles change camera
 rendering and transport workload without changing the transect controller:
 
 ```bash
-ros2 launch robot_description gazebo.launch.py performance_profile:=maximum_fps
+ros2 launch mako_bringup simulation.launch.py performance_profile:=maximum_fps
 ```
 
 Available profiles:
