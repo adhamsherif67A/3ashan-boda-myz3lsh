@@ -56,6 +56,16 @@ class StationTests(unittest.TestCase):
             self.assertLess(values['MOT_PWM_MIN'],1500)
             self.assertGreater(values['MOT_PWM_MAX'],1500)
 
+    def test_validated_tracking_freshness_is_independent_of_ground_truth(self):
+        from unittest.mock import patch
+        worker=RosWorker()
+        with patch('mako_station.ros_worker.time.monotonic',return_value=123.):
+            worker.validated_odometry(None)
+        self.assertEqual(worker.snapshot()[1]['tracking_time'],123.)
+        self.assertNotIn('nav_time',worker.snapshot()[1])
+        worker.clear_session()
+        self.assertNotIn('tracking_time',worker.snapshot()[1])
+
     def test_rgb_with_row_padding_and_incomplete_frame(self):
         msg=SimpleNamespace(width=1,height=2,step=4,encoding='rgb8',data=bytes([255,0,0,0,0,255,0,0]))
         image=image_to_qimage(msg)

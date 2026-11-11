@@ -6,26 +6,32 @@
     # The ExternalNav validator owns TF, so rejected tracking jumps cannot
     # move the RViz robot or reach ArduSub. Raw odometry remains inspectable.
     publish_tf: false
+    wait_imu_to_init: true
+    always_check_imu_tf: false
     initial_pose: "0 0 -1 0 0 0"
     publish_null_when_lost: true
-    approx_sync: true
-    approx_sync_max_interval: 0.025
-    topic_queue_size: 3
-    sync_queue_size: 8
+    approx_sync: false
+    topic_queue_size: 1
+    sync_queue_size: 4
     qos: 1
     qos_camera_info: 1
-    wait_for_transform: 0.2
+    wait_for_transform: 0.05
     expected_update_rate: 0.0
+    # Consecutive RGB-D frames keep optical-flow displacement small on tiles.
     "Odom/Strategy": "1"
     # Recover after a short correspondence outage instead of keeping a
     # failed frame as the reference indefinitely.
     "Odom/ResetCountdown": "3"
-    "Odom/GuessMotion": "false"
+    "Odom/GuessMotion": "true"
     "Reg/Force3DoF": "false"
-    "Vis/FeatureType": "1"
-    "Vis/MaxFeatures": "1500"
+    "Vis/FeatureType": "8"
+    "Vis/MaxFeatures": "1000"
     "Vis/MinInliers": "30"
     "Vis/MaxDepth": "8.0"
     "Vis/CorType": "1"
-    "Vis/CorFlowMinEigThreshold": "0.000001"
-    "SIFT/ContrastThreshold": "0.01"
+    # Accurate simulated RGB-D permits 3D-to-3D registration. This avoids the
+    # near-planar PnP ambiguity of repeated tiles on the swimming-pool floor.
+    "Vis/EstimationType": "0"
+    "Vis/InlierDistance": "0.05"
+    "Vis/CorFlowMaxLevel": "2"
+    "Vis/CorFlowMinEigThreshold": "0.0001"

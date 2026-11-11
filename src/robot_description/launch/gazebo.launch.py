@@ -254,6 +254,12 @@ def launch_setup(context):
                          'use_sim_time': True}],
             output='screen',
         ),
+        Node(
+            package='robot_description', executable='sim_rgbd_camera_info.py',
+            name='sim_rgbd_camera_info',
+            condition=IfCondition('true' if rgbd_bridge else 'false'),
+            parameters=[{'use_sim_time': True}], output='screen',
+        ),
     ]
 
 

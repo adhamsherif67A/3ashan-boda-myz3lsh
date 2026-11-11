@@ -108,3 +108,8 @@ neutral pilot commands and no physical joystick. Logs are preserved under
 `gui/runs/control_checks/`.
 
 Joystick reliability and live tuning: see `src/mako_control/JOYSTICK.md`.
+
+The current team SLAM backend is `robot_mapping`, imported from ibrahim-amr.
+`mako_vision/slam.launch.py` delegates to it. SLAM mode's RViz button uses that
+package's mapping configuration; restart the application after rebuilding to
+load changed UI code. See [mapping integration](../src/robot_mapping/README.md).

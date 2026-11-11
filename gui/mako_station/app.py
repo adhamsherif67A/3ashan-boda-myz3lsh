@@ -210,8 +210,8 @@ class PilotWindow(QMainWindow):
         session,sl=card();sl.addWidget(label('SIMULATION','caption'))
         self.world=QComboBox();self.world.addItem('Team pool','pool.world');self.world.addItem('Ocean · 4 m','ocean.world')
         sl.addWidget(self.world)
-        self.odometry=QComboBox();self.odometry.addItem('ZED visual odometry','vision');self.odometry.addItem('Ground-truth pose','ground_truth');sl.addWidget(self.odometry)
-        self.slam=QCheckBox('Enable SLAM mapping');self.slam.setToolTip('Build a visual map with RTAB-Map. Requires ZED visual odometry. Each run saves to its own database.')
+        self.odometry=QComboBox();self.odometry.addItem('ZED RGB-D + IMU','vision');self.odometry.addItem('Ground-truth pose','ground_truth');sl.addWidget(self.odometry)
+        self.slam=QCheckBox('Enable SLAM mapping');self.slam.setToolTip('Build a map using the ZED camera and onboard IMU. Each run saves its own database.')
         self.slam.toggled.connect(self.on_slam_toggled);sl.addWidget(self.slam)
         self.start_button=QPushButton('▶  Start simulation');self.start_button.setObjectName('primary');self.start_button.clicked.connect(lambda:self.action('start'))
         self.reset_button=QPushButton('↻  Reset simulation');self.reset_button.clicked.connect(lambda:self.action('reset'))
@@ -326,7 +326,10 @@ class PilotWindow(QMainWindow):
         if self.phase!='Running':
             self.log('Start simulation before opening RViz.');return
         program=Path('/opt/ros/humble/lib/rviz2/rviz2')
-        config=WORKSPACE/'install/robot_description/share/robot_description/config/model_tf.rviz'
+        if self.slam.isChecked():
+            config=WORKSPACE/'install/robot_mapping/share/robot_mapping/rviz/pool_mapping.rviz'
+        else:
+            config=WORKSPACE/'install/robot_description/share/robot_description/config/model_tf.rviz'
         if not program.is_file() or not config.is_file():
             self.log('RViz or its simulation configuration was not found.');return
         self.launch_tool('RViz',program,['-d',str(config),'--ros-args','-r','__node:=operation_mx_rviz','-p','use_sim_time:=true'],ros=True)
@@ -445,6 +448,11 @@ class PilotWindow(QMainWindow):
         nav=now-telemetry.get('nav_time',0)<1.5 and self.phase=='Running'
         for name,key,pattern in [('Depth','depth','{:.2f}'),('Heading','heading','{:.0f}'),('Speed','speed','{:.2f}')]:
             self.metrics[name].setText(pattern.format(telemetry[key]) if nav and key in telemetry else '—')
+        if self.phase=='Running' and (self.slam.isChecked() or self.odometry.currentData()=='vision'):
+            tracking=telemetry.get('tracking_time')
+            if tracking is None:self.session_hint.setText('Waiting for visual tracking…')
+            elif now-tracking>1.5:self.session_hint.setText('Visual tracking lost · map and robot pose paused. Aim at textured pool geometry.')
+            else:self.session_hint.setText('SLAM mapping active · visual tracking healthy.' if self.slam.isChecked() else 'Visual tracking healthy.')
         elapsed=int(now-self.started_at) if self.started_at else 0
         self.metrics['Mission'].setText(f'{elapsed//60:02d}:{elapsed%60:02d}')
         self.canvas.set_mission(elapsed if self.started_at else None)

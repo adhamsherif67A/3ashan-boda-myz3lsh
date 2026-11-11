@@ -1,0 +1,50 @@
+/**:
+  ros__parameters:
+    use_sim_time: true
+    frame_id: base_link
+    map_frame_id: map
+    odom_frame_id: ""
+    publish_tf: true
+    subscribe_depth: true
+    subscribe_rgb: false
+    subscribe_odom_info: false
+    # All four messages have the originating RGB-D sensor timestamp. The
+    # odometry validator discards bad poses before they reach this synchronizer.
+    approx_sync: false
+    odom_sensor_sync: false
+    topic_queue_size: 1
+    sync_queue_size: 4
+    qos_image: 1
+    qos_camera_info: 1
+    qos_odom: 1
+    wait_for_transform: 0.05
+    cloud_output_voxelized: true
+    map_always_update: false
+    map_cleanup: true
+    # A 6Hz ceiling yields about 5Hz from a 10Hz camera without the extra
+    # dropped update caused by sensor jitter around an exact 0.200s boundary.
+    "Rtabmap/DetectionRate": "6.0"
+    "Rtabmap/TimeThr": "120.0"
+    "Rtabmap/MemoryThr": "300"
+    "RGBD/LinearUpdate": "0.05"
+    "RGBD/AngularUpdate": "0.05"
+    # Visual odometry already supplies neighbor motion; do not run dense ICP
+    # again for every keyframe. Visual loop closure remains enabled in 6DOF.
+    "RGBD/NeighborLinkRefining": "false"
+    # Repeated pool tiles cause many redundant nearby-node registrations.
+    # Keep appearance-based global loop closure, without testing all neighbors
+    # in space again on every frame.
+    "RGBD/ProximityBySpace": "false"
+    "Reg/Strategy": "0"
+    "Reg/Force3DoF": "false"
+    "Kp/MaxFeatures": "600"
+    "Grid/3D": "true"
+    "Grid/CellSize": "0.05"
+    "Grid/DepthDecimation": "4"
+    "Grid/RangeMin": "0.25"
+    "Grid/RangeMax": "6.0"
+    "Grid/NormalsSegmentation": "false"
+    "Grid/GroundIsObstacle": "true"
+    # The global OctoMap performs free-space ray tracing. Avoid building a
+    # second ray-traced local OctoMap for every RGB-D keyframe.
+    "Grid/RayTracing": "false"

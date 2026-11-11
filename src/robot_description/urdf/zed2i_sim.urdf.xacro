@@ -30,10 +30,13 @@
         <topic>/zed2i/sim/${eye}</topic>
         <gz_frame_id>zed2i_${eye}_camera_frame</gz_frame_id>
         <camera>
+          <!-- The internal acrylic shell must lie fully behind the RGB-D
+               near plane. At 0.2 m Ogre2 clips it inconsistently during yaw,
+               producing blank RGB and NaN depth; 0.3 m clears the dome. -->
           <horizontal_fov>1.919862177</horizontal_fov>
           <image><width>$(arg camera_width)</width><height>$(arg camera_height)</height><format>R8G8B8</format></image>
-          <clip><near>0.2</near><far>15.0</far></clip>
-          <depth_camera><clip><near>0.2</near><far>15.0</far></clip></depth_camera>
+          <clip><near>0.3</near><far>15.0</far></clip>
+          <depth_camera><clip><near>0.3</near><far>15.0</far></clip></depth_camera>
           <optical_frame_id>zed2i_${eye}_camera_frame_optical</optical_frame_id>
         </camera>
       </sensor>
@@ -41,6 +44,29 @@
   </xacro:macro>
   <xacro:macro name="zed2i_sim" params="">
     <xacro:zed_camera name="zed2i" model="zed2i"><origin xyz="0 0 0" rpy="0 0 0" /></xacro:zed_camera>
+    <!-- ZED 2i onboard inertial sensor: rotation measurements assist RGB-D
+         tracking during yaw; no Gazebo odometry is fed to the estimator. -->
+    <gazebo reference="zed2i_camera_center">
+      <sensor name="zed2i_imu" type="imu">
+        <always_on>true</always_on>
+        <update_rate>100</update_rate>
+        <topic>/zed2i/sim/imu</topic>
+        <gz_frame_id>zed2i_camera_center</gz_frame_id>
+        <imu>
+          <enable_orientation>true</enable_orientation>
+          <angular_velocity>
+            <x><noise type="gaussian"><mean>0</mean><stddev>0.0002</stddev></noise></x>
+            <y><noise type="gaussian"><mean>0</mean><stddev>0.0002</stddev></noise></y>
+            <z><noise type="gaussian"><mean>0</mean><stddev>0.0002</stddev></noise></z>
+          </angular_velocity>
+          <linear_acceleration>
+            <x><noise type="gaussian"><mean>0</mean><stddev>0.002</stddev></noise></x>
+            <y><noise type="gaussian"><mean>0</mean><stddev>0.002</stddev></noise></y>
+            <z><noise type="gaussian"><mean>0</mean><stddev>0.002</stddev></noise></z>
+          </linear_acceleration>
+        </imu>
+      </sensor>
+    </gazebo>
     <xacro:zed2i_eye_sensor eye="left" />
     <xacro:zed2i_eye_sensor eye="right" />
   </xacro:macro>

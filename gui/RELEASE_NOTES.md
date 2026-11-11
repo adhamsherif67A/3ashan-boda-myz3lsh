@@ -1,3 +1,13 @@
+Unreleased changes on main
+
+- Import the team robot_mapping backend from ibrahim-amr and add optional mako_navigation Nav2 servers.
+- Use ZED onboard IMU rotation assistance, matched 30 Hz RGB-D and corrected simulated pixel-center calibration for yaw tracking.
+- Keep strict validated-odometry TF ownership, preserve map databases and fix scoped bundled-runtime startup.
+- Open the top-down SLAM grid on /rtabmap/map; retain optional 3D point clouds and disable oversized TF overlays.
+- Include both new packages in desktop release archives and document the extended physical yaw/SLAM regression.
+
+These source changes require a rebuild and app restart. A main-branch push alone does not publish a signed desktop update.
+
 Operation MX 1.1.0 adds authenticated private GitHub updates and the harder ocean search-and-survey mission.
 
 - Each user configures their own read-only GitHub access. Tokens are stored locally with owner-only permissions and never sent to asset CDN hosts.

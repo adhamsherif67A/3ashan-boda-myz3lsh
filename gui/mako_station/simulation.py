@@ -146,7 +146,7 @@ class SimulationSession:
                 database=self.directory/'rtabmap.db'
                 gazebo_command.extend(['slam_database_path:='+str(database),
                                        'camera_width:=640','camera_height:=360',
-                                       'camera_fps:=10','pilot_fps:=15'])
+                                       'camera_fps:=30','pilot_fps:=30','slam_viz:=false'])
                 notify('SLAM database: '+str(database))
             # sim_vehicle's terminal helper runs the firmware under a shell in our
             # process group. No terminal emulator, map, console or detached session.

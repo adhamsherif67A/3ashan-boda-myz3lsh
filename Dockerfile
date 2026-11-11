@@ -31,7 +31,9 @@ RUN bash /usr/local/lib/mako/install-apt.sh ca-certificates curl gnupg git \
     ros-humble-rviz2 ros-humble-xacro ros-humble-robot-state-publisher ros-humble-joy \
     ros-humble-joint-state-publisher-gui ros-humble-tf2-ros \
     ros-humble-rtabmap-odom ros-humble-rtabmap-launch ros-humble-rtabmap-slam \
+    ros-humble-navigation2 ros-humble-nav2-bringup \
     ros-humble-rtabmap-viz ros-humble-ament-cmake-pytest \
+    ros-humble-ament-flake8 ros-humble-ament-pep257 ros-humble-ament-copyright \
     && python3 /usr/local/lib/mako/install-python.py MAVProxy==1.8.74 pymavlink==2.4.49 dronecan==1.0.27 geocoder==1.38.1 \
     && rm -rf /var/lib/apt/lists/*
 COPY install_geographiclib_datasets.sh /usr/local/lib/mako/

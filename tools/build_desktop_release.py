@@ -48,7 +48,7 @@ def build(output, release_version, key_path, runtime, source=ROOT):
         metadata.write_text(json.dumps({'version': release_version, 'ros_distro': 'humble'}))
         with tarfile.open(archive, 'w:gz', dereference=True) as tar:
             tar.add(metadata, arcname='release.json', filter=include)
-            for package in ['robot_description', 'mako_control', 'mako_vision', 'mako_bringup']:
+            for package in ['robot_description', 'mako_control', 'mako_vision', 'mako_bringup', 'mako_navigation', 'robot_mapping']:
                 if (source/'src'/package).is_dir():
                     tar.add(source/'src'/package, arcname='workspace/src/'+package, filter=include)
             tar.add(source/'commands.txt', arcname='workspace/commands.txt', filter=include)

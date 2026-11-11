@@ -17,10 +17,20 @@
   subscriber_queue: 2
   lazy: false
 - gz_topic_name: /zed2i/sim/left/camera_info
-  ros_topic_name: /zed2i/rgbd/left/camera_info
+  ros_topic_name: /zed2i/rgbd/left/camera_info_raw
   ros_type_name: sensor_msgs/msg/CameraInfo
   gz_type_name: gz.msgs.CameraInfo
   direction: GZ_TO_ROS
   publisher_queue: 2
   subscriber_queue: 2
+  lazy: false
+
+# Onboard ZED IMU, used only by camera odometry for inertial rotation hints.
+- gz_topic_name: /zed2i/sim/imu
+  ros_topic_name: /zed2i/zed_node/imu/data
+  ros_type_name: sensor_msgs/msg/Imu
+  gz_type_name: gz.msgs.IMU
+  direction: GZ_TO_ROS
+  publisher_queue: 10
+  subscriber_queue: 10
   lazy: false

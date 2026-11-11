@@ -22,6 +22,7 @@
   <exec_depend>rtabmap_odom</exec_depend>
   <exec_depend>rtabmap_launch</exec_depend>
   <exec_depend>rtabmap_slam</exec_depend>
+  <exec_depend>robot_mapping</exec_depend>
   <exec_depend>rtabmap_viz</exec_depend>
 
   <test_depend>ament_cmake_pytest</test_depend>

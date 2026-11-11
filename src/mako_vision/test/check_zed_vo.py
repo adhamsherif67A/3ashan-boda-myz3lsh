@@ -14,7 +14,7 @@ spec = importlib.util.spec_from_file_location('mako_launch', share / 'launch/gaz
 launch_module = importlib.util.module_from_spec(spec)
 spec.loader.exec_module(launch_module)
 temporary = tempfile.TemporaryDirectory(prefix='mako-reset-regression-')
-description = xacro.process_file(str(share / 'urdf/robot_description.urdf'),mappings={'camera_width':os.environ.get('VO_TEST_WIDTH','1280'),'camera_height':os.environ.get('VO_TEST_HEIGHT','720'),'pilot_fps':os.environ.get('PILOT_TEST_FPS','30')}).toxml()
+description = xacro.process_file(str(share / 'urdf/robot_description.urdf'),mappings={'camera_width':os.environ.get('VO_TEST_WIDTH','640'),'camera_height':os.environ.get('VO_TEST_HEIGHT','360'),'camera_fps':os.environ.get('VO_TEST_FPS','30'),'pilot_fps':os.environ.get('PILOT_TEST_FPS','30')}).toxml()
 world_file = launch_module.prepare_world(share / 'worlds' / os.environ.get('VO_TEST_WORLD','pool.world'), description, temporary.name)
 world = ET.parse(world_file)
 world_name=world.find('world').get('name')
@@ -43,8 +43,12 @@ commands=[('mavros',['ros2','launch','mavros','apm.launch','fcu_url:=udp://127.0
  ('rsp',['ros2','run','robot_state_publisher','robot_state_publisher','--ros-args','--params-file',str(params)]),
  ('bridge',['ros2','run','ros_gz_bridge','parameter_bridge','/clock@rosgraph_msgs/msg/Clock[gz.msgs.Clock','/model/mako/odometry@nav_msgs/msg/Odometry[gz.msgs.Odometry','--ros-args','-r','/model/mako/odometry:=/odometry/gz']),
  ('camera_bridge',['ros2','run','ros_gz_bridge','parameter_bridge','--ros-args','-p','config_file:='+str(share/'config/zed2i_bridge.yaml')]),
+ ('rgbd_bridge',['ros2','run','ros_gz_bridge','parameter_bridge','--ros-args','-p','config_file:='+str(share/'config/zed2i_rgbd_bridge.yaml')]),
+ ('calibration',['ros2','run','robot_description','sim_rgbd_camera_info.py']),
  ('vo',['ros2','launch','mako_vision','visual_odometry.launch.py']),
  ('relay',['ros2','run','mako_control','gz_odom_to_mavros.py','--ros-args','-p','use_sim_time:=true','-p','source_topic:=/zed2i/vo/odometry','-p','require_covariance:=true','-p','reset_on_clock_jump:=true','-p','max_linear_speed:=2.0','-p','max_angular_speed:=3.0','-p','publish_tf:=true'])]
+if os.environ.get('VO_TEST_SLAM')=='1':
+ commands.append(('mapping',['ros2','launch','mako_vision','slam.launch.py','slam_viz:=false','slam_database_path:='+str(Path(temporary.name)/'rtabmap.db')]))
 processes=[];logs=[];visual=[];truth=[];external=[];transforms=[];mavlink_odometry=[];camera_rss=[]
 stop=threading.Event()
 endpoint=mavutil.mavlink_connection('udpin:127.0.0.1:14650',source_system=1,source_component=1)
@@ -66,6 +70,11 @@ try:
  from tf2_msgs.msg import TFMessage
  subscriptions.append(node.create_subscription(TFMessage,'/tf',lambda message:transforms.extend(t for t in message.transforms if t.header.frame_id=='odom' and t.child_frame_id=='base_link'),10))
  from sensor_msgs.msg import Image, CameraInfo
+ from nav_msgs.msg import OccupancyGrid
+ from rclpy.qos import QoSProfile, DurabilityPolicy
+ grids=[]
+ if os.environ.get('VO_TEST_SLAM')=='1':
+  subscriptions.append(node.create_subscription(OccupancyGrid,'/rtabmap/map',grids.append,QoSProfile(depth=1,durability=DurabilityPolicy.TRANSIENT_LOCAL)))
  eyes={eye:[] for eye in ('left','right')}; calibration={}
  for eye in eyes:
   subscriptions.append(node.create_subscription(Image,f'/zed2i/zed_node/{eye}/image_rect_color',lambda message,eye=eye: eyes[eye].append((message.width,message.height,message.header.stamp.sec+message.header.stamp.nanosec*1e-9,message.encoding,message.header.frame_id,int(np.ptp(np.frombuffer(message.data,dtype=np.uint8)[::96])),time.monotonic())),qos_profile_sensor_data))
@@ -86,7 +95,7 @@ try:
  assert rate>=4,rate
  print('PASS: visual -> MAVROS at',rate,'Hz; pose',external[-1].pose.pose,flush=True)
  for eye,frames in eyes.items():
-  expected=(int(os.environ.get('VO_TEST_WIDTH','1280')),int(os.environ.get('VO_TEST_HEIGHT','720')))
+  expected=(int(os.environ.get('VO_TEST_WIDTH','640')),int(os.environ.get('VO_TEST_HEIGHT','360')))
   assert len(frames)>=20,(eye,len(frames))
   assert all(frame[:2]==expected and frame[3]=='rgb8' and frame[4]==f'zed2i_{eye}_camera_frame_optical' for frame in frames),eye
   info=calibration[eye]
@@ -129,10 +138,16 @@ try:
   assert sum(x*x for x in delta_truth)**.5>.02,(name,'No physical movement',delta_truth)
   assert error<.1,(name,error,delta_visual,delta_truth)
   print(name,'PASS: visual displacement',delta_visual,'truth',delta_truth,'error',error,flush=True)
+ if os.environ.get('VO_TEST_DEEP_YAW')=='1':
+  deadline=time.monotonic()+12
+  while truth[-1].pose.pose.position.z > -2.0 and time.monotonic()<deadline:
+   spin_for(.2,[0,0,0,0,-3,-3])
+  spin_for(1.,[0]*6)
+  print('Deep yaw test at z=',truth[-1].pose.pose.position.z,flush=True)
  yaw_start={eye:len(frames) for eye,frames in eyes.items()}
  yaw_truth_start=len(truth)
  yaw_external_start=len(external)
- spin_for(3.0,[12,-12,-12,12,0,0])
+ spin_for(float(os.environ.get('VO_TEST_YAW_SECONDS','3')),[12,-12,-12,12,0,0])
  rotating_poses=truth[yaw_truth_start:]
  yaw_angles=[2*np.arctan2(m.pose.pose.orientation.z,m.pose.pose.orientation.w) for m in rotating_poses]
  yaw_stamps=[m.header.stamp.sec+m.header.stamp.nanosec*1e-9 for m in rotating_poses]
@@ -148,6 +163,8 @@ try:
   actual=message.pose.pose.position;expected=reference.pose.pose.position
   yaw_errors.append(sum((getattr(actual,k)-getattr(expected,k))**2 for k in ('x','y','z'))**.5)
  assert yaw_errors and max(yaw_errors)<.15,('Inaccurate yaw pose sent to ArduSub',yaw_errors)
+ assert len(external)-yaw_external_start >= float(os.environ.get('VO_TEST_YAW_SECONDS','3'))*float(os.environ.get('VO_TEST_FPS','30'))*.7, 'Too few accepted yaw poses'
+ assert stamp(truth[-1])-stamp(external[-1])<.5, 'TF stale after yaw'
  print('PASS: accepted ExternalNav poses during rapid yaw; max error',max(yaw_errors),'m; rejected tracking updates are not forwarded',flush=True)
  for eye,frames in eyes.items():
   rotating=frames[yaw_start[eye]:]
@@ -164,6 +181,10 @@ try:
   assert abs(stamp(reference)-transform_stamp)<.001
   assert all(abs(getattr(transform.transform.translation,k)-getattr(reference.pose.pose.position,k))<1e-8 for k in ('x','y','z'))
  print('PASS: TF contains only validated ExternalNav poses',flush=True)
+ if os.environ.get('VO_TEST_SLAM')=='1':
+  assert grids and len(grids[-1].data)>0, 'No SLAM occupancy grid while yawing'
+  assert node.get_clock().now().nanoseconds/1e9-stamp(grids[-1])<1., 'SLAM occupancy grid is stale'
+  print('PASS: SLAM occupancy grid remains live through sustained yaw',flush=True)
  spin_for(1.0,[0]*6)
  before=len(external)
  reset=WorldControl(pause=False);reset.reset.all=True

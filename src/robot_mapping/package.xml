@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<?xml-model href="http://download.ros.org/schema/package_format3.xsd" schematypens="http://www.w3.org/2001/XMLSchema"?>
+<package format="3">
+  <name>robot_mapping</name>
+  <version>0.0.0</version>
+  <description>Team RGB-D 3D mapping and RViz visualization for Mako</description>
+  <maintainer email="ibrahimrov736@gmail.com">ibrahim</maintainer>
+  <license>TODO: License declaration</license>
+
+  <exec_depend>launch</exec_depend>
+  <exec_depend>launch_ros</exec_depend>
+  <exec_depend>ament_index_python</exec_depend>
+  <depend>rtabmap_slam</depend>
+  <depend>rtabmap_viz</depend>
+  <depend>rviz2</depend>
+  <depend>rclpy</depend>
+  <depend>ros_gz_bridge</depend>
+
+  <test_depend>ament_copyright</test_depend>
+  <test_depend>ament_flake8</test_depend>
+  <test_depend>ament_pep257</test_depend>
+  <test_depend>python3-pytest</test_depend>
+
+  <export>
+    <build_type>ament_python</build_type>
+  </export>
+</package>

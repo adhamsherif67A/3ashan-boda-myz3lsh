@@ -27,12 +27,14 @@ install(
     PROGRAMS
         scripts/check_sim_tf.py
         scripts/cloud_frame_relay.py
+  scripts/sim_rgbd_camera_info.py
         scripts/odom_to_depth.py
     DESTINATION lib/${PROJECT_NAME}
 )
 
 if(BUILD_TESTING)
   find_package(ament_cmake_pytest REQUIRED)
+  ament_add_pytest_test(camera_calibration test/test_camera_calibration.py)
   ament_add_pytest_test(model_frames test/test_model_frames.py)
   ament_add_pytest_test(reset_world test/test_reset_world.py)
 endif()

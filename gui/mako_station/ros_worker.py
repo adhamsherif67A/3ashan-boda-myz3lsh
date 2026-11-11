@@ -78,6 +78,9 @@ class RosWorker(QThread):
             heading=(270-math.degrees(yaw))%360,
             speed=math.sqrt(velocity.x**2+velocity.y**2+velocity.z**2),nav_time=time.monotonic())
 
+    def validated_odometry(self,message):
+        with self.lock:self.telemetry['tracking_time']=time.monotonic()
+
     def request_arm(self,armed):self.commands.put(('arm',armed))
     def request_mode(self,mode):self.commands.put(('mode',mode))
     def set_keyboard(self,target):
@@ -117,6 +120,7 @@ class RosWorker(QThread):
             node.create_subscription(State,'/mavros/state',self.state,qos)
             node.create_subscription(RCOut,'/mavros/rc/out',self.pwm,qos)
             node.create_subscription(Odometry,'/odometry/gz',self.odometry,qos)
+            node.create_subscription(Odometry,'/mavros/odometry/out',self.validated_odometry,qos)
             node.create_subscription(Image,'/bottom_camera/image_raw',lambda msg:self.frame(msg,'bottom'),qos)
             arming=node.create_client(CommandBool,'/mavros/cmd/arming')
             mode=node.create_client(SetMode,'/mavros/set_mode')

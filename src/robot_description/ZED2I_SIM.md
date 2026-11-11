@@ -179,3 +179,13 @@ The simulation publishes the ROV's ground-truth depth on `/rov/depth` as
 (world `z = 0`). Values above the surface are clamped to zero. This vehicle
 depth estimate is separate from the ZED per-pixel depth images and point cloud;
 the camera topics and RTAB-Map inputs are unchanged.
+
+RGB-D camera near clipping is 0.30 m so the enclosing acrylic dome is excluded
+at every heading. The pilot RGB camera keeps its separate clip configuration.
+At 0.20 m the Ogre2 RGB-D image can become blank with all-NaN depth during yaw,
+which stops validated odometry and freezes the RViz robot. The shell geometry
+and opacity are unchanged. Check the regression with:
+
+```bash
+python3 src/robot_description/test/check_rgbd_headings.py
+```

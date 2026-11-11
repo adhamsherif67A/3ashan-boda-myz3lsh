@@ -39,13 +39,16 @@ The workspace is split by responsibility. Each package builds and launches on it
 | --- | --- | --- |
 | [`robot_description`](src/robot_description) | **The robot and its world.** No control or vision logic. | URDF/xacro model, meshes, Gazebo Harmonic worlds (pool, ocean) and task assets, pool-waves Gazebo plugin, ROS↔Gazebo bridge config, simulated depth and point-cloud relays, `gazebo.launch.py`, RViz views |
 | [`mako_control`](src/mako_control) | **Driving the vehicle.** Everything between sensors/pilot and ArduSub. | `realjoy_node` (gamepad + Operation MX keyboard → MAVROS), ExternalNav odometry relay, ArduSub parameter file and helper, autotune client, waypoint and fly-transect missions, `control/pilot/mavros` launch files |
-| [`mako_vision`](src/mako_vision) | **Seeing.** Camera processing that does not depend on control. | ZED RGB-D visual odometry and RTAB-Map SLAM launch/config, bottom-camera transect detector (`mako_vision.transect_detector`), real-ROV ZED pose relay |
+| [`mako_vision`](src/mako_vision) | **Seeing.** Camera processing that does not depend on control. | ZED RGB-D odometry with onboard IMU assistance, SLAM compatibility launch, bottom-camera transect detector (`mako_vision.transect_detector`), real-ROV ZED pose relay |
+| [`robot_mapping`](src/robot_mapping) | **Mapping.** Team RTAB-Map backend imported from ibrahim-amr. | Matched RGB-D, validated odometry, 3D mapping and RViz view |
+| [`mako_navigation`](src/mako_navigation) | **Planning.** Optional planar Nav2 servers with isolated controller output. | Costmaps, planner, controller, BT navigator; depth control remains in mako_control |
 | [`mako_bringup`](src/mako_bringup) | **Putting it together.** | `simulation.launch.py`: world + robot, vision (optional) and control in one command |
 | [`gui/`](gui) | **Operation MX** pilot station (PyQt5) | Starts SITL, MAVROS, Gazebo and pilot control for you; cameras, telemetry, arming/modes, keyboard pilot, recording |
 
-Dependency direction: `mako_bringup → {robot_description, mako_vision, mako_control}`,
-`mako_control → mako_vision` (the transect mission imports the detector). `robot_description`
-and `mako_vision` depend on no other Mako package.
+Dependency direction: `mako_bringup → {robot_description, mako_vision, mako_control, mako_navigation}`,
+`mako_control → mako_vision` (the transect mission imports the detector), and
+`mako_vision → robot_mapping` for the mapping backend/runtime. `robot_description`
+and `robot_mapping` do not depend on another Mako package.
 
 ### How the pieces talk
 
@@ -79,7 +82,9 @@ and `mako_vision` depend on no other Mako package.
 ├── src/
 │   ├── robot_description/   model, worlds, Gazebo launch          (ROS package)
 │   ├── mako_control/        realjoy_node, MAVROS relay, missions  (ROS package)
-│   ├── mako_vision/         visual odometry, SLAM, detectors      (ROS package)
+│   ├── mako_vision/         RGB-D + IMU odometry, detectors        (ROS package)
+│   ├── robot_mapping/       team RTAB-Map backend, mapping RViz    (ROS package)
+│   ├── mako_navigation/     optional planar Nav2 servers           (ROS package)
 │   └── mako_bringup/        complete simulation launch            (ROS package)
 ├── gui/                     Operation MX pilot station + desktop installer/updater
 ├── docker/                  build/run helpers, simulation supervisor, doctor
@@ -166,7 +171,8 @@ Do **not** also install the Fortress bridge (`ros-humble-ros-gz`): it conflicts 
 sudo apt install -y \
   ros-humble-mavros ros-humble-mavros-extras ros-humble-rtabmap-ros ros-humble-joy \
   ros-humble-xacro ros-humble-robot-state-publisher ros-humble-joint-state-publisher-gui \
-  ros-humble-ament-cmake-pytest geographiclib-tools \
+  ros-humble-ament-cmake-pytest ros-humble-navigation2 ros-humble-nav2-bringup \
+  geographiclib-tools \
   python3-pyqt5 python3-numpy python3-psutil python3-cryptography python3-yaml python3-pytest \
   ffmpeg xauth
 # MAVROS needs the EGM96 geoid:
@@ -215,7 +221,21 @@ rosdep install --from-paths src --ignore-src -r -y \
 colcon build --symlink-install --base-paths src
 ```
 
-Rebuild after every `git pull`: Gazebo and ROS load files from `install/`.
+After pulling source updates, stop simulation and close Operation MX, then rebuild:
+
+```bash
+git pull --ff-only origin main
+source /opt/ros/humble/setup.bash
+colcon build --symlink-install --base-paths src
+source install/setup.bash
+gui/run_mako_gui.sh
+```
+
+Gazebo and ROS load files from `install/`; running Python processes retain their
+old code and parameters until restarted. Docker users instead rebuild the image
+with `./docker/build.sh --rebuild`. Pushing `main` updates source code; signed
+desktop users receive updates when a new versioned release is published, as
+explained in [gui/UPDATES.md](gui/UPDATES.md).
 
 ### 3.8 Environment (`~/.bashrc`)
 
@@ -231,7 +251,9 @@ EOF
 Open a new terminal and check:
 
 ```bash
-ros2 pkg prefix robot_description mako_control mako_vision mako_bringup   # all under ~/MarineXperts/install
+for pkg in robot_description mako_control mako_vision robot_mapping mako_navigation mako_bringup; do
+  ros2 pkg prefix "$pkg"
+done   # all under ~/MarineXperts/install
 ```
 
 > Source **only one** copy of `robot_description`. Remove old lines such as
@@ -252,7 +274,7 @@ Managed desktop installs with signed private updates are described in
 ## 4. Docker setup
 
 The image contains ROS 2 Humble, Gazebo Harmonic, MAVROS, RTAB-Map, pinned ArduSub and
-ArduPilot Gazebo plugin builds, all four ROS packages and Operation MX.
+ArduPilot Gazebo plugin builds, all six ROS packages and Operation MX.
 
 ### 4.1 Host requirements
 
@@ -325,7 +347,7 @@ gui/run_mako_gui.sh            # native
 ./docker/run.sh --gui          # Docker
 ```
 
-1. Choose **Team pool** or **Ocean · 4 m**, the odometry source and optional **Enable SLAM mapping**.
+1. Choose **Team pool** or **Ocean · 4 m**, the odometry source (**ZED RGB-D + IMU** or ground truth), and optional **Enable SLAM mapping**.
 2. Press **Start simulation**. The app starts ArduSub SITL, MAVROS, headless Gazebo
    (`mako_bringup/simulation.launch.py`), the gamepad driver and `realjoy_node`.
 3. **Arm**, choose a mode (MANUAL / STABILIZE / ALT_HOLD) and fly.
@@ -383,7 +405,8 @@ Add `pilot:=true` to step 1 to fly with a gamepad, or start
 | `odometry_source` | `ground_truth` | `ground_truth`, `vision` | Odometry sent to ArduSub and owning `odom → base_link`: Gazebo ground truth, or ZED visual odometry (starts `mako_vision` VO) |
 | `slam` | `false` | `true`, `false` | RTAB-Map SLAM; requires `odometry_source:=vision`; RTAB-Map then owns `map → odom` |
 | `slam_database_path` | `~/.ros/mako_slam.db` | path | RTAB-Map database (reused, never deleted) |
-| `slam_viz` | `true` | `true`, `false` | Open the RTAB-Map viewer |
+| `slam_viz` | `false` | `true`, `false` | Open the RTAB-Map viewer |
+| `navigation` | `false` | `true`, `false` | Start the optional planar Nav2 servers. Requires a navigation-ready occupancy map; outputs remain isolated from MAVROS |
 | `publish_odom_tf` | `true` | `true`, `false` | Publish `odom → base_link`; disable to use your own estimator |
 | `publish_map_tf` | `true` | `true`, `false` | Static `map → odom` when SLAM is off |
 | `configure_ardusub` | `true` | `true`, `false` | Set ArduSub parameters through MAVROS 5 s after start. Use `false` when SITL loads `ardusub_external_nav.parm` (the app and Docker do) |
@@ -420,7 +443,19 @@ Add `pilot:=true` to step 1 to fly with a gamepad, or start
 | Launch file | Starts | Arguments |
 | --- | --- | --- |
 | `visual_odometry.launch.py` | RTAB-Map `rgbd_odometry` as `zed_rgbd_odometry` → `/zed2i/vo/odometry` (config `config/zed_vo.yaml`) | none (`MAKO_VO_PREFIX` points at a local RTAB-Map install if it is not from apt) |
-| `slam.launch.py` | RTAB-Map SLAM on the ZED left RGB-D + `/zed2i/vo/odometry` | `slam_database_path`, `slam_viz` (`true`), `use_sim_time` (`true`) |
+| `slam.launch.py` | Delegates to `robot_mapping` using matched ZED RGB-D and validated `/mavros/odometry/out` | `slam_database_path`, `slam_viz` (`false`), `use_sim_time` (`true`) |
+
+**`robot_mapping`**
+
+| Launch file | Starts | Arguments |
+| --- | --- | --- |
+| `mapping.launch.py` | One RTAB-Map mapper; optional RViz and RTAB-Map viewer | `database_path` (preserved), `use_sim_time` (`true`), `rviz`/`slam_viz` (`false`), `rgb_topic`, `depth_topic`, `camera_info_topic`, `odom_topic` |
+
+**`mako_navigation`**
+
+| Launch file | Starts | Arguments |
+| --- | --- | --- |
+| `navigation.launch.py` | Planner, holonomic controller, BT navigator, behaviors, smoothers, waypoint follower and lifecycle manager | `use_sim_time`/`autostart` (`true`), `params_file`, `map_topic` (`/rtabmap/map`) |
 
 ### 5.4 Executables (`ros2 run …`)
 
@@ -481,13 +516,81 @@ Simulation options (passed to `docker/simulation.py`):
 Environment: `ROS_DOMAIN_ID` (42), `MAKO_IMAGE`, `MAKO_CONTAINER_NAME` (`mako-sim`),
 `MAKO_DATA_DIR` (`~/mako-data`), `LIBGL_ALWAYS_SOFTWARE=1` (software rendering).
 
+### 5.7 Mapping and RViz
+
+Operation MX's SLAM option starts one mapper through
+`mako_bringup → mako_vision/slam.launch.py → robot_mapping`. The team package was
+imported from `ibrahim-amr`, commit `e33f072`, with provenance in
+[robot_mapping/UPSTREAM.md](src/robot_mapping/UPSTREAM.md).
+
+The desktop SLAM profile uses **640×360 RGB-D at 30 Hz**, **30 Hz pilot video**
+and the **ZED onboard IMU at 100 Hz**. Camera odometry uses inertial rotation
+hints; the mapper processes selected frames independently at a configured 6 Hz
+ceiling. Delivered rates depend on GPU/CPU load. This is full 3D mapping, while
+the default RViz view shows its top-down 2D occupancy projection.
+
+With SITL and MAVROS running as in section 5.2:
+
+```bash
+ROS_DOMAIN_ID=42 ros2 launch mako_bringup simulation.launch.py \
+  odometry_source:=vision slam:=true configure_ardusub:=false \
+  camera_width:=640 camera_height:=360 camera_fps:=30 pilot_fps:=30 \
+  slam_database_path:=$HOME/.ros/mako_slam.db
+```
+
+Docker `--gui` uses the desktop profile above; the CLI `--slam` supervisor
+retains its selected performance profile. Use the explicit ROS camera arguments
+above when reproducing the 30 Hz yaw regression.
+
+Click **RViz** in the app to open the mapping view. The grid is published on
+**`/rtabmap/map`**; **3D point cloud (optional)** displays `/rtabmap/cloud_map`.
+Existing databases are not erased. The app creates a separate `rtabmap.db` in
+each session directory. Direct launches reuse the specified database.
+
+For standalone mapping, launch the simulation with `slam:=false`,
+`odometry_source:=vision`, `publish_map_tf:=false`, and the camera settings above,
+then launch `ros2 launch robot_mapping mapping.launch.py rviz:=true` in domain 42.
+Run one mapper and one owner of `map → odom` at a time.
+
+The validator alone owns `odom → base_link` in camera mode. Lost or rejected
+tracking pauses pose updates even when pilot video remains clear; the app reports
+this state. It does not substitute ground truth or repeat stale poses. See
+[ZED odometry](src/mako_vision/ZED_VO.md) for calibration, dome clipping, runtime
+setup and validation limits.
+
+The source-branch screenshot, documentation and optional sample-map references
+are retained. Files in `robot_mapping/pool_mapping_data` are **Git LFS pointers**;
+obtain the actual objects from that branch before opening the saved example.
+Live mapping does not require those examples. The upstream package's license
+metadata still needs its author to choose a license.
+
+### 5.8 Nav2 development
+
+`mako_navigation` is optional and starts with `navigation:=true` in bringup, or:
+
+```bash
+ROS_DOMAIN_ID=42 ros2 launch mako_navigation navigation.launch.py
+```
+
+It consumes an occupancy map and existing TF; it does not start another
+localization or map/odom transform publisher. A 0.5 m circular footprint,
+conservative speed limits and sideways motion are configured. Unknown map cells
+are not traversable. See its [package guide](src/mako_navigation/README.md).
+
+**Nav2 does not yet drive the ROV.** Its final Twist output is isolated on
+`/mako/navigation/cmd_vel`; a depth-holding adapter, command arbitration and
+vehicle-mode checks belong in `mako_control` and are still required. This planar
+stack does not plan depth or cave/overhang clearance. RTAB-Map's floor-inclusive
+projection needs a free-water horizontal slice before navigation; use
+`map_topic:=/your_navigation_map` to provide one.
+
 ---
 
 ## 6. ROS interfaces: topics, publishers and subscribers
 
 All simulation nodes use `/clock` (`use_sim_time`). "Bridge" means `ros_gz_bridge
 parameter_bridge` started by `robot_description/gazebo.launch.py`. Camera bridges are
-**lazy**: a Gazebo camera is only bridged while something subscribes.
+**lazy** for pilot/auxiliary feeds; the matched RGB-D and IMU bridge stays active in vision mode.
 
 ### 6.1 Simulation core (`robot_description`)
 
@@ -514,18 +617,24 @@ parameter_bridge` started by `robot_description/gazebo.launch.py`. Camera bridge
 | `/zed2i/zed_node/depth/depth_registered`, `…/depth/camera_info` | `Image`, `CameraInfo` | `zed2i_bridge` | your nodes |
 | `/zed2i/sim_ros/left/points_raw`, `…/right/points_raw` | `PointCloud2` | `zed2i_bridge` | `cloud_frame_relay` |
 | `/zed2i/zed_node/left/points`, `…/right/points`, `/zed2i/zed_node/point_cloud/cloud_registered` | `PointCloud2` | `cloud_frame_relay` | RViz, your nodes |
-| `/zed2i/rgbd/left/image_rect_color`, `…/depth/image_raw`, `…/camera_info` | `Image`, `Image`, `CameraInfo` | `zed2i_rgbd_bridge` (vision mode, not lazy) | `zed_rgbd_odometry`, RTAB-Map |
+| `/zed2i/rgbd/left/image_rect_color`, `…/depth/image_raw`, `…/camera_info` | `Image`, `Image`, `CameraInfo` | `zed2i_rgbd_bridge`; simulated calibration corrected by `sim_rgbd_camera_info` | `zed_rgbd_odometry`, RTAB-Map |
 | `/bottom_camera/image_raw`, `/bottom_camera/camera_info` | `Image`, `CameraInfo` | `zed2i_bridge` | Operation MX (bottom view), `fly_transect_mission` |
 | `/third_person_camera/image_raw`, `/third_person_camera/camera_info` | `Image`, `CameraInfo` | `zed2i_bridge` | Operation MX (Third person) |
 
-### 6.3 Vision (`mako_vision`)
+The simulated ZED onboard inertial stream is `/zed2i/zed_node/imu/data`
+(`sensor_msgs/Imu`), bridged from `/zed2i/sim/imu` at 100 Hz. CameraInfo correction
+preserves exact RGB-D timestamps and optical frames and applies only to Gazebo,
+not the physical ZED wrapper's calibration.
+
+### 6.3 Vision and mapping (`mako_vision`, `robot_mapping`)
 
 | Topic / service | Type | Publisher / server | Subscribers / clients |
 | --- | --- | --- | --- |
-| `/zed2i/vo/odometry` | `nav_msgs/Odometry` | `zed_rgbd_odometry` | `gz_odom_to_mavros` (vision), RTAB-Map |
+| `/zed2i/vo/odometry` | `nav_msgs/Odometry` | `zed_rgbd_odometry` | `gz_odom_to_mavros` (validation; mapper consumes the accepted output) |
 | `/zed2i/vo/odom_info` | `rtabmap_msgs/OdomInfo` | `zed_rgbd_odometry` | diagnostics |
 | `/zed_rgbd_odometry/reset_odom_to_pose` (service) | `rtabmap_msgs/ResetPose` | `zed_rgbd_odometry` | `gz_odom_to_mavros` (after a simulation reset) |
-| `/rtabmap/…` (map data, grid map, cloud map) | RTAB-Map messages | RTAB-Map (SLAM) | RTAB-Map viewer, RViz |
+| `/rtabmap/map` | `nav_msgs/OccupancyGrid` | RTAB-Map | RViz, optional Nav2 |
+| `/rtabmap/cloud_map`, `/rtabmap/octomap_occupied_space` | `sensor_msgs/PointCloud2` | RTAB-Map | optional 3D displays |
 | `/zed/zed_node/pose` (real ROV) | `geometry_msgs/PoseStamped` | ZED ROS wrapper | `zed_to_mavros_pose` |
 | `/mavros/vision_pose/pose` (real ROV) | `geometry_msgs/PoseStamped` | `zed_to_mavros_pose` | MAVROS → ArduSub |
 
@@ -551,6 +660,9 @@ parameter_bridge` started by `robot_description/gazebo.launch.py`. Camera bridge
 | `/mavros/param/set`, `/mavros/param/get_parameters`, `/mavros/param/pull` (services) | MAVROS param | MAVROS | `fix_ardusub_params.py`, `autotune.py` |
 | `/fly_transect/enable` (service) | `std_srvs/SetBool` | `fly_transect_mission` | operator |
 | `/set_zero_depth` (service) | `std_srvs/Trigger` | `realjoy_node` | `realjoy_node` (gamepad button), operator |
+
+Nav2 publishes intermediate `/mako/navigation/cmd_vel_raw` and smoothed
+`/mako/navigation/cmd_vel` (`geometry_msgs/Twist`). Neither is connected to MAVROS.
 
 ### 6.5 TF tree
 
@@ -580,9 +692,15 @@ A second simulation (`--instance N`) shifts each port by 10×N.
 
 ## 7. Testing
 
+Install optional imported-package lint tools before running the complete suite:
+
+```bash
+sudo apt install ros-humble-ament-flake8 ros-humble-ament-pep257 ros-humble-ament-copyright
+```
+
 ```bash
 source install/setup.bash
-colcon test && colcon test-result --verbose          # package unit tests
+colcon test --base-paths src && colcon test-result --verbose          # package unit tests
 python3 -m unittest discover -s gui/tests -q         # Operation MX tests (offscreen: QT_QPA_PLATFORM=offscreen)
 python3 -m unittest docker/test_setup.py             # Docker supervisor
 ```
@@ -593,11 +711,33 @@ Live checks (start their own isolated SITL/Gazebo on other ports and domains):
 | --- | --- |
 | `python3 src/mako_control/test/check_joystick.py` | `realjoy_node` against fake MAVROS: bounds, tuning, timeouts, arming, autopilot forwarding |
 | `python3 src/mako_control/test/check_control_modes.py [--odometry-source vision]` | STABILIZE and ALT_HOLD in the full simulation |
+| `ROS_DOMAIN_ID=158 python3 src/mako_control/test/check_odometry_runtime.py` | Vision relay runtime, validated odometry and TF startup |
 | `python3 src/mako_control/test/check_autotune.py` | AUTOTUNE client (patched firmware) |
-| `python3 src/mako_vision/test/check_zed_vo.py` | Visual odometry into ArduSub ExternalNav |
+| `python3 src/mako_vision/test/check_zed_vo.py` | RGB-D + IMU odometry, physical motion, validated TF, fast yaw and reset into MAVROS ExternalNav |
+| `python3 src/robot_description/test/check_rgbd_headings.py` | Valid depth across full yaw headings with the dome retained |
+| `ROS_DOMAIN_ID=159 python3 src/robot_mapping/test/check_mapping.py` | Synthetic RGB-D input produces a nonempty 3D map |
+| `ROS_DOMAIN_ID=157 python3 src/mako_navigation/test/check_planner.py` | Nav2 lifecycle, planned path and isolated command topics |
 | `python3 src/robot_description/test/check_gazebo_reset.py` | World reset keeps the ROV and buoyancy |
 | `python3 src/robot_description/test/check_search_survey.py [--render]` | Ocean search-and-survey cave collisions |
 | `python3 gui/tests/check_application.py` | Operation MX start/reset/stop with screenshots |
+
+Extended yaw regression with SLAM:
+
+```bash
+VO_TEST_WIDTH=640 VO_TEST_HEIGHT=360 VO_TEST_FPS=30 PILOT_TEST_FPS=30 \
+VO_TEST_DEEP_YAW=1 VO_TEST_YAW_SECONDS=15 VO_TEST_SLAM=1 \
+python3 src/mako_vision/test/check_zed_vo.py
+```
+
+Local validation on the development laptop: six packages build; 55 checks in the
+five CMake packages and 29 desktop tests pass. The imported mapping package's
+optional ROS lint suite needs the tools above and was not completed on this host;
+its live RGB-D map test passed. The extended physical test reached about 1.46 rad/s
+(~84°/s) at 2.1 m depth for 15 seconds with fresh validated TF, a live occupancy
+grid and about 0.11 m maximum accepted position error. Both pilot feeds delivered
+30 Hz and reset recovery passed. These short simulation measurements do not
+validate long-duration drift, autonomous control or real-water performance.
+The revised Docker image still needs a fresh build on a host with enough storage.
 
 ---
 
@@ -615,7 +755,9 @@ Live checks (start their own isolated SITL/Gazebo on other ports and domains):
 | Gazebo window does not open (Docker) | Check `DISPLAY`, `/tmp/.X11-unix` and `xauth`; or use `--headless` |
 | Black or slow camera images | Use a GPU (`--nvidia`), a lighter `performance_profile`, or `LIBGL_ALWAYS_SOFTWARE=1` as a last resort |
 | MAVROS exits immediately | The EGM96 geoid is missing: `sudo bash install_geographiclib_datasets.sh` (native) or `./docker/run.sh --doctor` |
-| Visual odometry jumps or gets lost | Expected over repetitive pool tiles during fast yaw. The relay rejects jumps; reset the simulation if tracking does not recover |
+| Video is clear but RViz robot freezes during yaw | Check the app tracking status, ZED IMU and 30 Hz RGB-D settings. Pull, rebuild and fully restart the app to load the current model/calibration. The validator rejects bad poses; reset the session if tracking does not recover |
+| SLAM or vision launch cannot find RTAB-Map / rtabmap_msgs | Install ROS Humble RTAB-Map dependencies or set MAKO_VO_PREFIX to a complete bundled runtime; source the rebuilt workspace |
+| Grid view receives no map | Use `/rtabmap/map` with Reliable / Transient Local QoS; start mapping and establish valid camera tracking first |
 | `rosdep` wants to install `ros-humble-ros-gz-*` | Use the `--skip-keys` line from section 3.7; keep `ros-humble-ros-gzharmonic` |
 
 ---
@@ -625,8 +767,9 @@ Live checks (start their own isolated SITL/Gazebo on other ports and domains):
 * Branch from `main` (`git checkout -b yourname/feature`), commit, push and open a pull
   request into `main`. Do not commit `build/`, `install/`, `log/` or `gui/runs/`.
 * Put code in the package that owns it: model/world → `robot_description`, anything
-  that commands the vehicle → `mako_control`, camera processing → `mako_vision`, new
-  launch combinations → `mako_bringup`, pilot UI → `gui/`.
+  that commands the vehicle → `mako_control`, camera odometry/detectors → `mako_vision`, mapping → `robot_mapping`,
+  Nav2 configuration → `mako_navigation`, launch combinations → `mako_bringup`,
+  pilot UI → `gui/`.
 * Run the tests in section 7 before opening the pull request.
 * Operation MX desktop releases are tagged `vX.Y.Z` and built by
   `.github/workflows/desktop-release.yml` ([gui/UPDATES.md](gui/UPDATES.md)).

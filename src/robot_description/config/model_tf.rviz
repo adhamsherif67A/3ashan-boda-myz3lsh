@@ -1,68 +1,68 @@
 Panels:
-  - Class: rviz_common/Displays
-    Name: Displays
+- Class: rviz_common/Displays
+  Name: Displays
 Visualization Manager:
-  Class: ""
+  Class: ''
   Global Options:
     Fixed Frame: odom
     Background Color: 35; 35; 35
     Frame Rate: 30
   Displays:
-    - Class: rviz_default_plugins/Odometry
-      Name: Validated odometry
-      Enabled: true
-      Topic:
-        Value: /mavros/odometry/out
-        Reliability Policy: Best Effort
-        Durability Policy: Volatile
-        History Policy: Keep Last
-        Depth: 10
-      Keep: 20
-      Position Tolerance: 0.02
-      Angle Tolerance: 0.05
-      Shape: Axes
-      Axes:
-        Length: 0.25
-        Radius: 0.015
-      Covariance:
-        Position:
-          Value: false
-        Orientation:
-          Value: false
-    - Class: rviz_default_plugins/Grid
-      Name: Grid
-      Enabled: true
-      Cell Size: 1
-      Plane Cell Count: 20
-      Reference Frame: odom
-    - Class: rviz_default_plugins/RobotModel
-      Name: Mako
-      Enabled: true
-      Description Source: Topic
-      Description Topic:
-        Value: /robot_description
-        Reliability Policy: Reliable
-        Durability Policy: Transient Local
-        History Policy: Keep Last
-        Depth: 1
-      Visual Enabled: true
-      Collision Enabled: false
-    - Class: rviz_default_plugins/TF
-      Name: TF
-      Enabled: true
-      Frame Timeout: 15
-      Marker Scale: 0.15
-      Show Arrows: true
-      Show Axes: true
-      Show Names: true
-      Frames:
-        All Enabled: true
-    - Class: rviz_default_plugins/Axes
-      Name: Bow-facing body axes
-      Enabled: true
-      Reference Frame: rov_base_link
-      Length: 0.3
-      Radius: 0.01
+  - Class: rviz_default_plugins/Odometry
+    Name: Validated odometry
+    Enabled: true
+    Topic:
+      Value: /mavros/odometry/out
+      Reliability Policy: Best Effort
+      Durability Policy: Volatile
+      History Policy: Keep Last
+      Depth: 10
+    Keep: 20
+    Position Tolerance: 0.02
+    Angle Tolerance: 0.05
+    Shape: Axes
+    Axes:
+      Length: 0.25
+      Radius: 0.015
+    Covariance:
+      Position:
+        Value: false
+      Orientation:
+        Value: false
+  - Class: rviz_default_plugins/Grid
+    Name: Grid
+    Enabled: true
+    Cell Size: 1
+    Plane Cell Count: 20
+    Reference Frame: odom
+  - Class: rviz_default_plugins/RobotModel
+    Name: Mako
+    Enabled: true
+    Description Source: Topic
+    Description Topic:
+      Value: /robot_description
+      Reliability Policy: Reliable
+      Durability Policy: Transient Local
+      History Policy: Keep Last
+      Depth: 1
+    Visual Enabled: true
+    Collision Enabled: false
+  - Class: rviz_default_plugins/TF
+    Name: TF
+    Enabled: false
+    Frame Timeout: 15
+    Marker Scale: 0.15
+    Show Arrows: true
+    Show Axes: true
+    Show Names: true
+    Frames:
+      All Enabled: true
+  - Class: rviz_default_plugins/Axes
+    Name: Bow-facing body axes
+    Enabled: false
+    Reference Frame: rov_base_link
+    Length: 0.3
+    Radius: 0.01
   Views:
     Current:
       Class: rviz_default_plugins/Orbit

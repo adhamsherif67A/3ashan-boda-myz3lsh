@@ -81,7 +81,7 @@ def prepare(root, release, config):
                        stdout=log, stderr=subprocess.STDOUT, check=True, timeout=900)
         sources = shell_setup(release, config)
         checks = "from ament_index_python.packages import get_package_prefix; " \
-                 "[get_package_prefix(p) for p in ['robot_description','mako_control','mako_vision','mako_bringup','rtabmap_launch','rtabmap_slam','rtabmap_viz','rtabmap_odom','mavros','joy','ros_gz_sim','ros_gz_bridge']]"
+                 "[get_package_prefix(p) for p in ['robot_description','mako_control','mako_vision','mako_bringup','mako_navigation','robot_mapping','rtabmap_launch','rtabmap_slam','rtabmap_viz','rtabmap_odom','mavros','joy','ros_gz_sim','ros_gz_bridge']]"
         subprocess.run(['bash', '-c', sources+'exec /usr/bin/python3 -c '+shlex.quote(checks)],
                        env=env, stdout=log, stderr=subprocess.STDOUT, check=True, timeout=30)
         for package, binary in [('rtabmap_slam', 'rtabmap'), ('rtabmap_viz', 'rtabmap_viz'), ('rtabmap_odom', 'rgbd_odometry')]:

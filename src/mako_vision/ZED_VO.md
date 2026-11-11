@@ -1,88 +1,94 @@
-# ZED-only RGB-D visual odometry for ArduSub
+# ZED RGB-D and onboard-IMU odometry for ArduSub
 
-Build and source the workspace, then restart the simulation with:
+The camera estimator uses synchronized ZED RGB, depth, CameraInfo and the ZED's
+onboard IMU orientation to assist rotation tracking. RTAB-Map still estimates
+translation from the images/depth. This is IMU-assisted RGB-D odometry, not a
+validated full inertial-navigation system. Gazebo odometry is used for regression
+comparison only and is not fed into the camera estimator.
 
 ```bash
 source /opt/ros/humble/setup.bash
-colcon build --base-paths src/robot_description --packages-select robot_description --symlink-install
+colcon build --base-paths src --symlink-install
 source install/setup.bash
-ros2 launch mako_bringup simulation.launch.py odometry_source:=vision
+ROS_DOMAIN_ID=42 ros2 launch mako_bringup simulation.launch.py \
+  odometry_source:=vision camera_width:=640 camera_height:=360 camera_fps:=30 pilot_fps:=30
 ```
 
-The existing MAVROS and ArduSub SITL must be running with their normal FCU URL.
-The pipeline uses the synchronized Gazebo RGB-D triplet on
-`/zed2i/rgbd/left/image_rect_color`, `/zed2i/rgbd/left/depth/image_raw`, and
-`/zed2i/rgbd/left/camera_info`;
-it does not use the bottom camera, IMU fusion, Gazebo odometry as an estimate,
-or SLAM loop closure. RGB-D depth supplies metric scale. Gazebo ground truth
-remains on /odometry/gz for evaluation only.
+SITL and MAVROS must also be running (Operation MX starts them). The desktop
+SLAM profile selects 640×360 RGB-D at 30 Hz, pilot video at 30 Hz and mapping at
+its independent lower rate. A clear pilot image alone is not evidence that
+odometry is tracking: those were previously independent 30 Hz and 10 Hz feeds.
 
-RTAB-Map publishes /zed2i/vo/odometry (nav_msgs/Odometry), /zed2i/vo/odom_info,
-and the sole odom -> base_link TF. The existing robot TF tree transforms camera
-measurements into base_link coordinates, including the backward control-frame
-axis. Initial pose (0,0,-1) matches the known spawn pose. map -> odom remains
-an identity placeholder; no mapping is started. Vision mode automatically
-suppresses Gazebo's odom TF regardless of publish_odom_tf.
+## Inputs and calibration
 
-The ExternalNav adapter selects only /zed2i/vo/odometry and forwards accepted
-messages to /mavros/odometry/out. It validates frame IDs, finite pose/twist,
-normalized orientation, timestamps, pose/twist covariance and monotonic stamps.
-It never changes frame names or repeats old poses. Tracking failure or missing
-updates therefore stop the feed. A backwards simulation clock resets RTAB-Map
-to the starting pose and gates forwarding until that reset completes.
+- `/zed2i/rgbd/left/image_rect_color`, `/depth/image_raw`, `/camera_info` use one
+  Gazebo RGB-D sensor and exact timestamps (full prefix applies to all three).
+- `/zed2i/zed_node/imu/data` is the simulated onboard ZED IMU at 100 Hz, with its
+  own `zed2i_camera_center` frame. No ArduSub orientation/position is recycled as
+  a camera-estimator input.
+- The simulation description owns the IMU and bridges. Its
+  `sim_rgbd_camera_info.py` relay converts Gazebo RGB-D texture-center intrinsics
+  to integer-index image pixels. Native XYZ measurements showed a 0.5-pixel
+  principal-point offset in the installed Harmonic renderer. The relay preserves
+  image timestamps and optical frames; `pixel_center_offset:=0.0` can disable it
+  in a renderer where calibration already matches. Physical ZED calibration is
+  not passed through this simulation-only relay.
+- RGB-D near clipping is 0.30 m to exclude the enclosing acrylic dome at all yaw
+  headings. The dome's geometry and appearance stay intact.
 
-MAVROS converts ENU/FLU to MAVLink NED/FRD. The simulation supplies odom_ned;
-MAVROS supplies base_link_frd. Do not manually convert the visual pose to NED.
-ArduSub helper settings select ExternalNav XY/Z position and velocity, keep
-compass yaw, and set VISO_TYPE=3. VISO_POS offsets are zero because the pose
-already refers to base_link. EKF origin must be available before non-GPS
-navigation works. Confirm FCU connection and EKF health before position control.
+`config/zed_vo.yaml` uses GFTT/ORB features, optical flow, metric 3D registration
+and IMU motion hints. `wait_imu_to_init` requires the onboard stream before
+tracking starts. On a real camera, provide the matching ZED IMU topic and TF;
+these changes have been tested in simulation, not on the real ROV.
 
-Default pilot RGB is 1280x720 at 30 Hz; depth and visual odometry run at 15 Hz.
-RGB, depth and CameraInfo use the same native resolution and eye pose.
-Approximate synchronization permits at most 25 ms between paired RGB/depth stamps. For computers that
-cannot sustain this rate, launch with `camera_width:=640 camera_height:=360`. Frame-to-frame RGB-D odometry uses
-SIFT features and optical-flow correspondences to handle the tiled pool scene. Odometry must sustain at least 4 Hz
-for ArduPilot ExternalNav. Input settings and reliability are in config/zed_vo.yaml.
-The regular pool tile grid can cause ambiguous visual matches; evaluate motion,
-tracking loss and pose error using the distinct coral/crab targets as landmarks.
-This first stage is visual odometry, not visual-inertial odometry.
+## Odometry and TF ownership
 
-## Optional full SLAM mapping
+RTAB-Map publishes raw `/zed2i/vo/odometry`. `mako_control` validates covariance,
+finite values, timestamps, frame IDs and motion continuity, then publishes
+`/mavros/odometry/out` and the sole `odom -> base_link` transform. Rejected poses
+are not re-stamped, forwarded or replaced with ground truth. Tracking loss pauses
+map and robot-pose updates; Operation MX reports that state separately from video.
 
-The normal simulation remains unchanged with SLAM disabled. In the Mako Pilot
-application, enable **SLAM mapping** before starting to run RTAB-Map on the
-existing ZED RGB-D and visual-odometry topics. The option requires ZED visual
-odometry; it does not replace the odometry feed used by ArduPilot. RTAB-Map owns
-`map -> odom` only in this mode, and the simulation's identity transform is
-suppressed to avoid competing TF publishers. RTAB-Map visualization opens with
-the live map.
+The initial pose `(0, 0, -1)` matches the simulation spawn. Without mapping, the
+simulation publishes a static `map -> odom`; with SLAM, robot_mapping owns that
+transform. No competing odometry or map TF publisher is started.
 
-The application uses 640x360 camera images and a new `rtabmap.db` in each
-session directory under `mako_ws/gui/runs/`; stopping a session leaves its
-database intact. Direct launch is also supported with
-`slam:=true odometry_source:=vision`; set `slam_database_path:=...` to choose a
-database location. Existing databases are reused, not deleted automatically.
+MAVROS handles ENU/FLU to NED/FRD conversion. The relay supplies `odom_ned`, while
+MAVROS supplies the body FRD companion. Pose already refers to base_link, so
+ArduSub VISO position offsets remain zero. Do not load simulation parameters on
+the real vehicle. The experimental camera estimator does not replace FCU arming,
+mode checks, EKF origin or appropriate real-water validation.
 
-## Runtime dependency
+## Mapping and saved runs
 
-The normal dependency is ros-humble-rtabmap-odom. On this workstation a sudo-free
-runtime was unpacked in .deps/rtabmap/root. visual_odometry.launch.py discovers that local
-prefix automatically; MAKO_VO_PREFIX can override the prefix location. These
-third-party binaries are excluded from Git. Other workstations should install
-the ROS package with apt. ROS interfaces remain standard in either case.
+Enable **SLAM mapping** in Operation MX, or add `slam:=true` to the launch above.
+`mako_vision/slam.launch.py` delegates to the team's `robot_mapping` package.
+Each app session saves a separate rtabmap.db; existing databases are preserved.
+The RViz button selects its occupancy-grid view, with an optional 3D cloud.
 
-Sources: https://github.com/introlab/rtabmap_ros and
-https://github.com/ArduPilot/ardupilot_wiki/blob/master/dev/source/docs/mavlink-nongps-position-estimation.rst
+## Runtime
 
-## Verified integration
+Install ROS Humble RTAB-Map packages normally, or use the bundled runtime under
+`.deps/rtabmap/root`. The shared runtime resolver covers both vision and mapping
+launches; `MAKO_VO_PREFIX` selects another bundled prefix. The control relay also
+requires `rtabmap_msgs` for the reset service. Rebuild and restart the app after
+source changes; already-running nodes keep their old parameters and model.
 
-`python3 src/mako_vision/test/check_zed_vo.py` runs an isolated Gazebo/ROS
-simulation with the production odometry settings and a mock FCU UDP endpoint.
-The real MAVROS process converts and transmits MAVLink ODOMETRY to that endpoint.
-Tests cover forward, sideways and vertical thruster motion, pose displacement
-against independent Gazebo truth, and Reset recovery. The tested feed sustained
-approximately 15 Hz; displacement errors were approximately 0.4–1.2 cm over the
-short test motions. This does not measure long-duration drift or validate the
-ArduSub EKF/controller on a connected vehicle. MAVROS and SITL must be connected
-for EKF fusion; use the configured ExternalNav source and establish EKF origin.
+## Regression checks
+
+The physical regression uses a separate ROS/Gazebo domain and a mock FCU. It
+checks actual thruster motion, accepted odometry versus independent Gazebo truth,
+TF continuity and reset recovery. Run the extended deep-yaw + SLAM check with:
+
+```bash
+VO_TEST_WIDTH=640 VO_TEST_HEIGHT=360 VO_TEST_FPS=30 PILOT_TEST_FPS=30 \
+VO_TEST_DEEP_YAW=1 VO_TEST_YAW_SECONDS=15 VO_TEST_SLAM=1 \
+python3 src/mako_vision/test/check_zed_vo.py
+```
+
+Unlike a short yaw check, it requires enough accepted poses throughout rotation
+and a fresh final TF, plus a live SLAM grid. Native pilot feeds remain 30 Hz.
+The 15-second thruster-driven run reached about 1.46 rad/s at 2.1 m depth;
+maximum accepted position error was about 0.11 m with the SLAM grid active. These are
+short simulation results, not a guarantee of long-duration drift or real-water
+performance. Distinct landmarks remain preferable to identical pool tiles.

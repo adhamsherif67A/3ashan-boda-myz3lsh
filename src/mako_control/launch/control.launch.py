@@ -5,11 +5,46 @@ needs, the (idle) fly-transect mission and, optionally, the ArduSub parameter he
 MAVROS itself is started separately (see mavros.launch.py or commands.txt) because
 its FCU URL depends on the deployment.
 """
+import os
+from pathlib import Path
+from ament_index_python.packages import get_package_share_directory
+
 from launch import LaunchDescription
 from launch.actions import DeclareLaunchArgument, ExecuteProcess, OpaqueFunction, TimerAction
 from launch.conditions import IfCondition
 from launch.substitutions import LaunchConfiguration
 from launch_ros.actions import Node
+
+
+def odometry_runtime_environment():
+    """Expose bundled RTAB-Map message bindings to the independent control node.
+
+    Vision launches are scoped by GroupAction; their environment does not reach
+    this sibling launch. Native apt installations need no overrides.
+    """
+    try:
+        get_package_share_directory('rtabmap_msgs')
+        return {}
+    except LookupError:
+        pass
+    share = Path(get_package_share_directory('mako_control'))
+    candidates = [Path(os.environ.get('MAKO_VO_PREFIX', '/nonexistent'))]
+    candidates += [p / '.deps/rtabmap/root/opt/ros/humble'
+                   for p in list(share.parents) + list(share.resolve().parents)]
+    prefix = next((p for p in candidates if (p / 'share/rtabmap_msgs').is_dir()), None)
+    if prefix is None:
+        raise RuntimeError('Vision odometry reset requires rtabmap_msgs. Install '
+                           'ros-humble-rtabmap-msgs or set MAKO_VO_PREFIX to the bundled runtime prefix.')
+    root = prefix.parents[2]
+    paths = {
+        'AMENT_PREFIX_PATH': [prefix],
+        'PYTHONPATH': [prefix / 'local/lib/python3.10/dist-packages',
+                       prefix / 'lib/python3.10/site-packages'],
+        'LD_LIBRARY_PATH': [prefix / 'lib', prefix / 'lib/x86_64-linux-gnu',
+                            root / 'usr/lib/x86_64-linux-gnu', root / 'usr/lib'],
+    }
+    return {key: ':'.join(map(str, values)) + ':' + os.environ.get(key, '')
+            for key, values in paths.items()}
 
 
 def launch_setup(context):
@@ -24,6 +59,7 @@ def launch_setup(context):
             package='mako_control',
             executable='gz_odom_to_mavros.py',
             name='gz_odom_to_mavros',
+            additional_env=odometry_runtime_environment() if vision else {},
             parameters=[{'use_sim_time': True,
                          'source_topic': '/zed2i/vo/odometry' if vision else '/odometry/gz',
                          'require_covariance': vision, 'reset_on_clock_jump': vision,

@@ -13,9 +13,10 @@ from pathlib import Path
 
 from ament_index_python.packages import get_package_share_directory
 from launch import LaunchDescription
-from launch.actions import DeclareLaunchArgument, GroupAction, IncludeLaunchDescription, OpaqueFunction
+from launch.actions import DeclareLaunchArgument, GroupAction, IncludeLaunchDescription, OpaqueFunction, SetEnvironmentVariable
 from launch.launch_description_sources import PythonLaunchDescriptionSource
 from launch.substitutions import LaunchConfiguration
+from mako_vision.runtime import configure_runtime
 
 
 def include(package, launch_file, arguments):
@@ -34,7 +35,10 @@ def launch_setup(context):
     publish_map_tf = value('publish_map_tf') == 'true' and not slam
     flag = lambda condition: 'true' if condition else 'false'
 
-    actions = [include('robot_description', 'gazebo.launch.py', {
+    # Establish the shared runtime before entering scoped sibling launches.
+    runtime = configure_runtime('rtabmap_slam' if slam else 'rtabmap_odom') if vision else {}
+    actions = [SetEnvironmentVariable(key, value) for key, value in runtime.items()]
+    actions += [include('robot_description', 'gazebo.launch.py', {
         'world': value('world'),
         'headless': value('headless'),
         'sitl_port_in': value('sitl_port_in'),
@@ -58,6 +62,8 @@ def launch_setup(context):
             'slam_viz': value('slam_viz'),
             'use_sim_time': 'true',
         }))
+    if value('navigation') == 'true':
+        actions.append(include('mako_navigation', 'navigation.launch.py', {}))
     actions.append(include('mako_control', 'control.launch.py', {
         'odometry_source': value('odometry_source'),
         'publish_odom_tf': flag(publish_odom_tf),
@@ -73,6 +79,8 @@ def launch_setup(context):
 
 def generate_launch_description():
     return LaunchDescription([
+        DeclareLaunchArgument('navigation', default_value='false', choices=['true', 'false'],
+                              description='Start isolated planar Nav2 servers; requires a navigation-ready map.'),
         DeclareLaunchArgument('world', default_value='pool.world', choices=['pool.world', 'pool.sdf', 'ocean.world'],
                               description='Team pool tasks (pool.world), legacy pool (pool.sdf) or ocean course (ocean.world).'),
         DeclareLaunchArgument('headless', default_value='false', choices=['true', 'false'],
@@ -83,7 +91,7 @@ def generate_launch_description():
                               description='Enable RTAB-Map visual SLAM; requires odometry_source:=vision.'),
         DeclareLaunchArgument('slam_database_path', default_value=str(Path.home() / '.ros' / 'mako_slam.db'),
                               description='RTAB-Map database path. Existing databases are reused, not deleted.'),
-        DeclareLaunchArgument('slam_viz', default_value='true', choices=['true', 'false'],
+        DeclareLaunchArgument('slam_viz', default_value='false', choices=['true', 'false'],
                               description='Open the RTAB-Map viewer when SLAM is enabled.'),
         DeclareLaunchArgument('publish_odom_tf', default_value='true', choices=['true', 'false'],
                               description='Publish odom -> base_link (from ground truth or the VO relay). Disable for an external estimator.'),

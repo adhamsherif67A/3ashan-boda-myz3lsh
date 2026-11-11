@@ -1,0 +1,2 @@
+pool_mapping_data/*.db filter=lfs diff=lfs merge=lfs -text
+pool_mapping_data/*.ply filter=lfs diff=lfs merge=lfs -text
