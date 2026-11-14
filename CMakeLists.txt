@@ -25,12 +25,18 @@ ament_target_dependencies(
   "mavros_msgs"
 )
 add_executable(keyboard_to_joy_node src/keyboard_to_joy.cpp)
-ament_target_dependencies( keyboard_to_joy_node rclcpp sensor_msgs)
+ament_target_dependencies(keyboard_to_joy_node rclcpp sensor_msgs)
 
 install(TARGETS
   rov_joystick_node
   keyboard_to_joy_node
   DESTINATION lib/${PROJECT_NAME}
+)
+
+# Install launch files
+install(DIRECTORY
+  launch
+  DESTINATION share/${PROJECT_NAME}
 )
 
 if(BUILD_TESTING)

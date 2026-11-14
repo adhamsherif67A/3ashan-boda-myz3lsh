@@ -20,7 +20,7 @@ public:
         RCLCPP_INFO(this->get_logger(), "\n--- ROV Keyboard Controller ---");
         RCLCPP_INFO(this->get_logger(), "Movement: w/s (Surge), a/d (Sway), i/k (Heave), j/l (Yaw)");
         RCLCPP_INFO(this->get_logger(), "STOP ALL MOVEMENT: Spacebar");
-        RCLCPP_INFO(this->get_logger(), "Buttons: 1 (Arm), 2 (Disarm), 3 (Stabilize), 4 (Depth Hold)");
+        RCLCPP_INFO(this->get_logger(), "Buttons: 1 (Arm), 2 (Disarm), 3 (Stabilize), 4 (Depth Hold), 5 (Manual)");
         RCLCPP_INFO(this->get_logger(), "Press Ctrl+C to quit\n");
 
         timer_ = this->create_wall_timer(
@@ -36,7 +36,7 @@ public:
 private:
     void timer_callback() {
         sensor_msgs::msg::Joy joy_msg;
-        joy_msg.buttons.resize(4, 0);
+        joy_msg.buttons.resize(5, 0);
 
         char c = 0;
         if (read(STDIN_FILENO, &c, 1) > 0) {
@@ -57,6 +57,7 @@ private:
                 case '2': joy_msg.buttons[1] = 1; break;
                 case '3': joy_msg.buttons[2] = 1; break;
                 case '4': joy_msg.buttons[3] = 1; break;
+                case '5': joy_msg.buttons[4] = 1; break;
                 case '\x03': 
                     rclcpp::shutdown(); 
                     return;
