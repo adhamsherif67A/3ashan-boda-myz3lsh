@@ -1,0 +1,104 @@
+Format: https://www.debian.org/doc/packaging-manuals/copyright-format/1.0/
+Upstream-Name: python-xlib
+Source: https://github.com/python-xlib/python-Xlib
+
+Files: *
+Copyright: 2000-2013, Peter Liljenberg
+License: LGPL-2.1+
+
+Files:
+ Xlib/ext/ge.py
+ Xlib/ext/security.py
+ Xlib/ext/xfixes.py
+ Xlib/ext/xinput.py
+Copyright: 2010-2013, Outpost Embedded, LLC
+License: LGPL-2.1+
+
+Files: Xlib/ext/damage.py
+Copyright: 2018, Joseph Kogut <joseph.kogut@gmail.com>
+License: LGPL-2.1+
+
+Files: Xlib/ext/nvcontrol.py
+Copyright: 2019, Roberto Leinardi <roberto@leinardi.com>
+License: LGPL-2.1+
+
+Files:
+ Xlib/ext/randr.py
+ Xlib/ext/xinerama.py
+Copyright: 2006, Mike Meyer <mwm@mired.org>
+License: LGPL-2.1+
+
+Files: Xlib/ext/record.py
+Copyright: 2006, Alex Badea <vamposdecampos@gmail.com>
+License: LGPL-2.1+
+
+Files:
+ examples/eventthread.py
+ examples/security.py
+ examples/xfixes.py
+ examples/xinput.py
+Copyright: 2010-2012, Outpost Embedded, LLC
+License: LGPL-2.1+
+
+Files: examples/childwin.py
+Copyright:
+ 2002, Peter Liljenberg <petli@ctrl-c.liu.se>
+ 2008, David Bronke <whitelynx@gmail.com>
+License: LGPL-2.1+
+
+Files: examples/nvcontrol.py
+Copyright: 2019, Roberto Leinardi <roberto@leinardi.com>
+License: LGPL-2.1+
+
+Files: examples/record_demo.py
+Copyright: 2006, Alex Badea <vamposdecampos@gmail.com>
+License: LGPL-2.1+
+
+Files: examples/run_examples.py
+Copyright: 2016, Svetlana Filicheva
+License: LGPL-2.1+
+
+Files: examples/xdamage.py
+Copyright: 2019, Mohit Garg <mrmohitgarg1990@gmail.com>
+License: LGPL-2.1+
+
+Files: examples/xfixes-selection-notify.py
+Copyright: 2019, Tony Crisci <tony@dubstepdish.com>
+License: LGPL-2.1+
+
+Files:
+ examples/xinerama.py
+ examples/xrandr.py
+Copyright: 2009, David H. Bronke <whitelynx@gmail.com>
+License: LGPL-2.1+
+
+Files: examples/xlsatoms.py
+Copyright: 2011, Arun Balasubramanian <med.diagnostix@gmail.com>
+License: LGPL-2.1+
+
+Files: debian/*
+Copyright:
+ 2001, 2002, Moshe Zadka <moshez@debian.org>
+ 2001, 2002, Gregor Hoffleit <flight@debian.org>
+ 2005, Martin v. Löwis <martin@v.loewis.de>
+ 2007-2009, Mike O'Connor <stew@vireo.org>
+ 2015, 2017-2020, Andrej Shadura <andrewsh@debian.org>
+License: LGPL-2.1+
+
+License: LGPL-2.1+
+ This library is free software; you can redistribute it and/or
+ modify it under the terms of the GNU Lesser General Public
+ License as published by the Free Software Foundation; either
+ version 2.1 of the License, or (at your option) any later version.
+ .
+ This library is distributed in the hope that it will be useful,
+ but WITHOUT ANY WARRANTY; without even the implied warranty of
+ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
+ Lesser General Public License for more details.
+ .
+ You should have received a copy of the GNU Lesser General Public License
+ along with this program. If not, see <http://www.gnu.org/licenses/>.
+ .
+ On Debian systems, the complete text of the GNU Lesser General
+ Public License version 2.1 can be found in
+ `/usr/share/common-licenses/LGPL-2.1'.

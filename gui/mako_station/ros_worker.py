@@ -1,0 +1,218 @@
+"""Bounded ROS image delivery: overwrite latest frames instead of Qt queues."""
+import math
+import os
+import queue
+import shutil
+from pathlib import Path
+import threading
+import time
+from PyQt5.QtCore import QThread, pyqtSignal
+from PyQt5.QtGui import QImage
+from .simulation import DOMAIN,WORKSPACE
+
+AUTOPILOT_TOPIC='/mako/autopilot/manual_control'
+NEUTRAL=(0.,0.,500.,0.)
+MAX_FRAME_AGE=.25  # seconds of simulation time; never show a queued old camera frame
+KEY_RAMP=120     # per 50 ms: keyboard commands reach full scale in about 0.4 s
+# Fish CAD base_link is FLU, with the bow along +X. ArduSub forward/right
+# commands already match camera-forward / camera-right for this allocation.
+FORWARD_SIGN=1
+LATERAL_SIGN=1
+
+VIEWS={'First person':'/zed2i/zed_node/left/image_rect_color',
+       'Third person':'/third_person_camera/image_raw'}
+
+
+def image_to_qimage(message):
+    formats={'rgb8':QImage.Format_RGB888,'bgr8':QImage.Format_BGR888,
+             'rgba8':QImage.Format_RGBA8888,'mono8':QImage.Format_Grayscale8}
+    if message.encoding not in formats:raise ValueError('Unsupported RGB encoding: '+message.encoding)
+    if message.width<=0 or message.height<=0 or len(message.data)<message.step*message.height:
+        raise ValueError('Incomplete camera image')
+    return QImage(bytes(message.data),message.width,message.height,message.step,
+                  formats[message.encoding]).copy()
+
+
+class RosWorker(QThread):
+    message=pyqtSignal(str)
+
+    def __init__(self,domain=DOMAIN):
+        super().__init__()
+        self.domain=domain;self.lock=threading.Lock();self.frames={};self.telemetry={}
+        self.sim_time=None
+        self.mapping_storage_pending=False;self.storage_check_at=0;self.session_generation=0
+        self.requested_view='First person'
+        self.commands=queue.Queue();self.stopping=threading.Event()
+        # Keyboard target (x, y, z, r) from the UI thread; None when keyboard piloting is off.
+        self.keyboard=None;self.keyboard_output=None;self.release_until=0
+
+    def set_view(self,view):
+        if view not in VIEWS:raise ValueError('Unknown camera view')
+        with self.lock:
+            self.requested_view=view;self.frames.pop('main',None)
+
+    def clear_session(self):
+        with self.lock:
+            self.frames.clear();self.telemetry.clear();self.sim_time=None
+            self.session_generation+=1;self.mapping_storage_pending=False;self.storage_check_at=0
+
+    def snapshot(self):
+        with self.lock:return dict(self.frames),dict(self.telemetry)
+
+    def clock(self,message):
+        with self.lock:self.sim_time=message.clock.sec+message.clock.nanosec/1e9
+
+    def frame(self,message,name,view=None):
+        with self.lock:
+            if name=='main' and view!=self.requested_view:return
+            sim_time=self.sim_time
+        header=getattr(message,'header',None)
+        if header is not None and sim_time is not None:
+            source_time=header.stamp.sec+header.stamp.nanosec/1e9
+            if sim_time-source_time>MAX_FRAME_AGE:return
+        image=image_to_qimage(message)
+        now=time.monotonic()
+        with self.lock:
+            if name=='main' and view!=self.requested_view:return
+            previous=self.frames.get(name)
+            period=now-previous[1] if previous else 0
+            fps=(.8*previous[2]+.2/period) if previous and period>.001 else 0
+            self.frames[name]=(image,now,fps)
+
+    def state(self,message):
+        with self.lock:self.telemetry.update(connected=message.connected,armed=message.armed,
+                                             mode=message.mode,state_time=time.monotonic())
+
+    def pwm(self,message):
+        with self.lock:self.telemetry['pwm']=list(message.channels[:6])
+
+    def odometry(self,message):
+        q=message.pose.pose.orientation
+        yaw=math.atan2(2*(q.w*q.z+q.x*q.y),1-2*(q.y*q.y+q.z*q.z))
+        velocity=message.twist.twist.linear
+        with self.lock:self.telemetry.update(depth=max(0,-message.pose.pose.position.z),
+            heading=(270-math.degrees(yaw))%360,
+            speed=math.sqrt(velocity.x**2+velocity.y**2+velocity.z**2),nav_time=time.monotonic())
+
+    def validated_odometry(self,message):
+        with self.lock:self.telemetry['tracking_time']=time.monotonic()
+
+    def mapping_info(self,message):
+        with self.lock:self.telemetry['mapping_time']=time.monotonic()
+
+    def protect_mapping_storage(self,pause,resume,now):
+        if now<self.storage_check_at or self.mapping_storage_pending:return
+        self.storage_check_at=now+2
+        _,telemetry=self.snapshot()
+        paused=telemetry.get('mapping_storage_paused',False)
+        if not paused and now-telemetry.get('mapping_time',-100)>3:return
+        try:free=shutil.disk_usage(Path(os.environ.get('MAKO_DATA_DIR',WORKSPACE/'gui'))).free
+        except OSError:return
+        action='pause' if not paused and free<512*1024**2 else ('resume' if paused and free>1024*1024**2 else None)
+        if action is None:return
+        client=pause if action=='pause' else resume
+        if not client.service_is_ready():return
+        from std_srvs.srv import Empty
+        self.mapping_storage_pending=True;generation=self.session_generation
+        future=client.call_async(Empty.Request())
+        def done(future):
+            if generation!=self.session_generation:return
+            self.mapping_storage_pending=False
+            try:
+                if future.result() is None:raise RuntimeError('Mapper did not acknowledge the storage request')
+                with self.lock:self.telemetry['mapping_storage_paused']=action=='pause'
+                self.message.emit('SLAM paused before disk fills; free space to resume.' if action=='pause' else 'SLAM resumed after disk space recovered.')
+            except Exception as error:self.message.emit('SLAM storage protection: '+str(error))
+        future.add_done_callback(done)
+
+    def request_arm(self,armed):self.commands.put(('arm',armed))
+    def request_mode(self,mode):self.commands.put(('mode',mode))
+    def set_keyboard(self,target):
+        with self.lock:self.keyboard=target
+
+    def next_command(self,now):
+        """MANUAL_CONTROL values to publish now, or None to leave the joystick in charge."""
+        with self.lock:keyboard=self.keyboard
+        if keyboard is None:
+            if self.keyboard_output is not None:
+                # Keyboard switched off: send neutral briefly, then hand back to the joystick.
+                self.keyboard_output=None;self.release_until=now+.5
+            return NEUTRAL if now<self.release_until else None
+        current=self.keyboard_output or NEUTRAL
+        self.keyboard_output=tuple(a+max(-KEY_RAMP,min(KEY_RAMP,b-a)) for a,b in zip(current,keyboard))
+        x,y,z,r=self.keyboard_output
+        return (FORWARD_SIGN*x,LATERAL_SIGN*y,z,r)
+
+    def run(self):
+        node=None;context=None;executor=None
+        try:
+            os.environ['ROS_DOMAIN_ID']=str(self.domain)
+            import rclpy
+            from rclpy.context import Context
+            from rclpy.node import Node
+            from rclpy.executors import SingleThreadedExecutor
+            from rclpy.qos import QoSProfile,ReliabilityPolicy,HistoryPolicy
+            from rclpy.parameter import Parameter
+            from sensor_msgs.msg import Image
+            from rosgraph_msgs.msg import Clock
+            from nav_msgs.msg import Odometry
+            from mavros_msgs.msg import State,RCOut,ManualControl
+            from mavros_msgs.srv import CommandBool,SetMode
+            from std_srvs.srv import Empty
+            context=Context();rclpy.init(context=context)
+            node=Node('mako_pilot_station',context=context,parameter_overrides=[Parameter('use_sim_time',value=True)])
+            executor=SingleThreadedExecutor(context=context);executor.add_node(node)
+            qos=QoSProfile(depth=1,history=HistoryPolicy.KEEP_LAST,reliability=ReliabilityPolicy.BEST_EFFORT)
+            node.create_subscription(Clock,'/clock',self.clock,qos)
+            node.create_subscription(State,'/mavros/state',self.state,qos)
+            node.create_subscription(RCOut,'/mavros/rc/out',self.pwm,qos)
+            node.create_subscription(Odometry,'/odometry/gz',self.odometry,qos)
+            node.create_subscription(Odometry,'/mavros/odometry/out',self.validated_odometry,qos)
+            node.create_subscription(Image,'/bottom_camera/image_raw',lambda msg:self.frame(msg,'bottom'),qos)
+            # Mapping is optional; a healthy visual tracker does not prove the
+            # mapper is still running (e.g. after a database write failure).
+            try:from rtabmap_msgs.msg import Info
+            except ImportError:pass
+            else:node.create_subscription(Info,'/rtabmap/info',self.mapping_info,qos)
+            arming=node.create_client(CommandBool,'/mavros/cmd/arming')
+            mode=node.create_client(SetMode,'/mavros/set_mode')
+            mapping_pause=node.create_client(Empty,'/rtabmap/rtabmap/pause')
+            mapping_resume=node.create_client(Empty,'/rtabmap/rtabmap/resume')
+            autopilot=node.create_publisher(ManualControl,AUTOPILOT_TOPIC,10)
+            active_view=None;video=None;last_autopilot=0
+            while not self.stopping.is_set():
+                with self.lock:view=self.requested_view
+                if view!=active_view:
+                    if video:node.destroy_subscription(video)
+                    video=node.create_subscription(Image,VIEWS[view],lambda msg,view=view:self.frame(msg,'main',view),qos)
+                    active_view=view
+                try:action,value=self.commands.get_nowait()
+                except queue.Empty:pass
+                else:
+                    client=arming if action=='arm' else mode
+                    if not client.service_is_ready():self.message.emit('Autopilot is not ready for this command.')
+                    else:
+                        request=CommandBool.Request(value=value) if action=='arm' else SetMode.Request(custom_mode=value)
+                        future=client.call_async(request)
+                        def done(future,action=action,value=value):
+                            try:
+                                response=future.result()
+                                accepted=response.success if action=='arm' else response.mode_sent
+                                self.message.emit(f'{action.title()} {value}: '+('accepted' if accepted else 'rejected by autopilot'))
+                            except Exception as error:self.message.emit(str(error))
+                        future.add_done_callback(done)
+                now=time.monotonic()
+                self.protect_mapping_storage(mapping_pause,mapping_resume,now)
+                command=self.next_command(now) if now-last_autopilot>=.05 else None
+                if command is not None:
+                    message=ManualControl();message.x,message.y,message.z,message.r=command
+                    autopilot.publish(message);last_autopilot=now
+                executor.spin_once(timeout_sec=.025)
+        except Exception as error:self.message.emit('ROS connection error: '+str(error))
+        finally:
+            if executor:executor.shutdown(timeout_sec=1)
+            if node:node.destroy_node()
+            if context and context.ok():context.shutdown()
+
+    def stop(self):
+        self.stopping.set();self.wait(2500)

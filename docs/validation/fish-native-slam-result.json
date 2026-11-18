@@ -1,0 +1,35 @@
+{
+  "world": "pool.world",
+  "slam": true,
+  "tether_status": "Turns R -0.02 | P 0.00 | Unwinding",
+  "tether_status_visible": true,
+  "mapping_updates": 92,
+  "grid_size": [
+    336,
+    622
+  ],
+  "rviz_running": true,
+  "renderer": "1",
+  "painted_fps": 44.591005307838394,
+  "receive_to_paint_p95_ms": 18.323107000014716,
+  "latency_ms_p50": 7.691275999908598,
+  "latency_ms_p95": 18.625626000126406,
+  "profile": "gpu",
+  "fps_wall": {
+    "main": 56.48570094271761,
+    "bottom": 13.83425213185922
+  },
+  "size": {
+    "bottom": [
+      1280,
+      720
+    ],
+    "main": [
+      1280,
+      720
+    ]
+  },
+  "connected": true,
+  "sim_speed": 0.9152383963111874,
+  "session": "/data/runs/20261118_220153_09d54b"
+}

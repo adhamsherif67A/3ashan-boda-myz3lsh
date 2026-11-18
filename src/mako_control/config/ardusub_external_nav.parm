@@ -1,0 +1,68 @@
+# ArduSub Gazebo SITL: EKF3 source selection for robot_description.
+#
+# This model has no GPS or magnetometer sensor.  Its air_pressure sensor is
+# atmospheric, not a hydrostatic depth measurement.  The launch file relays
+# Gazebo ground-truth odometry through MAVROS ODOMETRY, so EKF3 must use that
+# ExternalNav stream (source 6) in every controlled mode.
+EK3_SRC1_POSXY 6
+EK3_SRC1_POSZ 6
+EK3_SRC1_VELXY 6
+EK3_SRC1_VELZ 6
+# Position and velocity use ExternalNav.  Yaw uses the corrected IMU because
+# the Gazebo odometry yaw convention otherwise causes a wrapped yaw error in
+# Depth Hold and saturates the horizontal motors.
+EK3_SRC1_YAW 1
+
+# Fish Omni Six CUSTOM frame: CAD-calibrated allocation, direct M1..M6 routing.
+FRAME_CONFIG 7
+
+# The IMU link is physically rotated FLU -> FRD in the URDF.
+AHRS_ORIENTATION 0
+
+# Avoid a simulated GCS failsafe changing modes / commanding motors while
+# testing the estimator.
+FS_GCS_ENABLE 0
+
+# Match the MAVLink sender ID of the standard MAVROS apm.launch.
+MAV_GCS_SYSID 1
+
+# Motor direction parameters retained at the direct-routing polarity.
+MOT_5_DIRECTION 1
+MOT_6_DIRECTION 1
+
+MOT_PWM_MAX 1760
+
+MOT_PWM_MIN 1240
+
+# Apply the full simulator setup before the first motor output.
+VISO_TYPE 3
+VISO_POS_X 0.0
+VISO_POS_Y 0.0
+VISO_POS_Z 0.0
+MOT_SPIN_ARM 0.0
+MOT_SPIN_MIN 0.0
+MOT_SAFE_DISARM 0
+MOT_SPOOL_TIME 0.0
+FS_PILOT_TIMEOUT 10.0
+THR_DZ 100
+
+# ArduSub RC order (pitch precedes roll).
+RCMAP_PITCH 1
+RCMAP_ROLL 2
+RCMAP_THROTTLE 3
+RCMAP_YAW 4
+RCMAP_FORWARD 5
+RCMAP_LATERAL 6
+
+# Fish-only depth tuning: neutral-buoyancy, seven-kilogram six-axis model.
+# Small acceleration feedback prevents the inherited controller from driving
+# full positive/negative motor output on every IMU acceleration correction.
+PSC_D_POS_P 1.0
+PSC_D_VEL_P 2.0
+PSC_D_ACC_P 0.02
+PSC_D_ACC_I 0.04
+PSC_D_ACC_FF 0.04
+PSC_D_ACC_FLTE 5.0
+PILOT_SPEED_UP 40
+PILOT_SPEED_DN 40
+PILOT_ACCEL_Z 50

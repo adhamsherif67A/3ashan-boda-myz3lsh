@@ -1,0 +1,77 @@
+{
+  "status": "PASS",
+  "neutral_drift_m": 0.006545228645497665,
+  "dpad_up_has_no_mode_action": true,
+  "motion_keeps_manual_mode": true,
+  "modifier_rc_verified": true,
+  "stale_input_neutral_verified": true,
+  "motions": [
+    {
+      "axis": "forward",
+      "local_delta": [
+        0.10785377104460189,
+        -8.934928334120348e-06,
+        0.00458970769860116
+      ],
+      "signed_primary": 0.10785377104460189,
+      "units": "m"
+    },
+    {
+      "axis": "lateral",
+      "local_delta": [
+        -0.0050380513006682,
+        -0.1192596441392042,
+        -0.005578129834235879
+      ],
+      "signed_primary": 0.1192596441392042,
+      "units": "m"
+    },
+    {
+      "axis": "heave",
+      "local_delta": [
+        0.003947426534123566,
+        9.870626369161162e-05,
+        0.11055952258391374
+      ],
+      "signed_primary": 0.11055952258391374,
+      "units": "m"
+    },
+    {
+      "axis": "yaw",
+      "local_delta": [
+        5.92582984420402e-05,
+        -3.874838058298704e-05,
+        -0.20746901325606248
+      ],
+      "signed_primary": 0.20746901325606248,
+      "units": "rad"
+    },
+    {
+      "axis": "roll",
+      "local_delta": [
+        0.19218701489533166,
+        0.0001888634186342019,
+        0.004506785585581202
+      ],
+      "signed_primary": 0.19218701489533166,
+      "units": "rad"
+    },
+    {
+      "axis": "pitch",
+      "local_delta": [
+        -0.001149004394991579,
+        -0.2939625406020214,
+        -0.0002655973163891887
+      ],
+      "signed_primary": 0.2939625406020214,
+      "units": "rad"
+    }
+  ],
+  "disarmed_after_test": true,
+  "session": "/data/runs/20261118_220914_a4bab4",
+  "targeted_tests_passed": 74,
+  "marine_files_checked": 961,
+  "marine_changes": [],
+  "arrow_return_removed": true,
+  "continuous_history_removed": true
+}

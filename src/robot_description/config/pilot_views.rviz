@@ -1,0 +1,33 @@
+Panels:
+  - Class: rviz_common/Displays
+    Name: Displays
+Visualization Manager:
+  Class: ""
+  Global Options:
+    Fixed Frame: base_link
+    Frame Rate: 60
+    Background Color: 35; 35; 35
+  Displays:
+    - Class: rviz_default_plugins/Image
+      Name: Left pilot eye
+      Enabled: true
+      Transport Hint: raw
+      Topic:
+        Value: /zed2i/zed_node/left/image_rect_color
+        Reliability Policy: Best Effort
+        Durability Policy: Volatile
+        History Policy: Keep Last
+        Depth: 1
+    - Class: rviz_default_plugins/Image
+      Name: Right pilot eye
+      Enabled: true
+      Transport Hint: raw
+      Topic:
+        Value: /zed2i/zed_node/right/image_rect_color
+        Reliability Policy: Best Effort
+        Durability Policy: Volatile
+        History Policy: Keep Last
+        Depth: 1
+Window Geometry:
+  Width: 1500
+  Height: 850

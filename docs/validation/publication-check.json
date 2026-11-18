@@ -1,0 +1,8 @@
+{
+  "ros_packages_built": 6,
+  "targeted_tests_passed": 74,
+  "runtime_setup_checks_passed": 3,
+  "active_source_files_matched_to_working_fish": 940,
+  "source_mismatches": [],
+  "fresh_dependency_image_build_repeated": false
+}

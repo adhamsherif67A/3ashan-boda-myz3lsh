@@ -1,0 +1,79 @@
+/**:
+  ros__parameters:
+    use_sim_time: true
+    frame_id: base_link
+    map_frame_id: map
+    odom_frame_id: ""
+    publish_tf: true
+    subscribe_depth: true
+    subscribe_rgb: false
+    subscribe_odom_info: false
+    # All four messages have the originating RGB-D sensor timestamp. The
+    # odometry validator discards bad poses before they reach this synchronizer.
+    approx_sync: false
+    odom_sensor_sync: false
+    topic_queue_size: 1
+    sync_queue_size: 4
+    qos_image: 1
+    qos_camera_info: 1
+    qos_odom: 1
+    wait_for_transform: 0.05
+    # 1 mm depth quantization (well below the 5 mm display voxel) enables
+    # compact RVL depth storage; keep the complete HD RGB-D keyframes.
+    "Mem/SaveDepth16Format": "true"
+    "Mem/DepthCompressionFormat": ".rvl"
+    # Preserve keyframe colors without JPEG artifacts in the detailed map.
+    "Mem/ImageCompressionFormat": ".png"
+    "Mem/ImagePreDecimation": "1"
+    "Mem/ImagePostDecimation": "1"
+    # Rehearsed/deleted frames have no graph links and need not fill the disk.
+    "Mem/NotLinkedNodesKept": "false"
+    # Keep rollback protection if a later write hits a full disk.
+    "DbSqlite3/JournalMode": "0"
+    "DbSqlite3/Synchronous": "1"
+    cloud_output_voxelized: true
+    map_always_update: false
+    map_cleanup: true
+    # HD keyframes are heavier; bound their rate independently of
+    # tracking and pilot cameras. Each integrated frame keeps all depth pixels.
+    "Rtabmap/DetectionRate": "3.0"
+    "Rtabmap/TimeThr": "120.0"
+    "Rtabmap/MemoryThr": "300"
+    "RGBD/LinearUpdate": "0.05"
+    "RGBD/AngularUpdate": "0.05"
+    # Keep the validated visual-odometry neighbor constraints in full 6DOF.
+    "RGBD/NeighborLinkRefining": "false"
+    "Reg/Strategy": "0"
+    "Reg/Force3DoF": "false"
+    # Repeated pool tiles produce convincing, geometrically wrong global
+    # matches. Require a nearby revisit and project features using odometry.
+    # Spatial loop closure remains enabled; unconstrained appearance-only
+    # global relocalization is disabled for this repetitive environment.
+    "Rtabmap/LoopThr": "1.0"
+    "RGBD/AggressiveLoopThr": "1.0"
+    "RGBD/ProximityBySpace": "true"
+    "RGBD/ProximityOdomGuess": "true"
+    "RGBD/LocalRadius": "1.0"
+    "RGBD/ProximityMaxPaths": "1"
+    "RGBD/ProximityMaxGraphDepth": "0"
+    "RGBD/ProximityPathFilteringRadius": "0.5"
+    "RGBD/ProximityAngle": "30"
+    "RGBD/OptimizeMaxError": "1.0"
+    "Vis/EstimationType": "0"
+    "Vis/InlierDistance": "0.03"
+    "Vis/MinInliers": "40"
+    "Vis/CorNNDR": "0.7"
+    "Vis/CorGuessWinSize": "20"
+    "Kp/MaxFeatures": "600"
+    "Grid/3D": "true"
+    # Occupancy uses 2 cm cells; RViz builds 5 mm colored surfaces directly
+    # from full-resolution RGB-D keyframes and the optimized SLAM graph.
+    "Grid/CellSize": "0.02"
+    "Grid/DepthDecimation": "2"
+    "Grid/RangeMin": "0.25"
+    "Grid/RangeMax": "6.0"
+    "Grid/NormalsSegmentation": "false"
+    "Grid/GroundIsObstacle": "true"
+    # The global OctoMap performs free-space ray tracing. Avoid building a
+    # second ray-traced local OctoMap for every RGB-D keyframe.
+    "Grid/RayTracing": "false"

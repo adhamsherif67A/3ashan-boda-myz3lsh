@@ -1,0 +1,112 @@
+{
+  "scope": "Fish simulation only; original MarineXperts source and Pixhawk firmware preserved",
+  "mass_trim": {
+    "reason": "Simulation ballast trim aligns COM Y/Z with horizontal thrust pair; drag applied at COM; CAD joints unchanged.",
+    "original_body_inertial_origin_m": [
+      0.000385546664310343,
+      -1.85037476319039e-05,
+      0.000179118829351219
+    ],
+    "trimmed_body_inertial_origin_m": [
+      0.0003852992240769851,
+      -0.00010347147563179887,
+      0.004705939869012763
+    ],
+    "untrimmed_combined_com_flu_m": [
+      0.008374977263030688,
+      -1.8438289114180068e-05,
+      0.0007544349080521787
+    ],
+    "trimmed_combined_com_flu_m": [
+      0.008374977263030688,
+      -0.00010000000000000286,
+      0.0051
+    ]
+  },
+  "manual_forward_pitch_deg": {
+    "before": 2.9834010624031952,
+    "after": 0.11422249527210034
+  },
+  "alt_hold_with_slam": {
+    "status": "PASS",
+    "forward_depth_range_m": 0.009064832922072497,
+    "forward_pitch_deg": 0.04397369402928682,
+    "entry_depth_range_m": 0.014435175438664571,
+    "mapping_updates": 126,
+    "grid_size": [
+      196,
+      322
+    ]
+  },
+  "ground_truth_checks": {
+    "manual_forward_attitude": true,
+    "stabilize_forward_attitude": true,
+    "hold_idle_depth": true,
+    "hold_forward_attitude": true,
+    "hold_forward_depth": true,
+    "hold_release_depth": true,
+    "climb_command_moves_up": true,
+    "new_depth_settled": true
+  },
+  "vision_checks": {
+    "hold_idle_depth": true,
+    "hold_forward_attitude": true,
+    "hold_forward_depth": true,
+    "hold_release_depth": true,
+    "climb_command_moves_up": true,
+    "new_depth_settled": true,
+    "nonempty_slam_map": true,
+    "slam_still_updating": true,
+    "vision_still_updating": true
+  },
+  "unit_tests_passed": 74,
+  "original_preservation": {
+    "checked": 961,
+    "changed": [],
+    "missing": [],
+    "pixhawk_firmware_matches_original": true
+  },
+  "six_axis_regression": "PASS",
+  "inherited_camera_mapping_configs_unchanged": {
+    "src/mako_vision/config/zed_vo.yaml": true,
+    "src/mako_vision/launch/visual_odometry.launch.py": true,
+    "src/robot_mapping/launch/mapping.launch.py": true,
+    "src/robot_description/urdf/zed2i_sim.urdf.xacro": true,
+    "src/robot_description/urdf/zed_macro.urdf.xacro": true,
+    "src/robot_description/urdf/bottom_camera.urdf.xacro": true,
+    "src/robot_description/urdf/third_person_camera.urdf.xacro": true
+  },
+  "native_camera_slam_rviz": {
+    "world": "pool.world",
+    "slam": true,
+    "mapping_updates": 92,
+    "grid_size": [
+      376,
+      326
+    ],
+    "rviz_running": true,
+    "renderer": "1",
+    "painted_fps": 44.174914638603205,
+    "receive_to_paint_p95_ms": 18.732038000962348,
+    "latency_ms_p50": 7.898493000844664,
+    "latency_ms_p95": 19.446395998951594,
+    "profile": "gpu",
+    "fps_wall": {
+      "main": 55.591265064037785,
+      "bottom": 13.797831976325925
+    },
+    "size": {
+      "main": [
+        1280,
+        720
+      ],
+      "bottom": [
+        1280,
+        720
+      ]
+    },
+    "connected": true,
+    "sim_speed": 0.9120072988883257,
+    "session": "/data/runs/20261118_190658_13048f"
+  }
+}

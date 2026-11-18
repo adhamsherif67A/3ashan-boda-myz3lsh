@@ -1,2 +1,0 @@
-Invoking command in '/home/rashwan/fake_depth2/build/fake_depth2_interfaces': /usr/bin/cmake /home/rashwan/fake_depth2/src/fake_depth2_interfaces -DAMENT_CMAKE_SYMLINK_INSTALL=1 -DCMAKE_INSTALL_PREFIX=/home/rashwan/fake_depth2/install/fake_depth2_interfaces
-Invoked command in '/home/rashwan/fake_depth2/build/fake_depth2_interfaces' returned '1': /usr/bin/cmake /home/rashwan/fake_depth2/src/fake_depth2_interfaces -DAMENT_CMAKE_SYMLINK_INSTALL=1 -DCMAKE_INSTALL_PREFIX=/home/rashwan/fake_depth2/install/fake_depth2_interfaces

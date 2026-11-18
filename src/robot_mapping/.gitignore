@@ -1,0 +1,3 @@
+!pool_mapping_data/
+!pool_mapping_data/*.db
+!pool_mapping_data/*.ply

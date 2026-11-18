@@ -1,1 +1,0 @@
-/home/rashwan/fake_depth2/build/fake_depth2_interfaces/rosidl_generator_c/fake_depth2_interfaces/msg/detail/depth_reading__struct.h

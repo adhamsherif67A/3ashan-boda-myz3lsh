@@ -1,1 +1,0 @@
-/home/rashwan/fake_depth2/build/fake_depth2_interfaces/rosidl_cmake/srv/CalibrateDepth_Request.msg

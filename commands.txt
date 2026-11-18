@@ -1,0 +1,7 @@
+sim_vehicle.py -v ArduSub -f vectored \
+--model=JSON \
+-l 31.312000,30.067222,0,0 \
+--out=udp:127.0.0.1:14550 \
+--out=udp:127.0.0.1:14551
+
+ros2 launch mavros apm.launch fcu_url:="udp://127.0.0.1:14551@"

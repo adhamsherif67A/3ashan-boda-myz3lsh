@@ -1,8 +1,0 @@
-action/DiveToDepth.action
-action/DiveToDepth.idl
-msg/DepthReading.idl
-msg/DepthReading.msg
-srv/CalibrateDepth.idl
-srv/CalibrateDepth.srv
-srv/CalibrateDepth_Request.msg
-srv/CalibrateDepth_Response.msg

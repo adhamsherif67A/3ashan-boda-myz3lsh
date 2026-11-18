@@ -1,0 +1,10 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=Operation MX
+Comment=MarineXperts underwater simulation and ROV pilot station
+Exec=@REPO@/gui/run_mako_gui.sh
+Icon=@REPO@/gui/mako_station/assets/operation_mx_icon.png
+Terminal=false
+Categories=Science;Engineering;
+StartupNotify=true

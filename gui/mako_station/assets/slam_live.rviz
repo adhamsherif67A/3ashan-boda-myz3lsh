@@ -1,0 +1,139 @@
+Panels:
+- Class: rviz_common/Displays
+  Name: Displays
+Visualization Manager:
+  Class: ''
+  Global Options:
+    Fixed Frame: map
+    Background Color: 22; 26; 32
+    Frame Rate: 30
+  Displays:
+  - Class: rviz_default_plugins/Odometry
+    Name: Validated odometry
+    Enabled: true
+    Topic:
+      Value: /mavros/odometry/out
+      Reliability Policy: Best Effort
+      Durability Policy: Volatile
+      History Policy: Keep Last
+      Depth: 10
+    Keep: 1
+    Position Tolerance: 0.02
+    Angle Tolerance: 0.05
+    Shape: Axes
+    Axes:
+      Length: 0.25
+      Radius: 0.015
+    Covariance:
+      Position:
+        Value: false
+      Orientation:
+        Value: false
+  - Class: rviz_default_plugins/Grid
+    Name: Grid (optional)
+    Enabled: false
+    Cell Size: 1
+    Plane Cell Count: 20
+    Reference Frame: map
+  - Class: rviz_default_plugins/RobotModel
+    Name: Fish Omni Six
+    Enabled: true
+    Description Source: Topic
+    Description Topic:
+      Value: /robot_description
+      Reliability Policy: Reliable
+      Durability Policy: Transient Local
+      History Policy: Keep Last
+      Depth: 1
+    Visual Enabled: true
+    Collision Enabled: false
+  - Class: rviz_default_plugins/TF
+    Name: TF
+    Enabled: false
+    Frame Timeout: 15
+    Marker Scale: 0.15
+    Show Arrows: true
+    Show Axes: true
+    Show Names: true
+    Frames:
+      All Enabled: true
+  - Class: rviz_default_plugins/Axes
+    Name: Bow-facing body axes
+    Enabled: false
+    Reference Frame: rov_base_link
+    Length: 0.3
+    Radius: 0.01
+  - Class: rviz_default_plugins/Map
+    Name: SLAM 2D occupancy (optional)
+    Enabled: false
+    Value: false
+    Alpha: 0.65
+    Draw Behind: true
+    Topic:
+      Value: /rtabmap/map
+      Reliability Policy: Reliable
+      Durability Policy: Transient Local
+      History Policy: Keep Last
+      Depth: 1
+    Update Topic:
+      Value: /rtabmap/map_updates
+      Reliability Policy: Reliable
+      Durability Policy: Volatile
+      History Policy: Keep Last
+      Depth: 1
+  - Class: rviz_default_plugins/PointCloud2
+    Name: Compact cloud (optional)
+    Enabled: false
+    Value: false
+    Topic:
+      Value: /rtabmap/cloud_map
+      Reliability Policy: Reliable
+      Durability Policy: Transient Local
+      History Policy: Keep Last
+      Depth: 1
+    Queue Size: 1
+    Decay Time: 0
+    Style: Squares
+    Size (m): 0.012
+    Size (Pixels): 3
+    Alpha: 1
+    Use Fixed Frame: true
+    Color Transformer: RGB8
+    Position Transformer: XYZ
+  - Class: rtabmap_rviz_plugins/MapCloud
+    Name: SLAM HD colour map (5 mm)
+    Enabled: true
+    Topic:
+      Value: /rtabmap/mapData
+      Reliability Policy: Reliable
+      Durability Policy: Volatile
+      History Policy: Keep Last
+      Depth: 1
+    Queue Size: 1
+    Style: Squares
+    Size (m): 0.006
+    Size (Pixels): 2
+    Alpha: 1.0
+    Color Transformer: RGB8
+    Position Transformer: XYZ
+    Cloud from scan: false
+    Cloud decimation: 1
+    Cloud max depth (m): 6.0
+    Cloud min depth (m): 0.25
+    Cloud voxel size (m): 0.005
+    Node filtering radius (m): 0.15
+    Node filtering angle (degrees): 15.0
+    Download namespace: /rtabmap/rtabmap
+  Views:
+    Current:
+      Class: rviz_default_plugins/Orbit
+      Distance: 10.0
+      Focal Point:
+        X: 0
+        Y: 0
+        Z: -2.0
+      Pitch: 0.65
+      Yaw: 0.8
+Window Geometry:
+  Width: 1280
+  Height: 800

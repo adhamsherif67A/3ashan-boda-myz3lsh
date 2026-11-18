@@ -1,8 +1,0 @@
-source;share/fake_depth2/hook/cmake_prefix_path.ps1
-source;share/fake_depth2/hook/cmake_prefix_path.dsv
-source;share/fake_depth2/hook/cmake_prefix_path.sh
-source;share/fake_depth2/local_setup.bash
-source;share/fake_depth2/local_setup.dsv
-source;share/fake_depth2/local_setup.ps1
-source;share/fake_depth2/local_setup.sh
-source;share/fake_depth2/local_setup.zsh

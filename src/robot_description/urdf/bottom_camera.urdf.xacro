@@ -1,0 +1,51 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro">
+  <!-- Camera body X points down; lens is 14 mm in front of the housing.
+       The housing and lens fit below ZED2i within the 100 mm inner dome radius. -->
+  <link name="bottom_camera_link">
+    <inertial>
+      <mass value="0.05" />
+      <inertia ixx="0.000007708333" ixy="0" ixz="0"
+               iyy="0.000005208333" iyz="0" izz="0.000007708333" />
+    </inertial>
+    <visual name="bottom_camera_housing">
+      <geometry><box size="0.025 0.035 0.025" /></geometry>
+      <material name="bottom_camera_black"><color rgba="0.098039 0.098039 0.098039 1" /></material>
+    </visual>
+    <visual name="bottom_camera_lens">
+      <origin xyz="0.0135 0 0" rpy="0 1.570796326794897 0" />
+      <geometry><cylinder radius="0.007" length="0.003" /></geometry>
+      <material name="bottom_camera_lens_blue"><color rgba="0.06 0.18 0.24 1" /></material>
+    </visual>
+  </link>
+  <joint name="zed2i_to_bottom_camera" type="fixed">
+    <parent link="zed2i_camera_center" />
+    <child link="bottom_camera_link" />
+    <origin xyz="0 0 -0.05" rpy="0 1.570796326794897 0" />
+  </joint>
+  <link name="bottom_camera_optical_frame" />
+  <joint name="bottom_camera_optical_joint" type="fixed">
+    <parent link="bottom_camera_link" />
+    <child link="bottom_camera_optical_frame" />
+    <origin xyz="0.014 0 0" rpy="-1.570796326794897 0 -1.570796326794897" />
+  </joint>
+  <gazebo reference="bottom_camera_link">
+    <sensor name="bottom_rgb_camera" type="camera">
+      <pose>0.014 0 0 0 0 0</pose>
+      <always_on>true</always_on>
+      <update_rate>$(arg camera_fps)</update_rate>
+      <topic>/bottom_camera/sim/image</topic>
+      <gz_frame_id>bottom_camera_optical_frame</gz_frame_id>
+      <camera>
+        <horizontal_fov>1.570796326794897</horizontal_fov>
+        <image>
+          <width>$(arg camera_width)</width><height>$(arg camera_height)</height><format>R8G8B8</format>
+        </image>
+        <!-- Near clip excludes the enclosing acrylic shell from the image. -->
+        <clip><near>0.1</near><far>15</far></clip>
+        <optical_frame_id>bottom_camera_optical_frame</optical_frame_id>
+        <camera_info_topic>/bottom_camera/sim/camera_info</camera_info_topic>
+      </camera>
+    </sensor>
+  </gazebo>
+</robot>

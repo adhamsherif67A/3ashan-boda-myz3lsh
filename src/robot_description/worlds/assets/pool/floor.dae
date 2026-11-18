@@ -1,0 +1,104 @@
+<?xml version='1.0' encoding='utf-8'?>
+<COLLADA xmlns="http://www.collada.org/2005/11/COLLADASchema" version="1.4.1">
+  <asset>
+    <created>2026-10-07T00:00:00Z</created>
+    <modified>2026-10-07T00:00:00Z</modified>
+    <unit name="meter" meter="1" />
+    <up_axis>Z_UP</up_axis>
+  </asset>
+  <library_images>
+    <image id="tile_image">
+      <init_from>floor_tiles.png</init_from>
+    </image>
+  </library_images>
+  <library_effects>
+    <effect id="tile_effect">
+      <profile_COMMON>
+        <newparam sid="tile_surface">
+          <surface type="2D">
+            <init_from>tile_image</init_from>
+          </surface>
+        </newparam>
+        <newparam sid="tile_sampler">
+          <sampler2D>
+            <source>tile_surface</source>
+            <wrap_s>WRAP</wrap_s>
+            <wrap_t>WRAP</wrap_t>
+          </sampler2D>
+        </newparam>
+        <technique sid="common">
+          <phong>
+            <ambient>
+              <color>0.25 0.25 0.25 1</color>
+            </ambient>
+            <diffuse>
+              <texture texture="tile_sampler" texcoord="UVMap" />
+            </diffuse>
+            <specular>
+              <color>0.2 0.2 0.2 1</color>
+            </specular>
+            <shininess>
+              <float>50</float>
+            </shininess>
+          </phong>
+        </technique>
+      </profile_COMMON>
+    </effect>
+  </library_effects>
+  <library_materials>
+    <material id="tile_material" name="Pool Ceramic">
+      <instance_effect url="#tile_effect" />
+    </material>
+  </library_materials>
+  <library_geometries>
+    <geometry id="surface">
+      <mesh>
+        <source id="positions">
+          <float_array id="positions_array" count="12">-7.0 -6.0 -2.999 7.0 -6.0 -2.999 7.0 6.0 -2.999 -7.0 6.0 -2.999</float_array>
+          <technique_common>
+            <accessor source="#positions_array" count="4" stride="3">
+              <param name="X" type="float" />
+              <param name="Y" type="float" />
+              <param name="Z" type="float" />
+            </accessor>
+          </technique_common>
+        </source>
+        <source id="uv">
+          <float_array id="uv_array" count="8">0.0 0.0 28.0 0.0 28.0 24.0 0.0 24.0</float_array>
+          <technique_common>
+            <accessor source="#uv_array" count="4" stride="2">
+              <param name="S" type="float" />
+              <param name="T" type="float" />
+            </accessor>
+          </technique_common>
+        </source>
+        <source id="normals"><float_array id="normals_array" count="3">0.0 0.0 1.0</float_array><technique_common><accessor source="#normals_array" count="1" stride="3"><param name="X" type="float" /><param name="Y" type="float" /><param name="Z" type="float" /></accessor></technique_common></source><vertices id="vertices">
+          <input semantic="POSITION" source="#positions" />
+        </vertices>
+        <triangles count="2" material="tile_symbol">
+          <input semantic="VERTEX" source="#vertices" offset="0" />
+          <input semantic="TEXCOORD" source="#uv" offset="2" set="0" />
+          <p>0 0 0 1 0 1 2 0 2 0 0 0 2 0 2 3 0 3</p>
+        <input semantic="NORMAL" source="#normals" offset="1" /></triangles>
+      </mesh>
+    </geometry>
+  </library_geometries>
+  <library_visual_scenes>
+    <visual_scene id="scene">
+      <node id="surface_node">
+        <instance_geometry url="#surface">
+          <bind_material>
+            <technique_common>
+              <instance_material symbol="tile_symbol" target="#tile_material">
+                <bind_vertex_input semantic="UVMap" input_semantic="TEXCOORD" input_set="0" />
+              </instance_material>
+            </technique_common>
+          </bind_material>
+        </instance_geometry>
+      </node>
+    </visual_scene>
+  </library_visual_scenes>
+  <scene>
+    <instance_visual_scene url="#scene" />
+  </scene>
+</COLLADA>

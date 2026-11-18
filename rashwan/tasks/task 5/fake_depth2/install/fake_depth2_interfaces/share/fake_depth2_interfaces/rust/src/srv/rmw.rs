@@ -1,1 +1,0 @@
-/home/rashwan/fake_depth2/build/fake_depth2_interfaces/rosidl_generator_rs/fake_depth2_interfaces/rust/src/srv/rmw.rs

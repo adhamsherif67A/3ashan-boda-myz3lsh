@@ -1,0 +1,965 @@
+<?xml version='1.0' encoding='utf-8'?>
+<sdf version="1.10">
+  <model name="broken_shipwreck">
+    <static>true</static>
+    <link name="wreck_structure">
+      <visual name="hull">
+        <geometry>
+          <mesh>
+            <uri>model://robot_description/worlds/assets/shipwreck/meshes/hull.stl</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <ambient>0.588 0.349 0.224 1</ambient>
+          <diffuse>0.588 0.349 0.224 1</diffuse>
+          <specular>0.08 0.08 0.08 1</specular>
+          <pbr>
+            <metal>
+              <metalness>0.1</metalness>
+              <roughness>0.9</roughness>
+            </metal>
+          </pbr>
+        </material>
+      </visual>
+      <visual name="ribs">
+        <geometry>
+          <mesh>
+            <uri>model://robot_description/worlds/assets/shipwreck/meshes/ribs.stl</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <ambient>0.255 0.302 0.314 1</ambient>
+          <diffuse>0.255 0.302 0.314 1</diffuse>
+          <specular>0.08 0.08 0.08 1</specular>
+          <pbr>
+            <metal>
+              <metalness>0.1</metalness>
+              <roughness>0.9</roughness>
+            </metal>
+          </pbr>
+        </material>
+      </visual>
+      <visual name="deck">
+        <geometry>
+          <mesh>
+            <uri>model://robot_description/worlds/assets/shipwreck/meshes/deck.stl</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <ambient>0.416 0.349 0.271 1</ambient>
+          <diffuse>0.416 0.349 0.271 1</diffuse>
+          <specular>0.08 0.08 0.08 1</specular>
+          <pbr>
+            <metal>
+              <metalness>0.1</metalness>
+              <roughness>0.9</roughness>
+            </metal>
+          </pbr>
+        </material>
+      </visual>
+      <collision name="piece_000">
+        <geometry>
+          <mesh>
+            <uri>model://robot_description/worlds/assets/shipwreck/meshes/collision/piece_000.stl</uri>
+          </mesh>
+        </geometry>
+      </collision>
+      <collision name="piece_001">
+        <geometry>
+          <mesh>
+            <uri>model://robot_description/worlds/assets/shipwreck/meshes/collision/piece_001.stl</uri>
+          </mesh>
+        </geometry>
+      </collision>
+      <collision name="piece_002">
+        <geometry>
+          <mesh>
+            <uri>model://robot_description/worlds/assets/shipwreck/meshes/collision/piece_002.stl</uri>
+          </mesh>
+        </geometry>
+      </collision>
+      <collision name="piece_003">
+        <geometry>
+          <mesh>
+            <uri>model://robot_description/worlds/assets/shipwreck/meshes/collision/piece_003.stl</uri>
+          </mesh>
+        </geometry>
+      </collision>
+      <collision name="piece_004">
+        <geometry>
+          <mesh>
+            <uri>model://robot_description/worlds/assets/shipwreck/meshes/collision/piece_004.stl</uri>
+          </mesh>
+        </geometry>
+      </collision>
+      <collision name="piece_005">
+        <geometry>
+          <mesh>
+            <uri>model://robot_description/worlds/assets/shipwreck/meshes/collision/piece_005.stl</uri>
+          </mesh>
+        </geometry>
+      </collision>
+      <collision name="piece_006">
+        <geometry>
+          <mesh>
+            <uri>model://robot_description/worlds/assets/shipwreck/meshes/collision/piece_006.stl</uri>
+          </mesh>
+        </geometry>
+      </collision>
+      <collision name="piece_007">
+        <geometry>
+          <mesh>
+            <uri>model://robot_description/worlds/assets/shipwreck/meshes/collision/piece_007.stl</uri>
+          </mesh>
+        </geometry>
+      </collision>
+      <collision name="piece_008">
+        <geometry>
+          <mesh>
+            <uri>model://robot_description/worlds/assets/shipwreck/meshes/collision/piece_008.stl</uri>
+          </mesh>
+        </geometry>
+      </collision>
+      <collision name="piece_009">
+        <geometry>
+          <mesh>
+            <uri>model://robot_description/worlds/assets/shipwreck/meshes/collision/piece_009.stl</uri>
+          </mesh>
+        </geometry>
+      </collision>
+      <collision name="piece_010">
+        <geometry>
+          <mesh>
+            <uri>model://robot_description/worlds/assets/shipwreck/meshes/collision/piece_010.stl</uri>
+          </mesh>
+        </geometry>
+      </collision>
+      <collision name="piece_011">
+        <geometry>
+          <mesh>
+            <uri>model://robot_description/worlds/assets/shipwreck/meshes/collision/piece_011.stl</uri>
+          </mesh>
+        </geometry>
+      </collision>
+      <collision name="piece_012">
+        <geometry>
+          <mesh>
+            <uri>model://robot_description/worlds/assets/shipwreck/meshes/collision/piece_012.stl</uri>
+          </mesh>
+        </geometry>
+      </collision>
+      <collision name="piece_013">
+        <geometry>
+          <mesh>
+            <uri>model://robot_description/worlds/assets/shipwreck/meshes/collision/piece_013.stl</uri>
+          </mesh>
+        </geometry>
+      </collision>
+      <collision name="piece_014">
+        <geometry>
+          <mesh>
+            <uri>model://robot_description/worlds/assets/shipwreck/meshes/collision/piece_014.stl</uri>
+          </mesh>
+        </geometry>
+      </collision>
+      <collision name="piece_015">
+        <geometry>
+          <mesh>
+            <uri>model://robot_description/worlds/assets/shipwreck/meshes/collision/piece_015.stl</uri>
+          </mesh>
+        </geometry>
+      </collision>
+      <collision name="piece_016">
+        <geometry>
+          <mesh>
+            <uri>model://robot_description/worlds/assets/shipwreck/meshes/collision/piece_016.stl</uri>
+          </mesh>
+        </geometry>
+      </collision>
+      <collision name="piece_017">
+        <geometry>
+          <mesh>
+            <uri>model://robot_description/worlds/assets/shipwreck/meshes/collision/piece_017.stl</uri>
+          </mesh>
+        </geometry>
+      </collision>
+      <collision name="piece_018">
+        <geometry>
+          <mesh>
+            <uri>model://robot_description/worlds/assets/shipwreck/meshes/collision/piece_018.stl</uri>
+          </mesh>
+        </geometry>
+      </collision>
+      <collision name="piece_019">
+        <geometry>
+          <mesh>
+            <uri>model://robot_description/worlds/assets/shipwreck/meshes/collision/piece_019.stl</uri>
+          </mesh>
+        </geometry>
+      </collision>
+      <collision name="piece_020">
+        <geometry>
+          <mesh>
+            <uri>model://robot_description/worlds/assets/shipwreck/meshes/collision/piece_020.stl</uri>
+          </mesh>
+        </geometry>
+      </collision>
+      <collision name="piece_021">
+        <geometry>
+          <mesh>
+            <uri>model://robot_description/worlds/assets/shipwreck/meshes/collision/piece_021.stl</uri>
+          </mesh>
+        </geometry>
+      </collision>
+      <collision name="piece_022">
+        <geometry>
+          <mesh>
+            <uri>model://robot_description/worlds/assets/shipwreck/meshes/collision/piece_022.stl</uri>
+          </mesh>
+        </geometry>
+      </collision>
+      <collision name="piece_023">
+        <geometry>
+          <mesh>
+            <uri>model://robot_description/worlds/assets/shipwreck/meshes/collision/piece_023.stl</uri>
+          </mesh>
+        </geometry>
+      </collision>
+      <collision name="piece_024">
+        <geometry>
+          <mesh>
+            <uri>model://robot_description/worlds/assets/shipwreck/meshes/collision/piece_024.stl</uri>
+          </mesh>
+        </geometry>
+      </collision>
+      <collision name="piece_025">
+        <geometry>
+          <mesh>
+            <uri>model://robot_description/worlds/assets/shipwreck/meshes/collision/piece_025.stl</uri>
+          </mesh>
+        </geometry>
+      </collision>
+      <collision name="piece_026">
+        <geometry>
+          <mesh>
+            <uri>model://robot_description/worlds/assets/shipwreck/meshes/collision/piece_026.stl</uri>
+          </mesh>
+        </geometry>
+      </collision>
+      <collision name="piece_027">
+        <geometry>
+          <mesh>
+            <uri>model://robot_description/worlds/assets/shipwreck/meshes/collision/piece_027.stl</uri>
+          </mesh>
+        </geometry>
+      </collision>
+      <collision name="piece_028">
+        <geometry>
+          <mesh>
+            <uri>model://robot_description/worlds/assets/shipwreck/meshes/collision/piece_028.stl</uri>
+          </mesh>
+        </geometry>
+      </collision>
+      <collision name="piece_029">
+        <geometry>
+          <mesh>
+            <uri>model://robot_description/worlds/assets/shipwreck/meshes/collision/piece_029.stl</uri>
+          </mesh>
+        </geometry>
+      </collision>
+      <collision name="piece_030">
+        <geometry>
+          <mesh>
+            <uri>model://robot_description/worlds/assets/shipwreck/meshes/collision/piece_030.stl</uri>
+          </mesh>
+        </geometry>
+      </collision>
+      <collision name="piece_031">
+        <geometry>
+          <mesh>
+            <uri>model://robot_description/worlds/assets/shipwreck/meshes/collision/piece_031.stl</uri>
+          </mesh>
+        </geometry>
+      </collision>
+      <collision name="piece_032">
+        <geometry>
+          <mesh>
+            <uri>model://robot_description/worlds/assets/shipwreck/meshes/collision/piece_032.stl</uri>
+          </mesh>
+        </geometry>
+      </collision>
+      <collision name="piece_033">
+        <geometry>
+          <mesh>
+            <uri>model://robot_description/worlds/assets/shipwreck/meshes/collision/piece_033.stl</uri>
+          </mesh>
+        </geometry>
+      </collision>
+      <collision name="piece_034">
+        <geometry>
+          <mesh>
+            <uri>model://robot_description/worlds/assets/shipwreck/meshes/collision/piece_034.stl</uri>
+          </mesh>
+        </geometry>
+      </collision>
+      <collision name="piece_035">
+        <geometry>
+          <mesh>
+            <uri>model://robot_description/worlds/assets/shipwreck/meshes/collision/piece_035.stl</uri>
+          </mesh>
+        </geometry>
+      </collision>
+      <collision name="piece_036">
+        <geometry>
+          <mesh>
+            <uri>model://robot_description/worlds/assets/shipwreck/meshes/collision/piece_036.stl</uri>
+          </mesh>
+        </geometry>
+      </collision>
+      <collision name="piece_037">
+        <geometry>
+          <mesh>
+            <uri>model://robot_description/worlds/assets/shipwreck/meshes/collision/piece_037.stl</uri>
+          </mesh>
+        </geometry>
+      </collision>
+      <collision name="piece_038">
+        <geometry>
+          <mesh>
+            <uri>model://robot_description/worlds/assets/shipwreck/meshes/collision/piece_038.stl</uri>
+          </mesh>
+        </geometry>
+      </collision>
+      <collision name="piece_039">
+        <geometry>
+          <mesh>
+            <uri>model://robot_description/worlds/assets/shipwreck/meshes/collision/piece_039.stl</uri>
+          </mesh>
+        </geometry>
+      </collision>
+      <collision name="piece_040">
+        <geometry>
+          <mesh>
+            <uri>model://robot_description/worlds/assets/shipwreck/meshes/collision/piece_040.stl</uri>
+          </mesh>
+        </geometry>
+      </collision>
+      <collision name="piece_041">
+        <geometry>
+          <mesh>
+            <uri>model://robot_description/worlds/assets/shipwreck/meshes/collision/piece_041.stl</uri>
+          </mesh>
+        </geometry>
+      </collision>
+      <collision name="piece_042">
+        <geometry>
+          <mesh>
+            <uri>model://robot_description/worlds/assets/shipwreck/meshes/collision/piece_042.stl</uri>
+          </mesh>
+        </geometry>
+      </collision>
+      <collision name="piece_043">
+        <geometry>
+          <mesh>
+            <uri>model://robot_description/worlds/assets/shipwreck/meshes/collision/piece_043.stl</uri>
+          </mesh>
+        </geometry>
+      </collision>
+      <collision name="piece_044">
+        <geometry>
+          <mesh>
+            <uri>model://robot_description/worlds/assets/shipwreck/meshes/collision/piece_044.stl</uri>
+          </mesh>
+        </geometry>
+      </collision>
+      <collision name="piece_045">
+        <geometry>
+          <mesh>
+            <uri>model://robot_description/worlds/assets/shipwreck/meshes/collision/piece_045.stl</uri>
+          </mesh>
+        </geometry>
+      </collision>
+      <collision name="piece_046">
+        <geometry>
+          <mesh>
+            <uri>model://robot_description/worlds/assets/shipwreck/meshes/collision/piece_046.stl</uri>
+          </mesh>
+        </geometry>
+      </collision>
+      <collision name="piece_047">
+        <geometry>
+          <mesh>
+            <uri>model://robot_description/worlds/assets/shipwreck/meshes/collision/piece_047.stl</uri>
+          </mesh>
+        </geometry>
+      </collision>
+      <collision name="piece_048">
+        <geometry>
+          <mesh>
+            <uri>model://robot_description/worlds/assets/shipwreck/meshes/collision/piece_048.stl</uri>
+          </mesh>
+        </geometry>
+      </collision>
+      <collision name="piece_049">
+        <geometry>
+          <mesh>
+            <uri>model://robot_description/worlds/assets/shipwreck/meshes/collision/piece_049.stl</uri>
+          </mesh>
+        </geometry>
+      </collision>
+      <collision name="piece_050">
+        <geometry>
+          <mesh>
+            <uri>model://robot_description/worlds/assets/shipwreck/meshes/collision/piece_050.stl</uri>
+          </mesh>
+        </geometry>
+      </collision>
+      <collision name="piece_051">
+        <geometry>
+          <mesh>
+            <uri>model://robot_description/worlds/assets/shipwreck/meshes/collision/piece_051.stl</uri>
+          </mesh>
+        </geometry>
+      </collision>
+      <collision name="piece_052">
+        <geometry>
+          <mesh>
+            <uri>model://robot_description/worlds/assets/shipwreck/meshes/collision/piece_052.stl</uri>
+          </mesh>
+        </geometry>
+      </collision>
+      <collision name="piece_053">
+        <geometry>
+          <mesh>
+            <uri>model://robot_description/worlds/assets/shipwreck/meshes/collision/piece_053.stl</uri>
+          </mesh>
+        </geometry>
+      </collision>
+      <collision name="piece_054">
+        <geometry>
+          <mesh>
+            <uri>model://robot_description/worlds/assets/shipwreck/meshes/collision/piece_054.stl</uri>
+          </mesh>
+        </geometry>
+      </collision>
+      <collision name="piece_055">
+        <geometry>
+          <mesh>
+            <uri>model://robot_description/worlds/assets/shipwreck/meshes/collision/piece_055.stl</uri>
+          </mesh>
+        </geometry>
+      </collision>
+      <collision name="piece_056">
+        <geometry>
+          <mesh>
+            <uri>model://robot_description/worlds/assets/shipwreck/meshes/collision/piece_056.stl</uri>
+          </mesh>
+        </geometry>
+      </collision>
+      <collision name="piece_057">
+        <geometry>
+          <mesh>
+            <uri>model://robot_description/worlds/assets/shipwreck/meshes/collision/piece_057.stl</uri>
+          </mesh>
+        </geometry>
+      </collision>
+      <collision name="piece_058">
+        <geometry>
+          <mesh>
+            <uri>model://robot_description/worlds/assets/shipwreck/meshes/collision/piece_058.stl</uri>
+          </mesh>
+        </geometry>
+      </collision>
+      <collision name="piece_059">
+        <geometry>
+          <mesh>
+            <uri>model://robot_description/worlds/assets/shipwreck/meshes/collision/piece_059.stl</uri>
+          </mesh>
+        </geometry>
+      </collision>
+      <collision name="piece_060">
+        <geometry>
+          <mesh>
+            <uri>model://robot_description/worlds/assets/shipwreck/meshes/collision/piece_060.stl</uri>
+          </mesh>
+        </geometry>
+      </collision>
+      <collision name="piece_061">
+        <geometry>
+          <mesh>
+            <uri>model://robot_description/worlds/assets/shipwreck/meshes/collision/piece_061.stl</uri>
+          </mesh>
+        </geometry>
+      </collision>
+      <collision name="piece_062">
+        <geometry>
+          <mesh>
+            <uri>model://robot_description/worlds/assets/shipwreck/meshes/collision/piece_062.stl</uri>
+          </mesh>
+        </geometry>
+      </collision>
+      <collision name="piece_063">
+        <geometry>
+          <mesh>
+            <uri>model://robot_description/worlds/assets/shipwreck/meshes/collision/piece_063.stl</uri>
+          </mesh>
+        </geometry>
+      </collision>
+      <collision name="piece_064">
+        <geometry>
+          <mesh>
+            <uri>model://robot_description/worlds/assets/shipwreck/meshes/collision/piece_064.stl</uri>
+          </mesh>
+        </geometry>
+      </collision>
+      <collision name="piece_065">
+        <geometry>
+          <mesh>
+            <uri>model://robot_description/worlds/assets/shipwreck/meshes/collision/piece_065.stl</uri>
+          </mesh>
+        </geometry>
+      </collision>
+      <collision name="piece_066">
+        <geometry>
+          <mesh>
+            <uri>model://robot_description/worlds/assets/shipwreck/meshes/collision/piece_066.stl</uri>
+          </mesh>
+        </geometry>
+      </collision>
+      <collision name="piece_067">
+        <geometry>
+          <mesh>
+            <uri>model://robot_description/worlds/assets/shipwreck/meshes/collision/piece_067.stl</uri>
+          </mesh>
+        </geometry>
+      </collision>
+      <collision name="piece_068">
+        <geometry>
+          <mesh>
+            <uri>model://robot_description/worlds/assets/shipwreck/meshes/collision/piece_068.stl</uri>
+          </mesh>
+        </geometry>
+      </collision>
+      <collision name="piece_069">
+        <geometry>
+          <mesh>
+            <uri>model://robot_description/worlds/assets/shipwreck/meshes/collision/piece_069.stl</uri>
+          </mesh>
+        </geometry>
+      </collision>
+      <collision name="piece_070">
+        <geometry>
+          <mesh>
+            <uri>model://robot_description/worlds/assets/shipwreck/meshes/collision/piece_070.stl</uri>
+          </mesh>
+        </geometry>
+      </collision>
+      <collision name="piece_071">
+        <geometry>
+          <mesh>
+            <uri>model://robot_description/worlds/assets/shipwreck/meshes/collision/piece_071.stl</uri>
+          </mesh>
+        </geometry>
+      </collision>
+      <collision name="piece_072">
+        <geometry>
+          <mesh>
+            <uri>model://robot_description/worlds/assets/shipwreck/meshes/collision/piece_072.stl</uri>
+          </mesh>
+        </geometry>
+      </collision>
+      <collision name="piece_073">
+        <geometry>
+          <mesh>
+            <uri>model://robot_description/worlds/assets/shipwreck/meshes/collision/piece_073.stl</uri>
+          </mesh>
+        </geometry>
+      </collision>
+      <collision name="piece_074">
+        <geometry>
+          <mesh>
+            <uri>model://robot_description/worlds/assets/shipwreck/meshes/collision/piece_074.stl</uri>
+          </mesh>
+        </geometry>
+      </collision>
+      <collision name="piece_075">
+        <geometry>
+          <mesh>
+            <uri>model://robot_description/worlds/assets/shipwreck/meshes/collision/piece_075.stl</uri>
+          </mesh>
+        </geometry>
+      </collision>
+      <collision name="piece_076">
+        <geometry>
+          <mesh>
+            <uri>model://robot_description/worlds/assets/shipwreck/meshes/collision/piece_076.stl</uri>
+          </mesh>
+        </geometry>
+      </collision>
+      <collision name="piece_077">
+        <geometry>
+          <mesh>
+            <uri>model://robot_description/worlds/assets/shipwreck/meshes/collision/piece_077.stl</uri>
+          </mesh>
+        </geometry>
+      </collision>
+      <collision name="piece_078">
+        <geometry>
+          <mesh>
+            <uri>model://robot_description/worlds/assets/shipwreck/meshes/collision/piece_078.stl</uri>
+          </mesh>
+        </geometry>
+      </collision>
+      <collision name="piece_079">
+        <geometry>
+          <mesh>
+            <uri>model://robot_description/worlds/assets/shipwreck/meshes/collision/piece_079.stl</uri>
+          </mesh>
+        </geometry>
+      </collision>
+      <collision name="piece_080">
+        <geometry>
+          <mesh>
+            <uri>model://robot_description/worlds/assets/shipwreck/meshes/collision/piece_080.stl</uri>
+          </mesh>
+        </geometry>
+      </collision>
+      <collision name="piece_081">
+        <geometry>
+          <mesh>
+            <uri>model://robot_description/worlds/assets/shipwreck/meshes/collision/piece_081.stl</uri>
+          </mesh>
+        </geometry>
+      </collision>
+      <collision name="piece_082">
+        <geometry>
+          <mesh>
+            <uri>model://robot_description/worlds/assets/shipwreck/meshes/collision/piece_082.stl</uri>
+          </mesh>
+        </geometry>
+      </collision>
+      <collision name="piece_083">
+        <geometry>
+          <mesh>
+            <uri>model://robot_description/worlds/assets/shipwreck/meshes/collision/piece_083.stl</uri>
+          </mesh>
+        </geometry>
+      </collision>
+      <collision name="piece_084">
+        <geometry>
+          <mesh>
+            <uri>model://robot_description/worlds/assets/shipwreck/meshes/collision/piece_084.stl</uri>
+          </mesh>
+        </geometry>
+      </collision>
+      <collision name="piece_085">
+        <geometry>
+          <mesh>
+            <uri>model://robot_description/worlds/assets/shipwreck/meshes/collision/piece_085.stl</uri>
+          </mesh>
+        </geometry>
+      </collision>
+      <collision name="piece_086">
+        <geometry>
+          <mesh>
+            <uri>model://robot_description/worlds/assets/shipwreck/meshes/collision/piece_086.stl</uri>
+          </mesh>
+        </geometry>
+      </collision>
+      <collision name="piece_087">
+        <geometry>
+          <mesh>
+            <uri>model://robot_description/worlds/assets/shipwreck/meshes/collision/piece_087.stl</uri>
+          </mesh>
+        </geometry>
+      </collision>
+      <collision name="piece_088">
+        <geometry>
+          <mesh>
+            <uri>model://robot_description/worlds/assets/shipwreck/meshes/collision/piece_088.stl</uri>
+          </mesh>
+        </geometry>
+      </collision>
+      <collision name="piece_089">
+        <geometry>
+          <mesh>
+            <uri>model://robot_description/worlds/assets/shipwreck/meshes/collision/piece_089.stl</uri>
+          </mesh>
+        </geometry>
+      </collision>
+      <collision name="piece_090">
+        <geometry>
+          <mesh>
+            <uri>model://robot_description/worlds/assets/shipwreck/meshes/collision/piece_090.stl</uri>
+          </mesh>
+        </geometry>
+      </collision>
+      <collision name="piece_091">
+        <geometry>
+          <mesh>
+            <uri>model://robot_description/worlds/assets/shipwreck/meshes/collision/piece_091.stl</uri>
+          </mesh>
+        </geometry>
+      </collision>
+      <collision name="piece_092">
+        <geometry>
+          <mesh>
+            <uri>model://robot_description/worlds/assets/shipwreck/meshes/collision/piece_092.stl</uri>
+          </mesh>
+        </geometry>
+      </collision>
+      <collision name="piece_093">
+        <geometry>
+          <mesh>
+            <uri>model://robot_description/worlds/assets/shipwreck/meshes/collision/piece_093.stl</uri>
+          </mesh>
+        </geometry>
+      </collision>
+      <collision name="piece_094">
+        <geometry>
+          <mesh>
+            <uri>model://robot_description/worlds/assets/shipwreck/meshes/collision/piece_094.stl</uri>
+          </mesh>
+        </geometry>
+      </collision>
+      <collision name="piece_095">
+        <geometry>
+          <mesh>
+            <uri>model://robot_description/worlds/assets/shipwreck/meshes/collision/piece_095.stl</uri>
+          </mesh>
+        </geometry>
+      </collision>
+      <collision name="piece_096">
+        <geometry>
+          <mesh>
+            <uri>model://robot_description/worlds/assets/shipwreck/meshes/collision/piece_096.stl</uri>
+          </mesh>
+        </geometry>
+      </collision>
+      <collision name="piece_097">
+        <geometry>
+          <mesh>
+            <uri>model://robot_description/worlds/assets/shipwreck/meshes/collision/piece_097.stl</uri>
+          </mesh>
+        </geometry>
+      </collision>
+      <collision name="piece_098">
+        <geometry>
+          <mesh>
+            <uri>model://robot_description/worlds/assets/shipwreck/meshes/collision/piece_098.stl</uri>
+          </mesh>
+        </geometry>
+      </collision>
+      <collision name="piece_099">
+        <geometry>
+          <mesh>
+            <uri>model://robot_description/worlds/assets/shipwreck/meshes/collision/piece_099.stl</uri>
+          </mesh>
+        </geometry>
+      </collision>
+      <collision name="piece_100">
+        <geometry>
+          <mesh>
+            <uri>model://robot_description/worlds/assets/shipwreck/meshes/collision/piece_100.stl</uri>
+          </mesh>
+        </geometry>
+      </collision>
+      <collision name="piece_101">
+        <geometry>
+          <mesh>
+            <uri>model://robot_description/worlds/assets/shipwreck/meshes/collision/piece_101.stl</uri>
+          </mesh>
+        </geometry>
+      </collision>
+      <collision name="piece_102">
+        <geometry>
+          <mesh>
+            <uri>model://robot_description/worlds/assets/shipwreck/meshes/collision/piece_102.stl</uri>
+          </mesh>
+        </geometry>
+      </collision>
+      <collision name="piece_103">
+        <geometry>
+          <mesh>
+            <uri>model://robot_description/worlds/assets/shipwreck/meshes/collision/piece_103.stl</uri>
+          </mesh>
+        </geometry>
+      </collision>
+      <collision name="piece_104">
+        <geometry>
+          <mesh>
+            <uri>model://robot_description/worlds/assets/shipwreck/meshes/collision/piece_104.stl</uri>
+          </mesh>
+        </geometry>
+      </collision>
+      <collision name="piece_105">
+        <geometry>
+          <mesh>
+            <uri>model://robot_description/worlds/assets/shipwreck/meshes/collision/piece_105.stl</uri>
+          </mesh>
+        </geometry>
+      </collision>
+      <collision name="piece_106">
+        <geometry>
+          <mesh>
+            <uri>model://robot_description/worlds/assets/shipwreck/meshes/collision/piece_106.stl</uri>
+          </mesh>
+        </geometry>
+      </collision>
+      <collision name="piece_107">
+        <geometry>
+          <mesh>
+            <uri>model://robot_description/worlds/assets/shipwreck/meshes/collision/piece_107.stl</uri>
+          </mesh>
+        </geometry>
+      </collision>
+      <collision name="piece_108">
+        <geometry>
+          <mesh>
+            <uri>model://robot_description/worlds/assets/shipwreck/meshes/collision/piece_108.stl</uri>
+          </mesh>
+        </geometry>
+      </collision>
+      <collision name="piece_109">
+        <geometry>
+          <mesh>
+            <uri>model://robot_description/worlds/assets/shipwreck/meshes/collision/piece_109.stl</uri>
+          </mesh>
+        </geometry>
+      </collision>
+      <collision name="piece_110">
+        <geometry>
+          <mesh>
+            <uri>model://robot_description/worlds/assets/shipwreck/meshes/collision/piece_110.stl</uri>
+          </mesh>
+        </geometry>
+      </collision>
+      <collision name="piece_111">
+        <geometry>
+          <mesh>
+            <uri>model://robot_description/worlds/assets/shipwreck/meshes/collision/piece_111.stl</uri>
+          </mesh>
+        </geometry>
+      </collision>
+      <collision name="piece_112">
+        <geometry>
+          <mesh>
+            <uri>model://robot_description/worlds/assets/shipwreck/meshes/collision/piece_112.stl</uri>
+          </mesh>
+        </geometry>
+      </collision>
+      <collision name="piece_113">
+        <geometry>
+          <mesh>
+            <uri>model://robot_description/worlds/assets/shipwreck/meshes/collision/piece_113.stl</uri>
+          </mesh>
+        </geometry>
+      </collision>
+      <collision name="piece_114">
+        <geometry>
+          <mesh>
+            <uri>model://robot_description/worlds/assets/shipwreck/meshes/collision/piece_114.stl</uri>
+          </mesh>
+        </geometry>
+      </collision>
+      <collision name="piece_115">
+        <geometry>
+          <mesh>
+            <uri>model://robot_description/worlds/assets/shipwreck/meshes/collision/piece_115.stl</uri>
+          </mesh>
+        </geometry>
+      </collision>
+      <collision name="piece_116">
+        <geometry>
+          <mesh>
+            <uri>model://robot_description/worlds/assets/shipwreck/meshes/collision/piece_116.stl</uri>
+          </mesh>
+        </geometry>
+      </collision>
+      <collision name="piece_117">
+        <geometry>
+          <mesh>
+            <uri>model://robot_description/worlds/assets/shipwreck/meshes/collision/piece_117.stl</uri>
+          </mesh>
+        </geometry>
+      </collision>
+      <collision name="piece_118">
+        <geometry>
+          <mesh>
+            <uri>model://robot_description/worlds/assets/shipwreck/meshes/collision/piece_118.stl</uri>
+          </mesh>
+        </geometry>
+      </collision>
+      <collision name="piece_119">
+        <geometry>
+          <mesh>
+            <uri>model://robot_description/worlds/assets/shipwreck/meshes/collision/piece_119.stl</uri>
+          </mesh>
+        </geometry>
+      </collision>
+      <collision name="piece_120">
+        <geometry>
+          <mesh>
+            <uri>model://robot_description/worlds/assets/shipwreck/meshes/collision/piece_120.stl</uri>
+          </mesh>
+        </geometry>
+      </collision>
+      <collision name="piece_121">
+        <geometry>
+          <mesh>
+            <uri>model://robot_description/worlds/assets/shipwreck/meshes/collision/piece_121.stl</uri>
+          </mesh>
+        </geometry>
+      </collision>
+      <collision name="piece_122">
+        <geometry>
+          <mesh>
+            <uri>model://robot_description/worlds/assets/shipwreck/meshes/collision/piece_122.stl</uri>
+          </mesh>
+        </geometry>
+      </collision>
+      <collision name="piece_123">
+        <geometry>
+          <mesh>
+            <uri>model://robot_description/worlds/assets/shipwreck/meshes/collision/piece_123.stl</uri>
+          </mesh>
+        </geometry>
+      </collision>
+      <collision name="piece_124">
+        <geometry>
+          <mesh>
+            <uri>model://robot_description/worlds/assets/shipwreck/meshes/collision/piece_124.stl</uri>
+          </mesh>
+        </geometry>
+      </collision>
+      <collision name="piece_125">
+        <geometry>
+          <mesh>
+            <uri>model://robot_description/worlds/assets/shipwreck/meshes/collision/piece_125.stl</uri>
+          </mesh>
+        </geometry>
+      </collision>
+      <collision name="piece_126">
+        <geometry>
+          <mesh>
+            <uri>model://robot_description/worlds/assets/shipwreck/meshes/collision/piece_126.stl</uri>
+          </mesh>
+        </geometry>
+      </collision>
+      <collision name="piece_127">
+        <geometry>
+          <mesh>
+            <uri>model://robot_description/worlds/assets/shipwreck/meshes/collision/piece_127.stl</uri>
+          </mesh>
+        </geometry>
+      </collision>
+      <collision name="piece_128">
+        <geometry>
+          <mesh>
+            <uri>model://robot_description/worlds/assets/shipwreck/meshes/collision/piece_128.stl</uri>
+          </mesh>
+        </geometry>
+      </collision>
+    </link>
+  </model>
+</sdf>
